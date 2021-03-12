@@ -1,0 +1,98 @@
+﻿Build1=Default,b4a.example
+File1=Agregar.bal
+File2=Artboard 1.png
+File3=Datos.bal
+File4=Intro.bal
+File5=Item.bal
+File6=Monitoreo.bal
+File7=Principal.bal
+File8=Tutorial.bal
+FileGroup1=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+FileGroup8=Default Group
+Group=Default Group
+Library1=core
+Library2=xui
+Library3=xcustomlistview
+Library4=ime
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="29"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
+Module1=Agregar_Activity
+Module2=Datos_Activity
+Module3=Monitor_Activity
+Module4=Starter
+Module5=Tutoriales_Activity
+NumberOfFiles=8
+NumberOfLibraries=4
+NumberOfModules=5
+Version=10.2
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: MonitorFlux
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Private xui As XUI
+	Dim tmrIntro As Timer 'Timer para el intro de la aplicacion ahora se debe inicializar
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	Private lbFallas As Label
+	Private lbBombas As Label
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	If FirstTime=True Then
+		Activity.LoadLayout("Intro")			'cargamos el layout del intro
+		tmrIntro.Initialize("tmrIntro",3000)	'inicializamos el timer y ahora lo habilitamos
+		tmrIntro.Enabled = True					'Se ejecuta en tmrIntro_Tick
+	Else
+		Activity.RemoveAllViews
+		Activity.LoadLayout("Principal")
+	End If
+	
+	
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Sub tmrIntro_Tick
+	Activity.RemoveAllViews
+	Activity.LoadLayout("Principal")		'cargamos la pantalla principal y deshabilitamos el timer
+	tmrIntro.Enabled = False
+End Sub
+
+Sub btnMonitoreo_Click
+	StartActivity(Monitor_Activity)
+End Sub
+
+Sub btnAgregar_Click
+	StartActivity(Agregar_Activity)
+End Sub
+
+Sub btnTutorial_Click
+	StartActivity(Tutoriales_Activity)
+End Sub
