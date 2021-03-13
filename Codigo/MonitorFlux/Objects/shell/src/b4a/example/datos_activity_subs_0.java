@@ -181,6 +181,7 @@ RemoteObject _estado = RemoteObject.createImmutable("");
 RemoteObject _flujo = RemoteObject.createImmutable("");
 RemoteObject _fechaactual = RemoteObject.createImmutable(0L);
 RemoteObject _actual = RemoteObject.createImmutable(0L);
+RemoteObject _actualmodificado = RemoteObject.createImmutable(0L);
 RemoteObject _mensaje = RemoteObject.createImmutable("");
 Debug.locals.put("res", _res);
  BA.debugLineNum = 87;BA.debugLine="Sub cargarEstado (res As String)";
@@ -265,54 +266,154 @@ _fechaactual = BA.numberCast(long.class, datos_activity.mostCurrent.__c.getField
  BA.debugLineNum = 115;BA.debugLine="Dim actual As Long = fechaActual - fecha";
 Debug.ShouldStop(262144);
 _actual = RemoteObject.solve(new RemoteObject[] {_fechaactual,_fecha}, "-",1, 2);Debug.locals.put("actual", _actual);Debug.locals.put("actual", _actual);
- BA.debugLineNum = 116;BA.debugLine="Dim mensaje As String";
+ BA.debugLineNum = 116;BA.debugLine="Dim actualModificado As Long";
 Debug.ShouldStop(524288);
-_mensaje = RemoteObject.createImmutable("");Debug.locals.put("mensaje", _mensaje);
- BA.debugLineNum = 117;BA.debugLine="If actual <= 30 Then";
+_actualmodificado = RemoteObject.createImmutable(0L);Debug.locals.put("actualModificado", _actualmodificado);
+ BA.debugLineNum = 117;BA.debugLine="Dim mensaje As String";
 Debug.ShouldStop(1048576);
-if (RemoteObject.solveBoolean("k",_actual,BA.numberCast(long.class, 30))) { 
- BA.debugLineNum = 118;BA.debugLine="mensaje = \"Actualizado hace menos de 30 minutos\"";
+_mensaje = RemoteObject.createImmutable("");Debug.locals.put("mensaje", _mensaje);
+ BA.debugLineNum = 118;BA.debugLine="If actual < 100 Then";
 Debug.ShouldStop(2097152);
-_mensaje = BA.ObjectToString("Actualizado hace menos de 30 minutos");Debug.locals.put("mensaje", _mensaje);
- }else 
-{ BA.debugLineNum = 119;BA.debugLine="Else If actual <= 100 Then";
+if (RemoteObject.solveBoolean("<",_actual,BA.numberCast(long.class, 100))) { 
+ BA.debugLineNum = 119;BA.debugLine="actualModificado = fechaActual/100";
 Debug.ShouldStop(4194304);
-if (RemoteObject.solveBoolean("k",_actual,BA.numberCast(long.class, 100))) { 
- BA.debugLineNum = 120;BA.debugLine="mensaje = \"Actualizado hace 1 hora\"";
+_actualmodificado = BA.numberCast(long.class, RemoteObject.solve(new RemoteObject[] {_fechaactual,RemoteObject.createImmutable(100)}, "/",0, 0));Debug.locals.put("actualModificado", _actualmodificado);
+ BA.debugLineNum = 120;BA.debugLine="fechaActual = fechaActual - actualModificado*100";
 Debug.ShouldStop(8388608);
-_mensaje = BA.ObjectToString("Actualizado hace 1 hora");Debug.locals.put("mensaje", _mensaje);
- }else 
-{ BA.debugLineNum = 121;BA.debugLine="Else If actual <= 400 Then";
+_fechaactual = RemoteObject.solve(new RemoteObject[] {_fechaactual,_actualmodificado,RemoteObject.createImmutable(100)}, "-*",1, 2);Debug.locals.put("fechaActual", _fechaactual);
+ BA.debugLineNum = 121;BA.debugLine="actualModificado = fecha/100";
 Debug.ShouldStop(16777216);
-if (RemoteObject.solveBoolean("k",_actual,BA.numberCast(long.class, 400))) { 
- BA.debugLineNum = 122;BA.debugLine="mensaje = \"Actualizado hace 4 horas\"";
+_actualmodificado = BA.numberCast(long.class, RemoteObject.solve(new RemoteObject[] {_fecha,RemoteObject.createImmutable(100)}, "/",0, 0));Debug.locals.put("actualModificado", _actualmodificado);
+ BA.debugLineNum = 122;BA.debugLine="fecha = fecha - actualModificado*100";
 Debug.ShouldStop(33554432);
-_mensaje = BA.ObjectToString("Actualizado hace 4 horas");Debug.locals.put("mensaje", _mensaje);
- }else 
-{ BA.debugLineNum = 123;BA.debugLine="Else If actual <= 1200 Then";
+_fecha = RemoteObject.solve(new RemoteObject[] {_fecha,_actualmodificado,RemoteObject.createImmutable(100)}, "-*",1, 2);Debug.locals.put("fecha", _fecha);
+ BA.debugLineNum = 123;BA.debugLine="If fecha < fechaActual Then";
 Debug.ShouldStop(67108864);
-if (RemoteObject.solveBoolean("k",_actual,BA.numberCast(long.class, 1200))) { 
- BA.debugLineNum = 124;BA.debugLine="mensaje = \"Actualizado hace menos de 12 horas\"";
+if (RemoteObject.solveBoolean("<",_fecha,_fechaactual)) { 
+ BA.debugLineNum = 124;BA.debugLine="actualModificado = fechaActual - fecha";
 Debug.ShouldStop(134217728);
-_mensaje = BA.ObjectToString("Actualizado hace menos de 12 horas");Debug.locals.put("mensaje", _mensaje);
- }else 
-{ BA.debugLineNum = 125;BA.debugLine="Else If	actual <= 10000 Then";
-Debug.ShouldStop(268435456);
-if (RemoteObject.solveBoolean("k",_actual,BA.numberCast(long.class, 10000))) { 
- BA.debugLineNum = 126;BA.debugLine="mensaje = \"Actualizado hace 1 dia\"";
-Debug.ShouldStop(536870912);
-_mensaje = BA.ObjectToString("Actualizado hace 1 dia");Debug.locals.put("mensaje", _mensaje);
+_actualmodificado = RemoteObject.solve(new RemoteObject[] {_fechaactual,_fecha}, "-",1, 2);Debug.locals.put("actualModificado", _actualmodificado);
  }else {
- BA.debugLineNum = 128;BA.debugLine="mensaje = \"Desactualizado\"";
-Debug.ShouldStop(-2147483648);
-_mensaje = BA.ObjectToString("Desactualizado");Debug.locals.put("mensaje", _mensaje);
- }}}}}
-;
- BA.debugLineNum = 130;BA.debugLine="lbActualizado.Text = mensaje";
+ BA.debugLineNum = 126;BA.debugLine="actualModificado = fechaActual + (60 - fecha)";
+Debug.ShouldStop(536870912);
+_actualmodificado = RemoteObject.solve(new RemoteObject[] {_fechaactual,(RemoteObject.solve(new RemoteObject[] {RemoteObject.createImmutable(60),_fecha}, "-",1, 2))}, "+",1, 2);Debug.locals.put("actualModificado", _actualmodificado);
+ };
+ BA.debugLineNum = 129;BA.debugLine="mensaje = \"Actualizado hace \" & actualModificado";
+Debug.ShouldStop(1);
+_mensaje = RemoteObject.concat(RemoteObject.createImmutable("Actualizado hace "),_actualmodificado,RemoteObject.createImmutable(" minutos"));Debug.locals.put("mensaje", _mensaje);
+ }else 
+{ BA.debugLineNum = 130;BA.debugLine="Else If actual < 10000 Then";
 Debug.ShouldStop(2);
-datos_activity.mostCurrent._lbactualizado.runMethod(true,"setText",BA.ObjectToCharSequence(_mensaje));
- BA.debugLineNum = 131;BA.debugLine="End Sub";
+if (RemoteObject.solveBoolean("<",_actual,BA.numberCast(long.class, 10000))) { 
+ BA.debugLineNum = 131;BA.debugLine="actualModificado = fechaActual/10000";
 Debug.ShouldStop(4);
+_actualmodificado = BA.numberCast(long.class, RemoteObject.solve(new RemoteObject[] {_fechaactual,RemoteObject.createImmutable(10000)}, "/",0, 0));Debug.locals.put("actualModificado", _actualmodificado);
+ BA.debugLineNum = 132;BA.debugLine="fechaActual = fechaActual - actualModificado*100";
+Debug.ShouldStop(8);
+_fechaactual = RemoteObject.solve(new RemoteObject[] {_fechaactual,_actualmodificado,RemoteObject.createImmutable(10000)}, "-*",1, 2);Debug.locals.put("fechaActual", _fechaactual);
+ BA.debugLineNum = 133;BA.debugLine="actualModificado = fecha/10000";
+Debug.ShouldStop(16);
+_actualmodificado = BA.numberCast(long.class, RemoteObject.solve(new RemoteObject[] {_fecha,RemoteObject.createImmutable(10000)}, "/",0, 0));Debug.locals.put("actualModificado", _actualmodificado);
+ BA.debugLineNum = 134;BA.debugLine="fecha = fecha - actualModificado*10000";
+Debug.ShouldStop(32);
+_fecha = RemoteObject.solve(new RemoteObject[] {_fecha,_actualmodificado,RemoteObject.createImmutable(10000)}, "-*",1, 2);Debug.locals.put("fecha", _fecha);
+ BA.debugLineNum = 135;BA.debugLine="Log(fechaActual)";
+Debug.ShouldStop(64);
+datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","23080240",BA.NumberToString(_fechaactual),0);
+ BA.debugLineNum = 136;BA.debugLine="Log(fecha)";
+Debug.ShouldStop(128);
+datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","23080241",BA.NumberToString(_fecha),0);
+ BA.debugLineNum = 137;BA.debugLine="If fecha < fechaActual Then";
+Debug.ShouldStop(256);
+if (RemoteObject.solveBoolean("<",_fecha,_fechaactual)) { 
+ BA.debugLineNum = 138;BA.debugLine="actualModificado = fechaActual/100 - fecha/100";
+Debug.ShouldStop(512);
+_actualmodificado = BA.numberCast(long.class, RemoteObject.solve(new RemoteObject[] {_fechaactual,RemoteObject.createImmutable(100),_fecha,RemoteObject.createImmutable(100)}, "/-/",1, 0));Debug.locals.put("actualModificado", _actualmodificado);
+ }else {
+ BA.debugLineNum = 140;BA.debugLine="actualModificado = fechaActual/100 + (24 - fech";
+Debug.ShouldStop(2048);
+_actualmodificado = BA.numberCast(long.class, RemoteObject.solve(new RemoteObject[] {_fechaactual,RemoteObject.createImmutable(100),(RemoteObject.solve(new RemoteObject[] {RemoteObject.createImmutable(24),_fecha,RemoteObject.createImmutable(100)}, "-/",1, 0))}, "/+",1, 0));Debug.locals.put("actualModificado", _actualmodificado);
+ };
+ BA.debugLineNum = 143;BA.debugLine="mensaje = \"Actualizado hace \" & actualModificado";
+Debug.ShouldStop(16384);
+_mensaje = RemoteObject.concat(RemoteObject.createImmutable("Actualizado hace "),_actualmodificado,RemoteObject.createImmutable(" horas"));Debug.locals.put("mensaje", _mensaje);
+ }else 
+{ BA.debugLineNum = 144;BA.debugLine="Else If actual < 1000000 Then";
+Debug.ShouldStop(32768);
+if (RemoteObject.solveBoolean("<",_actual,BA.numberCast(long.class, 1000000))) { 
+ BA.debugLineNum = 145;BA.debugLine="actualModificado = fechaActual/1000000";
+Debug.ShouldStop(65536);
+_actualmodificado = BA.numberCast(long.class, RemoteObject.solve(new RemoteObject[] {_fechaactual,RemoteObject.createImmutable(1000000)}, "/",0, 0));Debug.locals.put("actualModificado", _actualmodificado);
+ BA.debugLineNum = 146;BA.debugLine="fechaActual = fechaActual - actualModificado*100";
+Debug.ShouldStop(131072);
+_fechaactual = RemoteObject.solve(new RemoteObject[] {_fechaactual,_actualmodificado,RemoteObject.createImmutable(1000000)}, "-*",1, 2);Debug.locals.put("fechaActual", _fechaactual);
+ BA.debugLineNum = 147;BA.debugLine="actualModificado = fecha/1000000";
+Debug.ShouldStop(262144);
+_actualmodificado = BA.numberCast(long.class, RemoteObject.solve(new RemoteObject[] {_fecha,RemoteObject.createImmutable(1000000)}, "/",0, 0));Debug.locals.put("actualModificado", _actualmodificado);
+ BA.debugLineNum = 148;BA.debugLine="fecha = fecha - actualModificado*1000000";
+Debug.ShouldStop(524288);
+_fecha = RemoteObject.solve(new RemoteObject[] {_fecha,_actualmodificado,RemoteObject.createImmutable(1000000)}, "-*",1, 2);Debug.locals.put("fecha", _fecha);
+ BA.debugLineNum = 149;BA.debugLine="actualModificado = Abs(fechaActual - fecha)";
+Debug.ShouldStop(1048576);
+_actualmodificado = BA.numberCast(long.class, datos_activity.mostCurrent.__c.runMethod(true,"Abs",(Object)(BA.numberCast(double.class, RemoteObject.solve(new RemoteObject[] {_fechaactual,_fecha}, "-",1, 2)))));Debug.locals.put("actualModificado", _actualmodificado);
+ BA.debugLineNum = 150;BA.debugLine="If fecha < fechaActual Then";
+Debug.ShouldStop(2097152);
+if (RemoteObject.solveBoolean("<",_fecha,_fechaactual)) { 
+ BA.debugLineNum = 151;BA.debugLine="actualModificado = fechaActual/10000 - fecha/10";
+Debug.ShouldStop(4194304);
+_actualmodificado = BA.numberCast(long.class, RemoteObject.solve(new RemoteObject[] {_fechaactual,RemoteObject.createImmutable(10000),_fecha,RemoteObject.createImmutable(10000)}, "/-/",1, 0));Debug.locals.put("actualModificado", _actualmodificado);
+ }else {
+ BA.debugLineNum = 153;BA.debugLine="actualModificado = fechaActual/10000 + (30 - fe";
+Debug.ShouldStop(16777216);
+_actualmodificado = BA.numberCast(long.class, RemoteObject.solve(new RemoteObject[] {_fechaactual,RemoteObject.createImmutable(10000),(RemoteObject.solve(new RemoteObject[] {RemoteObject.createImmutable(30),_fecha,RemoteObject.createImmutable(10000)}, "-/",1, 0))}, "/+",1, 0));Debug.locals.put("actualModificado", _actualmodificado);
+ };
+ BA.debugLineNum = 156;BA.debugLine="mensaje = \"Actualizado hace \" & actualModificado";
+Debug.ShouldStop(134217728);
+_mensaje = RemoteObject.concat(RemoteObject.createImmutable("Actualizado hace "),_actualmodificado,RemoteObject.createImmutable(" dias"));Debug.locals.put("mensaje", _mensaje);
+ }else 
+{ BA.debugLineNum = 157;BA.debugLine="Else If actual < 100000000 Then";
+Debug.ShouldStop(268435456);
+if (RemoteObject.solveBoolean("<",_actual,BA.numberCast(long.class, 100000000))) { 
+ BA.debugLineNum = 158;BA.debugLine="actualModificado = fechaActual/100000000";
+Debug.ShouldStop(536870912);
+_actualmodificado = BA.numberCast(long.class, RemoteObject.solve(new RemoteObject[] {_fechaactual,RemoteObject.createImmutable(100000000)}, "/",0, 0));Debug.locals.put("actualModificado", _actualmodificado);
+ BA.debugLineNum = 159;BA.debugLine="fechaActual = fechaActual - actualModificado*100";
+Debug.ShouldStop(1073741824);
+_fechaactual = RemoteObject.solve(new RemoteObject[] {_fechaactual,_actualmodificado,RemoteObject.createImmutable(100000000)}, "-*",1, 2);Debug.locals.put("fechaActual", _fechaactual);
+ BA.debugLineNum = 160;BA.debugLine="actualModificado = fecha/100000000";
+Debug.ShouldStop(-2147483648);
+_actualmodificado = BA.numberCast(long.class, RemoteObject.solve(new RemoteObject[] {_fecha,RemoteObject.createImmutable(100000000)}, "/",0, 0));Debug.locals.put("actualModificado", _actualmodificado);
+ BA.debugLineNum = 161;BA.debugLine="fecha = fecha - actualModificado*100000000";
+Debug.ShouldStop(1);
+_fecha = RemoteObject.solve(new RemoteObject[] {_fecha,_actualmodificado,RemoteObject.createImmutable(100000000)}, "-*",1, 2);Debug.locals.put("fecha", _fecha);
+ BA.debugLineNum = 162;BA.debugLine="actualModificado = Abs(fechaActual - fecha)";
+Debug.ShouldStop(2);
+_actualmodificado = BA.numberCast(long.class, datos_activity.mostCurrent.__c.runMethod(true,"Abs",(Object)(BA.numberCast(double.class, RemoteObject.solve(new RemoteObject[] {_fechaactual,_fecha}, "-",1, 2)))));Debug.locals.put("actualModificado", _actualmodificado);
+ BA.debugLineNum = 163;BA.debugLine="If fecha < fechaActual Then";
+Debug.ShouldStop(4);
+if (RemoteObject.solveBoolean("<",_fecha,_fechaactual)) { 
+ BA.debugLineNum = 164;BA.debugLine="actualModificado = fechaActual/1000000 - fecha/";
+Debug.ShouldStop(8);
+_actualmodificado = BA.numberCast(long.class, RemoteObject.solve(new RemoteObject[] {_fechaactual,RemoteObject.createImmutable(1000000),_fecha,RemoteObject.createImmutable(1000000)}, "/-/",1, 0));Debug.locals.put("actualModificado", _actualmodificado);
+ }else {
+ BA.debugLineNum = 166;BA.debugLine="actualModificado = fechaActual/1000000 + (12 -";
+Debug.ShouldStop(32);
+_actualmodificado = BA.numberCast(long.class, RemoteObject.solve(new RemoteObject[] {_fechaactual,RemoteObject.createImmutable(1000000),(RemoteObject.solve(new RemoteObject[] {RemoteObject.createImmutable(12),_fecha,RemoteObject.createImmutable(1000000)}, "-/",1, 0))}, "/+",1, 0));Debug.locals.put("actualModificado", _actualmodificado);
+ };
+ BA.debugLineNum = 169;BA.debugLine="mensaje = \"Actualizado hace \" & actualModificado";
+Debug.ShouldStop(256);
+_mensaje = RemoteObject.concat(RemoteObject.createImmutable("Actualizado hace "),_actualmodificado,RemoteObject.createImmutable(" meses"));Debug.locals.put("mensaje", _mensaje);
+ }else {
+ BA.debugLineNum = 171;BA.debugLine="mensaje = \"Desactualizado\"";
+Debug.ShouldStop(1024);
+_mensaje = BA.ObjectToString("Desactualizado");Debug.locals.put("mensaje", _mensaje);
+ }}}}
+;
+ BA.debugLineNum = 173;BA.debugLine="lbActualizado.Text = mensaje";
+Debug.ShouldStop(4096);
+datos_activity.mostCurrent._lbactualizado.runMethod(true,"setText",BA.ObjectToCharSequence(_mensaje));
+ BA.debugLineNum = 174;BA.debugLine="End Sub";
+Debug.ShouldStop(8192);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {

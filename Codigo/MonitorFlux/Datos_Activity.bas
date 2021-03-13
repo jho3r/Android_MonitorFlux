@@ -119,17 +119,60 @@ Sub cargarEstado (res As String)
 	DateTime.DateFormat = "yyyyMMddHHmm"
 	Dim fechaActual As Long = DateTime.Date(DateTime.Now)
 	Dim actual As Long = fechaActual - fecha
+	Dim actualModificado As Long
 	Dim mensaje As String
-	If actual <= 30 Then
-		mensaje = "Actualizado hace menos de 30 minutos"
-	Else If actual <= 100 Then
-		mensaje = "Actualizado hace 1 hora"
-	Else If actual <= 400 Then
-		mensaje = "Actualizado hace 4 horas"
-	Else If actual <= 1200 Then
-		mensaje = "Actualizado hace menos de 12 horas"
-	Else If	actual <= 10000 Then
-		mensaje = "Actualizado hace 1 dia"
+	If actual < 100 Then
+		actualModificado = fechaActual/100
+		fechaActual = fechaActual - actualModificado*100
+		actualModificado = fecha/100
+		fecha = fecha - actualModificado*100
+		If fecha < fechaActual Then
+			actualModificado = fechaActual - fecha
+		Else
+			actualModificado = fechaActual + (60 - fecha)
+		End If
+		
+		mensaje = "Actualizado hace " & actualModificado & " minutos"
+	Else If actual < 10000 Then
+		actualModificado = fechaActual/10000
+		fechaActual = fechaActual - actualModificado*10000
+		actualModificado = fecha/10000
+		fecha = fecha - actualModificado*10000
+		Log(fechaActual)
+		Log(fecha)
+		If fecha < fechaActual Then
+			actualModificado = fechaActual/100 - fecha/100
+		Else
+			actualModificado = fechaActual/100 + (24 - fecha/100)
+		End If
+		
+		mensaje = "Actualizado hace " & actualModificado & " horas"
+	Else If actual < 1000000 Then
+		actualModificado = fechaActual/1000000
+		fechaActual = fechaActual - actualModificado*1000000
+		actualModificado = fecha/1000000
+		fecha = fecha - actualModificado*1000000
+		actualModificado = Abs(fechaActual - fecha)
+		If fecha < fechaActual Then
+			actualModificado = fechaActual/10000 - fecha/10000
+		Else
+			actualModificado = fechaActual/10000 + (30 - fecha/10000)
+		End If
+		
+		mensaje = "Actualizado hace " & actualModificado & " dias"
+	Else If actual < 100000000 Then
+		actualModificado = fechaActual/100000000
+		fechaActual = fechaActual - actualModificado*100000000
+		actualModificado = fecha/100000000
+		fecha = fecha - actualModificado*100000000
+		actualModificado = Abs(fechaActual - fecha)
+		If fecha < fechaActual Then
+			actualModificado = fechaActual/1000000 - fecha/1000000
+		Else
+			actualModificado = fechaActual/1000000 + (12 - fecha/1000000)
+		End If
+		
+		mensaje = "Actualizado hace " & actualModificado & " meses"
 	Else
 		mensaje = "Desactualizado"
 	End If

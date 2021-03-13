@@ -499,6 +499,7 @@ String _estado = "";
 String _flujo = "";
 long _fechaactual = 0L;
 long _actual = 0L;
+long _actualmodificado = 0L;
 String _mensaje = "";
 RDebugUtils.currentLine=3080192;
  //BA.debugLineNum = 3080192;BA.debugLine="Sub cargarEstado (res As String)";
@@ -581,53 +582,153 @@ RDebugUtils.currentLine=3080220;
  //BA.debugLineNum = 3080220;BA.debugLine="Dim actual As Long = fechaActual - fecha";
 _actual = (long) (_fechaactual-_fecha);
 RDebugUtils.currentLine=3080221;
- //BA.debugLineNum = 3080221;BA.debugLine="Dim mensaje As String";
-_mensaje = "";
+ //BA.debugLineNum = 3080221;BA.debugLine="Dim actualModificado As Long";
+_actualmodificado = 0L;
 RDebugUtils.currentLine=3080222;
- //BA.debugLineNum = 3080222;BA.debugLine="If actual <= 30 Then";
-if (_actual<=30) { 
+ //BA.debugLineNum = 3080222;BA.debugLine="Dim mensaje As String";
+_mensaje = "";
 RDebugUtils.currentLine=3080223;
- //BA.debugLineNum = 3080223;BA.debugLine="mensaje = \"Actualizado hace menos de 30 minutos\"";
-_mensaje = "Actualizado hace menos de 30 minutos";
- }else 
-{RDebugUtils.currentLine=3080224;
- //BA.debugLineNum = 3080224;BA.debugLine="Else If actual <= 100 Then";
-if (_actual<=100) { 
+ //BA.debugLineNum = 3080223;BA.debugLine="If actual < 100 Then";
+if (_actual<100) { 
+RDebugUtils.currentLine=3080224;
+ //BA.debugLineNum = 3080224;BA.debugLine="actualModificado = fechaActual/100";
+_actualmodificado = (long) (_fechaactual/(double)100);
 RDebugUtils.currentLine=3080225;
- //BA.debugLineNum = 3080225;BA.debugLine="mensaje = \"Actualizado hace 1 hora\"";
-_mensaje = "Actualizado hace 1 hora";
- }else 
-{RDebugUtils.currentLine=3080226;
- //BA.debugLineNum = 3080226;BA.debugLine="Else If actual <= 400 Then";
-if (_actual<=400) { 
+ //BA.debugLineNum = 3080225;BA.debugLine="fechaActual = fechaActual - actualModificado*100";
+_fechaactual = (long) (_fechaactual-_actualmodificado*100);
+RDebugUtils.currentLine=3080226;
+ //BA.debugLineNum = 3080226;BA.debugLine="actualModificado = fecha/100";
+_actualmodificado = (long) (_fecha/(double)100);
 RDebugUtils.currentLine=3080227;
- //BA.debugLineNum = 3080227;BA.debugLine="mensaje = \"Actualizado hace 4 horas\"";
-_mensaje = "Actualizado hace 4 horas";
- }else 
-{RDebugUtils.currentLine=3080228;
- //BA.debugLineNum = 3080228;BA.debugLine="Else If actual <= 1200 Then";
-if (_actual<=1200) { 
+ //BA.debugLineNum = 3080227;BA.debugLine="fecha = fecha - actualModificado*100";
+_fecha = (long) (_fecha-_actualmodificado*100);
+RDebugUtils.currentLine=3080228;
+ //BA.debugLineNum = 3080228;BA.debugLine="If fecha < fechaActual Then";
+if (_fecha<_fechaactual) { 
 RDebugUtils.currentLine=3080229;
- //BA.debugLineNum = 3080229;BA.debugLine="mensaje = \"Actualizado hace menos de 12 horas\"";
-_mensaje = "Actualizado hace menos de 12 horas";
- }else 
-{RDebugUtils.currentLine=3080230;
- //BA.debugLineNum = 3080230;BA.debugLine="Else If	actual <= 10000 Then";
-if (_actual<=10000) { 
-RDebugUtils.currentLine=3080231;
- //BA.debugLineNum = 3080231;BA.debugLine="mensaje = \"Actualizado hace 1 dia\"";
-_mensaje = "Actualizado hace 1 dia";
+ //BA.debugLineNum = 3080229;BA.debugLine="actualModificado = fechaActual - fecha";
+_actualmodificado = (long) (_fechaactual-_fecha);
  }else {
-RDebugUtils.currentLine=3080233;
- //BA.debugLineNum = 3080233;BA.debugLine="mensaje = \"Desactualizado\"";
-_mensaje = "Desactualizado";
- }}}}}
-;
-RDebugUtils.currentLine=3080235;
- //BA.debugLineNum = 3080235;BA.debugLine="lbActualizado.Text = mensaje";
-mostCurrent._lbactualizado.setText(BA.ObjectToCharSequence(_mensaje));
+RDebugUtils.currentLine=3080231;
+ //BA.debugLineNum = 3080231;BA.debugLine="actualModificado = fechaActual + (60 - fecha)";
+_actualmodificado = (long) (_fechaactual+(60-_fecha));
+ };
+RDebugUtils.currentLine=3080234;
+ //BA.debugLineNum = 3080234;BA.debugLine="mensaje = \"Actualizado hace \" & actualModificado";
+_mensaje = "Actualizado hace "+BA.NumberToString(_actualmodificado)+" minutos";
+ }else 
+{RDebugUtils.currentLine=3080235;
+ //BA.debugLineNum = 3080235;BA.debugLine="Else If actual < 10000 Then";
+if (_actual<10000) { 
 RDebugUtils.currentLine=3080236;
- //BA.debugLineNum = 3080236;BA.debugLine="End Sub";
+ //BA.debugLineNum = 3080236;BA.debugLine="actualModificado = fechaActual/10000";
+_actualmodificado = (long) (_fechaactual/(double)10000);
+RDebugUtils.currentLine=3080237;
+ //BA.debugLineNum = 3080237;BA.debugLine="fechaActual = fechaActual - actualModificado*100";
+_fechaactual = (long) (_fechaactual-_actualmodificado*10000);
+RDebugUtils.currentLine=3080238;
+ //BA.debugLineNum = 3080238;BA.debugLine="actualModificado = fecha/10000";
+_actualmodificado = (long) (_fecha/(double)10000);
+RDebugUtils.currentLine=3080239;
+ //BA.debugLineNum = 3080239;BA.debugLine="fecha = fecha - actualModificado*10000";
+_fecha = (long) (_fecha-_actualmodificado*10000);
+RDebugUtils.currentLine=3080240;
+ //BA.debugLineNum = 3080240;BA.debugLine="Log(fechaActual)";
+anywheresoftware.b4a.keywords.Common.LogImpl("23080240",BA.NumberToString(_fechaactual),0);
+RDebugUtils.currentLine=3080241;
+ //BA.debugLineNum = 3080241;BA.debugLine="Log(fecha)";
+anywheresoftware.b4a.keywords.Common.LogImpl("23080241",BA.NumberToString(_fecha),0);
+RDebugUtils.currentLine=3080242;
+ //BA.debugLineNum = 3080242;BA.debugLine="If fecha < fechaActual Then";
+if (_fecha<_fechaactual) { 
+RDebugUtils.currentLine=3080243;
+ //BA.debugLineNum = 3080243;BA.debugLine="actualModificado = fechaActual/100 - fecha/100";
+_actualmodificado = (long) (_fechaactual/(double)100-_fecha/(double)100);
+ }else {
+RDebugUtils.currentLine=3080245;
+ //BA.debugLineNum = 3080245;BA.debugLine="actualModificado = fechaActual/100 + (24 - fech";
+_actualmodificado = (long) (_fechaactual/(double)100+(24-_fecha/(double)100));
+ };
+RDebugUtils.currentLine=3080248;
+ //BA.debugLineNum = 3080248;BA.debugLine="mensaje = \"Actualizado hace \" & actualModificado";
+_mensaje = "Actualizado hace "+BA.NumberToString(_actualmodificado)+" horas";
+ }else 
+{RDebugUtils.currentLine=3080249;
+ //BA.debugLineNum = 3080249;BA.debugLine="Else If actual < 1000000 Then";
+if (_actual<1000000) { 
+RDebugUtils.currentLine=3080250;
+ //BA.debugLineNum = 3080250;BA.debugLine="actualModificado = fechaActual/1000000";
+_actualmodificado = (long) (_fechaactual/(double)1000000);
+RDebugUtils.currentLine=3080251;
+ //BA.debugLineNum = 3080251;BA.debugLine="fechaActual = fechaActual - actualModificado*100";
+_fechaactual = (long) (_fechaactual-_actualmodificado*1000000);
+RDebugUtils.currentLine=3080252;
+ //BA.debugLineNum = 3080252;BA.debugLine="actualModificado = fecha/1000000";
+_actualmodificado = (long) (_fecha/(double)1000000);
+RDebugUtils.currentLine=3080253;
+ //BA.debugLineNum = 3080253;BA.debugLine="fecha = fecha - actualModificado*1000000";
+_fecha = (long) (_fecha-_actualmodificado*1000000);
+RDebugUtils.currentLine=3080254;
+ //BA.debugLineNum = 3080254;BA.debugLine="actualModificado = Abs(fechaActual - fecha)";
+_actualmodificado = (long) (anywheresoftware.b4a.keywords.Common.Abs(_fechaactual-_fecha));
+RDebugUtils.currentLine=3080255;
+ //BA.debugLineNum = 3080255;BA.debugLine="If fecha < fechaActual Then";
+if (_fecha<_fechaactual) { 
+RDebugUtils.currentLine=3080256;
+ //BA.debugLineNum = 3080256;BA.debugLine="actualModificado = fechaActual/10000 - fecha/10";
+_actualmodificado = (long) (_fechaactual/(double)10000-_fecha/(double)10000);
+ }else {
+RDebugUtils.currentLine=3080258;
+ //BA.debugLineNum = 3080258;BA.debugLine="actualModificado = fechaActual/10000 + (30 - fe";
+_actualmodificado = (long) (_fechaactual/(double)10000+(30-_fecha/(double)10000));
+ };
+RDebugUtils.currentLine=3080261;
+ //BA.debugLineNum = 3080261;BA.debugLine="mensaje = \"Actualizado hace \" & actualModificado";
+_mensaje = "Actualizado hace "+BA.NumberToString(_actualmodificado)+" dias";
+ }else 
+{RDebugUtils.currentLine=3080262;
+ //BA.debugLineNum = 3080262;BA.debugLine="Else If actual < 100000000 Then";
+if (_actual<100000000) { 
+RDebugUtils.currentLine=3080263;
+ //BA.debugLineNum = 3080263;BA.debugLine="actualModificado = fechaActual/100000000";
+_actualmodificado = (long) (_fechaactual/(double)100000000);
+RDebugUtils.currentLine=3080264;
+ //BA.debugLineNum = 3080264;BA.debugLine="fechaActual = fechaActual - actualModificado*100";
+_fechaactual = (long) (_fechaactual-_actualmodificado*100000000);
+RDebugUtils.currentLine=3080265;
+ //BA.debugLineNum = 3080265;BA.debugLine="actualModificado = fecha/100000000";
+_actualmodificado = (long) (_fecha/(double)100000000);
+RDebugUtils.currentLine=3080266;
+ //BA.debugLineNum = 3080266;BA.debugLine="fecha = fecha - actualModificado*100000000";
+_fecha = (long) (_fecha-_actualmodificado*100000000);
+RDebugUtils.currentLine=3080267;
+ //BA.debugLineNum = 3080267;BA.debugLine="actualModificado = Abs(fechaActual - fecha)";
+_actualmodificado = (long) (anywheresoftware.b4a.keywords.Common.Abs(_fechaactual-_fecha));
+RDebugUtils.currentLine=3080268;
+ //BA.debugLineNum = 3080268;BA.debugLine="If fecha < fechaActual Then";
+if (_fecha<_fechaactual) { 
+RDebugUtils.currentLine=3080269;
+ //BA.debugLineNum = 3080269;BA.debugLine="actualModificado = fechaActual/1000000 - fecha/";
+_actualmodificado = (long) (_fechaactual/(double)1000000-_fecha/(double)1000000);
+ }else {
+RDebugUtils.currentLine=3080271;
+ //BA.debugLineNum = 3080271;BA.debugLine="actualModificado = fechaActual/1000000 + (12 -";
+_actualmodificado = (long) (_fechaactual/(double)1000000+(12-_fecha/(double)1000000));
+ };
+RDebugUtils.currentLine=3080274;
+ //BA.debugLineNum = 3080274;BA.debugLine="mensaje = \"Actualizado hace \" & actualModificado";
+_mensaje = "Actualizado hace "+BA.NumberToString(_actualmodificado)+" meses";
+ }else {
+RDebugUtils.currentLine=3080276;
+ //BA.debugLineNum = 3080276;BA.debugLine="mensaje = \"Desactualizado\"";
+_mensaje = "Desactualizado";
+ }}}}
+;
+RDebugUtils.currentLine=3080278;
+ //BA.debugLineNum = 3080278;BA.debugLine="lbActualizado.Text = mensaje";
+mostCurrent._lbactualizado.setText(BA.ObjectToCharSequence(_mensaje));
+RDebugUtils.currentLine=3080279;
+ //BA.debugLineNum = 3080279;BA.debugLine="End Sub";
 return "";
 }
 public static String  _jobdone(b4a.example.httpjob _job) throws Exception{
