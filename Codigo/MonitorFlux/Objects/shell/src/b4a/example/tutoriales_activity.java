@@ -59,8 +59,8 @@ public static RemoteObject _wv1 = RemoteObject.declareNull("anywheresoftware.b4a
 public static b4a.example.main _main = null;
 public static b4a.example.starter _starter = null;
 public static b4a.example.agregar_activity _agregar_activity = null;
-public static b4a.example.datos_activity _datos_activity = null;
 public static b4a.example.monitor_activity _monitor_activity = null;
+public static b4a.example.datos_activity _datos_activity = null;
 public static b4a.example.httputils2service _httputils2service = null;
   public Object[] GetGlobals() {
 		return new Object[] {"Activity",tutoriales_activity.mostCurrent._activity,"Agregar_Activity",Debug.moduleToString(b4a.example.agregar_activity.class),"Datos_Activity",Debug.moduleToString(b4a.example.datos_activity.class),"HttpUtils2Service",Debug.moduleToString(b4a.example.httputils2service.class),"Main",Debug.moduleToString(b4a.example.main.class),"Monitor_Activity",Debug.moduleToString(b4a.example.monitor_activity.class),"Starter",Debug.moduleToString(b4a.example.starter.class),"wv1",tutoriales_activity.mostCurrent._wv1};

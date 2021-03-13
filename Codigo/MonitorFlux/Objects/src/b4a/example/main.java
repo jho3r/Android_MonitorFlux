@@ -353,8 +353,8 @@ public static boolean isAnyActivityVisible() {
 vis = vis | (main.mostCurrent != null);
 vis = vis | (tutoriales_activity.mostCurrent != null);
 vis = vis | (agregar_activity.mostCurrent != null);
-vis = vis | (datos_activity.mostCurrent != null);
 vis = vis | (monitor_activity.mostCurrent != null);
+vis = vis | (datos_activity.mostCurrent != null);
 return vis;}
 
 private static BA killProgramHelper(BA ba) {
@@ -405,11 +405,11 @@ BA.applicationContext.stopService(new android.content.Intent(BA.applicationConte
 
  {
             Activity __a = null;
-            if (datos_activity.previousOne != null) {
-				__a = datos_activity.previousOne.get();
+            if (monitor_activity.previousOne != null) {
+				__a = monitor_activity.previousOne.get();
 			}
             else {
-                BA ba = killProgramHelper(datos_activity.mostCurrent == null ? null : datos_activity.mostCurrent.processBA);
+                BA ba = killProgramHelper(monitor_activity.mostCurrent == null ? null : monitor_activity.mostCurrent.processBA);
                 if (ba != null) __a = ba.activity;
             }
             if (__a != null)
@@ -417,11 +417,11 @@ BA.applicationContext.stopService(new android.content.Intent(BA.applicationConte
 
  {
             Activity __a = null;
-            if (monitor_activity.previousOne != null) {
-				__a = monitor_activity.previousOne.get();
+            if (datos_activity.previousOne != null) {
+				__a = datos_activity.previousOne.get();
 			}
             else {
-                BA ba = killProgramHelper(monitor_activity.mostCurrent == null ? null : monitor_activity.mostCurrent.processBA);
+                BA ba = killProgramHelper(datos_activity.mostCurrent == null ? null : datos_activity.mostCurrent.processBA);
                 if (ba != null) __a = ba.activity;
             }
             if (__a != null)
@@ -437,8 +437,8 @@ public anywheresoftware.b4a.objects.LabelWrapper _lbbombas = null;
 public b4a.example.starter _starter = null;
 public b4a.example.tutoriales_activity _tutoriales_activity = null;
 public b4a.example.agregar_activity _agregar_activity = null;
-public b4a.example.datos_activity _datos_activity = null;
 public b4a.example.monitor_activity _monitor_activity = null;
+public b4a.example.datos_activity _datos_activity = null;
 public b4a.example.httputils2service _httputils2service = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="main";

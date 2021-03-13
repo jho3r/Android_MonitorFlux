@@ -8,7 +8,7 @@ public class datos_activity_subs_0 {
 
 public static RemoteObject  _activity_create(RemoteObject _firsttime) throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Create (datos_activity) ","datos_activity",4,datos_activity.mostCurrent.activityBA,datos_activity.mostCurrent,27);
+		Debug.PushSubsStack("Activity_Create (datos_activity) ","datos_activity",5,datos_activity.mostCurrent.activityBA,datos_activity.mostCurrent,27);
 if (RapidSub.canDelegate("activity_create")) { return b4a.example.datos_activity.remoteMe.runUserSub(false, "datos_activity","activity_create", _firsttime);}
 Debug.locals.put("FirstTime", _firsttime);
  BA.debugLineNum = 27;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
@@ -46,7 +46,7 @@ finally {
 		}}
 public static RemoteObject  _activity_pause(RemoteObject _userclosed) throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Pause (datos_activity) ","datos_activity",4,datos_activity.mostCurrent.activityBA,datos_activity.mostCurrent,43);
+		Debug.PushSubsStack("Activity_Pause (datos_activity) ","datos_activity",5,datos_activity.mostCurrent.activityBA,datos_activity.mostCurrent,43);
 if (RapidSub.canDelegate("activity_pause")) { return b4a.example.datos_activity.remoteMe.runUserSub(false, "datos_activity","activity_pause", _userclosed);}
 Debug.locals.put("UserClosed", _userclosed);
  BA.debugLineNum = 43;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
@@ -63,7 +63,7 @@ finally {
 		}}
 public static RemoteObject  _activity_resume() throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Resume (datos_activity) ","datos_activity",4,datos_activity.mostCurrent.activityBA,datos_activity.mostCurrent,39);
+		Debug.PushSubsStack("Activity_Resume (datos_activity) ","datos_activity",5,datos_activity.mostCurrent.activityBA,datos_activity.mostCurrent,39);
 if (RapidSub.canDelegate("activity_resume")) { return b4a.example.datos_activity.remoteMe.runUserSub(false, "datos_activity","activity_resume");}
  BA.debugLineNum = 39;BA.debugLine="Sub Activity_Resume";
 Debug.ShouldStop(64);
@@ -79,7 +79,7 @@ finally {
 		}}
 public static RemoteObject  _btnatrase_click() throws Exception{
 try {
-		Debug.PushSubsStack("btnAtrasE_Click (datos_activity) ","datos_activity",4,datos_activity.mostCurrent.activityBA,datos_activity.mostCurrent,48);
+		Debug.PushSubsStack("btnAtrasE_Click (datos_activity) ","datos_activity",5,datos_activity.mostCurrent.activityBA,datos_activity.mostCurrent,48);
 if (RapidSub.canDelegate("btnatrase_click")) { return b4a.example.datos_activity.remoteMe.runUserSub(false, "datos_activity","btnatrase_click");}
  BA.debugLineNum = 48;BA.debugLine="Sub btnAtrasE_Click";
 Debug.ShouldStop(32768);
@@ -98,7 +98,7 @@ finally {
 		}}
 public static RemoteObject  _cargardatos(RemoteObject _res) throws Exception{
 try {
-		Debug.PushSubsStack("cargarDatos (datos_activity) ","datos_activity",4,datos_activity.mostCurrent.activityBA,datos_activity.mostCurrent,68);
+		Debug.PushSubsStack("cargarDatos (datos_activity) ","datos_activity",5,datos_activity.mostCurrent.activityBA,datos_activity.mostCurrent,68);
 if (RapidSub.canDelegate("cargardatos")) { return b4a.example.datos_activity.remoteMe.runUserSub(false, "datos_activity","cargardatos", _res);}
 RemoteObject _parser = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.JSONParser");
 RemoteObject _root = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.List");
@@ -170,24 +170,24 @@ finally {
 		}}
 public static RemoteObject  _cargarestado(RemoteObject _res) throws Exception{
 try {
-		Debug.PushSubsStack("cargarEstado (datos_activity) ","datos_activity",4,datos_activity.mostCurrent.activityBA,datos_activity.mostCurrent,87);
+		Debug.PushSubsStack("cargarEstado (datos_activity) ","datos_activity",5,datos_activity.mostCurrent.activityBA,datos_activity.mostCurrent,87);
 if (RapidSub.canDelegate("cargarestado")) { return b4a.example.datos_activity.remoteMe.runUserSub(false, "datos_activity","cargarestado", _res);}
-RemoteObject _fecha = RemoteObject.createImmutable(0);
+RemoteObject _fecha = RemoteObject.createImmutable(0L);
 RemoteObject _parser = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.JSONParser");
 RemoteObject _root = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.List");
 RemoteObject _colroot = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.Map");
-RemoteObject _fechaentra = RemoteObject.createImmutable(0);
+RemoteObject _fechaentra = RemoteObject.createImmutable(0L);
 RemoteObject _estado = RemoteObject.createImmutable("");
 RemoteObject _flujo = RemoteObject.createImmutable("");
 RemoteObject _fechaactual = RemoteObject.createImmutable(0L);
-RemoteObject _actual = RemoteObject.createImmutable(0);
+RemoteObject _actual = RemoteObject.createImmutable(0L);
 RemoteObject _mensaje = RemoteObject.createImmutable("");
 Debug.locals.put("res", _res);
  BA.debugLineNum = 87;BA.debugLine="Sub cargarEstado (res As String)";
 Debug.ShouldStop(4194304);
- BA.debugLineNum = 88;BA.debugLine="Dim fecha As Int = 0";
+ BA.debugLineNum = 88;BA.debugLine="Dim fecha As Long = 0";
 Debug.ShouldStop(8388608);
-_fecha = BA.numberCast(int.class, 0);Debug.locals.put("fecha", _fecha);Debug.locals.put("fecha", _fecha);
+_fecha = BA.numberCast(long.class, 0);Debug.locals.put("fecha", _fecha);Debug.locals.put("fecha", _fecha);
  BA.debugLineNum = 89;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
 Debug.ShouldStop(16777216);
 _parser = RemoteObject.createNew ("anywheresoftware.b4a.objects.collections.JSONParser");Debug.locals.put("parser", _parser);
@@ -212,21 +212,21 @@ Debug.locals.put("colroot", _colroot);
  BA.debugLineNum = 95;BA.debugLine="If colroot.Get(\"dispositivo\") = lbNombre.Text Th";
 Debug.ShouldStop(1073741824);
 if (RemoteObject.solveBoolean("=",_colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("dispositivo")))),(datos_activity.mostCurrent._lbnombre.runMethod(true,"getText")))) { 
- BA.debugLineNum = 96;BA.debugLine="Dim fechaEntra As Int = colroot.Get(\"fecha\")";
+ BA.debugLineNum = 96;BA.debugLine="Dim fechaEntra As Long = colroot.Get(\"fecha\")";
 Debug.ShouldStop(-2147483648);
-_fechaentra = BA.numberCast(int.class, _colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("fecha")))));Debug.locals.put("fechaEntra", _fechaentra);Debug.locals.put("fechaEntra", _fechaentra);
+_fechaentra = BA.numberCast(long.class, _colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("fecha")))));Debug.locals.put("fechaEntra", _fechaentra);Debug.locals.put("fechaEntra", _fechaentra);
  BA.debugLineNum = 97;BA.debugLine="If fechaEntra >= fecha Then";
 Debug.ShouldStop(1);
-if (RemoteObject.solveBoolean("g",_fechaentra,BA.numberCast(double.class, _fecha))) { 
+if (RemoteObject.solveBoolean("g",_fechaentra,_fecha)) { 
  BA.debugLineNum = 98;BA.debugLine="Dim estado As String = colroot.Get(\"estado\")";
 Debug.ShouldStop(2);
 _estado = BA.ObjectToString(_colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("estado")))));Debug.locals.put("estado", _estado);Debug.locals.put("estado", _estado);
  BA.debugLineNum = 99;BA.debugLine="Dim flujo As String = colroot.Get(\"flujo\")";
 Debug.ShouldStop(4);
 _flujo = BA.ObjectToString(_colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("flujo")))));Debug.locals.put("flujo", _flujo);Debug.locals.put("flujo", _flujo);
- BA.debugLineNum = 100;BA.debugLine="fecha = colroot.Get(\"fecha\")";
+ BA.debugLineNum = 100;BA.debugLine="fecha = fechaEntra";
 Debug.ShouldStop(8);
-_fecha = BA.numberCast(int.class, _colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("fecha")))));Debug.locals.put("fecha", _fecha);
+_fecha = _fechaentra;Debug.locals.put("fecha", _fecha);
  };
  };
  }
@@ -262,43 +262,43 @@ datos_activity.mostCurrent.__c.getField(false,"DateTime").runMethod(true,"setDat
  BA.debugLineNum = 114;BA.debugLine="Dim fechaActual As Long = DateTime.Date(DateTime.";
 Debug.ShouldStop(131072);
 _fechaactual = BA.numberCast(long.class, datos_activity.mostCurrent.__c.getField(false,"DateTime").runMethod(true,"Date",(Object)(datos_activity.mostCurrent.__c.getField(false,"DateTime").runMethod(true,"getNow"))));Debug.locals.put("fechaActual", _fechaactual);Debug.locals.put("fechaActual", _fechaactual);
- BA.debugLineNum = 115;BA.debugLine="Dim actual As Int = fechaActual - fecha";
+ BA.debugLineNum = 115;BA.debugLine="Dim actual As Long = fechaActual - fecha";
 Debug.ShouldStop(262144);
-_actual = BA.numberCast(int.class, RemoteObject.solve(new RemoteObject[] {_fechaactual,_fecha}, "-",1, 2));Debug.locals.put("actual", _actual);Debug.locals.put("actual", _actual);
+_actual = RemoteObject.solve(new RemoteObject[] {_fechaactual,_fecha}, "-",1, 2);Debug.locals.put("actual", _actual);Debug.locals.put("actual", _actual);
  BA.debugLineNum = 116;BA.debugLine="Dim mensaje As String";
 Debug.ShouldStop(524288);
 _mensaje = RemoteObject.createImmutable("");Debug.locals.put("mensaje", _mensaje);
  BA.debugLineNum = 117;BA.debugLine="If actual <= 30 Then";
 Debug.ShouldStop(1048576);
-if (RemoteObject.solveBoolean("k",_actual,BA.numberCast(double.class, 30))) { 
+if (RemoteObject.solveBoolean("k",_actual,BA.numberCast(long.class, 30))) { 
  BA.debugLineNum = 118;BA.debugLine="mensaje = \"Actualizado hace menos de 30 minutos\"";
 Debug.ShouldStop(2097152);
 _mensaje = BA.ObjectToString("Actualizado hace menos de 30 minutos");Debug.locals.put("mensaje", _mensaje);
  }else 
 { BA.debugLineNum = 119;BA.debugLine="Else If actual <= 100 Then";
 Debug.ShouldStop(4194304);
-if (RemoteObject.solveBoolean("k",_actual,BA.numberCast(double.class, 100))) { 
+if (RemoteObject.solveBoolean("k",_actual,BA.numberCast(long.class, 100))) { 
  BA.debugLineNum = 120;BA.debugLine="mensaje = \"Actualizado hace 1 hora\"";
 Debug.ShouldStop(8388608);
 _mensaje = BA.ObjectToString("Actualizado hace 1 hora");Debug.locals.put("mensaje", _mensaje);
  }else 
 { BA.debugLineNum = 121;BA.debugLine="Else If actual <= 400 Then";
 Debug.ShouldStop(16777216);
-if (RemoteObject.solveBoolean("k",_actual,BA.numberCast(double.class, 400))) { 
+if (RemoteObject.solveBoolean("k",_actual,BA.numberCast(long.class, 400))) { 
  BA.debugLineNum = 122;BA.debugLine="mensaje = \"Actualizado hace 4 horas\"";
 Debug.ShouldStop(33554432);
 _mensaje = BA.ObjectToString("Actualizado hace 4 horas");Debug.locals.put("mensaje", _mensaje);
  }else 
 { BA.debugLineNum = 123;BA.debugLine="Else If actual <= 1200 Then";
 Debug.ShouldStop(67108864);
-if (RemoteObject.solveBoolean("k",_actual,BA.numberCast(double.class, 1200))) { 
+if (RemoteObject.solveBoolean("k",_actual,BA.numberCast(long.class, 1200))) { 
  BA.debugLineNum = 124;BA.debugLine="mensaje = \"Actualizado hace menos de 12 horas\"";
 Debug.ShouldStop(134217728);
 _mensaje = BA.ObjectToString("Actualizado hace menos de 12 horas");Debug.locals.put("mensaje", _mensaje);
  }else 
 { BA.debugLineNum = 125;BA.debugLine="Else If	actual <= 10000 Then";
 Debug.ShouldStop(268435456);
-if (RemoteObject.solveBoolean("k",_actual,BA.numberCast(double.class, 10000))) { 
+if (RemoteObject.solveBoolean("k",_actual,BA.numberCast(long.class, 10000))) { 
  BA.debugLineNum = 126;BA.debugLine="mensaje = \"Actualizado hace 1 dia\"";
 Debug.ShouldStop(536870912);
 _mensaje = BA.ObjectToString("Actualizado hace 1 dia");Debug.locals.put("mensaje", _mensaje);
@@ -348,14 +348,14 @@ return RemoteObject.createImmutable("");
 }
 public static RemoteObject  _jobdone(RemoteObject _job) throws Exception{
 try {
-		Debug.PushSubsStack("JobDone (datos_activity) ","datos_activity",4,datos_activity.mostCurrent.activityBA,datos_activity.mostCurrent,52);
+		Debug.PushSubsStack("JobDone (datos_activity) ","datos_activity",5,datos_activity.mostCurrent.activityBA,datos_activity.mostCurrent,52);
 if (RapidSub.canDelegate("jobdone")) { return b4a.example.datos_activity.remoteMe.runUserSub(false, "datos_activity","jobdone", _job);}
 Debug.locals.put("Job", _job);
  BA.debugLineNum = 52;BA.debugLine="Sub JobDone (Job As HttpJob)";
 Debug.ShouldStop(524288);
  BA.debugLineNum = 53;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
 Debug.ShouldStop(1048576);
-datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","36684673",RemoteObject.concat(RemoteObject.createImmutable("JobName = "),_job.getField(true,"_jobname" /*RemoteObject*/ ),RemoteObject.createImmutable(", Success = "),_job.getField(true,"_success" /*RemoteObject*/ )),0);
+datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","22949121",RemoteObject.concat(RemoteObject.createImmutable("JobName = "),_job.getField(true,"_jobname" /*RemoteObject*/ ),RemoteObject.createImmutable(", Success = "),_job.getField(true,"_success" /*RemoteObject*/ )),0);
  BA.debugLineNum = 54;BA.debugLine="If Job.Success = True Then";
 Debug.ShouldStop(2097152);
 if (RemoteObject.solveBoolean("=",_job.getField(true,"_success" /*RemoteObject*/ ),datos_activity.mostCurrent.__c.getField(true,"True"))) { 
@@ -377,7 +377,7 @@ _cargarestado(_job.runClassMethod (b4a.example.httpjob.class, "_getstring" /*Rem
  }else {
  BA.debugLineNum = 62;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
 Debug.ShouldStop(536870912);
-datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","36684682",RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )),0);
+datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","22949130",RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )),0);
  BA.debugLineNum = 63;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 Debug.ShouldStop(1073741824);
 datos_activity.mostCurrent.__c.runVoidMethod ("ToastMessageShow",(Object)(BA.ObjectToCharSequence(RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )))),(Object)(datos_activity.mostCurrent.__c.getField(true,"True")));

@@ -16,6 +16,6 @@ ModuleClosedNodes2=
 ModuleClosedNodes3=
 ModuleClosedNodes4=1
 ModuleClosedNodes5=
-NavigationStack=Monitor_Activity,Activity_Create,29,2,Datos_Activity,btnAtrasE_Click,41,0,Monitor_Activity,JobDone,46,0,Monitor_Activity,cargarValores,62,0,Datos_Activity,Activity_Create,29,5,Datos_Activity,JobDone,55,5,Datos_Activity,Globals,24,6,Visual Designer,Datos.bal,-100,6,Datos_Activity,cargarDatos,83,6,Datos_Activity,cargarEstado,100,6
+NavigationStack=Monitor_Activity,Activity_Create,29,2,Datos_Activity,btnAtrasE_Click,41,0,Monitor_Activity,JobDone,46,0,Monitor_Activity,cargarValores,62,0,Datos_Activity,Activity_Create,29,5,Datos_Activity,JobDone,55,5,Datos_Activity,Globals,24,6,Visual Designer,Datos.bal,-100,6,Datos_Activity,cargarDatos,85,6,Datos_Activity,cargarEstado,99,6
 SelectedBuild=0
 VisibleModules=4,5,1,3,2

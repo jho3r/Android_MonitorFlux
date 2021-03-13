@@ -25,8 +25,8 @@ public static b4a.example.main _main = null;
 public static b4a.example.starter _starter = null;
 public static b4a.example.tutoriales_activity _tutoriales_activity = null;
 public static b4a.example.agregar_activity _agregar_activity = null;
-public static b4a.example.datos_activity _datos_activity = null;
 public static b4a.example.monitor_activity _monitor_activity = null;
+public static b4a.example.datos_activity _datos_activity = null;
 public static b4a.example.httputils2service _httputils2service = null;
 public static Object[] GetGlobals(RemoteObject _ref) throws Exception {
 		return new Object[] {"ErrorMessage",_ref.getField(false, "_errormessage"),"JobName",_ref.getField(false, "_jobname"),"Password",_ref.getField(false, "_password"),"req",_ref.getField(false, "_req"),"Response",_ref.getField(false, "_response"),"Success",_ref.getField(false, "_success"),"Tag",_ref.getField(false, "_tag"),"target",_ref.getField(false, "_target"),"taskId",_ref.getField(false, "_taskid"),"Username",_ref.getField(false, "_username")};

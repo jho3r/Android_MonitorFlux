@@ -91,7 +91,7 @@ Sub cargarDatos (res As String)
 End Sub
 
 Sub cargarEstado (res As String)
-	Dim fecha As Int = 0
+	Dim fecha As Long = 0
 	Dim parser As JSONParser 						'definimos objeto que permite procesar JSON
 	parser.Initialize(res)
 	'se define una lista a la cual se le pueden agregar objetos con add, obtener con get, etc
@@ -99,11 +99,11 @@ Sub cargarEstado (res As String)
 	Dim root As List = parser.NextArray
 	For Each colroot As Map In root				'map es similar a list solo que se hace con clave, dato y se añade con put
 		If colroot.Get("dispositivo") = lbNombre.Text Then
-			Dim fechaEntra As Int = colroot.Get("fecha")
+			Dim fechaEntra As Long = colroot.Get("fecha")
 			If fechaEntra >= fecha Then
 				Dim estado As String = colroot.Get("estado")
 				Dim flujo As String = colroot.Get("flujo")
-				fecha = colroot.Get("fecha")
+				fecha = fechaEntra
 			End If
 		End If
 	Next
@@ -118,7 +118,7 @@ Sub cargarEstado (res As String)
 	
 	DateTime.DateFormat = "yyyyMMddHHmm"
 	Dim fechaActual As Long = DateTime.Date(DateTime.Now)
-	Dim actual As Int = fechaActual - fecha
+	Dim actual As Long = fechaActual - fecha
 	Dim mensaje As String
 	If actual <= 30 Then
 		mensaje = "Actualizado hace menos de 30 minutos"

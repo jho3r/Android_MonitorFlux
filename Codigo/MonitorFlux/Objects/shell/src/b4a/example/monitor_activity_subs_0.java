@@ -8,7 +8,7 @@ public class monitor_activity_subs_0 {
 
 public static RemoteObject  _activity_create(RemoteObject _firsttime) throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Create (monitor_activity) ","monitor_activity",5,monitor_activity.mostCurrent.activityBA,monitor_activity.mostCurrent,23);
+		Debug.PushSubsStack("Activity_Create (monitor_activity) ","monitor_activity",4,monitor_activity.mostCurrent.activityBA,monitor_activity.mostCurrent,23);
 if (RapidSub.canDelegate("activity_create")) { return b4a.example.monitor_activity.remoteMe.runUserSub(false, "monitor_activity","activity_create", _firsttime);}
 Debug.locals.put("FirstTime", _firsttime);
  BA.debugLineNum = 23;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
@@ -43,7 +43,7 @@ finally {
 		}}
 public static RemoteObject  _activity_pause(RemoteObject _userclosed) throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Pause (monitor_activity) ","monitor_activity",5,monitor_activity.mostCurrent.activityBA,monitor_activity.mostCurrent,38);
+		Debug.PushSubsStack("Activity_Pause (monitor_activity) ","monitor_activity",4,monitor_activity.mostCurrent.activityBA,monitor_activity.mostCurrent,38);
 if (RapidSub.canDelegate("activity_pause")) { return b4a.example.monitor_activity.remoteMe.runUserSub(false, "monitor_activity","activity_pause", _userclosed);}
 Debug.locals.put("UserClosed", _userclosed);
  BA.debugLineNum = 38;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
@@ -60,7 +60,7 @@ finally {
 		}}
 public static RemoteObject  _activity_resume() throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Resume (monitor_activity) ","monitor_activity",5,monitor_activity.mostCurrent.activityBA,monitor_activity.mostCurrent,34);
+		Debug.PushSubsStack("Activity_Resume (monitor_activity) ","monitor_activity",4,monitor_activity.mostCurrent.activityBA,monitor_activity.mostCurrent,34);
 if (RapidSub.canDelegate("activity_resume")) { return b4a.example.monitor_activity.remoteMe.runUserSub(false, "monitor_activity","activity_resume");}
  BA.debugLineNum = 34;BA.debugLine="Sub Activity_Resume";
 Debug.ShouldStop(2);
@@ -76,7 +76,7 @@ finally {
 		}}
 public static RemoteObject  _additems(RemoteObject _texto,RemoteObject _orden) throws Exception{
 try {
-		Debug.PushSubsStack("addItems (monitor_activity) ","monitor_activity",5,monitor_activity.mostCurrent.activityBA,monitor_activity.mostCurrent,76);
+		Debug.PushSubsStack("addItems (monitor_activity) ","monitor_activity",4,monitor_activity.mostCurrent.activityBA,monitor_activity.mostCurrent,76);
 if (RapidSub.canDelegate("additems")) { return b4a.example.monitor_activity.remoteMe.runUserSub(false, "monitor_activity","additems", _texto, _orden);}
 RemoteObject _xui = RemoteObject.declareNull("anywheresoftware.b4a.objects.B4XViewWrapper.XUI");
 RemoteObject _p = RemoteObject.declareNull("anywheresoftware.b4a.objects.B4XViewWrapper");
@@ -118,7 +118,7 @@ finally {
 		}}
 public static RemoteObject  _btnatrasm_click() throws Exception{
 try {
-		Debug.PushSubsStack("btnAtrasM_Click (monitor_activity) ","monitor_activity",5,monitor_activity.mostCurrent.activityBA,monitor_activity.mostCurrent,43);
+		Debug.PushSubsStack("btnAtrasM_Click (monitor_activity) ","monitor_activity",4,monitor_activity.mostCurrent.activityBA,monitor_activity.mostCurrent,43);
 if (RapidSub.canDelegate("btnatrasm_click")) { return b4a.example.monitor_activity.remoteMe.runUserSub(false, "monitor_activity","btnatrasm_click");}
  BA.debugLineNum = 43;BA.debugLine="Sub btnAtrasM_Click";
 Debug.ShouldStop(1024);
@@ -137,7 +137,7 @@ finally {
 		}}
 public static RemoteObject  _cargarvalores(RemoteObject _res) throws Exception{
 try {
-		Debug.PushSubsStack("cargarValores (monitor_activity) ","monitor_activity",5,monitor_activity.mostCurrent.activityBA,monitor_activity.mostCurrent,61);
+		Debug.PushSubsStack("cargarValores (monitor_activity) ","monitor_activity",4,monitor_activity.mostCurrent.activityBA,monitor_activity.mostCurrent,61);
 if (RapidSub.canDelegate("cargarvalores")) { return b4a.example.monitor_activity.remoteMe.runUserSub(false, "monitor_activity","cargarvalores", _res);}
 RemoteObject _parser = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.JSONParser");
 RemoteObject _root = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.List");
@@ -209,14 +209,14 @@ return RemoteObject.createImmutable("");
 }
 public static RemoteObject  _jobdone(RemoteObject _job) throws Exception{
 try {
-		Debug.PushSubsStack("JobDone (monitor_activity) ","monitor_activity",5,monitor_activity.mostCurrent.activityBA,monitor_activity.mostCurrent,47);
+		Debug.PushSubsStack("JobDone (monitor_activity) ","monitor_activity",4,monitor_activity.mostCurrent.activityBA,monitor_activity.mostCurrent,47);
 if (RapidSub.canDelegate("jobdone")) { return b4a.example.monitor_activity.remoteMe.runUserSub(false, "monitor_activity","jobdone", _job);}
 Debug.locals.put("Job", _job);
  BA.debugLineNum = 47;BA.debugLine="Sub JobDone (Job As HttpJob)";
 Debug.ShouldStop(16384);
  BA.debugLineNum = 48;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
 Debug.ShouldStop(32768);
-monitor_activity.mostCurrent.__c.runVoidMethod ("LogImpl","35767169",RemoteObject.concat(RemoteObject.createImmutable("JobName = "),_job.getField(true,"_jobname" /*RemoteObject*/ ),RemoteObject.createImmutable(", Success = "),_job.getField(true,"_success" /*RemoteObject*/ )),0);
+monitor_activity.mostCurrent.__c.runVoidMethod ("LogImpl","22293761",RemoteObject.concat(RemoteObject.createImmutable("JobName = "),_job.getField(true,"_jobname" /*RemoteObject*/ ),RemoteObject.createImmutable(", Success = "),_job.getField(true,"_success" /*RemoteObject*/ )),0);
  BA.debugLineNum = 49;BA.debugLine="If Job.Success = True Then";
 Debug.ShouldStop(65536);
 if (RemoteObject.solveBoolean("=",_job.getField(true,"_success" /*RemoteObject*/ ),monitor_activity.mostCurrent.__c.getField(true,"True"))) { 
@@ -233,7 +233,7 @@ _cargarvalores(_job.runClassMethod (b4a.example.httpjob.class, "_getstring" /*Re
  }else {
  BA.debugLineNum = 55;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
 Debug.ShouldStop(4194304);
-monitor_activity.mostCurrent.__c.runVoidMethod ("LogImpl","35767176",RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )),0);
+monitor_activity.mostCurrent.__c.runVoidMethod ("LogImpl","22293768",RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )),0);
  BA.debugLineNum = 56;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 Debug.ShouldStop(8388608);
 monitor_activity.mostCurrent.__c.runVoidMethod ("ToastMessageShow",(Object)(BA.ObjectToCharSequence(RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )))),(Object)(monitor_activity.mostCurrent.__c.getField(true,"True")));
@@ -253,7 +253,7 @@ finally {
 		}}
 public static RemoteObject  _lvelectro_itemclick(RemoteObject _index,RemoteObject _value) throws Exception{
 try {
-		Debug.PushSubsStack("lvElectro_ItemClick (monitor_activity) ","monitor_activity",5,monitor_activity.mostCurrent.activityBA,monitor_activity.mostCurrent,86);
+		Debug.PushSubsStack("lvElectro_ItemClick (monitor_activity) ","monitor_activity",4,monitor_activity.mostCurrent.activityBA,monitor_activity.mostCurrent,86);
 if (RapidSub.canDelegate("lvelectro_itemclick")) { return b4a.example.monitor_activity.remoteMe.runUserSub(false, "monitor_activity","lvelectro_itemclick", _index, _value);}
 Debug.locals.put("Index", _index);
 Debug.locals.put("Value", _value);

@@ -51,14 +51,14 @@
 		<activity
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
-			android:name=".datos_activity"
+			android:name=".monitor_activity"
 			android:label="MonitorFlux"
 			android:screenOrientation="portrait">
 		</activity>
 		<activity
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
-			android:name=".monitor_activity"
+			android:name=".datos_activity"
 			android:label="MonitorFlux"
 			android:screenOrientation="portrait">
 		</activity>

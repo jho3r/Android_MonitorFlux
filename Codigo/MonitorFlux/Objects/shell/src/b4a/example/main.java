@@ -62,8 +62,8 @@ public static RemoteObject _lbbombas = RemoteObject.declareNull("anywheresoftwar
 public static b4a.example.starter _starter = null;
 public static b4a.example.tutoriales_activity _tutoriales_activity = null;
 public static b4a.example.agregar_activity _agregar_activity = null;
-public static b4a.example.datos_activity _datos_activity = null;
 public static b4a.example.monitor_activity _monitor_activity = null;
+public static b4a.example.datos_activity _datos_activity = null;
 public static b4a.example.httputils2service _httputils2service = null;
   public Object[] GetGlobals() {
 		return new Object[] {"Activity",main.mostCurrent._activity,"Agregar_Activity",Debug.moduleToString(b4a.example.agregar_activity.class),"Datos_Activity",Debug.moduleToString(b4a.example.datos_activity.class),"HttpUtils2Service",Debug.moduleToString(b4a.example.httputils2service.class),"lbBombas",main.mostCurrent._lbbombas,"lbFallas",main.mostCurrent._lbfallas,"Monitor_Activity",Debug.moduleToString(b4a.example.monitor_activity.class),"Starter",Debug.moduleToString(b4a.example.starter.class),"tmrIntro",main._tmrintro,"Tutoriales_Activity",Debug.moduleToString(b4a.example.tutoriales_activity.class),"xui",main._xui};

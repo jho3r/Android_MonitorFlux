@@ -353,8 +353,8 @@ public anywheresoftware.b4a.objects.collections.List _horas = null;
 public b4a.example.main _main = null;
 public b4a.example.starter _starter = null;
 public b4a.example.tutoriales_activity _tutoriales_activity = null;
-public b4a.example.datos_activity _datos_activity = null;
 public b4a.example.monitor_activity _monitor_activity = null;
+public b4a.example.datos_activity _datos_activity = null;
 public b4a.example.httputils2service _httputils2service = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="agregar_activity";
