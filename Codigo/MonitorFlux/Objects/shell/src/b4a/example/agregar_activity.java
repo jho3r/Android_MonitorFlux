@@ -63,9 +63,10 @@ public static RemoteObject _horas = RemoteObject.declareNull("anywheresoftware.b
 public static b4a.example.main _main = null;
 public static b4a.example.starter _starter = null;
 public static b4a.example.tutoriales_activity _tutoriales_activity = null;
-public static b4a.example.monitor_activity _monitor_activity = null;
 public static b4a.example.datos_activity _datos_activity = null;
+public static b4a.example.monitor_activity _monitor_activity = null;
+public static b4a.example.httputils2service _httputils2service = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",agregar_activity.mostCurrent._activity,"Datos_Activity",Debug.moduleToString(b4a.example.datos_activity.class),"etNombre",agregar_activity.mostCurrent._etnombre,"etNumero",agregar_activity.mostCurrent._etnumero,"etTiempo",agregar_activity.mostCurrent._ettiempo,"horas",agregar_activity.mostCurrent._horas,"ime",agregar_activity.mostCurrent._ime,"Main",Debug.moduleToString(b4a.example.main.class),"Monitor_Activity",Debug.moduleToString(b4a.example.monitor_activity.class),"Starter",Debug.moduleToString(b4a.example.starter.class),"Tutoriales_Activity",Debug.moduleToString(b4a.example.tutoriales_activity.class)};
+		return new Object[] {"Activity",agregar_activity.mostCurrent._activity,"Datos_Activity",Debug.moduleToString(b4a.example.datos_activity.class),"etNombre",agregar_activity.mostCurrent._etnombre,"etNumero",agregar_activity.mostCurrent._etnumero,"etTiempo",agregar_activity.mostCurrent._ettiempo,"horas",agregar_activity.mostCurrent._horas,"HttpUtils2Service",Debug.moduleToString(b4a.example.httputils2service.class),"ime",agregar_activity.mostCurrent._ime,"Main",Debug.moduleToString(b4a.example.main.class),"Monitor_Activity",Debug.moduleToString(b4a.example.monitor_activity.class),"Starter",Debug.moduleToString(b4a.example.starter.class),"Tutoriales_Activity",Debug.moduleToString(b4a.example.tutoriales_activity.class)};
 }
 }

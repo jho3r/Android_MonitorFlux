@@ -55,12 +55,23 @@ public boolean isSingleton() {
 		return pcBA;
 	}
 public static RemoteObject __c = RemoteObject.declareNull("anywheresoftware.b4a.keywords.Common");
+public static RemoteObject _backendelessget = RemoteObject.declareNull("b4a.example.httpjob");
+public static RemoteObject _historial = RemoteObject.declareNull("b4a.example.httpjob");
+public static RemoteObject _lbnombre = RemoteObject.declareNull("anywheresoftware.b4a.objects.LabelWrapper");
+public static RemoteObject _urlget = RemoteObject.createImmutable("");
+public static RemoteObject _urlhistorial = RemoteObject.createImmutable("");
+public static RemoteObject _lbnumero = RemoteObject.declareNull("anywheresoftware.b4a.objects.LabelWrapper");
+public static RemoteObject _lbdescrip = RemoteObject.declareNull("anywheresoftware.b4a.objects.LabelWrapper");
+public static RemoteObject _lbestado = RemoteObject.declareNull("anywheresoftware.b4a.objects.LabelWrapper");
+public static RemoteObject _lbflujo = RemoteObject.declareNull("anywheresoftware.b4a.objects.LabelWrapper");
+public static RemoteObject _lbactualizado = RemoteObject.declareNull("anywheresoftware.b4a.objects.LabelWrapper");
 public static b4a.example.main _main = null;
 public static b4a.example.starter _starter = null;
 public static b4a.example.tutoriales_activity _tutoriales_activity = null;
-public static b4a.example.monitor_activity _monitor_activity = null;
 public static b4a.example.agregar_activity _agregar_activity = null;
+public static b4a.example.monitor_activity _monitor_activity = null;
+public static b4a.example.httputils2service _httputils2service = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",datos_activity.mostCurrent._activity,"Agregar_Activity",Debug.moduleToString(b4a.example.agregar_activity.class),"Main",Debug.moduleToString(b4a.example.main.class),"Monitor_Activity",Debug.moduleToString(b4a.example.monitor_activity.class),"Starter",Debug.moduleToString(b4a.example.starter.class),"Tutoriales_Activity",Debug.moduleToString(b4a.example.tutoriales_activity.class)};
+		return new Object[] {"Activity",datos_activity.mostCurrent._activity,"Agregar_Activity",Debug.moduleToString(b4a.example.agregar_activity.class),"backendelessGet",datos_activity.mostCurrent._backendelessget,"historial",datos_activity.mostCurrent._historial,"HttpUtils2Service",Debug.moduleToString(b4a.example.httputils2service.class),"lbActualizado",datos_activity.mostCurrent._lbactualizado,"lbDescrip",datos_activity.mostCurrent._lbdescrip,"lbEstado",datos_activity.mostCurrent._lbestado,"lbFlujo",datos_activity.mostCurrent._lbflujo,"lbNombre",datos_activity.mostCurrent._lbnombre,"lbNumero",datos_activity.mostCurrent._lbnumero,"Main",Debug.moduleToString(b4a.example.main.class),"Monitor_Activity",Debug.moduleToString(b4a.example.monitor_activity.class),"Starter",Debug.moduleToString(b4a.example.starter.class),"Tutoriales_Activity",Debug.moduleToString(b4a.example.tutoriales_activity.class),"urlGet",datos_activity.mostCurrent._urlget,"urlHistorial",datos_activity.mostCurrent._urlhistorial};
 }
 }

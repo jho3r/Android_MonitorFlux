@@ -18,7 +18,16 @@ End Sub
 Sub Globals
 	'These global variables will be redeclared each time the activity is created.
 	'These variables can only be accessed from this module.
-	
+	Dim backendelessGet As HttpJob 'se debe inicializar
+	Dim historial As HttpJob
+	Private lbNombre As Label
+	Dim urlGet As String
+	Dim urlHistorial As String
+	Private lbNumero As Label
+	Private lbDescrip As Label
+	Private lbEstado As Label
+	Private lbFlujo As Label
+	Private lbActualizado As Label
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -26,6 +35,11 @@ Sub Activity_Create(FirstTime As Boolean)
 	'Activity.LoadLayout("Layout1")
 	Activity.RemoveAllViews
 	Activity.LoadLayout("Datos")
+	urlGet = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Dispositivos"
+	urlHistorial = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial"
+	backendelessGet.Initialize("get",Me)
+	historial.Initialize("historial",Me)
+	backendelessGet.Download(urlGet)
 End Sub
 
 Sub Activity_Resume
@@ -39,4 +53,85 @@ End Sub
 
 Sub btnAtrasE_Click
 	Activity.Finish
+End Sub
+
+Sub JobDone (Job As HttpJob)
+	Log("JobName = " & Job.JobName & ", Success = " & Job.Success)
+	If Job.Success = True Then
+		Select Job.JobName 'Nombre del proceso a traves del cual se realizo la peticion
+			Case "get"
+				cargarDatos(Job.GetString) 'se envia la cadena recibida para procesar
+			Case "historial"
+				cargarEstado(Job.GetString)
+		End Select
+	Else
+		Log("Error: " & Job.ErrorMessage)
+		ToastMessageShow("Error: " & Job.ErrorMessage, True)
+	End If
+	Job.Release
+End Sub
+
+Sub cargarDatos (res As String)
+	Dim parser As JSONParser 						'definimos objeto que permite procesar JSON
+	parser.Initialize(res)
+	'se define una lista a la cual se le pueden agregar objetos con add, obtener con get, etc
+	'se le agregan los datos parseados
+	Dim root As List = parser.NextArray
+	For Each colroot As Map In root				'map es similar a list solo que se hace con clave, dato y se añade con put
+		If colroot.Get("nombre") = Monitor_Activity.nombreD Then
+			Dim nombre As String = colroot.Get("nombre")
+			Dim descripcion As String = colroot.Get("descripcion")
+			Dim numero As String = colroot.Get("numero")
+		End If
+	Next
+	lbNombre.Text = nombre
+	lbNumero.Text = numero
+	lbDescrip.Text = descripcion
+	historial.Download(urlHistorial)
+End Sub
+
+Sub cargarEstado (res As String)
+	Dim fecha As Int = 0
+	Dim parser As JSONParser 						'definimos objeto que permite procesar JSON
+	parser.Initialize(res)
+	'se define una lista a la cual se le pueden agregar objetos con add, obtener con get, etc
+	'se le agregan los datos parseados
+	Dim root As List = parser.NextArray
+	For Each colroot As Map In root				'map es similar a list solo que se hace con clave, dato y se añade con put
+		If colroot.Get("dispositivo") = lbNombre.Text Then
+			Dim fechaEntra As Int = colroot.Get("fecha")
+			If fechaEntra >= fecha Then
+				Dim estado As String = colroot.Get("estado")
+				Dim flujo As String = colroot.Get("flujo")
+				fecha = colroot.Get("fecha")
+			End If
+		End If
+	Next
+	If estado = True Then
+		lbEstado.Text = "Encendido"
+		lbEstado.Color = Colors.ARGB(128,0,136,145)
+	Else If estado = False Then
+		lbEstado.Text = "Apagado"
+		lbEstado.Color = Colors.ARGB(128,240,84,84)
+	End If
+	lbFlujo.Text = flujo & " Litros/Hora"
+	
+	DateTime.DateFormat = "yyyyMMddHHmm"
+	Dim fechaActual As Long = DateTime.Date(DateTime.Now)
+	Dim actual As Int = fechaActual - fecha
+	Dim mensaje As String
+	If actual <= 30 Then
+		mensaje = "Actualizado hace menos de 30 minutos"
+	Else If actual <= 100 Then
+		mensaje = "Actualizado hace 1 hora"
+	Else If actual <= 400 Then
+		mensaje = "Actualizado hace 4 horas"
+	Else If actual <= 1200 Then
+		mensaje = "Actualizado hace menos de 12 horas"
+	Else If	actual <= 10000 Then
+		mensaje = "Actualizado hace 1 dia"
+	Else
+		mensaje = "Desactualizado"
+	End If
+	lbActualizado.Text = mensaje
 End Sub

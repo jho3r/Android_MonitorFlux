@@ -151,15 +151,18 @@ public static void initializeProcessGlobals() {
 		        main_subs_0._process_globals();
 starter_subs_0._process_globals();
 tutoriales_activity_subs_0._process_globals();
-monitor_activity_subs_0._process_globals();
 agregar_activity_subs_0._process_globals();
 datos_activity_subs_0._process_globals();
+monitor_activity_subs_0._process_globals();
+httputils2service_subs_0._process_globals();
 main.myClass = BA.getDeviceClass ("b4a.example.main");
 starter.myClass = BA.getDeviceClass ("b4a.example.starter");
 tutoriales_activity.myClass = BA.getDeviceClass ("b4a.example.tutoriales_activity");
-monitor_activity.myClass = BA.getDeviceClass ("b4a.example.monitor_activity");
 agregar_activity.myClass = BA.getDeviceClass ("b4a.example.agregar_activity");
 datos_activity.myClass = BA.getDeviceClass ("b4a.example.datos_activity");
+monitor_activity.myClass = BA.getDeviceClass ("b4a.example.monitor_activity");
+httputils2service.myClass = BA.getDeviceClass ("b4a.example.httputils2service");
+httpjob.myClass = BA.getDeviceClass ("b4a.example.httpjob");
 		
         } catch (Exception e) {
 			throw new RuntimeException(e);

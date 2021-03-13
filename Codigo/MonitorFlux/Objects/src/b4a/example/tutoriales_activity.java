@@ -348,9 +348,10 @@ public anywheresoftware.b4a.keywords.Common __c = null;
 public anywheresoftware.b4a.objects.WebViewWrapper _wv1 = null;
 public b4a.example.main _main = null;
 public b4a.example.starter _starter = null;
-public b4a.example.monitor_activity _monitor_activity = null;
 public b4a.example.agregar_activity _agregar_activity = null;
 public b4a.example.datos_activity _datos_activity = null;
+public b4a.example.monitor_activity _monitor_activity = null;
+public b4a.example.httputils2service _httputils2service = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="tutoriales_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))

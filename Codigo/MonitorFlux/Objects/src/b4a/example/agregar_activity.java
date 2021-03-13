@@ -353,110 +353,111 @@ public anywheresoftware.b4a.objects.collections.List _horas = null;
 public b4a.example.main _main = null;
 public b4a.example.starter _starter = null;
 public b4a.example.tutoriales_activity _tutoriales_activity = null;
-public b4a.example.monitor_activity _monitor_activity = null;
 public b4a.example.datos_activity _datos_activity = null;
+public b4a.example.monitor_activity _monitor_activity = null;
+public b4a.example.httputils2service _httputils2service = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="agregar_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}));}
-RDebugUtils.currentLine=2162688;
- //BA.debugLineNum = 2162688;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
-RDebugUtils.currentLine=2162691;
- //BA.debugLineNum = 2162691;BA.debugLine="Activity.RemoveAllViews";
+RDebugUtils.currentLine=1507328;
+ //BA.debugLineNum = 1507328;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+RDebugUtils.currentLine=1507331;
+ //BA.debugLineNum = 1507331;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=2162692;
- //BA.debugLineNum = 2162692;BA.debugLine="Activity.LoadLayout(\"Agregar\")";
+RDebugUtils.currentLine=1507332;
+ //BA.debugLineNum = 1507332;BA.debugLine="Activity.LoadLayout(\"Agregar\")";
 mostCurrent._activity.LoadLayout("Agregar",mostCurrent.activityBA);
-RDebugUtils.currentLine=2162693;
- //BA.debugLineNum = 2162693;BA.debugLine="ime.Initialize(\"\")					'inicializo el ime";
+RDebugUtils.currentLine=1507333;
+ //BA.debugLineNum = 1507333;BA.debugLine="ime.Initialize(\"\")					'inicializo el ime";
 mostCurrent._ime.Initialize("");
-RDebugUtils.currentLine=2162694;
- //BA.debugLineNum = 2162694;BA.debugLine="ime.SetLengthFilter(etNombre,24)	'Determino el li";
+RDebugUtils.currentLine=1507334;
+ //BA.debugLineNum = 1507334;BA.debugLine="ime.SetLengthFilter(etNombre,24)	'Determino el li";
 mostCurrent._ime.SetLengthFilter((android.widget.EditText)(mostCurrent._etnombre.getObject()),(int) (24));
-RDebugUtils.currentLine=2162695;
- //BA.debugLineNum = 2162695;BA.debugLine="ime.SetLengthFilter(etNumero,10)	'Determino el li";
+RDebugUtils.currentLine=1507335;
+ //BA.debugLineNum = 1507335;BA.debugLine="ime.SetLengthFilter(etNumero,10)	'Determino el li";
 mostCurrent._ime.SetLengthFilter((android.widget.EditText)(mostCurrent._etnumero.getObject()),(int) (10));
-RDebugUtils.currentLine=2162696;
- //BA.debugLineNum = 2162696;BA.debugLine="horas.Initialize";
+RDebugUtils.currentLine=1507336;
+ //BA.debugLineNum = 1507336;BA.debugLine="horas.Initialize";
 mostCurrent._horas.Initialize();
-RDebugUtils.currentLine=2162697;
- //BA.debugLineNum = 2162697;BA.debugLine="horas.Add(\"1 hora\")";
+RDebugUtils.currentLine=1507337;
+ //BA.debugLineNum = 1507337;BA.debugLine="horas.Add(\"1 hora\")";
 mostCurrent._horas.Add((Object)("1 hora"));
-RDebugUtils.currentLine=2162698;
- //BA.debugLineNum = 2162698;BA.debugLine="horas.Add(\"4 horas\")";
+RDebugUtils.currentLine=1507338;
+ //BA.debugLineNum = 1507338;BA.debugLine="horas.Add(\"4 horas\")";
 mostCurrent._horas.Add((Object)("4 horas"));
-RDebugUtils.currentLine=2162699;
- //BA.debugLineNum = 2162699;BA.debugLine="horas.Add(\"12 horas\")";
+RDebugUtils.currentLine=1507339;
+ //BA.debugLineNum = 1507339;BA.debugLine="horas.Add(\"12 horas\")";
 mostCurrent._horas.Add((Object)("12 horas"));
-RDebugUtils.currentLine=2162700;
- //BA.debugLineNum = 2162700;BA.debugLine="horas.Add(\"1 dia\")";
+RDebugUtils.currentLine=1507340;
+ //BA.debugLineNum = 1507340;BA.debugLine="horas.Add(\"1 dia\")";
 mostCurrent._horas.Add((Object)("1 dia"));
-RDebugUtils.currentLine=2162701;
- //BA.debugLineNum = 2162701;BA.debugLine="horas.Add(\"Asíncrono\")";
+RDebugUtils.currentLine=1507341;
+ //BA.debugLineNum = 1507341;BA.debugLine="horas.Add(\"Asíncrono\")";
 mostCurrent._horas.Add((Object)("Asíncrono"));
-RDebugUtils.currentLine=2162702;
- //BA.debugLineNum = 2162702;BA.debugLine="etTiempo.SetItems(horas)";
+RDebugUtils.currentLine=1507342;
+ //BA.debugLineNum = 1507342;BA.debugLine="etTiempo.SetItems(horas)";
 mostCurrent._ettiempo.SetItems(processBA,mostCurrent._horas);
-RDebugUtils.currentLine=2162703;
- //BA.debugLineNum = 2162703;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1507343;
+ //BA.debugLineNum = 1507343;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
 RDebugUtils.currentModule="agregar_activity";
-RDebugUtils.currentLine=2293760;
- //BA.debugLineNum = 2293760;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
-RDebugUtils.currentLine=2293762;
- //BA.debugLineNum = 2293762;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1638400;
+ //BA.debugLineNum = 1638400;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=1638402;
+ //BA.debugLineNum = 1638402;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
 RDebugUtils.currentModule="agregar_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null));}
-RDebugUtils.currentLine=2228224;
- //BA.debugLineNum = 2228224;BA.debugLine="Sub Activity_Resume";
-RDebugUtils.currentLine=2228226;
- //BA.debugLineNum = 2228226;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1572864;
+ //BA.debugLineNum = 1572864;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=1572866;
+ //BA.debugLineNum = 1572866;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnatrasa_click() throws Exception{
 RDebugUtils.currentModule="agregar_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "btnatrasa_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnatrasa_click", null));}
-RDebugUtils.currentLine=2359296;
- //BA.debugLineNum = 2359296;BA.debugLine="Sub btnAtrasA_Click";
-RDebugUtils.currentLine=2359297;
- //BA.debugLineNum = 2359297;BA.debugLine="Activity.Finish";
+RDebugUtils.currentLine=1703936;
+ //BA.debugLineNum = 1703936;BA.debugLine="Sub btnAtrasA_Click";
+RDebugUtils.currentLine=1703937;
+ //BA.debugLineNum = 1703937;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
-RDebugUtils.currentLine=2359298;
- //BA.debugLineNum = 2359298;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1703938;
+ //BA.debugLineNum = 1703938;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnconectar_click() throws Exception{
 RDebugUtils.currentModule="agregar_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "btnconectar_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnconectar_click", null));}
-RDebugUtils.currentLine=2424832;
- //BA.debugLineNum = 2424832;BA.debugLine="Sub btnConectar_Click";
-RDebugUtils.currentLine=2424834;
- //BA.debugLineNum = 2424834;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1769472;
+ //BA.debugLineNum = 1769472;BA.debugLine="Sub btnConectar_Click";
+RDebugUtils.currentLine=1769474;
+ //BA.debugLineNum = 1769474;BA.debugLine="End Sub";
 return "";
 }
 public static String  _ettiempo_focuschanged(boolean _hasfocus) throws Exception{
 RDebugUtils.currentModule="agregar_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "ettiempo_focuschanged", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "ettiempo_focuschanged", new Object[] {_hasfocus}));}
-RDebugUtils.currentLine=2555904;
- //BA.debugLineNum = 2555904;BA.debugLine="Sub etTiempo_FocusChanged (HasFocus As Boolean)";
-RDebugUtils.currentLine=2555905;
- //BA.debugLineNum = 2555905;BA.debugLine="If HasFocus = True Then";
+RDebugUtils.currentLine=1835008;
+ //BA.debugLineNum = 1835008;BA.debugLine="Sub etTiempo_FocusChanged (HasFocus As Boolean)";
+RDebugUtils.currentLine=1835009;
+ //BA.debugLineNum = 1835009;BA.debugLine="If HasFocus = True Then";
 if (_hasfocus==anywheresoftware.b4a.keywords.Common.True) { 
-RDebugUtils.currentLine=2555906;
- //BA.debugLineNum = 2555906;BA.debugLine="etTiempo.ShowDropDown";
+RDebugUtils.currentLine=1835010;
+ //BA.debugLineNum = 1835010;BA.debugLine="etTiempo.ShowDropDown";
 mostCurrent._ettiempo.ShowDropDown();
  };
-RDebugUtils.currentLine=2555908;
- //BA.debugLineNum = 2555908;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1835012;
+ //BA.debugLineNum = 1835012;BA.debugLine="End Sub";
 return "";
 }
 }

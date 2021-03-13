@@ -352,9 +352,9 @@ public static boolean isAnyActivityVisible() {
     boolean vis = false;
 vis = vis | (main.mostCurrent != null);
 vis = vis | (tutoriales_activity.mostCurrent != null);
-vis = vis | (monitor_activity.mostCurrent != null);
 vis = vis | (agregar_activity.mostCurrent != null);
 vis = vis | (datos_activity.mostCurrent != null);
+vis = vis | (monitor_activity.mostCurrent != null);
 return vis;}
 
 private static BA killProgramHelper(BA ba) {
@@ -393,18 +393,6 @@ BA.applicationContext.stopService(new android.content.Intent(BA.applicationConte
 
  {
             Activity __a = null;
-            if (monitor_activity.previousOne != null) {
-				__a = monitor_activity.previousOne.get();
-			}
-            else {
-                BA ba = killProgramHelper(monitor_activity.mostCurrent == null ? null : monitor_activity.mostCurrent.processBA);
-                if (ba != null) __a = ba.activity;
-            }
-            if (__a != null)
-				__a.finish();}
-
- {
-            Activity __a = null;
             if (agregar_activity.previousOne != null) {
 				__a = agregar_activity.previousOne.get();
 			}
@@ -427,6 +415,19 @@ BA.applicationContext.stopService(new android.content.Intent(BA.applicationConte
             if (__a != null)
 				__a.finish();}
 
+ {
+            Activity __a = null;
+            if (monitor_activity.previousOne != null) {
+				__a = monitor_activity.previousOne.get();
+			}
+            else {
+                BA ba = killProgramHelper(monitor_activity.mostCurrent == null ? null : monitor_activity.mostCurrent.processBA);
+                if (ba != null) __a = ba.activity;
+            }
+            if (__a != null)
+				__a.finish();}
+
+BA.applicationContext.stopService(new android.content.Intent(BA.applicationContext, httputils2service.class));
 }
 public anywheresoftware.b4a.keywords.Common __c = null;
 public static anywheresoftware.b4a.objects.B4XViewWrapper.XUI _xui = null;
@@ -435,9 +436,10 @@ public anywheresoftware.b4a.objects.LabelWrapper _lbfallas = null;
 public anywheresoftware.b4a.objects.LabelWrapper _lbbombas = null;
 public b4a.example.starter _starter = null;
 public b4a.example.tutoriales_activity _tutoriales_activity = null;
-public b4a.example.monitor_activity _monitor_activity = null;
 public b4a.example.agregar_activity _agregar_activity = null;
 public b4a.example.datos_activity _datos_activity = null;
+public b4a.example.monitor_activity _monitor_activity = null;
+public b4a.example.httputils2service _httputils2service = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))

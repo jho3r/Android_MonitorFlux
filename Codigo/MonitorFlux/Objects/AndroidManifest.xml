@@ -13,6 +13,7 @@
 	    android:anyDensity="true"/>
 	<uses-permission android:name="android.permission.INTERNET"/>
 	<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+	<uses-permission android:name="android.permission.WAKE_LOCK"/>
 	<application
 		android:icon="@drawable/icon"
 		android:label="MonitorFlux"
@@ -43,13 +44,6 @@
 		<activity
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
-			android:name=".monitor_activity"
-			android:label="MonitorFlux"
-			android:screenOrientation="portrait">
-		</activity>
-		<activity
-			android:windowSoftInputMode="stateHidden"
-			android:launchMode="singleTop"
 			android:name=".agregar_activity"
 			android:label="MonitorFlux"
 			android:screenOrientation="portrait">
@@ -61,5 +55,16 @@
 			android:label="MonitorFlux"
 			android:screenOrientation="portrait">
 		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".monitor_activity"
+			android:label="MonitorFlux"
+			android:screenOrientation="portrait">
+		</activity>
+		<service android:name=".httputils2service">
+		</service>
+		<receiver android:name=".httputils2service$httputils2service_BR">
+		</receiver>
 	</application>
 </manifest>

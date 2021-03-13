@@ -128,9 +128,10 @@ public class starter extends  android.app.Service{
 public anywheresoftware.b4a.keywords.Common __c = null;
 public b4a.example.main _main = null;
 public b4a.example.tutoriales_activity _tutoriales_activity = null;
-public b4a.example.monitor_activity _monitor_activity = null;
 public b4a.example.agregar_activity _agregar_activity = null;
 public b4a.example.datos_activity _datos_activity = null;
+public b4a.example.monitor_activity _monitor_activity = null;
+public b4a.example.httputils2service _httputils2service = null;
 public static boolean  _application_error(anywheresoftware.b4a.objects.B4AException _error,String _stacktrace) throws Exception{
 RDebugUtils.currentModule="starter";
 if (Debug.shouldDelegate(processBA, "application_error", false))

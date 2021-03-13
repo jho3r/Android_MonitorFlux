@@ -8,7 +8,7 @@ public class agregar_activity_subs_0 {
 
 public static RemoteObject  _activity_create(RemoteObject _firsttime) throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Create (agregar_activity) ","agregar_activity",4,agregar_activity.mostCurrent.activityBA,agregar_activity.mostCurrent,22);
+		Debug.PushSubsStack("Activity_Create (agregar_activity) ","agregar_activity",3,agregar_activity.mostCurrent.activityBA,agregar_activity.mostCurrent,22);
 if (RapidSub.canDelegate("activity_create")) { return b4a.example.agregar_activity.remoteMe.runUserSub(false, "agregar_activity","activity_create", _firsttime);}
 Debug.locals.put("FirstTime", _firsttime);
  BA.debugLineNum = 22;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
@@ -61,7 +61,7 @@ finally {
 		}}
 public static RemoteObject  _activity_pause(RemoteObject _userclosed) throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Pause (agregar_activity) ","agregar_activity",4,agregar_activity.mostCurrent.activityBA,agregar_activity.mostCurrent,43);
+		Debug.PushSubsStack("Activity_Pause (agregar_activity) ","agregar_activity",3,agregar_activity.mostCurrent.activityBA,agregar_activity.mostCurrent,43);
 if (RapidSub.canDelegate("activity_pause")) { return b4a.example.agregar_activity.remoteMe.runUserSub(false, "agregar_activity","activity_pause", _userclosed);}
 Debug.locals.put("UserClosed", _userclosed);
  BA.debugLineNum = 43;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
@@ -78,7 +78,7 @@ finally {
 		}}
 public static RemoteObject  _activity_resume() throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Resume (agregar_activity) ","agregar_activity",4,agregar_activity.mostCurrent.activityBA,agregar_activity.mostCurrent,39);
+		Debug.PushSubsStack("Activity_Resume (agregar_activity) ","agregar_activity",3,agregar_activity.mostCurrent.activityBA,agregar_activity.mostCurrent,39);
 if (RapidSub.canDelegate("activity_resume")) { return b4a.example.agregar_activity.remoteMe.runUserSub(false, "agregar_activity","activity_resume");}
  BA.debugLineNum = 39;BA.debugLine="Sub Activity_Resume";
 Debug.ShouldStop(64);
@@ -94,7 +94,7 @@ finally {
 		}}
 public static RemoteObject  _btnatrasa_click() throws Exception{
 try {
-		Debug.PushSubsStack("btnAtrasA_Click (agregar_activity) ","agregar_activity",4,agregar_activity.mostCurrent.activityBA,agregar_activity.mostCurrent,48);
+		Debug.PushSubsStack("btnAtrasA_Click (agregar_activity) ","agregar_activity",3,agregar_activity.mostCurrent.activityBA,agregar_activity.mostCurrent,48);
 if (RapidSub.canDelegate("btnatrasa_click")) { return b4a.example.agregar_activity.remoteMe.runUserSub(false, "agregar_activity","btnatrasa_click");}
  BA.debugLineNum = 48;BA.debugLine="Sub btnAtrasA_Click";
 Debug.ShouldStop(32768);
@@ -113,7 +113,7 @@ finally {
 		}}
 public static RemoteObject  _btnconectar_click() throws Exception{
 try {
-		Debug.PushSubsStack("btnConectar_Click (agregar_activity) ","agregar_activity",4,agregar_activity.mostCurrent.activityBA,agregar_activity.mostCurrent,52);
+		Debug.PushSubsStack("btnConectar_Click (agregar_activity) ","agregar_activity",3,agregar_activity.mostCurrent.activityBA,agregar_activity.mostCurrent,52);
 if (RapidSub.canDelegate("btnconectar_click")) { return b4a.example.agregar_activity.remoteMe.runUserSub(false, "agregar_activity","btnconectar_click");}
  BA.debugLineNum = 52;BA.debugLine="Sub btnConectar_Click";
 Debug.ShouldStop(524288);
@@ -129,7 +129,7 @@ finally {
 		}}
 public static RemoteObject  _ettiempo_focuschanged(RemoteObject _hasfocus) throws Exception{
 try {
-		Debug.PushSubsStack("etTiempo_FocusChanged (agregar_activity) ","agregar_activity",4,agregar_activity.mostCurrent.activityBA,agregar_activity.mostCurrent,57);
+		Debug.PushSubsStack("etTiempo_FocusChanged (agregar_activity) ","agregar_activity",3,agregar_activity.mostCurrent.activityBA,agregar_activity.mostCurrent,57);
 if (RapidSub.canDelegate("ettiempo_focuschanged")) { return b4a.example.agregar_activity.remoteMe.runUserSub(false, "agregar_activity","ettiempo_focuschanged", _hasfocus);}
 Debug.locals.put("HasFocus", _hasfocus);
  BA.debugLineNum = 57;BA.debugLine="Sub etTiempo_FocusChanged (HasFocus As Boolean)";
