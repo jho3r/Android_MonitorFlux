@@ -30,34 +30,34 @@ views.get("btnatrasa").vw.setWidth((int)((8d / 100 * height)));
 views.get("etnombre").vw.setTop((int)((12d / 100 * height)));
 //BA.debugLineNum = 14;BA.debugLine="etNombre.Height=10%y"[Agregar/General script]
 views.get("etnombre").vw.setHeight((int)((10d / 100 * height)));
-//BA.debugLineNum = 15;BA.debugLine="etNombre.Width=96%x"[Agregar/General script]
-views.get("etnombre").vw.setWidth((int)((96d / 100 * width)));
-//BA.debugLineNum = 16;BA.debugLine="etNombre.Left=2%x"[Agregar/General script]
-views.get("etnombre").vw.setLeft((int)((2d / 100 * width)));
+//BA.debugLineNum = 15;BA.debugLine="etNombre.Width=90%x"[Agregar/General script]
+views.get("etnombre").vw.setWidth((int)((90d / 100 * width)));
+//BA.debugLineNum = 16;BA.debugLine="etNombre.Left=5%x"[Agregar/General script]
+views.get("etnombre").vw.setLeft((int)((5d / 100 * width)));
 //BA.debugLineNum = 18;BA.debugLine="etNumero.Top=27%y"[Agregar/General script]
 views.get("etnumero").vw.setTop((int)((27d / 100 * height)));
 //BA.debugLineNum = 19;BA.debugLine="etNumero.Height=10%y"[Agregar/General script]
 views.get("etnumero").vw.setHeight((int)((10d / 100 * height)));
-//BA.debugLineNum = 20;BA.debugLine="etNumero.Width=96%x"[Agregar/General script]
-views.get("etnumero").vw.setWidth((int)((96d / 100 * width)));
-//BA.debugLineNum = 21;BA.debugLine="etNumero.Left=2%x"[Agregar/General script]
-views.get("etnumero").vw.setLeft((int)((2d / 100 * width)));
+//BA.debugLineNum = 20;BA.debugLine="etNumero.Width=90%x"[Agregar/General script]
+views.get("etnumero").vw.setWidth((int)((90d / 100 * width)));
+//BA.debugLineNum = 21;BA.debugLine="etNumero.Left=5%x"[Agregar/General script]
+views.get("etnumero").vw.setLeft((int)((5d / 100 * width)));
 //BA.debugLineNum = 23;BA.debugLine="etDescrip.Top=42%y"[Agregar/General script]
 views.get("etdescrip").vw.setTop((int)((42d / 100 * height)));
 //BA.debugLineNum = 24;BA.debugLine="etDescrip.Height=20%y"[Agregar/General script]
 views.get("etdescrip").vw.setHeight((int)((20d / 100 * height)));
-//BA.debugLineNum = 25;BA.debugLine="etDescrip.Width=96%x"[Agregar/General script]
-views.get("etdescrip").vw.setWidth((int)((96d / 100 * width)));
-//BA.debugLineNum = 26;BA.debugLine="etDescrip.Left=2%x"[Agregar/General script]
-views.get("etdescrip").vw.setLeft((int)((2d / 100 * width)));
+//BA.debugLineNum = 25;BA.debugLine="etDescrip.Width=90%x"[Agregar/General script]
+views.get("etdescrip").vw.setWidth((int)((90d / 100 * width)));
+//BA.debugLineNum = 26;BA.debugLine="etDescrip.Left=5%x"[Agregar/General script]
+views.get("etdescrip").vw.setLeft((int)((5d / 100 * width)));
 //BA.debugLineNum = 28;BA.debugLine="etTiempo.Top=67%y"[Agregar/General script]
 views.get("ettiempo").vw.setTop((int)((67d / 100 * height)));
 //BA.debugLineNum = 29;BA.debugLine="etTiempo.Height=10%y"[Agregar/General script]
 views.get("ettiempo").vw.setHeight((int)((10d / 100 * height)));
-//BA.debugLineNum = 30;BA.debugLine="etTiempo.Width=96%x"[Agregar/General script]
-views.get("ettiempo").vw.setWidth((int)((96d / 100 * width)));
-//BA.debugLineNum = 31;BA.debugLine="etTiempo.Left=2%x"[Agregar/General script]
-views.get("ettiempo").vw.setLeft((int)((2d / 100 * width)));
+//BA.debugLineNum = 30;BA.debugLine="etTiempo.Width=90%x"[Agregar/General script]
+views.get("ettiempo").vw.setWidth((int)((90d / 100 * width)));
+//BA.debugLineNum = 31;BA.debugLine="etTiempo.Left=5%x"[Agregar/General script]
+views.get("ettiempo").vw.setLeft((int)((5d / 100 * width)));
 //BA.debugLineNum = 33;BA.debugLine="btnConectar.Top=85%y"[Agregar/General script]
 views.get("btnconectar").vw.setTop((int)((85d / 100 * height)));
 //BA.debugLineNum = 34;BA.debugLine="btnConectar.Height=10%y"[Agregar/General script]

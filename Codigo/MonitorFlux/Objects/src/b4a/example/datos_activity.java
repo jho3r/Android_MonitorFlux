@@ -365,62 +365,114 @@ public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="datos_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}));}
-RDebugUtils.currentLine=2686976;
- //BA.debugLineNum = 2686976;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
-RDebugUtils.currentLine=2686979;
- //BA.debugLineNum = 2686979;BA.debugLine="Activity.RemoveAllViews";
+RDebugUtils.currentLine=5439488;
+ //BA.debugLineNum = 5439488;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+RDebugUtils.currentLine=5439491;
+ //BA.debugLineNum = 5439491;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=2686980;
- //BA.debugLineNum = 2686980;BA.debugLine="Activity.LoadLayout(\"Datos\")";
+RDebugUtils.currentLine=5439492;
+ //BA.debugLineNum = 5439492;BA.debugLine="Activity.LoadLayout(\"Datos\")";
 mostCurrent._activity.LoadLayout("Datos",mostCurrent.activityBA);
-RDebugUtils.currentLine=2686981;
- //BA.debugLineNum = 2686981;BA.debugLine="urlGet = \"https://api.backendless.com/85B70858-21";
+RDebugUtils.currentLine=5439493;
+ //BA.debugLineNum = 5439493;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
+_setstatusbarcolor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (231),(int) (231),(int) (222)));
+RDebugUtils.currentLine=5439494;
+ //BA.debugLineNum = 5439494;BA.debugLine="urlGet = \"https://api.backendless.com/85B70858-21";
 mostCurrent._urlget = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Dispositivos";
-RDebugUtils.currentLine=2686982;
- //BA.debugLineNum = 2686982;BA.debugLine="urlHistorial = \"https://api.backendless.com/85B70";
+RDebugUtils.currentLine=5439495;
+ //BA.debugLineNum = 5439495;BA.debugLine="urlHistorial = \"https://api.backendless.com/85B70";
 mostCurrent._urlhistorial = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial";
-RDebugUtils.currentLine=2686983;
- //BA.debugLineNum = 2686983;BA.debugLine="backendelessGet.Initialize(\"get\",Me)";
+RDebugUtils.currentLine=5439496;
+ //BA.debugLineNum = 5439496;BA.debugLine="backendelessGet.Initialize(\"get\",Me)";
 mostCurrent._backendelessget._initialize /*String*/ (null,processBA,"get",datos_activity.getObject());
-RDebugUtils.currentLine=2686984;
- //BA.debugLineNum = 2686984;BA.debugLine="historial.Initialize(\"historial\",Me)";
+RDebugUtils.currentLine=5439497;
+ //BA.debugLineNum = 5439497;BA.debugLine="historial.Initialize(\"historial\",Me)";
 mostCurrent._historial._initialize /*String*/ (null,processBA,"historial",datos_activity.getObject());
-RDebugUtils.currentLine=2686985;
- //BA.debugLineNum = 2686985;BA.debugLine="backendelessGet.Download(urlGet)";
+RDebugUtils.currentLine=5439498;
+ //BA.debugLineNum = 5439498;BA.debugLine="backendelessGet.Download(urlGet)			'para cargar l";
 mostCurrent._backendelessget._download /*String*/ (null,mostCurrent._urlget);
-RDebugUtils.currentLine=2686986;
- //BA.debugLineNum = 2686986;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5439499;
+ //BA.debugLineNum = 5439499;BA.debugLine="End Sub";
+return "";
+}
+public static String  _setstatusbarcolor(int _clr) throws Exception{
+RDebugUtils.currentModule="datos_activity";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "setstatusbarcolor", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "setstatusbarcolor", new Object[] {_clr}));}
+anywheresoftware.b4a.phone.Phone _p = null;
+anywheresoftware.b4j.object.JavaObject _jo = null;
+anywheresoftware.b4j.object.JavaObject _window = null;
+RDebugUtils.currentLine=5963776;
+ //BA.debugLineNum = 5963776;BA.debugLine="Sub SetStatusBarColor(clr As Int)";
+RDebugUtils.currentLine=5963777;
+ //BA.debugLineNum = 5963777;BA.debugLine="Dim p As Phone";
+_p = new anywheresoftware.b4a.phone.Phone();
+RDebugUtils.currentLine=5963778;
+ //BA.debugLineNum = 5963778;BA.debugLine="If p.SdkVersion >= 21 Then";
+if (_p.getSdkVersion()>=21) { 
+RDebugUtils.currentLine=5963779;
+ //BA.debugLineNum = 5963779;BA.debugLine="Dim jo As JavaObject";
+_jo = new anywheresoftware.b4j.object.JavaObject();
+RDebugUtils.currentLine=5963780;
+ //BA.debugLineNum = 5963780;BA.debugLine="jo.InitializeContext";
+_jo.InitializeContext(processBA);
+RDebugUtils.currentLine=5963781;
+ //BA.debugLineNum = 5963781;BA.debugLine="Dim window As JavaObject = jo.RunMethodJO(\"getWi";
+_window = new anywheresoftware.b4j.object.JavaObject();
+_window = _jo.RunMethodJO("getWindow",(Object[])(anywheresoftware.b4a.keywords.Common.Null));
+RDebugUtils.currentLine=5963782;
+ //BA.debugLineNum = 5963782;BA.debugLine="window.RunMethod(\"addFlags\", Array (0x80000000))";
+_window.RunMethod("addFlags",new Object[]{(Object)(0x80000000)});
+RDebugUtils.currentLine=5963783;
+ //BA.debugLineNum = 5963783;BA.debugLine="window.RunMethod(\"clearFlags\", Array (0x04000000";
+_window.RunMethod("clearFlags",new Object[]{(Object)(0x04000000)});
+RDebugUtils.currentLine=5963784;
+ //BA.debugLineNum = 5963784;BA.debugLine="window.RunMethod(\"setStatusBarColor\", Array(clr)";
+_window.RunMethod("setStatusBarColor",new Object[]{(Object)(_clr)});
+ };
+RDebugUtils.currentLine=5963786;
+ //BA.debugLineNum = 5963786;BA.debugLine="If p.SdkVersion >= 23 Then";
+if (_p.getSdkVersion()>=23) { 
+RDebugUtils.currentLine=5963787;
+ //BA.debugLineNum = 5963787;BA.debugLine="jo = Activity";
+_jo = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(mostCurrent._activity.getObject()));
+RDebugUtils.currentLine=5963788;
+ //BA.debugLineNum = 5963788;BA.debugLine="jo.RunMethod(\"setSystemUiVisibility\", Array(8192";
+_jo.RunMethod("setSystemUiVisibility",new Object[]{(Object)(8192)});
+ };
+RDebugUtils.currentLine=5963790;
+ //BA.debugLineNum = 5963790;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
 RDebugUtils.currentModule="datos_activity";
-RDebugUtils.currentLine=2818048;
- //BA.debugLineNum = 2818048;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
-RDebugUtils.currentLine=2818050;
- //BA.debugLineNum = 2818050;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5570560;
+ //BA.debugLineNum = 5570560;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=5570562;
+ //BA.debugLineNum = 5570562;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
 RDebugUtils.currentModule="datos_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null));}
-RDebugUtils.currentLine=2752512;
- //BA.debugLineNum = 2752512;BA.debugLine="Sub Activity_Resume";
-RDebugUtils.currentLine=2752514;
- //BA.debugLineNum = 2752514;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5505024;
+ //BA.debugLineNum = 5505024;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=5505026;
+ //BA.debugLineNum = 5505026;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnatrase_click() throws Exception{
 RDebugUtils.currentModule="datos_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "btnatrase_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnatrase_click", null));}
-RDebugUtils.currentLine=2883584;
- //BA.debugLineNum = 2883584;BA.debugLine="Sub btnAtrasE_Click";
-RDebugUtils.currentLine=2883585;
- //BA.debugLineNum = 2883585;BA.debugLine="Activity.Finish";
+RDebugUtils.currentLine=5636096;
+ //BA.debugLineNum = 5636096;BA.debugLine="Sub btnAtrasE_Click";
+RDebugUtils.currentLine=5636097;
+ //BA.debugLineNum = 5636097;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
-RDebugUtils.currentLine=2883586;
- //BA.debugLineNum = 2883586;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5636098;
+ //BA.debugLineNum = 5636098;BA.debugLine="End Sub";
 return "";
 }
 public static String  _cargardatos(String _res) throws Exception{
@@ -433,20 +485,20 @@ anywheresoftware.b4a.objects.collections.Map _colroot = null;
 String _nombre = "";
 String _descripcion = "";
 String _numero = "";
-RDebugUtils.currentLine=3014656;
- //BA.debugLineNum = 3014656;BA.debugLine="Sub cargarDatos (res As String)";
-RDebugUtils.currentLine=3014657;
- //BA.debugLineNum = 3014657;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
+RDebugUtils.currentLine=5767168;
+ //BA.debugLineNum = 5767168;BA.debugLine="Sub cargarDatos (res As String)";
+RDebugUtils.currentLine=5767169;
+ //BA.debugLineNum = 5767169;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
 _parser = new anywheresoftware.b4a.objects.collections.JSONParser();
-RDebugUtils.currentLine=3014658;
- //BA.debugLineNum = 3014658;BA.debugLine="parser.Initialize(res)";
+RDebugUtils.currentLine=5767170;
+ //BA.debugLineNum = 5767170;BA.debugLine="parser.Initialize(res)";
 _parser.Initialize(_res);
-RDebugUtils.currentLine=3014661;
- //BA.debugLineNum = 3014661;BA.debugLine="Dim root As List = parser.NextArray";
+RDebugUtils.currentLine=5767173;
+ //BA.debugLineNum = 5767173;BA.debugLine="Dim root As List = parser.NextArray";
 _root = new anywheresoftware.b4a.objects.collections.List();
 _root = _parser.NextArray();
-RDebugUtils.currentLine=3014662;
- //BA.debugLineNum = 3014662;BA.debugLine="For Each colroot As Map In root				'map es simila";
+RDebugUtils.currentLine=5767174;
+ //BA.debugLineNum = 5767174;BA.debugLine="For Each colroot As Map In root				'map es simila";
 _colroot = new anywheresoftware.b4a.objects.collections.Map();
 {
 final anywheresoftware.b4a.BA.IterableList group4 = _root;
@@ -455,35 +507,35 @@ final int groupLen4 = group4.getSize()
 ;
 for (; index4 < groupLen4;index4++){
 _colroot = (anywheresoftware.b4a.objects.collections.Map) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.Map(), (anywheresoftware.b4a.objects.collections.Map.MyMap)(group4.Get(index4)));
-RDebugUtils.currentLine=3014663;
- //BA.debugLineNum = 3014663;BA.debugLine="If colroot.Get(\"nombre\") = Monitor_Activity.nomb";
+RDebugUtils.currentLine=5767175;
+ //BA.debugLineNum = 5767175;BA.debugLine="If colroot.Get(\"nombre\") = Monitor_Activity.nomb";
 if ((_colroot.Get((Object)("nombre"))).equals((Object)(mostCurrent._monitor_activity._nombred /*String*/ ))) { 
-RDebugUtils.currentLine=3014664;
- //BA.debugLineNum = 3014664;BA.debugLine="Dim nombre As String = colroot.Get(\"nombre\")";
+RDebugUtils.currentLine=5767176;
+ //BA.debugLineNum = 5767176;BA.debugLine="Dim nombre As String = colroot.Get(\"nombre\")";
 _nombre = BA.ObjectToString(_colroot.Get((Object)("nombre")));
-RDebugUtils.currentLine=3014665;
- //BA.debugLineNum = 3014665;BA.debugLine="Dim descripcion As String = colroot.Get(\"descri";
+RDebugUtils.currentLine=5767177;
+ //BA.debugLineNum = 5767177;BA.debugLine="Dim descripcion As String = colroot.Get(\"descri";
 _descripcion = BA.ObjectToString(_colroot.Get((Object)("descripcion")));
-RDebugUtils.currentLine=3014666;
- //BA.debugLineNum = 3014666;BA.debugLine="Dim numero As String = colroot.Get(\"numero\")";
+RDebugUtils.currentLine=5767178;
+ //BA.debugLineNum = 5767178;BA.debugLine="Dim numero As String = colroot.Get(\"numero\")";
 _numero = BA.ObjectToString(_colroot.Get((Object)("numero")));
  };
  }
 };
-RDebugUtils.currentLine=3014669;
- //BA.debugLineNum = 3014669;BA.debugLine="lbNombre.Text = nombre";
+RDebugUtils.currentLine=5767182;
+ //BA.debugLineNum = 5767182;BA.debugLine="lbNombre.Text = nombre";
 mostCurrent._lbnombre.setText(BA.ObjectToCharSequence(_nombre));
-RDebugUtils.currentLine=3014670;
- //BA.debugLineNum = 3014670;BA.debugLine="lbNumero.Text = numero";
+RDebugUtils.currentLine=5767183;
+ //BA.debugLineNum = 5767183;BA.debugLine="lbNumero.Text = numero";
 mostCurrent._lbnumero.setText(BA.ObjectToCharSequence(_numero));
-RDebugUtils.currentLine=3014671;
- //BA.debugLineNum = 3014671;BA.debugLine="lbDescrip.Text = descripcion";
+RDebugUtils.currentLine=5767184;
+ //BA.debugLineNum = 5767184;BA.debugLine="lbDescrip.Text = descripcion";
 mostCurrent._lbdescrip.setText(BA.ObjectToCharSequence(_descripcion));
-RDebugUtils.currentLine=3014672;
- //BA.debugLineNum = 3014672;BA.debugLine="historial.Download(urlHistorial)";
+RDebugUtils.currentLine=5767185;
+ //BA.debugLineNum = 5767185;BA.debugLine="historial.Download(urlHistorial)";
 mostCurrent._historial._download /*String*/ (null,mostCurrent._urlhistorial);
-RDebugUtils.currentLine=3014673;
- //BA.debugLineNum = 3014673;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5767186;
+ //BA.debugLineNum = 5767186;BA.debugLine="End Sub";
 return "";
 }
 public static String  _cargarestado(String _res) throws Exception{
@@ -497,27 +549,23 @@ anywheresoftware.b4a.objects.collections.Map _colroot = null;
 long _fechaentra = 0L;
 String _estado = "";
 String _flujo = "";
-long _fechaactual = 0L;
-long _actual = 0L;
-long _actualmodificado = 0L;
-String _mensaje = "";
-RDebugUtils.currentLine=3080192;
- //BA.debugLineNum = 3080192;BA.debugLine="Sub cargarEstado (res As String)";
-RDebugUtils.currentLine=3080193;
- //BA.debugLineNum = 3080193;BA.debugLine="Dim fecha As Long = 0";
+RDebugUtils.currentLine=5832704;
+ //BA.debugLineNum = 5832704;BA.debugLine="Sub cargarEstado (res As String)";
+RDebugUtils.currentLine=5832705;
+ //BA.debugLineNum = 5832705;BA.debugLine="Dim fecha As Long = 0";
 _fecha = (long) (0);
-RDebugUtils.currentLine=3080194;
- //BA.debugLineNum = 3080194;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
+RDebugUtils.currentLine=5832706;
+ //BA.debugLineNum = 5832706;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
 _parser = new anywheresoftware.b4a.objects.collections.JSONParser();
-RDebugUtils.currentLine=3080195;
- //BA.debugLineNum = 3080195;BA.debugLine="parser.Initialize(res)";
+RDebugUtils.currentLine=5832707;
+ //BA.debugLineNum = 5832707;BA.debugLine="parser.Initialize(res)";
 _parser.Initialize(_res);
-RDebugUtils.currentLine=3080198;
- //BA.debugLineNum = 3080198;BA.debugLine="Dim root As List = parser.NextArray";
+RDebugUtils.currentLine=5832710;
+ //BA.debugLineNum = 5832710;BA.debugLine="Dim root As List = parser.NextArray";
 _root = new anywheresoftware.b4a.objects.collections.List();
 _root = _parser.NextArray();
-RDebugUtils.currentLine=3080199;
- //BA.debugLineNum = 3080199;BA.debugLine="For Each colroot As Map In root				'map es simila";
+RDebugUtils.currentLine=5832711;
+ //BA.debugLineNum = 5832711;BA.debugLine="For Each colroot As Map In root				'map es simila";
 _colroot = new anywheresoftware.b4a.objects.collections.Map();
 {
 final anywheresoftware.b4a.BA.IterableList group5 = _root;
@@ -526,251 +574,268 @@ final int groupLen5 = group5.getSize()
 ;
 for (; index5 < groupLen5;index5++){
 _colroot = (anywheresoftware.b4a.objects.collections.Map) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.Map(), (anywheresoftware.b4a.objects.collections.Map.MyMap)(group5.Get(index5)));
-RDebugUtils.currentLine=3080200;
- //BA.debugLineNum = 3080200;BA.debugLine="If colroot.Get(\"dispositivo\") = lbNombre.Text Th";
+RDebugUtils.currentLine=5832713;
+ //BA.debugLineNum = 5832713;BA.debugLine="If colroot.Get(\"dispositivo\") = lbNombre.Text Th";
 if ((_colroot.Get((Object)("dispositivo"))).equals((Object)(mostCurrent._lbnombre.getText()))) { 
-RDebugUtils.currentLine=3080201;
- //BA.debugLineNum = 3080201;BA.debugLine="Dim fechaEntra As Long = colroot.Get(\"fecha\")";
+RDebugUtils.currentLine=5832715;
+ //BA.debugLineNum = 5832715;BA.debugLine="Dim fechaEntra As Long = colroot.Get(\"fecha\")";
 _fechaentra = BA.ObjectToLongNumber(_colroot.Get((Object)("fecha")));
-RDebugUtils.currentLine=3080202;
- //BA.debugLineNum = 3080202;BA.debugLine="If fechaEntra >= fecha Then";
+RDebugUtils.currentLine=5832716;
+ //BA.debugLineNum = 5832716;BA.debugLine="If fechaEntra >= fecha Then";
 if (_fechaentra>=_fecha) { 
-RDebugUtils.currentLine=3080203;
- //BA.debugLineNum = 3080203;BA.debugLine="Dim estado As String = colroot.Get(\"estado\")";
+RDebugUtils.currentLine=5832717;
+ //BA.debugLineNum = 5832717;BA.debugLine="Dim estado As String = colroot.Get(\"estado\")";
 _estado = BA.ObjectToString(_colroot.Get((Object)("estado")));
-RDebugUtils.currentLine=3080204;
- //BA.debugLineNum = 3080204;BA.debugLine="Dim flujo As String = colroot.Get(\"flujo\")";
+RDebugUtils.currentLine=5832718;
+ //BA.debugLineNum = 5832718;BA.debugLine="Dim flujo As String = colroot.Get(\"flujo\")";
 _flujo = BA.ObjectToString(_colroot.Get((Object)("flujo")));
-RDebugUtils.currentLine=3080205;
- //BA.debugLineNum = 3080205;BA.debugLine="fecha = fechaEntra";
+RDebugUtils.currentLine=5832719;
+ //BA.debugLineNum = 5832719;BA.debugLine="fecha = fechaEntra";
 _fecha = _fechaentra;
  };
  };
  }
 };
-RDebugUtils.currentLine=3080209;
- //BA.debugLineNum = 3080209;BA.debugLine="If estado = True Then";
+RDebugUtils.currentLine=5832724;
+ //BA.debugLineNum = 5832724;BA.debugLine="If estado = True Then";
 if ((_estado).equals(BA.ObjectToString(anywheresoftware.b4a.keywords.Common.True))) { 
-RDebugUtils.currentLine=3080210;
- //BA.debugLineNum = 3080210;BA.debugLine="lbEstado.Text = \"Encendido\"";
+RDebugUtils.currentLine=5832725;
+ //BA.debugLineNum = 5832725;BA.debugLine="lbEstado.Text = \"Encendido\"";
 mostCurrent._lbestado.setText(BA.ObjectToCharSequence("Encendido"));
-RDebugUtils.currentLine=3080211;
- //BA.debugLineNum = 3080211;BA.debugLine="lbEstado.Color = Colors.ARGB(128,0,136,145)";
+RDebugUtils.currentLine=5832726;
+ //BA.debugLineNum = 5832726;BA.debugLine="lbEstado.Color = Colors.ARGB(128,0,136,145)";
 mostCurrent._lbestado.setColor(anywheresoftware.b4a.keywords.Common.Colors.ARGB((int) (128),(int) (0),(int) (136),(int) (145)));
  }else 
-{RDebugUtils.currentLine=3080212;
- //BA.debugLineNum = 3080212;BA.debugLine="Else If estado = False Then";
+{RDebugUtils.currentLine=5832727;
+ //BA.debugLineNum = 5832727;BA.debugLine="Else If estado = False Then";
 if ((_estado).equals(BA.ObjectToString(anywheresoftware.b4a.keywords.Common.False))) { 
-RDebugUtils.currentLine=3080213;
- //BA.debugLineNum = 3080213;BA.debugLine="lbEstado.Text = \"Apagado\"";
+RDebugUtils.currentLine=5832728;
+ //BA.debugLineNum = 5832728;BA.debugLine="lbEstado.Text = \"Apagado\"";
 mostCurrent._lbestado.setText(BA.ObjectToCharSequence("Apagado"));
-RDebugUtils.currentLine=3080214;
- //BA.debugLineNum = 3080214;BA.debugLine="lbEstado.Color = Colors.ARGB(128,240,84,84)";
+RDebugUtils.currentLine=5832729;
+ //BA.debugLineNum = 5832729;BA.debugLine="lbEstado.Color = Colors.ARGB(128,240,84,84)";
 mostCurrent._lbestado.setColor(anywheresoftware.b4a.keywords.Common.Colors.ARGB((int) (128),(int) (240),(int) (84),(int) (84)));
  }}
 ;
-RDebugUtils.currentLine=3080216;
- //BA.debugLineNum = 3080216;BA.debugLine="lbFlujo.Text = flujo & \" Litros/Hora\"";
+RDebugUtils.currentLine=5832733;
+ //BA.debugLineNum = 5832733;BA.debugLine="lbFlujo.Text = flujo & \" Litros/Hora\"";
 mostCurrent._lbflujo.setText(BA.ObjectToCharSequence(_flujo+" Litros/Hora"));
-RDebugUtils.currentLine=3080218;
- //BA.debugLineNum = 3080218;BA.debugLine="DateTime.DateFormat = \"yyyyMMddHHmm\"";
+RDebugUtils.currentLine=5832736;
+ //BA.debugLineNum = 5832736;BA.debugLine="diferenciaDeFechas(fecha)";
+_diferenciadefechas(_fecha);
+RDebugUtils.currentLine=5832737;
+ //BA.debugLineNum = 5832737;BA.debugLine="End Sub";
+return "";
+}
+public static String  _diferenciadefechas(long _fecha) throws Exception{
+RDebugUtils.currentModule="datos_activity";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "diferenciadefechas", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "diferenciadefechas", new Object[] {_fecha}));}
+long _fechaactual = 0L;
+long _actual = 0L;
+long _actualmodificado = 0L;
+String _mensaje = "";
+RDebugUtils.currentLine=5898240;
+ //BA.debugLineNum = 5898240;BA.debugLine="Sub diferenciaDeFechas(fecha As Long){";
+RDebugUtils.currentLine=5898242;
+ //BA.debugLineNum = 5898242;BA.debugLine="DateTime.DateFormat = \"yyyyMMddHHmm\"";
 anywheresoftware.b4a.keywords.Common.DateTime.setDateFormat("yyyyMMddHHmm");
-RDebugUtils.currentLine=3080219;
- //BA.debugLineNum = 3080219;BA.debugLine="Dim fechaActual As Long = DateTime.Date(DateTime.";
+RDebugUtils.currentLine=5898243;
+ //BA.debugLineNum = 5898243;BA.debugLine="Dim fechaActual As Long = DateTime.Date(DateTime.";
 _fechaactual = (long)(Double.parseDouble(anywheresoftware.b4a.keywords.Common.DateTime.Date(anywheresoftware.b4a.keywords.Common.DateTime.getNow())));
-RDebugUtils.currentLine=3080220;
- //BA.debugLineNum = 3080220;BA.debugLine="Dim actual As Long = fechaActual - fecha";
+RDebugUtils.currentLine=5898244;
+ //BA.debugLineNum = 5898244;BA.debugLine="Dim actual As Long = fechaActual - fecha";
 _actual = (long) (_fechaactual-_fecha);
-RDebugUtils.currentLine=3080221;
- //BA.debugLineNum = 3080221;BA.debugLine="Dim actualModificado As Long";
+RDebugUtils.currentLine=5898245;
+ //BA.debugLineNum = 5898245;BA.debugLine="Dim actualModificado As Long";
 _actualmodificado = 0L;
-RDebugUtils.currentLine=3080222;
- //BA.debugLineNum = 3080222;BA.debugLine="Dim mensaje As String";
+RDebugUtils.currentLine=5898246;
+ //BA.debugLineNum = 5898246;BA.debugLine="Dim mensaje As String";
 _mensaje = "";
-RDebugUtils.currentLine=3080223;
- //BA.debugLineNum = 3080223;BA.debugLine="If actual < 100 Then";
+RDebugUtils.currentLine=5898248;
+ //BA.debugLineNum = 5898248;BA.debugLine="If actual < 100 Then";
 if (_actual<100) { 
-RDebugUtils.currentLine=3080224;
- //BA.debugLineNum = 3080224;BA.debugLine="actualModificado = fechaActual/100";
+RDebugUtils.currentLine=5898249;
+ //BA.debugLineNum = 5898249;BA.debugLine="actualModificado = fechaActual/100";
 _actualmodificado = (long) (_fechaactual/(double)100);
-RDebugUtils.currentLine=3080225;
- //BA.debugLineNum = 3080225;BA.debugLine="fechaActual = fechaActual - actualModificado*100";
+RDebugUtils.currentLine=5898250;
+ //BA.debugLineNum = 5898250;BA.debugLine="fechaActual = fechaActual - actualModificado*100";
 _fechaactual = (long) (_fechaactual-_actualmodificado*100);
-RDebugUtils.currentLine=3080226;
- //BA.debugLineNum = 3080226;BA.debugLine="actualModificado = fecha/100";
+RDebugUtils.currentLine=5898251;
+ //BA.debugLineNum = 5898251;BA.debugLine="actualModificado = fecha/100";
 _actualmodificado = (long) (_fecha/(double)100);
-RDebugUtils.currentLine=3080227;
- //BA.debugLineNum = 3080227;BA.debugLine="fecha = fecha - actualModificado*100";
+RDebugUtils.currentLine=5898252;
+ //BA.debugLineNum = 5898252;BA.debugLine="fecha = fecha - actualModificado*100";
 _fecha = (long) (_fecha-_actualmodificado*100);
-RDebugUtils.currentLine=3080228;
- //BA.debugLineNum = 3080228;BA.debugLine="If fecha < fechaActual Then";
+RDebugUtils.currentLine=5898253;
+ //BA.debugLineNum = 5898253;BA.debugLine="If fecha < fechaActual Then";
 if (_fecha<_fechaactual) { 
-RDebugUtils.currentLine=3080229;
- //BA.debugLineNum = 3080229;BA.debugLine="actualModificado = fechaActual - fecha";
+RDebugUtils.currentLine=5898254;
+ //BA.debugLineNum = 5898254;BA.debugLine="actualModificado = fechaActual - fecha";
 _actualmodificado = (long) (_fechaactual-_fecha);
  }else {
-RDebugUtils.currentLine=3080231;
- //BA.debugLineNum = 3080231;BA.debugLine="actualModificado = fechaActual + (60 - fecha)";
+RDebugUtils.currentLine=5898256;
+ //BA.debugLineNum = 5898256;BA.debugLine="actualModificado = fechaActual + (60 - fecha)";
 _actualmodificado = (long) (_fechaactual+(60-_fecha));
  };
-RDebugUtils.currentLine=3080234;
- //BA.debugLineNum = 3080234;BA.debugLine="mensaje = \"Actualizado hace \" & actualModificado";
+RDebugUtils.currentLine=5898259;
+ //BA.debugLineNum = 5898259;BA.debugLine="mensaje = \"Actualizado hace \" & actualModificado";
 _mensaje = "Actualizado hace "+BA.NumberToString(_actualmodificado)+" minutos";
  }else 
-{RDebugUtils.currentLine=3080235;
- //BA.debugLineNum = 3080235;BA.debugLine="Else If actual < 10000 Then";
+{RDebugUtils.currentLine=5898261;
+ //BA.debugLineNum = 5898261;BA.debugLine="Else If actual < 10000 Then";
 if (_actual<10000) { 
-RDebugUtils.currentLine=3080236;
- //BA.debugLineNum = 3080236;BA.debugLine="actualModificado = fechaActual/10000";
+RDebugUtils.currentLine=5898262;
+ //BA.debugLineNum = 5898262;BA.debugLine="actualModificado = fechaActual/10000";
 _actualmodificado = (long) (_fechaactual/(double)10000);
-RDebugUtils.currentLine=3080237;
- //BA.debugLineNum = 3080237;BA.debugLine="fechaActual = fechaActual - actualModificado*100";
+RDebugUtils.currentLine=5898263;
+ //BA.debugLineNum = 5898263;BA.debugLine="fechaActual = fechaActual - actualModificado*100";
 _fechaactual = (long) (_fechaactual-_actualmodificado*10000);
-RDebugUtils.currentLine=3080238;
- //BA.debugLineNum = 3080238;BA.debugLine="actualModificado = fecha/10000";
+RDebugUtils.currentLine=5898264;
+ //BA.debugLineNum = 5898264;BA.debugLine="actualModificado = fecha/10000";
 _actualmodificado = (long) (_fecha/(double)10000);
-RDebugUtils.currentLine=3080239;
- //BA.debugLineNum = 3080239;BA.debugLine="fecha = fecha - actualModificado*10000";
+RDebugUtils.currentLine=5898265;
+ //BA.debugLineNum = 5898265;BA.debugLine="fecha = fecha - actualModificado*10000";
 _fecha = (long) (_fecha-_actualmodificado*10000);
-RDebugUtils.currentLine=3080240;
- //BA.debugLineNum = 3080240;BA.debugLine="Log(fechaActual)";
-anywheresoftware.b4a.keywords.Common.LogImpl("23080240",BA.NumberToString(_fechaactual),0);
-RDebugUtils.currentLine=3080241;
- //BA.debugLineNum = 3080241;BA.debugLine="Log(fecha)";
-anywheresoftware.b4a.keywords.Common.LogImpl("23080241",BA.NumberToString(_fecha),0);
-RDebugUtils.currentLine=3080242;
- //BA.debugLineNum = 3080242;BA.debugLine="If fecha < fechaActual Then";
+RDebugUtils.currentLine=5898266;
+ //BA.debugLineNum = 5898266;BA.debugLine="Log(fechaActual)";
+anywheresoftware.b4a.keywords.Common.LogImpl("85898266",BA.NumberToString(_fechaactual),0);
+RDebugUtils.currentLine=5898267;
+ //BA.debugLineNum = 5898267;BA.debugLine="Log(fecha)";
+anywheresoftware.b4a.keywords.Common.LogImpl("85898267",BA.NumberToString(_fecha),0);
+RDebugUtils.currentLine=5898268;
+ //BA.debugLineNum = 5898268;BA.debugLine="If fecha < fechaActual Then";
 if (_fecha<_fechaactual) { 
-RDebugUtils.currentLine=3080243;
- //BA.debugLineNum = 3080243;BA.debugLine="actualModificado = fechaActual/100 - fecha/100";
+RDebugUtils.currentLine=5898269;
+ //BA.debugLineNum = 5898269;BA.debugLine="actualModificado = fechaActual/100 - fecha/100";
 _actualmodificado = (long) (_fechaactual/(double)100-_fecha/(double)100);
  }else {
-RDebugUtils.currentLine=3080245;
- //BA.debugLineNum = 3080245;BA.debugLine="actualModificado = fechaActual/100 + (24 - fech";
+RDebugUtils.currentLine=5898271;
+ //BA.debugLineNum = 5898271;BA.debugLine="actualModificado = fechaActual/100 + (24 - fech";
 _actualmodificado = (long) (_fechaactual/(double)100+(24-_fecha/(double)100));
  };
-RDebugUtils.currentLine=3080248;
- //BA.debugLineNum = 3080248;BA.debugLine="mensaje = \"Actualizado hace \" & actualModificado";
+RDebugUtils.currentLine=5898274;
+ //BA.debugLineNum = 5898274;BA.debugLine="mensaje = \"Actualizado hace \" & actualModificado";
 _mensaje = "Actualizado hace "+BA.NumberToString(_actualmodificado)+" horas";
  }else 
-{RDebugUtils.currentLine=3080249;
- //BA.debugLineNum = 3080249;BA.debugLine="Else If actual < 1000000 Then";
+{RDebugUtils.currentLine=5898277;
+ //BA.debugLineNum = 5898277;BA.debugLine="Else If actual < 1000000 Then";
 if (_actual<1000000) { 
-RDebugUtils.currentLine=3080250;
- //BA.debugLineNum = 3080250;BA.debugLine="actualModificado = fechaActual/1000000";
+RDebugUtils.currentLine=5898278;
+ //BA.debugLineNum = 5898278;BA.debugLine="actualModificado = fechaActual/1000000";
 _actualmodificado = (long) (_fechaactual/(double)1000000);
-RDebugUtils.currentLine=3080251;
- //BA.debugLineNum = 3080251;BA.debugLine="fechaActual = fechaActual - actualModificado*100";
+RDebugUtils.currentLine=5898279;
+ //BA.debugLineNum = 5898279;BA.debugLine="fechaActual = fechaActual - actualModificado*100";
 _fechaactual = (long) (_fechaactual-_actualmodificado*1000000);
-RDebugUtils.currentLine=3080252;
- //BA.debugLineNum = 3080252;BA.debugLine="actualModificado = fecha/1000000";
+RDebugUtils.currentLine=5898280;
+ //BA.debugLineNum = 5898280;BA.debugLine="actualModificado = fecha/1000000";
 _actualmodificado = (long) (_fecha/(double)1000000);
-RDebugUtils.currentLine=3080253;
- //BA.debugLineNum = 3080253;BA.debugLine="fecha = fecha - actualModificado*1000000";
+RDebugUtils.currentLine=5898281;
+ //BA.debugLineNum = 5898281;BA.debugLine="fecha = fecha - actualModificado*1000000";
 _fecha = (long) (_fecha-_actualmodificado*1000000);
-RDebugUtils.currentLine=3080254;
- //BA.debugLineNum = 3080254;BA.debugLine="actualModificado = Abs(fechaActual - fecha)";
+RDebugUtils.currentLine=5898282;
+ //BA.debugLineNum = 5898282;BA.debugLine="actualModificado = Abs(fechaActual - fecha)";
 _actualmodificado = (long) (anywheresoftware.b4a.keywords.Common.Abs(_fechaactual-_fecha));
-RDebugUtils.currentLine=3080255;
- //BA.debugLineNum = 3080255;BA.debugLine="If fecha < fechaActual Then";
+RDebugUtils.currentLine=5898283;
+ //BA.debugLineNum = 5898283;BA.debugLine="If fecha < fechaActual Then";
 if (_fecha<_fechaactual) { 
-RDebugUtils.currentLine=3080256;
- //BA.debugLineNum = 3080256;BA.debugLine="actualModificado = fechaActual/10000 - fecha/10";
+RDebugUtils.currentLine=5898284;
+ //BA.debugLineNum = 5898284;BA.debugLine="actualModificado = fechaActual/10000 - fecha/10";
 _actualmodificado = (long) (_fechaactual/(double)10000-_fecha/(double)10000);
  }else {
-RDebugUtils.currentLine=3080258;
- //BA.debugLineNum = 3080258;BA.debugLine="actualModificado = fechaActual/10000 + (30 - fe";
+RDebugUtils.currentLine=5898286;
+ //BA.debugLineNum = 5898286;BA.debugLine="actualModificado = fechaActual/10000 + (30 - fe";
 _actualmodificado = (long) (_fechaactual/(double)10000+(30-_fecha/(double)10000));
  };
-RDebugUtils.currentLine=3080261;
- //BA.debugLineNum = 3080261;BA.debugLine="mensaje = \"Actualizado hace \" & actualModificado";
+RDebugUtils.currentLine=5898289;
+ //BA.debugLineNum = 5898289;BA.debugLine="mensaje = \"Actualizado hace \" & actualModificado";
 _mensaje = "Actualizado hace "+BA.NumberToString(_actualmodificado)+" dias";
  }else 
-{RDebugUtils.currentLine=3080262;
- //BA.debugLineNum = 3080262;BA.debugLine="Else If actual < 100000000 Then";
+{RDebugUtils.currentLine=5898292;
+ //BA.debugLineNum = 5898292;BA.debugLine="Else If actual < 100000000 Then";
 if (_actual<100000000) { 
-RDebugUtils.currentLine=3080263;
- //BA.debugLineNum = 3080263;BA.debugLine="actualModificado = fechaActual/100000000";
+RDebugUtils.currentLine=5898293;
+ //BA.debugLineNum = 5898293;BA.debugLine="actualModificado = fechaActual/100000000";
 _actualmodificado = (long) (_fechaactual/(double)100000000);
-RDebugUtils.currentLine=3080264;
- //BA.debugLineNum = 3080264;BA.debugLine="fechaActual = fechaActual - actualModificado*100";
+RDebugUtils.currentLine=5898294;
+ //BA.debugLineNum = 5898294;BA.debugLine="fechaActual = fechaActual - actualModificado*100";
 _fechaactual = (long) (_fechaactual-_actualmodificado*100000000);
-RDebugUtils.currentLine=3080265;
- //BA.debugLineNum = 3080265;BA.debugLine="actualModificado = fecha/100000000";
+RDebugUtils.currentLine=5898295;
+ //BA.debugLineNum = 5898295;BA.debugLine="actualModificado = fecha/100000000";
 _actualmodificado = (long) (_fecha/(double)100000000);
-RDebugUtils.currentLine=3080266;
- //BA.debugLineNum = 3080266;BA.debugLine="fecha = fecha - actualModificado*100000000";
+RDebugUtils.currentLine=5898296;
+ //BA.debugLineNum = 5898296;BA.debugLine="fecha = fecha - actualModificado*100000000";
 _fecha = (long) (_fecha-_actualmodificado*100000000);
-RDebugUtils.currentLine=3080267;
- //BA.debugLineNum = 3080267;BA.debugLine="actualModificado = Abs(fechaActual - fecha)";
+RDebugUtils.currentLine=5898297;
+ //BA.debugLineNum = 5898297;BA.debugLine="actualModificado = Abs(fechaActual - fecha)";
 _actualmodificado = (long) (anywheresoftware.b4a.keywords.Common.Abs(_fechaactual-_fecha));
-RDebugUtils.currentLine=3080268;
- //BA.debugLineNum = 3080268;BA.debugLine="If fecha < fechaActual Then";
+RDebugUtils.currentLine=5898298;
+ //BA.debugLineNum = 5898298;BA.debugLine="If fecha < fechaActual Then";
 if (_fecha<_fechaactual) { 
-RDebugUtils.currentLine=3080269;
- //BA.debugLineNum = 3080269;BA.debugLine="actualModificado = fechaActual/1000000 - fecha/";
+RDebugUtils.currentLine=5898299;
+ //BA.debugLineNum = 5898299;BA.debugLine="actualModificado = fechaActual/1000000 - fecha/";
 _actualmodificado = (long) (_fechaactual/(double)1000000-_fecha/(double)1000000);
  }else {
-RDebugUtils.currentLine=3080271;
- //BA.debugLineNum = 3080271;BA.debugLine="actualModificado = fechaActual/1000000 + (12 -";
+RDebugUtils.currentLine=5898301;
+ //BA.debugLineNum = 5898301;BA.debugLine="actualModificado = fechaActual/1000000 + (12 -";
 _actualmodificado = (long) (_fechaactual/(double)1000000+(12-_fecha/(double)1000000));
  };
-RDebugUtils.currentLine=3080274;
- //BA.debugLineNum = 3080274;BA.debugLine="mensaje = \"Actualizado hace \" & actualModificado";
+RDebugUtils.currentLine=5898304;
+ //BA.debugLineNum = 5898304;BA.debugLine="mensaje = \"Actualizado hace \" & actualModificado";
 _mensaje = "Actualizado hace "+BA.NumberToString(_actualmodificado)+" meses";
  }else {
-RDebugUtils.currentLine=3080276;
- //BA.debugLineNum = 3080276;BA.debugLine="mensaje = \"Desactualizado\"";
+RDebugUtils.currentLine=5898307;
+ //BA.debugLineNum = 5898307;BA.debugLine="mensaje = \"Desactualizado\"";
 _mensaje = "Desactualizado";
  }}}}
 ;
-RDebugUtils.currentLine=3080278;
- //BA.debugLineNum = 3080278;BA.debugLine="lbActualizado.Text = mensaje";
+RDebugUtils.currentLine=5898309;
+ //BA.debugLineNum = 5898309;BA.debugLine="lbActualizado.Text = mensaje";
 mostCurrent._lbactualizado.setText(BA.ObjectToCharSequence(_mensaje));
-RDebugUtils.currentLine=3080279;
- //BA.debugLineNum = 3080279;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5898310;
+ //BA.debugLineNum = 5898310;BA.debugLine="End Sub";
 return "";
 }
 public static String  _jobdone(b4a.example.httpjob _job) throws Exception{
 RDebugUtils.currentModule="datos_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "jobdone", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "jobdone", new Object[] {_job}));}
-RDebugUtils.currentLine=2949120;
- //BA.debugLineNum = 2949120;BA.debugLine="Sub JobDone (Job As HttpJob)";
-RDebugUtils.currentLine=2949121;
- //BA.debugLineNum = 2949121;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
-anywheresoftware.b4a.keywords.Common.LogImpl("22949121","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
-RDebugUtils.currentLine=2949122;
- //BA.debugLineNum = 2949122;BA.debugLine="If Job.Success = True Then";
+RDebugUtils.currentLine=5701632;
+ //BA.debugLineNum = 5701632;BA.debugLine="Sub JobDone (Job As HttpJob)";
+RDebugUtils.currentLine=5701633;
+ //BA.debugLineNum = 5701633;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
+anywheresoftware.b4a.keywords.Common.LogImpl("85701633","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
+RDebugUtils.currentLine=5701634;
+ //BA.debugLineNum = 5701634;BA.debugLine="If Job.Success = True Then";
 if (_job._success /*boolean*/ ==anywheresoftware.b4a.keywords.Common.True) { 
-RDebugUtils.currentLine=2949123;
- //BA.debugLineNum = 2949123;BA.debugLine="Select Job.JobName 'Nombre del proceso a traves";
+RDebugUtils.currentLine=5701635;
+ //BA.debugLineNum = 5701635;BA.debugLine="Select Job.JobName 'Nombre del proceso a traves";
 switch (BA.switchObjectToInt(_job._jobname /*String*/ ,"get","historial")) {
 case 0: {
-RDebugUtils.currentLine=2949125;
- //BA.debugLineNum = 2949125;BA.debugLine="cargarDatos(Job.GetString) 'se envia la cadena";
+RDebugUtils.currentLine=5701637;
+ //BA.debugLineNum = 5701637;BA.debugLine="cargarDatos(Job.GetString) 'se envia la cadena";
 _cargardatos(_job._getstring /*String*/ (null));
  break; }
 case 1: {
-RDebugUtils.currentLine=2949127;
- //BA.debugLineNum = 2949127;BA.debugLine="cargarEstado(Job.GetString)";
+RDebugUtils.currentLine=5701639;
+ //BA.debugLineNum = 5701639;BA.debugLine="cargarEstado(Job.GetString)";
 _cargarestado(_job._getstring /*String*/ (null));
  break; }
 }
 ;
  }else {
-RDebugUtils.currentLine=2949130;
- //BA.debugLineNum = 2949130;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("22949130","Error: "+_job._errormessage /*String*/ ,0);
-RDebugUtils.currentLine=2949131;
- //BA.debugLineNum = 2949131;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
+RDebugUtils.currentLine=5701642;
+ //BA.debugLineNum = 5701642;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
+anywheresoftware.b4a.keywords.Common.LogImpl("85701642","Error: "+_job._errormessage /*String*/ ,0);
+RDebugUtils.currentLine=5701643;
+ //BA.debugLineNum = 5701643;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error: "+_job._errormessage /*String*/ ),anywheresoftware.b4a.keywords.Common.True);
  };
-RDebugUtils.currentLine=2949133;
- //BA.debugLineNum = 2949133;BA.debugLine="Job.Release";
+RDebugUtils.currentLine=5701645;
+ //BA.debugLineNum = 5701645;BA.debugLine="Job.Release";
 _job._release /*String*/ (null);
-RDebugUtils.currentLine=2949134;
- //BA.debugLineNum = 2949134;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5701646;
+ //BA.debugLineNum = 5701646;BA.debugLine="End Sub";
 return "";
 }
 }

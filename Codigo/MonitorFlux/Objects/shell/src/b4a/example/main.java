@@ -59,6 +59,13 @@ public static RemoteObject _xui = RemoteObject.declareNull("anywheresoftware.b4a
 public static RemoteObject _tmrintro = RemoteObject.declareNull("anywheresoftware.b4a.objects.Timer");
 public static RemoteObject _lbfallas = RemoteObject.declareNull("anywheresoftware.b4a.objects.LabelWrapper");
 public static RemoteObject _lbbombas = RemoteObject.declareNull("anywheresoftware.b4a.objects.LabelWrapper");
+public static RemoteObject _urlget = RemoteObject.createImmutable("");
+public static RemoteObject _urlhistorial = RemoteObject.createImmutable("");
+public static RemoteObject _backendelessget = RemoteObject.declareNull("b4a.example.httpjob");
+public static RemoteObject _i = RemoteObject.createImmutable(0);
+public static RemoteObject _disfallando = RemoteObject.createImmutable(0);
+public static RemoteObject _list = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.List");
+public static RemoteObject _historial = RemoteObject.declareNull("b4a.example.httpjob");
 public static b4a.example.starter _starter = null;
 public static b4a.example.tutoriales_activity _tutoriales_activity = null;
 public static b4a.example.agregar_activity _agregar_activity = null;
@@ -66,6 +73,6 @@ public static b4a.example.monitor_activity _monitor_activity = null;
 public static b4a.example.datos_activity _datos_activity = null;
 public static b4a.example.httputils2service _httputils2service = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",main.mostCurrent._activity,"Agregar_Activity",Debug.moduleToString(b4a.example.agregar_activity.class),"Datos_Activity",Debug.moduleToString(b4a.example.datos_activity.class),"HttpUtils2Service",Debug.moduleToString(b4a.example.httputils2service.class),"lbBombas",main.mostCurrent._lbbombas,"lbFallas",main.mostCurrent._lbfallas,"Monitor_Activity",Debug.moduleToString(b4a.example.monitor_activity.class),"Starter",Debug.moduleToString(b4a.example.starter.class),"tmrIntro",main._tmrintro,"Tutoriales_Activity",Debug.moduleToString(b4a.example.tutoriales_activity.class),"xui",main._xui};
+		return new Object[] {"Activity",main.mostCurrent._activity,"Agregar_Activity",Debug.moduleToString(b4a.example.agregar_activity.class),"backendelessGet",main.mostCurrent._backendelessget,"Datos_Activity",Debug.moduleToString(b4a.example.datos_activity.class),"disFallando",main._disfallando,"historial",main.mostCurrent._historial,"HttpUtils2Service",Debug.moduleToString(b4a.example.httputils2service.class),"i",main._i,"lbBombas",main.mostCurrent._lbbombas,"lbFallas",main.mostCurrent._lbfallas,"list",main.mostCurrent._list,"Monitor_Activity",Debug.moduleToString(b4a.example.monitor_activity.class),"Starter",Debug.moduleToString(b4a.example.starter.class),"tmrIntro",main._tmrintro,"Tutoriales_Activity",Debug.moduleToString(b4a.example.tutoriales_activity.class),"urlGet",main.mostCurrent._urlget,"urlHistorial",main.mostCurrent._urlhistorial,"xui",main._xui};
 }
 }

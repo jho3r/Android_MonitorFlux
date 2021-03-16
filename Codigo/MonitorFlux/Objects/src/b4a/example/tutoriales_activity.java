@@ -356,50 +356,102 @@ public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="tutoriales_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}));}
-RDebugUtils.currentLine=1114112;
- //BA.debugLineNum = 1114112;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
-RDebugUtils.currentLine=1114115;
- //BA.debugLineNum = 1114115;BA.debugLine="Activity.RemoveAllViews";
+RDebugUtils.currentLine=3670016;
+ //BA.debugLineNum = 3670016;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+RDebugUtils.currentLine=3670019;
+ //BA.debugLineNum = 3670019;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=1114116;
- //BA.debugLineNum = 1114116;BA.debugLine="Activity.LoadLayout(\"Tutorial\")";
+RDebugUtils.currentLine=3670020;
+ //BA.debugLineNum = 3670020;BA.debugLine="Activity.LoadLayout(\"Tutorial\")";
 mostCurrent._activity.LoadLayout("Tutorial",mostCurrent.activityBA);
-RDebugUtils.currentLine=1114117;
- //BA.debugLineNum = 1114117;BA.debugLine="wv1.LoadUrl(\"https://www.youtube.com/watch?v=z7Ph";
+RDebugUtils.currentLine=3670021;
+ //BA.debugLineNum = 3670021;BA.debugLine="wv1.LoadUrl(\"https://www.youtube.com/watch?v=z7Ph";
 mostCurrent._wv1.LoadUrl("https://www.youtube.com/watch?v=z7PhdlezBfE");
-RDebugUtils.currentLine=1114118;
- //BA.debugLineNum = 1114118;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3670022;
+ //BA.debugLineNum = 3670022;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
+_setstatusbarcolor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (231),(int) (231),(int) (222)));
+RDebugUtils.currentLine=3670023;
+ //BA.debugLineNum = 3670023;BA.debugLine="End Sub";
+return "";
+}
+public static String  _setstatusbarcolor(int _clr) throws Exception{
+RDebugUtils.currentModule="tutoriales_activity";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "setstatusbarcolor", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "setstatusbarcolor", new Object[] {_clr}));}
+anywheresoftware.b4a.phone.Phone _p = null;
+anywheresoftware.b4j.object.JavaObject _jo = null;
+anywheresoftware.b4j.object.JavaObject _window = null;
+RDebugUtils.currentLine=3932160;
+ //BA.debugLineNum = 3932160;BA.debugLine="Sub SetStatusBarColor(clr As Int)";
+RDebugUtils.currentLine=3932161;
+ //BA.debugLineNum = 3932161;BA.debugLine="Dim p As Phone";
+_p = new anywheresoftware.b4a.phone.Phone();
+RDebugUtils.currentLine=3932162;
+ //BA.debugLineNum = 3932162;BA.debugLine="If p.SdkVersion >= 21 Then";
+if (_p.getSdkVersion()>=21) { 
+RDebugUtils.currentLine=3932163;
+ //BA.debugLineNum = 3932163;BA.debugLine="Dim jo As JavaObject";
+_jo = new anywheresoftware.b4j.object.JavaObject();
+RDebugUtils.currentLine=3932164;
+ //BA.debugLineNum = 3932164;BA.debugLine="jo.InitializeContext";
+_jo.InitializeContext(processBA);
+RDebugUtils.currentLine=3932165;
+ //BA.debugLineNum = 3932165;BA.debugLine="Dim window As JavaObject = jo.RunMethodJO(\"getWi";
+_window = new anywheresoftware.b4j.object.JavaObject();
+_window = _jo.RunMethodJO("getWindow",(Object[])(anywheresoftware.b4a.keywords.Common.Null));
+RDebugUtils.currentLine=3932166;
+ //BA.debugLineNum = 3932166;BA.debugLine="window.RunMethod(\"addFlags\", Array (0x80000000))";
+_window.RunMethod("addFlags",new Object[]{(Object)(0x80000000)});
+RDebugUtils.currentLine=3932167;
+ //BA.debugLineNum = 3932167;BA.debugLine="window.RunMethod(\"clearFlags\", Array (0x04000000";
+_window.RunMethod("clearFlags",new Object[]{(Object)(0x04000000)});
+RDebugUtils.currentLine=3932168;
+ //BA.debugLineNum = 3932168;BA.debugLine="window.RunMethod(\"setStatusBarColor\", Array(clr)";
+_window.RunMethod("setStatusBarColor",new Object[]{(Object)(_clr)});
+ };
+RDebugUtils.currentLine=3932170;
+ //BA.debugLineNum = 3932170;BA.debugLine="If p.SdkVersion >= 23 Then";
+if (_p.getSdkVersion()>=23) { 
+RDebugUtils.currentLine=3932171;
+ //BA.debugLineNum = 3932171;BA.debugLine="jo = Activity";
+_jo = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(mostCurrent._activity.getObject()));
+RDebugUtils.currentLine=3932172;
+ //BA.debugLineNum = 3932172;BA.debugLine="jo.RunMethod(\"setSystemUiVisibility\", Array(8192";
+_jo.RunMethod("setSystemUiVisibility",new Object[]{(Object)(8192)});
+ };
+RDebugUtils.currentLine=3932174;
+ //BA.debugLineNum = 3932174;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
 RDebugUtils.currentModule="tutoriales_activity";
-RDebugUtils.currentLine=1245184;
- //BA.debugLineNum = 1245184;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
-RDebugUtils.currentLine=1245186;
- //BA.debugLineNum = 1245186;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3801088;
+ //BA.debugLineNum = 3801088;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=3801090;
+ //BA.debugLineNum = 3801090;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
 RDebugUtils.currentModule="tutoriales_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null));}
-RDebugUtils.currentLine=1179648;
- //BA.debugLineNum = 1179648;BA.debugLine="Sub Activity_Resume";
-RDebugUtils.currentLine=1179650;
- //BA.debugLineNum = 1179650;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3735552;
+ //BA.debugLineNum = 3735552;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=3735554;
+ //BA.debugLineNum = 3735554;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnatras_click() throws Exception{
 RDebugUtils.currentModule="tutoriales_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "btnatras_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnatras_click", null));}
-RDebugUtils.currentLine=1310720;
- //BA.debugLineNum = 1310720;BA.debugLine="Sub btnAtras_Click";
-RDebugUtils.currentLine=1310721;
- //BA.debugLineNum = 1310721;BA.debugLine="Activity.Finish";
+RDebugUtils.currentLine=3866624;
+ //BA.debugLineNum = 3866624;BA.debugLine="Sub btnAtras_Click";
+RDebugUtils.currentLine=3866625;
+ //BA.debugLineNum = 3866625;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
-RDebugUtils.currentLine=1310722;
- //BA.debugLineNum = 1310722;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3866626;
+ //BA.debugLineNum = 3866626;BA.debugLine="End Sub";
 return "";
 }
 }

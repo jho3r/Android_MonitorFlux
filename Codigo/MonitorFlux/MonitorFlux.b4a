@@ -22,6 +22,8 @@ Library3=xcustomlistview
 Library4=ime
 Library5=okhttputils2
 Library6=json
+Library7=phone
+Library8=javaobject
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="29"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
 Module1=Agregar_Activity
 Module2=Datos_Activity
@@ -29,7 +31,7 @@ Module3=Monitor_Activity
 Module4=Starter
 Module5=Tutoriales_Activity
 NumberOfFiles=8
-NumberOfLibraries=6
+NumberOfLibraries=8
 NumberOfModules=5
 Version=10.2
 @EndOfDesignText@
@@ -58,6 +60,13 @@ Sub Globals
 	'These global variables will be redeclared each time the activity is created.
 	Private lbFallas As Label
 	Private lbBombas As Label
+	Dim urlGet As String
+	Dim urlHistorial As String
+	Dim backendelessGet As HttpJob 'se debe inicializar
+	Dim i As Int
+	Dim disFallando As Int
+	Dim list As List
+	Dim historial As HttpJob
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -70,11 +79,18 @@ Sub Activity_Create(FirstTime As Boolean)
 		Activity.LoadLayout("Principal")
 	End If
 	
-	
+	SetStatusBarColor(Colors.RGB(231,231,222))
+	urlHistorial = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial"
+	urlGet = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Dispositivos"
+	backendelessGet.Initialize("get",Me)
+	list.Initialize
 End Sub
 
 Sub Activity_Resume
-
+	If tmrIntro.Enabled = False Then
+		backendelessGet.Download(urlGet)
+	End If
+	
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
@@ -85,6 +101,7 @@ Sub tmrIntro_Tick
 	Activity.RemoveAllViews
 	Activity.LoadLayout("Principal")		'cargamos la pantalla principal y deshabilitamos el timer
 	tmrIntro.Enabled = False
+	backendelessGet.Download(urlGet)   'Cuando complete el proceso ejecutara jobDone
 End Sub
 
 Sub btnMonitoreo_Click
@@ -97,4 +114,84 @@ End Sub
 
 Sub btnTutorial_Click
 	StartActivity(Tutoriales_Activity)
+End Sub
+
+Sub SetStatusBarColor(clr As Int)
+	Dim p As Phone
+	If p.SdkVersion >= 21 Then
+		Dim jo As JavaObject
+		jo.InitializeContext
+		Dim window As JavaObject = jo.RunMethodJO("getWindow", Null)
+		window.RunMethod("addFlags", Array (0x80000000))
+		window.RunMethod("clearFlags", Array (0x04000000))
+		window.RunMethod("setStatusBarColor", Array(clr))
+	End If
+	If p.SdkVersion >= 23 Then
+		jo = Activity
+		jo.RunMethod("setSystemUiVisibility", Array(8192)) 'SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+	End If
+End Sub
+
+Sub JobDone (Job As HttpJob)
+	Log("JobName = " & Job.JobName & ", Success = " & Job.Success)
+	If Job.Success = True Then
+		Select Job.JobName 'Nombre del proceso a traves del cual se realizo la peticion
+			Case "get"
+				conteo(Job.GetString) 'se envia la cadena recibida para procesar
+			Case "historial"
+				fallando(Job.GetString)
+		End Select
+	Else
+		Log("Error: " & Job.ErrorMessage)
+		ToastMessageShow("Error: " & Job.ErrorMessage, True)
+	End If
+	Job.Release
+End Sub
+
+Sub conteo(res As String)
+	i=0
+	list.Clear
+	Dim parser As JSONParser 						'definimos objeto que permite procesar JSON
+	parser.Initialize(res)
+	Dim root As List = parser.NextArray
+	For Each colroot As Map In root				'map es similar a list solo que se hace con clave, dato y se añade con put
+		Dim nombre As String = colroot.Get("nombre")
+		list.Add(nombre)
+		i = i + 1
+	Next
+	lbBombas.Text = i & " Dispositivos"
+	historial.Initialize("historial",Me)
+	historial.Download(urlHistorial)
+End Sub
+
+Sub fallando(res As String)
+	disFallando = 0
+	Dim fecha As Long = 0
+	Dim parser As JSONParser 						'definimos objeto que permite procesar JSON
+	parser.Initialize(res)
+	Dim root As List = parser.NextArray
+	For a=0 To list.Size -1
+		For Each colroot As Map In root				'map es similar a list solo que se hace con clave, dato y se añade con put
+			' solo me interesan los datos que esten relacionados con la electrobomba actual
+			If colroot.Get("dispositivo") = list.Get(a) Then
+				'guardo el valor de fecha para comparar y obtener la mas reciente
+				Dim fechaEntra As Long = colroot.Get("fecha")
+				If fechaEntra >= fecha Then
+					Dim estado As String = colroot.Get("estado")
+					fecha = fechaEntra
+				End If
+			End If
+		Next
+		If estado = False Then
+			disFallando = disFallando + 1
+		End If
+		fecha = 0
+	Next
+	'Asignaicon de texto y cambio de color si hay una electrobomba fallando
+	lbFallas.Text = disFallando & " Fallando"
+	If disFallando > 0 Then
+		lbFallas.Color = Colors.ARGB(255,240,84,84)
+	Else
+		lbFallas.Color = Colors.ARGB(128,0,136,145)
+	End If
 End Sub

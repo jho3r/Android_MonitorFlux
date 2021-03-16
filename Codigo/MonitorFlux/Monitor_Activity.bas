@@ -31,6 +31,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	'Activity.LoadLayout("Layout1")
 	Activity.RemoveAllViews
 	Activity.LoadLayout("Monitoreo")
+	SetStatusBarColor(Colors.RGB(231,231,222))
 	urlGet = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Dispositivos"
 	backendelessGet.Initialize("get",Me)
 	backendelessGet.Download(urlGet)   'Cuando complete el proceso ejecutara jobDone
@@ -92,6 +93,22 @@ End Sub
 Sub lvElectro_ItemClick (Index As Int, Value As Object)
 	nombreD = listAlterna.Get(Value)
 	StartActivity(Datos_Activity)
+End Sub
+
+Sub SetStatusBarColor(clr As Int)
+	Dim p As Phone
+	If p.SdkVersion >= 21 Then
+		Dim jo As JavaObject
+		jo.InitializeContext
+		Dim window As JavaObject = jo.RunMethodJO("getWindow", Null)
+		window.RunMethod("addFlags", Array (0x80000000))
+		window.RunMethod("clearFlags", Array (0x04000000))
+		window.RunMethod("setStatusBarColor", Array(clr))
+	End If
+	If p.SdkVersion >= 23 Then
+		jo = Activity
+		jo.RunMethod("setSystemUiVisibility", Array(8192)) 'SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+	End If
 End Sub
 
 

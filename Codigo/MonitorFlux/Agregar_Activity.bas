@@ -30,6 +30,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	'Activity.LoadLayout("Layout1")
 	Activity.RemoveAllViews
 	Activity.LoadLayout("Agregar")
+	SetStatusBarColor(Colors.RGB(231,231,222))
 	ime.Initialize("")					'inicializo el ime
 	ime.SetLengthFilter(etNombre,24)	'Determino el limite de caracteres
 	ime.SetLengthFilter(etNumero,10)	'Determino el limite de caracteres
@@ -63,5 +64,21 @@ End Sub
 Sub etTiempo_FocusChanged (HasFocus As Boolean)
 	If HasFocus = True Then
 		etTiempo.ShowDropDown
+	End If
+End Sub
+
+Sub SetStatusBarColor(clr As Int)
+	Dim p As Phone
+	If p.SdkVersion >= 21 Then
+		Dim jo As JavaObject
+		jo.InitializeContext
+		Dim window As JavaObject = jo.RunMethodJO("getWindow", Null)
+		window.RunMethod("addFlags", Array (0x80000000))
+		window.RunMethod("clearFlags", Array (0x04000000))
+		window.RunMethod("setStatusBarColor", Array(clr))
+	End If
+	If p.SdkVersion >= 23 Then
+		jo = Activity
+		jo.RunMethod("setSystemUiVisibility", Array(8192)) 'SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 	End If
 End Sub

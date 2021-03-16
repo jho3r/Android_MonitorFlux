@@ -547,7 +547,7 @@ Debug.JustUpdateDeviceLine();
 if (RemoteObject.solveBoolean("=",_dir,httpjob.__c.getField(false,"File").runMethod(true,"getDirAssets"))) { 
  BA.debugLineNum = 155;BA.debugLine="Log(\"Cannot send files from the assets folder.\")";
 Debug.JustUpdateDeviceLine();
-httpjob.__c.runVoidMethod ("LogImpl","94456455",RemoteObject.createImmutable("Cannot send files from the assets folder."),0);
+httpjob.__c.runVoidMethod ("LogImpl","91638407",RemoteObject.createImmutable("Cannot send files from the assets folder."),0);
  BA.debugLineNum = 156;BA.debugLine="Return";
 Debug.JustUpdateDeviceLine();
 if (true) return RemoteObject.createImmutable("");
