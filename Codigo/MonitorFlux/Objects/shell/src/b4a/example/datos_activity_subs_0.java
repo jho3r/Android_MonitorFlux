@@ -342,10 +342,10 @@ Debug.ShouldStop(8388608);
 _fecha = RemoteObject.solve(new RemoteObject[] {_fecha,_actualmodificado,RemoteObject.createImmutable(10000)}, "-*",1, 2);Debug.locals.put("fecha", _fecha);
  BA.debugLineNum = 153;BA.debugLine="Log(fechaActual)";
 Debug.ShouldStop(16777216);
-datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","85898266",BA.NumberToString(_fechaactual),0);
+datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","43604506",BA.NumberToString(_fechaactual),0);
  BA.debugLineNum = 154;BA.debugLine="Log(fecha)";
 Debug.ShouldStop(33554432);
-datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","85898267",BA.NumberToString(_fecha),0);
+datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","43604507",BA.NumberToString(_fecha),0);
  BA.debugLineNum = 155;BA.debugLine="If fecha < fechaActual Then";
 Debug.ShouldStop(67108864);
 if (RemoteObject.solveBoolean("<",_fecha,_fechaactual)) { 
@@ -479,7 +479,7 @@ Debug.locals.put("Job", _job);
 Debug.ShouldStop(2097152);
  BA.debugLineNum = 55;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
 Debug.ShouldStop(4194304);
-datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","85701633",RemoteObject.concat(RemoteObject.createImmutable("JobName = "),_job.getField(true,"_jobname" /*RemoteObject*/ ),RemoteObject.createImmutable(", Success = "),_job.getField(true,"_success" /*RemoteObject*/ )),0);
+datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","43407873",RemoteObject.concat(RemoteObject.createImmutable("JobName = "),_job.getField(true,"_jobname" /*RemoteObject*/ ),RemoteObject.createImmutable(", Success = "),_job.getField(true,"_success" /*RemoteObject*/ )),0);
  BA.debugLineNum = 56;BA.debugLine="If Job.Success = True Then";
 Debug.ShouldStop(8388608);
 if (RemoteObject.solveBoolean("=",_job.getField(true,"_success" /*RemoteObject*/ ),datos_activity.mostCurrent.__c.getField(true,"True"))) { 
@@ -501,7 +501,7 @@ _cargarestado(_job.runClassMethod (b4a.example.httpjob.class, "_getstring" /*Rem
  }else {
  BA.debugLineNum = 64;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
 Debug.ShouldStop(-2147483648);
-datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","85701642",RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )),0);
+datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","43407882",RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )),0);
  BA.debugLineNum = 65;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 Debug.ShouldStop(1);
 datos_activity.mostCurrent.__c.runVoidMethod ("ToastMessageShow",(Object)(BA.ObjectToCharSequence(RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )))),(Object)(datos_activity.mostCurrent.__c.getField(true,"True")));

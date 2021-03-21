@@ -1,0 +1,55 @@
+.container-fluid{
+  padding: 0 15%;
+}
+
+/***********Navegacion ************/
+
+.navegacion{
+  padding: 1% 0;
+}
+
+/**********Descarga*****************/
+.descarga{
+  padding: 1% 0 2%;
+}
+
+.logo{
+  width: 60%;
+}
+
+
+.mockup{
+  width: 100%;
+}
+
+/****************Pantalla*****************/
+.pantallas{
+  padding: 2% 0;
+}
+.imgPantalla{
+  width: 100%;
+}
+
+/***************Hardware*******************/
+.hardware{
+  padding: 2% 0;
+}
+
+.imgHardware{
+  width: 100%;
+}
+
+/*************precios********************/
+.precios{
+  padding: 2% 0;
+}
+
+/************SUSCRIBIRME***************/
+.suscribirme{
+  padding: 4% 0;
+}
+
+/***********FOOTER***********/
+footer{
+  padding: 3% 0;
+}

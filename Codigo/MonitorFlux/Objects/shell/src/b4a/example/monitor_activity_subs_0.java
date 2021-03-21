@@ -219,7 +219,7 @@ Debug.locals.put("Job", _job);
 Debug.ShouldStop(32768);
  BA.debugLineNum = 49;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
 Debug.ShouldStop(65536);
-monitor_activity.mostCurrent.__c.runVoidMethod ("LogImpl","84980737",RemoteObject.concat(RemoteObject.createImmutable("JobName = "),_job.getField(true,"_jobname" /*RemoteObject*/ ),RemoteObject.createImmutable(", Success = "),_job.getField(true,"_success" /*RemoteObject*/ )),0);
+monitor_activity.mostCurrent.__c.runVoidMethod ("LogImpl","42686977",RemoteObject.concat(RemoteObject.createImmutable("JobName = "),_job.getField(true,"_jobname" /*RemoteObject*/ ),RemoteObject.createImmutable(", Success = "),_job.getField(true,"_success" /*RemoteObject*/ )),0);
  BA.debugLineNum = 50;BA.debugLine="If Job.Success = True Then";
 Debug.ShouldStop(131072);
 if (RemoteObject.solveBoolean("=",_job.getField(true,"_success" /*RemoteObject*/ ),monitor_activity.mostCurrent.__c.getField(true,"True"))) { 
@@ -236,7 +236,7 @@ _cargarvalores(_job.runClassMethod (b4a.example.httpjob.class, "_getstring" /*Re
  }else {
  BA.debugLineNum = 56;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
 Debug.ShouldStop(8388608);
-monitor_activity.mostCurrent.__c.runVoidMethod ("LogImpl","84980744",RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )),0);
+monitor_activity.mostCurrent.__c.runVoidMethod ("LogImpl","42686984",RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )),0);
  BA.debugLineNum = 57;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 Debug.ShouldStop(16777216);
 monitor_activity.mostCurrent.__c.runVoidMethod ("ToastMessageShow",(Object)(BA.ObjectToCharSequence(RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )))),(Object)(monitor_activity.mostCurrent.__c.getField(true,"True")));
