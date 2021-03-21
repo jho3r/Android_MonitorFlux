@@ -12,3 +12,9 @@ Esta inicialmente pensado para el monitoreo de electrobombas, pero la interfaz p
 - [x] Logo
 - [x] Paleta de colores
 - [x] Interfaz
+### 3. Pagina Web
+- [x] Landing page
+- [x] Pagina de tutoriales
+- [x] About 
+- [ ] Sing In
+- [ ] Analisis de datos
