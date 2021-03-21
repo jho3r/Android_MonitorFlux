@@ -54,6 +54,7 @@ Sub Process_Globals
 	'These variables can be accessed from all modules.
 	Private xui As XUI
 	Dim tmrIntro As Timer 'Timer para el intro de la aplicacion ahora se debe inicializar
+	Dim list As List
 End Sub
 
 Sub Globals
@@ -65,7 +66,6 @@ Sub Globals
 	Dim backendelessGet As HttpJob 'se debe inicializar
 	Dim i As Int
 	Dim disFallando As Int
-	Dim list As List
 	Dim historial As HttpJob
 End Sub
 
@@ -80,7 +80,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	End If
 	
 	SetStatusBarColor(Colors.RGB(231,231,222))
-	urlHistorial = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial"
+	urlHistorial = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial?pageSize=100"
 	urlGet = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Dispositivos"
 	backendelessGet.Initialize("get",Me)
 	list.Initialize
@@ -168,22 +168,24 @@ Sub fallando(res As String)
 	disFallando = 0
 	Dim fecha As Long = 0
 	Dim parser As JSONParser 						'definimos objeto que permite procesar JSON
-	parser.Initialize(res)
-	Dim root As List = parser.NextArray
 	For a=0 To list.Size -1
+		parser.Initialize(res)
+		Dim root As List = parser.NextArray
 		For Each colroot As Map In root				'map es similar a list solo que se hace con clave, dato y se añade con put
 			' solo me interesan los datos que esten relacionados con la electrobomba actual
 			If colroot.Get("dispositivo") = list.Get(a) Then
+				Log(list.Get(a))
 				'guardo el valor de fecha para comparar y obtener la mas reciente
 				Dim fechaEntra As Long = colroot.Get("fecha")
 				If fechaEntra >= fecha Then
-					Dim estado As String = colroot.Get("estado")
+					Dim estado As Boolean = colroot.Get("estado")
 					fecha = fechaEntra
 				End If
 			End If
 		Next
 		If estado = False Then
 			disFallando = disFallando + 1
+			Log(disFallando)
 		End If
 		fecha = 0
 	Next

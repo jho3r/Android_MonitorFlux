@@ -37,7 +37,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("Datos")
 	SetStatusBarColor(Colors.RGB(231,231,222))
 	urlGet = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Dispositivos"
-	urlHistorial = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial"
+	urlHistorial = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial?pageSize=100"
 	backendelessGet.Initialize("get",Me)
 	historial.Initialize("historial",Me)
 	backendelessGet.Download(urlGet)			'para cargar los datos generales de la electrobomba

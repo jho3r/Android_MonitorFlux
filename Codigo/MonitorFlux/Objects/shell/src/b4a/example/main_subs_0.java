@@ -38,7 +38,7 @@ Debug.ShouldStop(4096);
 _setstatusbarcolor(main.mostCurrent.__c.getField(false,"Colors").runMethod(true,"RGB",(Object)(BA.numberCast(int.class, 231)),(Object)(BA.numberCast(int.class, 231)),(Object)(BA.numberCast(int.class, 222))));
  BA.debugLineNum = 46;BA.debugLine="urlHistorial = \"https://api.backendless.com/85B70";
 Debug.ShouldStop(8192);
-main.mostCurrent._urlhistorial = BA.ObjectToString("https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial");
+main.mostCurrent._urlhistorial = BA.ObjectToString("https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial?pageSize=100");
  BA.debugLineNum = 47;BA.debugLine="urlGet = \"https://api.backendless.com/85B70858-21";
 Debug.ShouldStop(16384);
 main.mostCurrent._urlget = BA.ObjectToString("https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Dispositivos");
@@ -47,7 +47,7 @@ Debug.ShouldStop(32768);
 main.mostCurrent._backendelessget.runClassMethod (b4a.example.httpjob.class, "_initialize" /*RemoteObject*/ ,main.processBA,(Object)(BA.ObjectToString("get")),(Object)(main.getObject()));
  BA.debugLineNum = 49;BA.debugLine="list.Initialize";
 Debug.ShouldStop(65536);
-main.mostCurrent._list.runVoidMethod ("Initialize");
+main._list.runVoidMethod ("Initialize");
  BA.debugLineNum = 50;BA.debugLine="End Sub";
 Debug.ShouldStop(131072);
 return RemoteObject.createImmutable("");
@@ -171,7 +171,7 @@ Debug.ShouldStop(262144);
 main._i = BA.numberCast(int.class, 0);
  BA.debugLineNum = 116;BA.debugLine="list.Clear";
 Debug.ShouldStop(524288);
-main.mostCurrent._list.runVoidMethod ("Clear");
+main._list.runVoidMethod ("Clear");
  BA.debugLineNum = 117;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
 Debug.ShouldStop(1048576);
 _parser = RemoteObject.createNew ("anywheresoftware.b4a.objects.collections.JSONParser");Debug.locals.put("parser", _parser);
@@ -198,7 +198,7 @@ Debug.ShouldStop(16777216);
 _nombre = BA.ObjectToString(_colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("nombre")))));Debug.locals.put("nombre", _nombre);Debug.locals.put("nombre", _nombre);
  BA.debugLineNum = 122;BA.debugLine="list.Add(nombre)";
 Debug.ShouldStop(33554432);
-main.mostCurrent._list.runVoidMethod ("Add",(Object)((_nombre)));
+main._list.runVoidMethod ("Add",(Object)((_nombre)));
  BA.debugLineNum = 123;BA.debugLine="i = i + 1";
 Debug.ShouldStop(67108864);
 main._i = RemoteObject.solve(new RemoteObject[] {main._i,RemoteObject.createImmutable(1)}, "+",1, 1);
@@ -230,11 +230,11 @@ try {
 if (RapidSub.canDelegate("fallando")) { return b4a.example.main.remoteMe.runUserSub(false, "main","fallando", _res);}
 RemoteObject _fecha = RemoteObject.createImmutable(0L);
 RemoteObject _parser = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.JSONParser");
-RemoteObject _root = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.List");
 int _a = 0;
+RemoteObject _root = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.List");
 RemoteObject _colroot = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.Map");
 RemoteObject _fechaentra = RemoteObject.createImmutable(0L);
-RemoteObject _estado = RemoteObject.createImmutable("");
+RemoteObject _estado = RemoteObject.createImmutable(false);
 Debug.locals.put("res", _res);
  BA.debugLineNum = 130;BA.debugLine="Sub fallando(res As String)";
 Debug.ShouldStop(2);
@@ -247,21 +247,21 @@ _fecha = BA.numberCast(long.class, 0);Debug.locals.put("fecha", _fecha);Debug.lo
  BA.debugLineNum = 133;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
 Debug.ShouldStop(16);
 _parser = RemoteObject.createNew ("anywheresoftware.b4a.objects.collections.JSONParser");Debug.locals.put("parser", _parser);
- BA.debugLineNum = 134;BA.debugLine="parser.Initialize(res)";
+ BA.debugLineNum = 134;BA.debugLine="For a=0 To list.Size -1";
 Debug.ShouldStop(32);
-_parser.runVoidMethod ("Initialize",(Object)(_res));
- BA.debugLineNum = 135;BA.debugLine="Dim root As List = parser.NextArray";
+{
+final int step4 = 1;
+final int limit4 = RemoteObject.solve(new RemoteObject[] {main._list.runMethod(true,"getSize"),RemoteObject.createImmutable(1)}, "-",1, 1).<Integer>get().intValue();
+_a = 0 ;
+for (;(step4 > 0 && _a <= limit4) || (step4 < 0 && _a >= limit4) ;_a = ((int)(0 + _a + step4))  ) {
+Debug.locals.put("a", _a);
+ BA.debugLineNum = 135;BA.debugLine="parser.Initialize(res)";
 Debug.ShouldStop(64);
+_parser.runVoidMethod ("Initialize",(Object)(_res));
+ BA.debugLineNum = 136;BA.debugLine="Dim root As List = parser.NextArray";
+Debug.ShouldStop(128);
 _root = RemoteObject.createNew ("anywheresoftware.b4a.objects.collections.List");
 _root = _parser.runMethod(false,"NextArray");Debug.locals.put("root", _root);Debug.locals.put("root", _root);
- BA.debugLineNum = 136;BA.debugLine="For a=0 To list.Size -1";
-Debug.ShouldStop(128);
-{
-final int step6 = 1;
-final int limit6 = RemoteObject.solve(new RemoteObject[] {main.mostCurrent._list.runMethod(true,"getSize"),RemoteObject.createImmutable(1)}, "-",1, 1).<Integer>get().intValue();
-_a = 0 ;
-for (;(step6 > 0 && _a <= limit6) || (step6 < 0 && _a >= limit6) ;_a = ((int)(0 + _a + step6))  ) {
-Debug.locals.put("a", _a);
  BA.debugLineNum = 137;BA.debugLine="For Each colroot As Map In root				'map es simil";
 Debug.ShouldStop(256);
 _colroot = RemoteObject.createNew ("anywheresoftware.b4a.objects.collections.Map");
@@ -275,53 +275,59 @@ _colroot = RemoteObject.declareNull("anywheresoftware.b4a.AbsObjectWrapper").run
 Debug.locals.put("colroot", _colroot);
  BA.debugLineNum = 139;BA.debugLine="If colroot.Get(\"dispositivo\") = list.Get(a) The";
 Debug.ShouldStop(1024);
-if (RemoteObject.solveBoolean("=",_colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("dispositivo")))),main.mostCurrent._list.runMethod(false,"Get",(Object)(BA.numberCast(int.class, _a))))) { 
- BA.debugLineNum = 141;BA.debugLine="Dim fechaEntra As Long = colroot.Get(\"fecha\")";
-Debug.ShouldStop(4096);
-_fechaentra = BA.numberCast(long.class, _colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("fecha")))));Debug.locals.put("fechaEntra", _fechaentra);Debug.locals.put("fechaEntra", _fechaentra);
- BA.debugLineNum = 142;BA.debugLine="If fechaEntra >= fecha Then";
+if (RemoteObject.solveBoolean("=",_colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("dispositivo")))),main._list.runMethod(false,"Get",(Object)(BA.numberCast(int.class, _a))))) { 
+ BA.debugLineNum = 140;BA.debugLine="Log(list.Get(a))";
+Debug.ShouldStop(2048);
+main.mostCurrent.__c.runVoidMethod ("LogImpl","7786442",BA.ObjectToString(main._list.runMethod(false,"Get",(Object)(BA.numberCast(int.class, _a)))),0);
+ BA.debugLineNum = 142;BA.debugLine="Dim fechaEntra As Long = colroot.Get(\"fecha\")";
 Debug.ShouldStop(8192);
-if (RemoteObject.solveBoolean("g",_fechaentra,_fecha)) { 
- BA.debugLineNum = 143;BA.debugLine="Dim estado As String = colroot.Get(\"estado\")";
+_fechaentra = BA.numberCast(long.class, _colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("fecha")))));Debug.locals.put("fechaEntra", _fechaentra);Debug.locals.put("fechaEntra", _fechaentra);
+ BA.debugLineNum = 143;BA.debugLine="If fechaEntra >= fecha Then";
 Debug.ShouldStop(16384);
-_estado = BA.ObjectToString(_colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("estado")))));Debug.locals.put("estado", _estado);Debug.locals.put("estado", _estado);
- BA.debugLineNum = 144;BA.debugLine="fecha = fechaEntra";
+if (RemoteObject.solveBoolean("g",_fechaentra,_fecha)) { 
+ BA.debugLineNum = 144;BA.debugLine="Dim estado As Boolean = colroot.Get(\"estado\")";
 Debug.ShouldStop(32768);
+_estado = BA.ObjectToBoolean(_colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("estado")))));Debug.locals.put("estado", _estado);Debug.locals.put("estado", _estado);
+ BA.debugLineNum = 145;BA.debugLine="fecha = fechaEntra";
+Debug.ShouldStop(65536);
 _fecha = _fechaentra;Debug.locals.put("fecha", _fecha);
  };
  };
  }
 }Debug.locals.put("colroot", _colroot);
 ;
- BA.debugLineNum = 148;BA.debugLine="If estado = False Then";
-Debug.ShouldStop(524288);
-if (RemoteObject.solveBoolean("=",_estado,BA.ObjectToString(main.mostCurrent.__c.getField(true,"False")))) { 
- BA.debugLineNum = 149;BA.debugLine="disFallando = disFallando + 1";
+ BA.debugLineNum = 149;BA.debugLine="If estado = False Then";
 Debug.ShouldStop(1048576);
+if (RemoteObject.solveBoolean("=",_estado,main.mostCurrent.__c.getField(true,"False"))) { 
+ BA.debugLineNum = 150;BA.debugLine="disFallando = disFallando + 1";
+Debug.ShouldStop(2097152);
 main._disfallando = RemoteObject.solve(new RemoteObject[] {main._disfallando,RemoteObject.createImmutable(1)}, "+",1, 1);
- };
- BA.debugLineNum = 151;BA.debugLine="fecha = 0";
+ BA.debugLineNum = 151;BA.debugLine="Log(disFallando)";
 Debug.ShouldStop(4194304);
+main.mostCurrent.__c.runVoidMethod ("LogImpl","7786453",BA.NumberToString(main._disfallando),0);
+ };
+ BA.debugLineNum = 153;BA.debugLine="fecha = 0";
+Debug.ShouldStop(16777216);
 _fecha = BA.numberCast(long.class, 0);Debug.locals.put("fecha", _fecha);
  }
 }Debug.locals.put("a", _a);
 ;
- BA.debugLineNum = 154;BA.debugLine="lbFallas.Text = disFallando & \" Fallando\"";
-Debug.ShouldStop(33554432);
-main.mostCurrent._lbfallas.runMethod(true,"setText",BA.ObjectToCharSequence(RemoteObject.concat(main._disfallando,RemoteObject.createImmutable(" Fallando"))));
- BA.debugLineNum = 155;BA.debugLine="If disFallando > 0 Then";
-Debug.ShouldStop(67108864);
-if (RemoteObject.solveBoolean(">",main._disfallando,BA.numberCast(double.class, 0))) { 
- BA.debugLineNum = 156;BA.debugLine="lbFallas.Color = Colors.ARGB(255,240,84,84)";
+ BA.debugLineNum = 156;BA.debugLine="lbFallas.Text = disFallando & \" Fallando\"";
 Debug.ShouldStop(134217728);
+main.mostCurrent._lbfallas.runMethod(true,"setText",BA.ObjectToCharSequence(RemoteObject.concat(main._disfallando,RemoteObject.createImmutable(" Fallando"))));
+ BA.debugLineNum = 157;BA.debugLine="If disFallando > 0 Then";
+Debug.ShouldStop(268435456);
+if (RemoteObject.solveBoolean(">",main._disfallando,BA.numberCast(double.class, 0))) { 
+ BA.debugLineNum = 158;BA.debugLine="lbFallas.Color = Colors.ARGB(255,240,84,84)";
+Debug.ShouldStop(536870912);
 main.mostCurrent._lbfallas.runVoidMethod ("setColor",main.mostCurrent.__c.getField(false,"Colors").runMethod(true,"ARGB",(Object)(BA.numberCast(int.class, 255)),(Object)(BA.numberCast(int.class, 240)),(Object)(BA.numberCast(int.class, 84)),(Object)(BA.numberCast(int.class, 84))));
  }else {
- BA.debugLineNum = 158;BA.debugLine="lbFallas.Color = Colors.ARGB(128,0,136,145)";
-Debug.ShouldStop(536870912);
+ BA.debugLineNum = 160;BA.debugLine="lbFallas.Color = Colors.ARGB(128,0,136,145)";
+Debug.ShouldStop(-2147483648);
 main.mostCurrent._lbfallas.runVoidMethod ("setColor",main.mostCurrent.__c.getField(false,"Colors").runMethod(true,"ARGB",(Object)(BA.numberCast(int.class, 128)),(Object)(BA.numberCast(int.class, 0)),(Object)(BA.numberCast(int.class, 136)),(Object)(BA.numberCast(int.class, 145))));
  };
- BA.debugLineNum = 160;BA.debugLine="End Sub";
-Debug.ShouldStop(-2147483648);
+ BA.debugLineNum = 162;BA.debugLine="End Sub";
+Debug.ShouldStop(2);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {
@@ -331,23 +337,21 @@ finally {
 			Debug.PopSubsStack();
 		}}
 public static RemoteObject  _globals() throws Exception{
- //BA.debugLineNum = 22;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 24;BA.debugLine="Private lbFallas As Label";
+ //BA.debugLineNum = 23;BA.debugLine="Sub Globals";
+ //BA.debugLineNum = 25;BA.debugLine="Private lbFallas As Label";
 main.mostCurrent._lbfallas = RemoteObject.createNew ("anywheresoftware.b4a.objects.LabelWrapper");
- //BA.debugLineNum = 25;BA.debugLine="Private lbBombas As Label";
+ //BA.debugLineNum = 26;BA.debugLine="Private lbBombas As Label";
 main.mostCurrent._lbbombas = RemoteObject.createNew ("anywheresoftware.b4a.objects.LabelWrapper");
- //BA.debugLineNum = 26;BA.debugLine="Dim urlGet As String";
+ //BA.debugLineNum = 27;BA.debugLine="Dim urlGet As String";
 main.mostCurrent._urlget = RemoteObject.createImmutable("");
- //BA.debugLineNum = 27;BA.debugLine="Dim urlHistorial As String";
+ //BA.debugLineNum = 28;BA.debugLine="Dim urlHistorial As String";
 main.mostCurrent._urlhistorial = RemoteObject.createImmutable("");
- //BA.debugLineNum = 28;BA.debugLine="Dim backendelessGet As HttpJob 'se debe inicializ";
+ //BA.debugLineNum = 29;BA.debugLine="Dim backendelessGet As HttpJob 'se debe inicializ";
 main.mostCurrent._backendelessget = RemoteObject.createNew ("b4a.example.httpjob");
- //BA.debugLineNum = 29;BA.debugLine="Dim i As Int";
+ //BA.debugLineNum = 30;BA.debugLine="Dim i As Int";
 main._i = RemoteObject.createImmutable(0);
- //BA.debugLineNum = 30;BA.debugLine="Dim disFallando As Int";
+ //BA.debugLineNum = 31;BA.debugLine="Dim disFallando As Int";
 main._disfallando = RemoteObject.createImmutable(0);
- //BA.debugLineNum = 31;BA.debugLine="Dim list As List";
-main.mostCurrent._list = RemoteObject.createNew ("anywheresoftware.b4a.objects.collections.List");
  //BA.debugLineNum = 32;BA.debugLine="Dim historial As HttpJob";
 main.mostCurrent._historial = RemoteObject.createNew ("b4a.example.httpjob");
  //BA.debugLineNum = 33;BA.debugLine="End Sub";
@@ -362,7 +366,7 @@ Debug.locals.put("Job", _job);
 Debug.ShouldStop(2);
  BA.debugLineNum = 99;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
 Debug.ShouldStop(4);
-main.mostCurrent.__c.runVoidMethod ("LogImpl","4655361",RemoteObject.concat(RemoteObject.createImmutable("JobName = "),_job.getField(true,"_jobname" /*RemoteObject*/ ),RemoteObject.createImmutable(", Success = "),_job.getField(true,"_success" /*RemoteObject*/ )),0);
+main.mostCurrent.__c.runVoidMethod ("LogImpl","7655361",RemoteObject.concat(RemoteObject.createImmutable("JobName = "),_job.getField(true,"_jobname" /*RemoteObject*/ ),RemoteObject.createImmutable(", Success = "),_job.getField(true,"_success" /*RemoteObject*/ )),0);
  BA.debugLineNum = 100;BA.debugLine="If Job.Success = True Then";
 Debug.ShouldStop(8);
 if (RemoteObject.solveBoolean("=",_job.getField(true,"_success" /*RemoteObject*/ ),main.mostCurrent.__c.getField(true,"True"))) { 
@@ -384,7 +388,7 @@ _fallando(_job.runClassMethod (b4a.example.httpjob.class, "_getstring" /*RemoteO
  }else {
  BA.debugLineNum = 108;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
 Debug.ShouldStop(2048);
-main.mostCurrent.__c.runVoidMethod ("LogImpl","4655370",RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )),0);
+main.mostCurrent.__c.runVoidMethod ("LogImpl","7655370",RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )),0);
  BA.debugLineNum = 109;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 Debug.ShouldStop(4096);
 main.mostCurrent.__c.runVoidMethod ("ToastMessageShow",(Object)(BA.ObjectToCharSequence(RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )))),(Object)(main.mostCurrent.__c.getField(true,"True")));
@@ -434,7 +438,9 @@ httpjob.myClass = BA.getDeviceClass ("b4a.example.httpjob");
 main._xui = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper.XUI");
  //BA.debugLineNum = 19;BA.debugLine="Dim tmrIntro As Timer 'Timer para el intro de la";
 main._tmrintro = RemoteObject.createNew ("anywheresoftware.b4a.objects.Timer");
- //BA.debugLineNum = 20;BA.debugLine="End Sub";
+ //BA.debugLineNum = 20;BA.debugLine="Dim list As List";
+main._list = RemoteObject.createNew ("anywheresoftware.b4a.objects.collections.List");
+ //BA.debugLineNum = 21;BA.debugLine="End Sub";
 return RemoteObject.createImmutable("");
 }
 public static RemoteObject  _setstatusbarcolor(RemoteObject _clr) throws Exception{

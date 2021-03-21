@@ -26,7 +26,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	'Activity.LoadLayout("Layout1")
 	Activity.RemoveAllViews
 	Activity.LoadLayout("Tutorial")
-	wv1.LoadUrl("https://www.youtube.com/watch?v=z7PhdlezBfE")
+	wv1.LoadUrl("https://www.youtube-nocookie.com/embed/2pOUQB_Cvpw")
 	SetStatusBarColor(Colors.RGB(231,231,222))
 End Sub
 

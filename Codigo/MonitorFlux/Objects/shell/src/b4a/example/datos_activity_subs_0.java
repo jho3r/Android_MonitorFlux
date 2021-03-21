@@ -27,7 +27,7 @@ Debug.ShouldStop(1);
 datos_activity.mostCurrent._urlget = BA.ObjectToString("https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Dispositivos");
  BA.debugLineNum = 34;BA.debugLine="urlHistorial = \"https://api.backendless.com/85B70";
 Debug.ShouldStop(2);
-datos_activity.mostCurrent._urlhistorial = BA.ObjectToString("https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial");
+datos_activity.mostCurrent._urlhistorial = BA.ObjectToString("https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial?pageSize=100");
  BA.debugLineNum = 35;BA.debugLine="backendelessGet.Initialize(\"get\",Me)";
 Debug.ShouldStop(4);
 datos_activity.mostCurrent._backendelessget.runClassMethod (b4a.example.httpjob.class, "_initialize" /*RemoteObject*/ ,datos_activity.processBA,(Object)(BA.ObjectToString("get")),(Object)(datos_activity.getObject()));
@@ -342,10 +342,10 @@ Debug.ShouldStop(8388608);
 _fecha = RemoteObject.solve(new RemoteObject[] {_fecha,_actualmodificado,RemoteObject.createImmutable(10000)}, "-*",1, 2);Debug.locals.put("fecha", _fecha);
  BA.debugLineNum = 153;BA.debugLine="Log(fechaActual)";
 Debug.ShouldStop(16777216);
-datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","43604506",BA.NumberToString(_fechaactual),0);
+datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","73604506",BA.NumberToString(_fechaactual),0);
  BA.debugLineNum = 154;BA.debugLine="Log(fecha)";
 Debug.ShouldStop(33554432);
-datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","43604507",BA.NumberToString(_fecha),0);
+datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","73604507",BA.NumberToString(_fecha),0);
  BA.debugLineNum = 155;BA.debugLine="If fecha < fechaActual Then";
 Debug.ShouldStop(67108864);
 if (RemoteObject.solveBoolean("<",_fecha,_fechaactual)) { 
@@ -479,7 +479,7 @@ Debug.locals.put("Job", _job);
 Debug.ShouldStop(2097152);
  BA.debugLineNum = 55;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
 Debug.ShouldStop(4194304);
-datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","43407873",RemoteObject.concat(RemoteObject.createImmutable("JobName = "),_job.getField(true,"_jobname" /*RemoteObject*/ ),RemoteObject.createImmutable(", Success = "),_job.getField(true,"_success" /*RemoteObject*/ )),0);
+datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","73407873",RemoteObject.concat(RemoteObject.createImmutable("JobName = "),_job.getField(true,"_jobname" /*RemoteObject*/ ),RemoteObject.createImmutable(", Success = "),_job.getField(true,"_success" /*RemoteObject*/ )),0);
  BA.debugLineNum = 56;BA.debugLine="If Job.Success = True Then";
 Debug.ShouldStop(8388608);
 if (RemoteObject.solveBoolean("=",_job.getField(true,"_success" /*RemoteObject*/ ),datos_activity.mostCurrent.__c.getField(true,"True"))) { 
@@ -501,7 +501,7 @@ _cargarestado(_job.runClassMethod (b4a.example.httpjob.class, "_getstring" /*Rem
  }else {
  BA.debugLineNum = 64;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
 Debug.ShouldStop(-2147483648);
-datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","43407882",RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )),0);
+datos_activity.mostCurrent.__c.runVoidMethod ("LogImpl","73407882",RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )),0);
  BA.debugLineNum = 65;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 Debug.ShouldStop(1);
 datos_activity.mostCurrent.__c.runVoidMethod ("ToastMessageShow",(Object)(BA.ObjectToCharSequence(RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )))),(Object)(datos_activity.mostCurrent.__c.getField(true,"True")));

@@ -24,6 +24,9 @@ Sub Globals
 	Dim urlGet As String
 	Dim i As Int
 	Dim listAlterna As List
+	Dim historial As HttpJob
+	Dim urlHistorial As String
+	Dim disFallando As List
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -33,9 +36,11 @@ Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("Monitoreo")
 	SetStatusBarColor(Colors.RGB(231,231,222))
 	urlGet = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Dispositivos"
-	backendelessGet.Initialize("get",Me)
-	backendelessGet.Download(urlGet)   'Cuando complete el proceso ejecutara jobDone
+	urlHistorial = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial?pageSize=100"
+	historial.Initialize("historial",Me)
+	historial.Download(urlHistorial)
 	listAlterna.Initialize
+	disFallando.Initialize   'guarda el estado de los dispositivos
 End Sub
 
 Sub Activity_Resume
@@ -57,6 +62,8 @@ Sub JobDone (Job As HttpJob)
 		Select Job.JobName 'Nombre del proceso a traves del cual se realizo la peticion
 			Case "get"
 				cargarValores(Job.GetString) 'se envia la cadena recibida para procesar
+			Case "historial"
+				fallando(Job.GetString)
 		End Select
 	Else
 		Log("Error: " & Job.ErrorMessage)
@@ -77,6 +84,34 @@ Sub cargarValores (res As String)
 		addItems(nombre,i)
 		i = i + 1
 	Next
+	
+End Sub
+
+Sub fallando(res As String)
+	Dim fecha As Long = 0
+	Dim parser As JSONParser 						'definimos objeto que permite procesar JSON
+	parser.Initialize(res)
+	Dim root As List = parser.NextArray
+	For a=0 To Main.list.Size -1
+		For Each colroot As Map In root				'map es similar a list solo que se hace con clave, dato y se añade con put
+			' solo me interesan los datos que esten relacionados con la electrobomba actual
+			If colroot.Get("dispositivo") = Main.list.Get(a) Then
+				'guardo el valor de fecha para comparar y obtener la mas reciente
+				Dim fechaEntra As Long = colroot.Get("fecha")
+				If fechaEntra >= fecha Then
+					Dim estado As String = colroot.Get("estado")
+					fecha = fechaEntra
+				End If
+			End If
+		Next
+		If estado = False Then
+			disFallando.Add(Main.list.Get(a))
+		End If
+		fecha = 0
+	Next
+	
+	backendelessGet.Initialize("get",Me)
+	backendelessGet.Download(urlGet)   'Cuando complete el proceso ejecutara jobDone
 End Sub
 
 'https://www.bing.com/videos/search?q=list+view+b4a&docid=608046453639023701&mid=1876F562235070BDD5FF1876F562235070BDD5FF&view=detail&FORM=VIRE
@@ -86,6 +121,11 @@ Sub addItems (texto As String, orden As Int)
 	p.SetLayoutAnimated(100,0,0,100%x,10%y)
 	p.LoadLayout("Item")
 	lbDispositivo.Text=(texto)
+	For a=0 To disFallando.Size-1
+		If texto = disFallando.Get(a) Then
+			lbDispositivo.Color = Colors.ARGB(255,240,84,84)
+		End If
+	Next
 	lvElectro.Add(p,orden)
 	listAlterna.Add(texto)
 End Sub
