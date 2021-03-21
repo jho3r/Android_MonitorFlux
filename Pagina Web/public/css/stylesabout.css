@@ -1,0 +1,97 @@
+/*Colors
+#DDDDDD
+#222831
+#30475E
+#F05454
+*/
+/*FONTS
+font-family: 'Merriweather', serif; 400 900
+font-family: 'Ubuntu', sans-serif; 400 700
+*/
+body {
+  font-family: 'Ubuntu'
+}
+
+.btn{
+  font-family: 'Merriweather';
+}
+
+.container-fluid {
+  padding: 0 15%;
+}
+
+.claro {
+  background-color: #DDDDDD;
+  color: #222831;
+}
+
+.oscuro {
+  background-color: #222831;
+  color: #DDDDDD;
+}
+
+.hide{
+  position: absolute;
+  display: none;
+}
+
+/***********Navegacion ************/
+.navegacion {
+  padding: 1% 0;
+}
+
+.navbar-brand {
+  font-family: 'Merriweather', serif;
+  font-weight: 900;
+}
+
+.nav-link {
+  font-family: 'Merriweather', serif;
+  margin-left: 1.5rem;
+}
+
+.navbar-light .navbar-nav .nlink:hover {
+  color: #F05454;
+}
+
+.navbar-light .navbar-nav .signin {
+  background-color: #222831;
+  border-radius: 0.5rem;
+  color: #DDDDDD;
+  padding: 8px 2rem;
+}
+
+.navbar-light .navbar-nav .signin:hover {
+  background-color: #F05454;
+  color: #DDDDDD;
+}
+
+/***********NOSOTROS****************/
+.nosotros{
+    padding: 4% 0;
+}
+
+.imgProgramador{
+  width: 100%;
+}
+
+.nombre{
+  font-family: 'Merriweather', serif;
+}
+
+/************CONTACTO*****************/
+.contacto{
+  padding: 4% 0 2%;
+}
+
+.imgBrand{
+  width: 60%;
+}
+
+.tituloContacto{
+  font-family: 'Merriweather', serif;
+}
+/***********FOOTER***********/
+footer {
+  padding: 1% 0;
+}
