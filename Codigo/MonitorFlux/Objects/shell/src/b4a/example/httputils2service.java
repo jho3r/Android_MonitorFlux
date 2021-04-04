@@ -56,7 +56,9 @@ public static b4a.example.tutoriales_activity _tutoriales_activity = null;
 public static b4a.example.agregar_activity _agregar_activity = null;
 public static b4a.example.monitor_activity _monitor_activity = null;
 public static b4a.example.datos_activity _datos_activity = null;
+public static b4a.example.registrar_activity _registrar_activity = null;
+public static b4a.example.dbutils _dbutils = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Agregar_Activity",Debug.moduleToString(b4a.example.agregar_activity.class),"Datos_Activity",Debug.moduleToString(b4a.example.datos_activity.class),"hc",httputils2service._hc,"Main",Debug.moduleToString(b4a.example.main.class),"Monitor_Activity",Debug.moduleToString(b4a.example.monitor_activity.class),"Service",httputils2service.mostCurrent._service,"Starter",Debug.moduleToString(b4a.example.starter.class),"taskCounter",httputils2service._taskcounter,"TaskIdToJob",httputils2service._taskidtojob,"TempFolder",httputils2service._tempfolder,"Tutoriales_Activity",Debug.moduleToString(b4a.example.tutoriales_activity.class)};
+		return new Object[] {"Agregar_Activity",Debug.moduleToString(b4a.example.agregar_activity.class),"Datos_Activity",Debug.moduleToString(b4a.example.datos_activity.class),"DBUtils",Debug.moduleToString(b4a.example.dbutils.class),"hc",httputils2service._hc,"Main",Debug.moduleToString(b4a.example.main.class),"Monitor_Activity",Debug.moduleToString(b4a.example.monitor_activity.class),"Registrar_Activity",Debug.moduleToString(b4a.example.registrar_activity.class),"Service",httputils2service.mostCurrent._service,"Starter",Debug.moduleToString(b4a.example.starter.class),"taskCounter",httputils2service._taskcounter,"TaskIdToJob",httputils2service._taskidtojob,"TempFolder",httputils2service._tempfolder,"Tutoriales_Activity",Debug.moduleToString(b4a.example.tutoriales_activity.class)};
 }
 }

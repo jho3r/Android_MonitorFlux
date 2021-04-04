@@ -21,11 +21,11 @@ Sub Globals
 	'These variables can only be accessed from this module.
 	Private lvElectro As CustomListView
 	Private lbDispositivo As B4XView
-	Dim urlGet As String
+	Private urlGet As String
 	Dim i As Int
 	Dim listAlterna As List
 	Dim historial As HttpJob
-	Dim urlHistorial As String
+	Private urlHistorial As String
 	Dim disFallando As List
 End Sub
 
@@ -35,12 +35,12 @@ Sub Activity_Create(FirstTime As Boolean)
 	Activity.RemoveAllViews
 	Activity.LoadLayout("Monitoreo")
 	SetStatusBarColor(Colors.RGB(231,231,222))
-	urlGet = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Dispositivos"
-	urlHistorial = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial?pageSize=100"
+	urlGet = "https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/data/Dispositivos?where=ownerId%20%3D%20"
+	urlHistorial = Main.urlHistorial
 	historial.Initialize("historial",Me)
-	historial.Download(urlHistorial)
 	listAlterna.Initialize
 	disFallando.Initialize   'guarda el estado de los dispositivos
+	historial.Download(urlHistorial)
 End Sub
 
 Sub Activity_Resume
@@ -95,11 +95,11 @@ Sub fallando(res As String)
 	For a=0 To Main.list.Size -1
 		For Each colroot As Map In root				'map es similar a list solo que se hace con clave, dato y se añade con put
 			' solo me interesan los datos que esten relacionados con la electrobomba actual
-			If colroot.Get("dispositivo") = Main.list.Get(a) Then
+			If colroot.Get("id") = Main.list.Get(a) Then
 				'guardo el valor de fecha para comparar y obtener la mas reciente
 				Dim fechaEntra As Long = colroot.Get("fecha")
 				If fechaEntra >= fecha Then
-					Dim estado As String = colroot.Get("estado")
+					Dim estado As String = colroot.Get("encendida")
 					fecha = fechaEntra
 				End If
 			End If
@@ -111,7 +111,7 @@ Sub fallando(res As String)
 	Next
 	
 	backendelessGet.Initialize("get",Me)
-	backendelessGet.Download(urlGet)   'Cuando complete el proceso ejecutara jobDone
+	backendelessGet.Download(urlGet & "'" & Main.ID & "'")   'Cuando complete el proceso ejecutara jobDone
 End Sub
 
 'https://www.bing.com/videos/search?q=list+view+b4a&docid=608046453639023701&mid=1876F562235070BDD5FF1876F562235070BDD5FF&view=detail&FORM=VIRE

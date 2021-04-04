@@ -355,6 +355,7 @@ vis = vis | (tutoriales_activity.mostCurrent != null);
 vis = vis | (agregar_activity.mostCurrent != null);
 vis = vis | (monitor_activity.mostCurrent != null);
 vis = vis | (datos_activity.mostCurrent != null);
+vis = vis | (registrar_activity.mostCurrent != null);
 return vis;}
 
 private static BA killProgramHelper(BA ba) {
@@ -427,16 +428,30 @@ BA.applicationContext.stopService(new android.content.Intent(BA.applicationConte
             if (__a != null)
 				__a.finish();}
 
+ {
+            Activity __a = null;
+            if (registrar_activity.previousOne != null) {
+				__a = registrar_activity.previousOne.get();
+			}
+            else {
+                BA ba = killProgramHelper(registrar_activity.mostCurrent == null ? null : registrar_activity.mostCurrent.processBA);
+                if (ba != null) __a = ba.activity;
+            }
+            if (__a != null)
+				__a.finish();}
+
 BA.applicationContext.stopService(new android.content.Intent(BA.applicationContext, httputils2service.class));
 }
 public anywheresoftware.b4a.keywords.Common __c = null;
 public static anywheresoftware.b4a.objects.B4XViewWrapper.XUI _xui = null;
 public static anywheresoftware.b4a.objects.Timer _tmrintro = null;
 public static anywheresoftware.b4a.objects.collections.List _list = null;
+public static boolean _inicio = false;
+public static String _id = "";
+public static String _urlhistorial = "";
 public anywheresoftware.b4a.objects.LabelWrapper _lbfallas = null;
 public anywheresoftware.b4a.objects.LabelWrapper _lbbombas = null;
 public static String _urlget = "";
-public static String _urlhistorial = "";
 public b4a.example.httpjob _backendelessget = null;
 public static int _i = 0;
 public static int _disfallando = 0;
@@ -446,7 +461,9 @@ public b4a.example.tutoriales_activity _tutoriales_activity = null;
 public b4a.example.agregar_activity _agregar_activity = null;
 public b4a.example.monitor_activity _monitor_activity = null;
 public b4a.example.datos_activity _datos_activity = null;
+public b4a.example.registrar_activity _registrar_activity = null;
 public b4a.example.httputils2service _httputils2service = null;
+public b4a.example.dbutils _dbutils = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
@@ -465,31 +482,34 @@ _tmrintro.Initialize(processBA,"tmrIntro",(long) (3000));
 RDebugUtils.currentLine=131076;
  //BA.debugLineNum = 131076;BA.debugLine="tmrIntro.Enabled = True					'Se ejecuta en tmrIn";
 _tmrintro.setEnabled(anywheresoftware.b4a.keywords.Common.True);
+RDebugUtils.currentLine=131077;
+ //BA.debugLineNum = 131077;BA.debugLine="inicio = False";
+_inicio = anywheresoftware.b4a.keywords.Common.False;
  }else {
-RDebugUtils.currentLine=131078;
- //BA.debugLineNum = 131078;BA.debugLine="Activity.RemoveAllViews";
-mostCurrent._activity.RemoveAllViews();
 RDebugUtils.currentLine=131079;
- //BA.debugLineNum = 131079;BA.debugLine="Activity.LoadLayout(\"Principal\")";
+ //BA.debugLineNum = 131079;BA.debugLine="Activity.RemoveAllViews";
+mostCurrent._activity.RemoveAllViews();
+RDebugUtils.currentLine=131080;
+ //BA.debugLineNum = 131080;BA.debugLine="Activity.LoadLayout(\"Principal\")";
 mostCurrent._activity.LoadLayout("Principal",mostCurrent.activityBA);
  };
-RDebugUtils.currentLine=131082;
- //BA.debugLineNum = 131082;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
-_setstatusbarcolor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (231),(int) (231),(int) (222)));
 RDebugUtils.currentLine=131083;
- //BA.debugLineNum = 131083;BA.debugLine="urlHistorial = \"https://api.backendless.com/85B70";
-mostCurrent._urlhistorial = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial?pageSize=100";
+ //BA.debugLineNum = 131083;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
+_setstatusbarcolor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (231),(int) (231),(int) (222)));
 RDebugUtils.currentLine=131084;
- //BA.debugLineNum = 131084;BA.debugLine="urlGet = \"https://api.backendless.com/85B70858-21";
-mostCurrent._urlget = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Dispositivos";
+ //BA.debugLineNum = 131084;BA.debugLine="urlHistorial = \"https://api.backendless.com/4D759";
+_urlhistorial = "https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/data/Historial?pageSize=100&property=fecha&property=id&property=encendida&where=id%3D'000000'";
 RDebugUtils.currentLine=131085;
- //BA.debugLineNum = 131085;BA.debugLine="backendelessGet.Initialize(\"get\",Me)";
-mostCurrent._backendelessget._initialize /*String*/ (null,processBA,"get",main.getObject());
+ //BA.debugLineNum = 131085;BA.debugLine="urlGet = \"https://api.backendless.com/4D75900B-E5";
+mostCurrent._urlget = "https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/data/Dispositivos?where=ownerId%20%3D%20";
 RDebugUtils.currentLine=131086;
- //BA.debugLineNum = 131086;BA.debugLine="list.Initialize";
-_list.Initialize();
+ //BA.debugLineNum = 131086;BA.debugLine="backendelessGet.Initialize(\"get\",Me)";
+mostCurrent._backendelessget._initialize /*String*/ (null,processBA,"get",main.getObject());
 RDebugUtils.currentLine=131087;
- //BA.debugLineNum = 131087;BA.debugLine="End Sub";
+ //BA.debugLineNum = 131087;BA.debugLine="list.Initialize";
+_list.Initialize();
+RDebugUtils.currentLine=131088;
+ //BA.debugLineNum = 131088;BA.debugLine="End Sub";
 return "";
 }
 public static String  _setstatusbarcolor(int _clr) throws Exception{
@@ -499,46 +519,46 @@ if (Debug.shouldDelegate(mostCurrent.activityBA, "setstatusbarcolor", false))
 anywheresoftware.b4a.phone.Phone _p = null;
 anywheresoftware.b4j.object.JavaObject _jo = null;
 anywheresoftware.b4j.object.JavaObject _window = null;
-RDebugUtils.currentLine=589824;
- //BA.debugLineNum = 589824;BA.debugLine="Sub SetStatusBarColor(clr As Int)";
-RDebugUtils.currentLine=589825;
- //BA.debugLineNum = 589825;BA.debugLine="Dim p As Phone";
+RDebugUtils.currentLine=4259840;
+ //BA.debugLineNum = 4259840;BA.debugLine="Sub SetStatusBarColor(clr As Int)";
+RDebugUtils.currentLine=4259841;
+ //BA.debugLineNum = 4259841;BA.debugLine="Dim p As Phone";
 _p = new anywheresoftware.b4a.phone.Phone();
-RDebugUtils.currentLine=589826;
- //BA.debugLineNum = 589826;BA.debugLine="If p.SdkVersion >= 21 Then";
+RDebugUtils.currentLine=4259842;
+ //BA.debugLineNum = 4259842;BA.debugLine="If p.SdkVersion >= 21 Then";
 if (_p.getSdkVersion()>=21) { 
-RDebugUtils.currentLine=589827;
- //BA.debugLineNum = 589827;BA.debugLine="Dim jo As JavaObject";
+RDebugUtils.currentLine=4259843;
+ //BA.debugLineNum = 4259843;BA.debugLine="Dim jo As JavaObject";
 _jo = new anywheresoftware.b4j.object.JavaObject();
-RDebugUtils.currentLine=589828;
- //BA.debugLineNum = 589828;BA.debugLine="jo.InitializeContext";
+RDebugUtils.currentLine=4259844;
+ //BA.debugLineNum = 4259844;BA.debugLine="jo.InitializeContext";
 _jo.InitializeContext(processBA);
-RDebugUtils.currentLine=589829;
- //BA.debugLineNum = 589829;BA.debugLine="Dim window As JavaObject = jo.RunMethodJO(\"getWi";
+RDebugUtils.currentLine=4259845;
+ //BA.debugLineNum = 4259845;BA.debugLine="Dim window As JavaObject = jo.RunMethodJO(\"getWi";
 _window = new anywheresoftware.b4j.object.JavaObject();
 _window = _jo.RunMethodJO("getWindow",(Object[])(anywheresoftware.b4a.keywords.Common.Null));
-RDebugUtils.currentLine=589830;
- //BA.debugLineNum = 589830;BA.debugLine="window.RunMethod(\"addFlags\", Array (0x80000000))";
+RDebugUtils.currentLine=4259846;
+ //BA.debugLineNum = 4259846;BA.debugLine="window.RunMethod(\"addFlags\", Array (0x80000000))";
 _window.RunMethod("addFlags",new Object[]{(Object)(0x80000000)});
-RDebugUtils.currentLine=589831;
- //BA.debugLineNum = 589831;BA.debugLine="window.RunMethod(\"clearFlags\", Array (0x04000000";
+RDebugUtils.currentLine=4259847;
+ //BA.debugLineNum = 4259847;BA.debugLine="window.RunMethod(\"clearFlags\", Array (0x04000000";
 _window.RunMethod("clearFlags",new Object[]{(Object)(0x04000000)});
-RDebugUtils.currentLine=589832;
- //BA.debugLineNum = 589832;BA.debugLine="window.RunMethod(\"setStatusBarColor\", Array(clr)";
+RDebugUtils.currentLine=4259848;
+ //BA.debugLineNum = 4259848;BA.debugLine="window.RunMethod(\"setStatusBarColor\", Array(clr)";
 _window.RunMethod("setStatusBarColor",new Object[]{(Object)(_clr)});
  };
-RDebugUtils.currentLine=589834;
- //BA.debugLineNum = 589834;BA.debugLine="If p.SdkVersion >= 23 Then";
+RDebugUtils.currentLine=4259850;
+ //BA.debugLineNum = 4259850;BA.debugLine="If p.SdkVersion >= 23 Then";
 if (_p.getSdkVersion()>=23) { 
-RDebugUtils.currentLine=589835;
- //BA.debugLineNum = 589835;BA.debugLine="jo = Activity";
+RDebugUtils.currentLine=4259851;
+ //BA.debugLineNum = 4259851;BA.debugLine="jo = Activity";
 _jo = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(mostCurrent._activity.getObject()));
-RDebugUtils.currentLine=589836;
- //BA.debugLineNum = 589836;BA.debugLine="jo.RunMethod(\"setSystemUiVisibility\", Array(8192";
+RDebugUtils.currentLine=4259852;
+ //BA.debugLineNum = 4259852;BA.debugLine="jo.RunMethod(\"setSystemUiVisibility\", Array(8192";
 _jo.RunMethod("setSystemUiVisibility",new Object[]{(Object)(8192)});
  };
-RDebugUtils.currentLine=589838;
- //BA.debugLineNum = 589838;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4259854;
+ //BA.debugLineNum = 4259854;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
@@ -559,110 +579,147 @@ RDebugUtils.currentLine=196609;
  //BA.debugLineNum = 196609;BA.debugLine="If tmrIntro.Enabled = False Then";
 if (_tmrintro.getEnabled()==anywheresoftware.b4a.keywords.Common.False) { 
 RDebugUtils.currentLine=196610;
- //BA.debugLineNum = 196610;BA.debugLine="backendelessGet.Download(urlGet)";
-mostCurrent._backendelessget._download /*String*/ (null,mostCurrent._urlget);
+ //BA.debugLineNum = 196610;BA.debugLine="intentoInicio";
+_intentoinicio();
  };
-RDebugUtils.currentLine=196613;
- //BA.debugLineNum = 196613;BA.debugLine="End Sub";
+RDebugUtils.currentLine=196614;
+ //BA.debugLineNum = 196614;BA.debugLine="End Sub";
+return "";
+}
+public static String  _intentoinicio() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "intentoinicio", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "intentoinicio", null));}
+RDebugUtils.currentLine=4521984;
+ //BA.debugLineNum = 4521984;BA.debugLine="Sub intentoInicio";
+RDebugUtils.currentLine=4521986;
+ //BA.debugLineNum = 4521986;BA.debugLine="If inicio == False Then";
+if (_inicio==anywheresoftware.b4a.keywords.Common.False) { 
+RDebugUtils.currentLine=4521987;
+ //BA.debugLineNum = 4521987;BA.debugLine="StartActivity(Registrar_Activity)";
+anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)(mostCurrent._registrar_activity.getObject()));
+ }else {
+RDebugUtils.currentLine=4521990;
+ //BA.debugLineNum = 4521990;BA.debugLine="Activity.RemoveAllViews";
+mostCurrent._activity.RemoveAllViews();
+RDebugUtils.currentLine=4521991;
+ //BA.debugLineNum = 4521991;BA.debugLine="Activity.LoadLayout(\"Principal\")		'cargamos la p";
+mostCurrent._activity.LoadLayout("Principal",mostCurrent.activityBA);
+RDebugUtils.currentLine=4521992;
+ //BA.debugLineNum = 4521992;BA.debugLine="backendelessGet.Download(urlGet & \"'\" & ID & \"'\"";
+mostCurrent._backendelessget._download /*String*/ (null,mostCurrent._urlget+"'"+_id+"'");
+ };
+RDebugUtils.currentLine=4521996;
+ //BA.debugLineNum = 4521996;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnagregar_click() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "btnagregar_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnagregar_click", null));}
-RDebugUtils.currentLine=458752;
- //BA.debugLineNum = 458752;BA.debugLine="Sub btnAgregar_Click";
-RDebugUtils.currentLine=458753;
- //BA.debugLineNum = 458753;BA.debugLine="StartActivity(Agregar_Activity)";
+RDebugUtils.currentLine=4128768;
+ //BA.debugLineNum = 4128768;BA.debugLine="Sub btnAgregar_Click";
+RDebugUtils.currentLine=4128769;
+ //BA.debugLineNum = 4128769;BA.debugLine="StartActivity(Agregar_Activity)";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)(mostCurrent._agregar_activity.getObject()));
-RDebugUtils.currentLine=458754;
- //BA.debugLineNum = 458754;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4128770;
+ //BA.debugLineNum = 4128770;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnmonitoreo_click() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "btnmonitoreo_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnmonitoreo_click", null));}
-RDebugUtils.currentLine=393216;
- //BA.debugLineNum = 393216;BA.debugLine="Sub btnMonitoreo_Click";
-RDebugUtils.currentLine=393217;
- //BA.debugLineNum = 393217;BA.debugLine="StartActivity(Monitor_Activity)";
+RDebugUtils.currentLine=4063232;
+ //BA.debugLineNum = 4063232;BA.debugLine="Sub btnMonitoreo_Click";
+RDebugUtils.currentLine=4063233;
+ //BA.debugLineNum = 4063233;BA.debugLine="StartActivity(Monitor_Activity)";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)(mostCurrent._monitor_activity.getObject()));
-RDebugUtils.currentLine=393218;
- //BA.debugLineNum = 393218;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4063234;
+ //BA.debugLineNum = 4063234;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btntutorial_click() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "btntutorial_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btntutorial_click", null));}
-RDebugUtils.currentLine=524288;
- //BA.debugLineNum = 524288;BA.debugLine="Sub btnTutorial_Click";
-RDebugUtils.currentLine=524289;
- //BA.debugLineNum = 524289;BA.debugLine="StartActivity(Tutoriales_Activity)";
+RDebugUtils.currentLine=4194304;
+ //BA.debugLineNum = 4194304;BA.debugLine="Sub btnTutorial_Click";
+RDebugUtils.currentLine=4194305;
+ //BA.debugLineNum = 4194305;BA.debugLine="StartActivity(Tutoriales_Activity)";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)(mostCurrent._tutoriales_activity.getObject()));
-RDebugUtils.currentLine=524290;
- //BA.debugLineNum = 524290;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4194306;
+ //BA.debugLineNum = 4194306;BA.debugLine="End Sub";
 return "";
 }
 public static String  _conteo(String _res) throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "conteo", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "conteo", new Object[] {_res}));}
+String _historialmas = "";
 anywheresoftware.b4a.objects.collections.JSONParser _parser = null;
 anywheresoftware.b4a.objects.collections.List _root = null;
 anywheresoftware.b4a.objects.collections.Map _colroot = null;
 String _nombre = "";
-RDebugUtils.currentLine=720896;
- //BA.debugLineNum = 720896;BA.debugLine="Sub conteo(res As String)";
-RDebugUtils.currentLine=720897;
- //BA.debugLineNum = 720897;BA.debugLine="i=0";
+RDebugUtils.currentLine=4390912;
+ //BA.debugLineNum = 4390912;BA.debugLine="Sub conteo(res As String)";
+RDebugUtils.currentLine=4390913;
+ //BA.debugLineNum = 4390913;BA.debugLine="i=0";
 _i = (int) (0);
-RDebugUtils.currentLine=720898;
- //BA.debugLineNum = 720898;BA.debugLine="list.Clear";
+RDebugUtils.currentLine=4390914;
+ //BA.debugLineNum = 4390914;BA.debugLine="Dim historialmas As String = \"\"";
+_historialmas = "";
+RDebugUtils.currentLine=4390915;
+ //BA.debugLineNum = 4390915;BA.debugLine="list.Clear";
 _list.Clear();
-RDebugUtils.currentLine=720899;
- //BA.debugLineNum = 720899;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
+RDebugUtils.currentLine=4390916;
+ //BA.debugLineNum = 4390916;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
 _parser = new anywheresoftware.b4a.objects.collections.JSONParser();
-RDebugUtils.currentLine=720900;
- //BA.debugLineNum = 720900;BA.debugLine="parser.Initialize(res)";
+RDebugUtils.currentLine=4390917;
+ //BA.debugLineNum = 4390917;BA.debugLine="parser.Initialize(res)";
 _parser.Initialize(_res);
-RDebugUtils.currentLine=720901;
- //BA.debugLineNum = 720901;BA.debugLine="Dim root As List = parser.NextArray";
+RDebugUtils.currentLine=4390918;
+ //BA.debugLineNum = 4390918;BA.debugLine="Dim root As List = parser.NextArray";
 _root = new anywheresoftware.b4a.objects.collections.List();
 _root = _parser.NextArray();
-RDebugUtils.currentLine=720902;
- //BA.debugLineNum = 720902;BA.debugLine="For Each colroot As Map In root				'map es simila";
+RDebugUtils.currentLine=4390919;
+ //BA.debugLineNum = 4390919;BA.debugLine="For Each colroot As Map In root				'map es simila";
 _colroot = new anywheresoftware.b4a.objects.collections.Map();
 {
-final anywheresoftware.b4a.BA.IterableList group6 = _root;
-final int groupLen6 = group6.getSize()
-;int index6 = 0;
+final anywheresoftware.b4a.BA.IterableList group7 = _root;
+final int groupLen7 = group7.getSize()
+;int index7 = 0;
 ;
-for (; index6 < groupLen6;index6++){
-_colroot = (anywheresoftware.b4a.objects.collections.Map) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.Map(), (anywheresoftware.b4a.objects.collections.Map.MyMap)(group6.Get(index6)));
-RDebugUtils.currentLine=720903;
- //BA.debugLineNum = 720903;BA.debugLine="Dim nombre As String = colroot.Get(\"nombre\")";
-_nombre = BA.ObjectToString(_colroot.Get((Object)("nombre")));
-RDebugUtils.currentLine=720904;
- //BA.debugLineNum = 720904;BA.debugLine="list.Add(nombre)";
+for (; index7 < groupLen7;index7++){
+_colroot = (anywheresoftware.b4a.objects.collections.Map) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.Map(), (anywheresoftware.b4a.objects.collections.Map.MyMap)(group7.Get(index7)));
+RDebugUtils.currentLine=4390920;
+ //BA.debugLineNum = 4390920;BA.debugLine="Dim nombre As String = colroot.Get(\"id\")";
+_nombre = BA.ObjectToString(_colroot.Get((Object)("id")));
+RDebugUtils.currentLine=4390921;
+ //BA.debugLineNum = 4390921;BA.debugLine="list.Add(nombre)";
 _list.Add((Object)(_nombre));
-RDebugUtils.currentLine=720905;
- //BA.debugLineNum = 720905;BA.debugLine="i = i + 1";
+RDebugUtils.currentLine=4390922;
+ //BA.debugLineNum = 4390922;BA.debugLine="i = i + 1";
 _i = (int) (_i+1);
+RDebugUtils.currentLine=4390923;
+ //BA.debugLineNum = 4390923;BA.debugLine="historialmas = historialmas & \"%20or%20id%3D'\"&n";
+_historialmas = _historialmas+"%20or%20id%3D'"+_nombre+"'";
  }
 };
-RDebugUtils.currentLine=720907;
- //BA.debugLineNum = 720907;BA.debugLine="lbBombas.Text = i & \" Dispositivos\"";
+RDebugUtils.currentLine=4390925;
+ //BA.debugLineNum = 4390925;BA.debugLine="lbBombas.Text = i & \" Dispositivos\"";
 mostCurrent._lbbombas.setText(BA.ObjectToCharSequence(BA.NumberToString(_i)+" Dispositivos"));
-RDebugUtils.currentLine=720908;
- //BA.debugLineNum = 720908;BA.debugLine="historial.Initialize(\"historial\",Me)";
+RDebugUtils.currentLine=4390926;
+ //BA.debugLineNum = 4390926;BA.debugLine="historial.Initialize(\"historial\",Me)";
 mostCurrent._historial._initialize /*String*/ (null,processBA,"historial",main.getObject());
-RDebugUtils.currentLine=720909;
- //BA.debugLineNum = 720909;BA.debugLine="historial.Download(urlHistorial)";
-mostCurrent._historial._download /*String*/ (null,mostCurrent._urlhistorial);
-RDebugUtils.currentLine=720910;
- //BA.debugLineNum = 720910;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4390927;
+ //BA.debugLineNum = 4390927;BA.debugLine="urlHistorial = urlHistorial & historialmas";
+_urlhistorial = _urlhistorial+_historialmas;
+RDebugUtils.currentLine=4390928;
+ //BA.debugLineNum = 4390928;BA.debugLine="historial.Download(urlHistorial)";
+mostCurrent._historial._download /*String*/ (null,_urlhistorial);
+RDebugUtils.currentLine=4390929;
+ //BA.debugLineNum = 4390929;BA.debugLine="End Sub";
 return "";
 }
 public static String  _fallando(String _res) throws Exception{
@@ -676,33 +733,33 @@ anywheresoftware.b4a.objects.collections.List _root = null;
 anywheresoftware.b4a.objects.collections.Map _colroot = null;
 long _fechaentra = 0L;
 boolean _estado = false;
-RDebugUtils.currentLine=786432;
- //BA.debugLineNum = 786432;BA.debugLine="Sub fallando(res As String)";
-RDebugUtils.currentLine=786433;
- //BA.debugLineNum = 786433;BA.debugLine="disFallando = 0";
+RDebugUtils.currentLine=4456448;
+ //BA.debugLineNum = 4456448;BA.debugLine="Sub fallando(res As String)";
+RDebugUtils.currentLine=4456449;
+ //BA.debugLineNum = 4456449;BA.debugLine="disFallando = 0";
 _disfallando = (int) (0);
-RDebugUtils.currentLine=786434;
- //BA.debugLineNum = 786434;BA.debugLine="Dim fecha As Long = 0";
+RDebugUtils.currentLine=4456450;
+ //BA.debugLineNum = 4456450;BA.debugLine="Dim fecha As Long = 0";
 _fecha = (long) (0);
-RDebugUtils.currentLine=786435;
- //BA.debugLineNum = 786435;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
+RDebugUtils.currentLine=4456451;
+ //BA.debugLineNum = 4456451;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
 _parser = new anywheresoftware.b4a.objects.collections.JSONParser();
-RDebugUtils.currentLine=786436;
- //BA.debugLineNum = 786436;BA.debugLine="For a=0 To list.Size -1";
+RDebugUtils.currentLine=4456452;
+ //BA.debugLineNum = 4456452;BA.debugLine="For a=0 To list.Size -1";
 {
 final int step4 = 1;
 final int limit4 = (int) (_list.getSize()-1);
 _a = (int) (0) ;
 for (;_a <= limit4 ;_a = _a + step4 ) {
-RDebugUtils.currentLine=786437;
- //BA.debugLineNum = 786437;BA.debugLine="parser.Initialize(res)";
+RDebugUtils.currentLine=4456453;
+ //BA.debugLineNum = 4456453;BA.debugLine="parser.Initialize(res)";
 _parser.Initialize(_res);
-RDebugUtils.currentLine=786438;
- //BA.debugLineNum = 786438;BA.debugLine="Dim root As List = parser.NextArray";
+RDebugUtils.currentLine=4456454;
+ //BA.debugLineNum = 4456454;BA.debugLine="Dim root As List = parser.NextArray";
 _root = new anywheresoftware.b4a.objects.collections.List();
 _root = _parser.NextArray();
-RDebugUtils.currentLine=786439;
- //BA.debugLineNum = 786439;BA.debugLine="For Each colroot As Map In root				'map es simil";
+RDebugUtils.currentLine=4456455;
+ //BA.debugLineNum = 4456455;BA.debugLine="For Each colroot As Map In root				'map es simil";
 _colroot = new anywheresoftware.b4a.objects.collections.Map();
 {
 final anywheresoftware.b4a.BA.IterableList group7 = _root;
@@ -711,123 +768,120 @@ final int groupLen7 = group7.getSize()
 ;
 for (; index7 < groupLen7;index7++){
 _colroot = (anywheresoftware.b4a.objects.collections.Map) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.Map(), (anywheresoftware.b4a.objects.collections.Map.MyMap)(group7.Get(index7)));
-RDebugUtils.currentLine=786441;
- //BA.debugLineNum = 786441;BA.debugLine="If colroot.Get(\"dispositivo\") = list.Get(a) The";
-if ((_colroot.Get((Object)("dispositivo"))).equals(_list.Get(_a))) { 
-RDebugUtils.currentLine=786442;
- //BA.debugLineNum = 786442;BA.debugLine="Log(list.Get(a))";
-anywheresoftware.b4a.keywords.Common.LogImpl("7786442",BA.ObjectToString(_list.Get(_a)),0);
-RDebugUtils.currentLine=786444;
- //BA.debugLineNum = 786444;BA.debugLine="Dim fechaEntra As Long = colroot.Get(\"fecha\")";
+RDebugUtils.currentLine=4456457;
+ //BA.debugLineNum = 4456457;BA.debugLine="If colroot.Get(\"id\") = list.Get(a) Then";
+if ((_colroot.Get((Object)("id"))).equals(_list.Get(_a))) { 
+RDebugUtils.currentLine=4456458;
+ //BA.debugLineNum = 4456458;BA.debugLine="Log(list.Get(a))";
+anywheresoftware.b4a.keywords.Common.LogImpl("14456458",BA.ObjectToString(_list.Get(_a)),0);
+RDebugUtils.currentLine=4456460;
+ //BA.debugLineNum = 4456460;BA.debugLine="Dim fechaEntra As Long = colroot.Get(\"fecha\")";
 _fechaentra = BA.ObjectToLongNumber(_colroot.Get((Object)("fecha")));
-RDebugUtils.currentLine=786445;
- //BA.debugLineNum = 786445;BA.debugLine="If fechaEntra >= fecha Then";
+RDebugUtils.currentLine=4456461;
+ //BA.debugLineNum = 4456461;BA.debugLine="If fechaEntra >= fecha Then";
 if (_fechaentra>=_fecha) { 
-RDebugUtils.currentLine=786446;
- //BA.debugLineNum = 786446;BA.debugLine="Dim estado As Boolean = colroot.Get(\"estado\")";
-_estado = BA.ObjectToBoolean(_colroot.Get((Object)("estado")));
-RDebugUtils.currentLine=786447;
- //BA.debugLineNum = 786447;BA.debugLine="fecha = fechaEntra";
+RDebugUtils.currentLine=4456462;
+ //BA.debugLineNum = 4456462;BA.debugLine="Dim estado As Boolean = colroot.Get(\"encendid";
+_estado = BA.ObjectToBoolean(_colroot.Get((Object)("encendida")));
+RDebugUtils.currentLine=4456463;
+ //BA.debugLineNum = 4456463;BA.debugLine="fecha = fechaEntra";
 _fecha = _fechaentra;
  };
  };
  }
 };
-RDebugUtils.currentLine=786451;
- //BA.debugLineNum = 786451;BA.debugLine="If estado = False Then";
+RDebugUtils.currentLine=4456467;
+ //BA.debugLineNum = 4456467;BA.debugLine="If estado = False Then";
 if (_estado==anywheresoftware.b4a.keywords.Common.False) { 
-RDebugUtils.currentLine=786452;
- //BA.debugLineNum = 786452;BA.debugLine="disFallando = disFallando + 1";
+RDebugUtils.currentLine=4456468;
+ //BA.debugLineNum = 4456468;BA.debugLine="disFallando = disFallando + 1";
 _disfallando = (int) (_disfallando+1);
-RDebugUtils.currentLine=786453;
- //BA.debugLineNum = 786453;BA.debugLine="Log(disFallando)";
-anywheresoftware.b4a.keywords.Common.LogImpl("7786453",BA.NumberToString(_disfallando),0);
+RDebugUtils.currentLine=4456469;
+ //BA.debugLineNum = 4456469;BA.debugLine="Log(disFallando)";
+anywheresoftware.b4a.keywords.Common.LogImpl("14456469",BA.NumberToString(_disfallando),0);
  };
-RDebugUtils.currentLine=786455;
- //BA.debugLineNum = 786455;BA.debugLine="fecha = 0";
+RDebugUtils.currentLine=4456471;
+ //BA.debugLineNum = 4456471;BA.debugLine="fecha = 0";
 _fecha = (long) (0);
  }
 };
-RDebugUtils.currentLine=786458;
- //BA.debugLineNum = 786458;BA.debugLine="lbFallas.Text = disFallando & \" Fallando\"";
+RDebugUtils.currentLine=4456474;
+ //BA.debugLineNum = 4456474;BA.debugLine="lbFallas.Text = disFallando & \" Fallando\"";
 mostCurrent._lbfallas.setText(BA.ObjectToCharSequence(BA.NumberToString(_disfallando)+" Fallando"));
-RDebugUtils.currentLine=786459;
- //BA.debugLineNum = 786459;BA.debugLine="If disFallando > 0 Then";
+RDebugUtils.currentLine=4456475;
+ //BA.debugLineNum = 4456475;BA.debugLine="If disFallando > 0 Then";
 if (_disfallando>0) { 
-RDebugUtils.currentLine=786460;
- //BA.debugLineNum = 786460;BA.debugLine="lbFallas.Color = Colors.ARGB(255,240,84,84)";
+RDebugUtils.currentLine=4456476;
+ //BA.debugLineNum = 4456476;BA.debugLine="lbFallas.Color = Colors.ARGB(255,240,84,84)";
 mostCurrent._lbfallas.setColor(anywheresoftware.b4a.keywords.Common.Colors.ARGB((int) (255),(int) (240),(int) (84),(int) (84)));
  }else {
-RDebugUtils.currentLine=786462;
- //BA.debugLineNum = 786462;BA.debugLine="lbFallas.Color = Colors.ARGB(128,0,136,145)";
+RDebugUtils.currentLine=4456478;
+ //BA.debugLineNum = 4456478;BA.debugLine="lbFallas.Color = Colors.ARGB(128,0,136,145)";
 mostCurrent._lbfallas.setColor(anywheresoftware.b4a.keywords.Common.Colors.ARGB((int) (128),(int) (0),(int) (136),(int) (145)));
  };
-RDebugUtils.currentLine=786464;
- //BA.debugLineNum = 786464;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4456480;
+ //BA.debugLineNum = 4456480;BA.debugLine="End Sub";
 return "";
 }
 public static String  _jobdone(b4a.example.httpjob _job) throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "jobdone", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "jobdone", new Object[] {_job}));}
-RDebugUtils.currentLine=655360;
- //BA.debugLineNum = 655360;BA.debugLine="Sub JobDone (Job As HttpJob)";
-RDebugUtils.currentLine=655361;
- //BA.debugLineNum = 655361;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
-anywheresoftware.b4a.keywords.Common.LogImpl("7655361","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
-RDebugUtils.currentLine=655362;
- //BA.debugLineNum = 655362;BA.debugLine="If Job.Success = True Then";
+RDebugUtils.currentLine=4325376;
+ //BA.debugLineNum = 4325376;BA.debugLine="Sub JobDone (Job As HttpJob)";
+RDebugUtils.currentLine=4325377;
+ //BA.debugLineNum = 4325377;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
+anywheresoftware.b4a.keywords.Common.LogImpl("14325377","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
+RDebugUtils.currentLine=4325378;
+ //BA.debugLineNum = 4325378;BA.debugLine="If Job.Success = True Then";
 if (_job._success /*boolean*/ ==anywheresoftware.b4a.keywords.Common.True) { 
-RDebugUtils.currentLine=655363;
- //BA.debugLineNum = 655363;BA.debugLine="Select Job.JobName 'Nombre del proceso a traves";
+RDebugUtils.currentLine=4325379;
+ //BA.debugLineNum = 4325379;BA.debugLine="Select Job.JobName 'Nombre del proceso a traves";
 switch (BA.switchObjectToInt(_job._jobname /*String*/ ,"get","historial")) {
 case 0: {
-RDebugUtils.currentLine=655365;
- //BA.debugLineNum = 655365;BA.debugLine="conteo(Job.GetString) 'se envia la cadena reci";
+RDebugUtils.currentLine=4325381;
+ //BA.debugLineNum = 4325381;BA.debugLine="conteo(Job.GetString) 'se envia la cadena reci";
 _conteo(_job._getstring /*String*/ (null));
  break; }
 case 1: {
-RDebugUtils.currentLine=655367;
- //BA.debugLineNum = 655367;BA.debugLine="fallando(Job.GetString)";
+RDebugUtils.currentLine=4325383;
+ //BA.debugLineNum = 4325383;BA.debugLine="Log(Job.GetString)";
+anywheresoftware.b4a.keywords.Common.LogImpl("14325383",_job._getstring /*String*/ (null),0);
+RDebugUtils.currentLine=4325384;
+ //BA.debugLineNum = 4325384;BA.debugLine="fallando(Job.GetString)";
 _fallando(_job._getstring /*String*/ (null));
  break; }
 }
 ;
  }else {
-RDebugUtils.currentLine=655370;
- //BA.debugLineNum = 655370;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("7655370","Error: "+_job._errormessage /*String*/ ,0);
-RDebugUtils.currentLine=655371;
- //BA.debugLineNum = 655371;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
+RDebugUtils.currentLine=4325387;
+ //BA.debugLineNum = 4325387;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
+anywheresoftware.b4a.keywords.Common.LogImpl("14325387","Error: "+_job._errormessage /*String*/ ,0);
+RDebugUtils.currentLine=4325388;
+ //BA.debugLineNum = 4325388;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error: "+_job._errormessage /*String*/ ),anywheresoftware.b4a.keywords.Common.True);
  };
-RDebugUtils.currentLine=655373;
- //BA.debugLineNum = 655373;BA.debugLine="Job.Release";
+RDebugUtils.currentLine=4325390;
+ //BA.debugLineNum = 4325390;BA.debugLine="Job.Release";
 _job._release /*String*/ (null);
-RDebugUtils.currentLine=655374;
- //BA.debugLineNum = 655374;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4325391;
+ //BA.debugLineNum = 4325391;BA.debugLine="End Sub";
 return "";
 }
 public static String  _tmrintro_tick() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "tmrintro_tick", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "tmrintro_tick", null));}
-RDebugUtils.currentLine=327680;
- //BA.debugLineNum = 327680;BA.debugLine="Sub tmrIntro_Tick";
-RDebugUtils.currentLine=327681;
- //BA.debugLineNum = 327681;BA.debugLine="Activity.RemoveAllViews";
-mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=327682;
- //BA.debugLineNum = 327682;BA.debugLine="Activity.LoadLayout(\"Principal\")		'cargamos la pa";
-mostCurrent._activity.LoadLayout("Principal",mostCurrent.activityBA);
-RDebugUtils.currentLine=327683;
- //BA.debugLineNum = 327683;BA.debugLine="tmrIntro.Enabled = False";
+RDebugUtils.currentLine=3997696;
+ //BA.debugLineNum = 3997696;BA.debugLine="Sub tmrIntro_Tick";
+RDebugUtils.currentLine=3997697;
+ //BA.debugLineNum = 3997697;BA.debugLine="tmrIntro.Enabled = False";
 _tmrintro.setEnabled(anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=327684;
- //BA.debugLineNum = 327684;BA.debugLine="backendelessGet.Download(urlGet)   'Cuando comple";
-mostCurrent._backendelessget._download /*String*/ (null,mostCurrent._urlget);
-RDebugUtils.currentLine=327685;
- //BA.debugLineNum = 327685;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3997698;
+ //BA.debugLineNum = 3997698;BA.debugLine="intentoInicio";
+_intentoinicio();
+RDebugUtils.currentLine=3997701;
+ //BA.debugLineNum = 3997701;BA.debugLine="End Sub";
 return "";
 }
 }

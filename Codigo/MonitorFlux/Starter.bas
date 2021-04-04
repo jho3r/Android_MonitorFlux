@@ -12,7 +12,11 @@ Version=9.9
 Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
-
+	Public sql As SQL
+	Public rp As RuntimePermissions
+	Public usuarioAdmin As String
+	Public claveAdmin As String
+	Public idAdmin As String
 End Sub
 
 Sub Service_Create
@@ -23,6 +27,22 @@ End Sub
 
 Sub Service_Start (StartingIntent As Intent)
 	Service.StopAutomaticForeground 'Starter service can start in the foreground state in some edge cases.
+	DBUtils.CopyDBFromAssets("login.db")
+	sql.Initialize(DBUtils.GetDBFolder,"login.db",False)
+	
+	Dim mapConsulta As Map
+	mapConsulta = DBUtils.ExecuteMap(sql,"SELECT * FROM usuarios",Null)
+	For i = 0 To mapConsulta.Size-1
+		Select mapConsulta.GetKeyAt(i)
+			Case "usuario"
+				usuarioAdmin = mapConsulta.GetValueAt(i)
+			Case "clave"
+				claveAdmin = mapConsulta.GetValueAt(i)
+			Case "Id"
+				idAdmin = mapConsulta.GetValueAt(i)
+		End Select
+		Log(mapConsulta.GetKeyAt(i)&","&mapConsulta.GetValueAt(i))
+	Next
 End Sub
 
 Sub Service_TaskRemoved

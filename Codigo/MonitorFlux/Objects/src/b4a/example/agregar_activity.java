@@ -348,62 +348,121 @@ public anywheresoftware.b4a.keywords.Common __c = null;
 public anywheresoftware.b4a.objects.IME _ime = null;
 public anywheresoftware.b4a.objects.EditTextWrapper _etnombre = null;
 public anywheresoftware.b4a.objects.EditTextWrapper _etnumero = null;
-public anywheresoftware.b4a.objects.AutoCompleteEditTextWrapper _ettiempo = null;
-public anywheresoftware.b4a.objects.collections.List _horas = null;
+public anywheresoftware.b4a.phone.PhoneEvents.SMSInterceptor _smsreceiver = null;
+public anywheresoftware.b4a.objects.RuntimePermissions _rp = null;
+public static String _nombre = "";
+public static String _numero = "";
+public static String _descripcion = "";
+public static boolean _checkbox = false;
+public anywheresoftware.b4a.objects.EditTextWrapper _etdescrip = null;
+public anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper _cbmensajes = null;
+public static String _urlagregar = "";
+public b4a.example.httpjob _agregar = null;
 public b4a.example.main _main = null;
 public b4a.example.starter _starter = null;
 public b4a.example.tutoriales_activity _tutoriales_activity = null;
 public b4a.example.monitor_activity _monitor_activity = null;
 public b4a.example.datos_activity _datos_activity = null;
+public b4a.example.registrar_activity _registrar_activity = null;
 public b4a.example.httputils2service _httputils2service = null;
-public static String  _activity_create(boolean _firsttime) throws Exception{
+public b4a.example.dbutils _dbutils = null;
+public static void  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="agregar_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}));}
-RDebugUtils.currentLine=1835008;
- //BA.debugLineNum = 1835008;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
-RDebugUtils.currentLine=1835011;
- //BA.debugLineNum = 1835011;BA.debugLine="Activity.RemoveAllViews";
-mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=1835012;
- //BA.debugLineNum = 1835012;BA.debugLine="Activity.LoadLayout(\"Agregar\")";
-mostCurrent._activity.LoadLayout("Agregar",mostCurrent.activityBA);
-RDebugUtils.currentLine=1835013;
- //BA.debugLineNum = 1835013;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
+	 {Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}); return;}
+ResumableSub_Activity_Create rsub = new ResumableSub_Activity_Create(null,_firsttime);
+rsub.resume(processBA, null);
+}
+public static class ResumableSub_Activity_Create extends BA.ResumableSub {
+public ResumableSub_Activity_Create(b4a.example.agregar_activity parent,boolean _firsttime) {
+this.parent = parent;
+this._firsttime = _firsttime;
+}
+b4a.example.agregar_activity parent;
+boolean _firsttime;
+String _permission = "";
+boolean _result = false;
+
+@Override
+public void resume(BA ba, Object[] result) throws Exception{
+RDebugUtils.currentModule="agregar_activity";
+
+    while (true) {
+        switch (state) {
+            case -1:
+return;
+
+case 0:
+//C
+this.state = 1;
+RDebugUtils.currentLine=5177347;
+ //BA.debugLineNum = 5177347;BA.debugLine="Activity.RemoveAllViews";
+parent.mostCurrent._activity.RemoveAllViews();
+RDebugUtils.currentLine=5177348;
+ //BA.debugLineNum = 5177348;BA.debugLine="Activity.LoadLayout(\"Agregar\")";
+parent.mostCurrent._activity.LoadLayout("Agregar",mostCurrent.activityBA);
+RDebugUtils.currentLine=5177349;
+ //BA.debugLineNum = 5177349;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
 _setstatusbarcolor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (231),(int) (231),(int) (222)));
-RDebugUtils.currentLine=1835014;
- //BA.debugLineNum = 1835014;BA.debugLine="ime.Initialize(\"\")					'inicializo el ime";
-mostCurrent._ime.Initialize("");
-RDebugUtils.currentLine=1835015;
- //BA.debugLineNum = 1835015;BA.debugLine="ime.SetLengthFilter(etNombre,24)	'Determino el li";
-mostCurrent._ime.SetLengthFilter((android.widget.EditText)(mostCurrent._etnombre.getObject()),(int) (24));
-RDebugUtils.currentLine=1835016;
- //BA.debugLineNum = 1835016;BA.debugLine="ime.SetLengthFilter(etNumero,10)	'Determino el li";
-mostCurrent._ime.SetLengthFilter((android.widget.EditText)(mostCurrent._etnumero.getObject()),(int) (10));
-RDebugUtils.currentLine=1835017;
- //BA.debugLineNum = 1835017;BA.debugLine="horas.Initialize";
-mostCurrent._horas.Initialize();
-RDebugUtils.currentLine=1835018;
- //BA.debugLineNum = 1835018;BA.debugLine="horas.Add(\"1 hora\")";
-mostCurrent._horas.Add((Object)("1 hora"));
-RDebugUtils.currentLine=1835019;
- //BA.debugLineNum = 1835019;BA.debugLine="horas.Add(\"4 horas\")";
-mostCurrent._horas.Add((Object)("4 horas"));
-RDebugUtils.currentLine=1835020;
- //BA.debugLineNum = 1835020;BA.debugLine="horas.Add(\"12 horas\")";
-mostCurrent._horas.Add((Object)("12 horas"));
-RDebugUtils.currentLine=1835021;
- //BA.debugLineNum = 1835021;BA.debugLine="horas.Add(\"1 dia\")";
-mostCurrent._horas.Add((Object)("1 dia"));
-RDebugUtils.currentLine=1835022;
- //BA.debugLineNum = 1835022;BA.debugLine="horas.Add(\"Asíncrono\")";
-mostCurrent._horas.Add((Object)("Asíncrono"));
-RDebugUtils.currentLine=1835023;
- //BA.debugLineNum = 1835023;BA.debugLine="etTiempo.SetItems(horas)";
-mostCurrent._ettiempo.SetItems(processBA,mostCurrent._horas);
-RDebugUtils.currentLine=1835024;
- //BA.debugLineNum = 1835024;BA.debugLine="End Sub";
-return "";
+RDebugUtils.currentLine=5177350;
+ //BA.debugLineNum = 5177350;BA.debugLine="ime.Initialize(\"\")					'inicializo el ime";
+parent.mostCurrent._ime.Initialize("");
+RDebugUtils.currentLine=5177351;
+ //BA.debugLineNum = 5177351;BA.debugLine="ime.SetLengthFilter(etNombre,24)	'Determino el li";
+parent.mostCurrent._ime.SetLengthFilter((android.widget.EditText)(parent.mostCurrent._etnombre.getObject()),(int) (24));
+RDebugUtils.currentLine=5177352;
+ //BA.debugLineNum = 5177352;BA.debugLine="ime.SetLengthFilter(etNumero,10)	'Determino el li";
+parent.mostCurrent._ime.SetLengthFilter((android.widget.EditText)(parent.mostCurrent._etnumero.getObject()),(int) (10));
+RDebugUtils.currentLine=5177361;
+ //BA.debugLineNum = 5177361;BA.debugLine="rp.CheckAndRequest(rp.PERMISSION_RECEIVE_SMS) 'IN";
+parent.mostCurrent._rp.CheckAndRequest(processBA,parent.mostCurrent._rp.PERMISSION_RECEIVE_SMS);
+RDebugUtils.currentLine=5177362;
+ //BA.debugLineNum = 5177362;BA.debugLine="Wait For Activity_PermissionResult(Permission As";
+anywheresoftware.b4a.keywords.Common.WaitFor("activity_permissionresult", processBA, new anywheresoftware.b4a.shell.DebugResumableSub.DelegatableResumableSub(this, "agregar_activity", "activity_create"), null);
+this.state = 5;
+return;
+case 5:
+//C
+this.state = 1;
+_permission = (String) result[0];
+_result = (Boolean) result[1];
+;
+RDebugUtils.currentLine=5177363;
+ //BA.debugLineNum = 5177363;BA.debugLine="If Result Then";
+if (true) break;
+
+case 1:
+//if
+this.state = 4;
+if (_result) { 
+this.state = 3;
+}if (true) break;
+
+case 3:
+//C
+this.state = 4;
+RDebugUtils.currentLine=5177364;
+ //BA.debugLineNum = 5177364;BA.debugLine="ToastMessageShow(\"Permiso para recibir mensaje e";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Permiso para recibir mensaje en uso"),anywheresoftware.b4a.keywords.Common.True);
+ if (true) break;
+
+case 4:
+//C
+this.state = -1;
+;
+RDebugUtils.currentLine=5177366;
+ //BA.debugLineNum = 5177366;BA.debugLine="smsReceiver.Initialize(\"smsReceiver\")";
+parent.mostCurrent._smsreceiver.Initialize("smsReceiver",processBA);
+RDebugUtils.currentLine=5177367;
+ //BA.debugLineNum = 5177367;BA.debugLine="urlAgregar = \"https://api.backendless.com/4D75900";
+parent.mostCurrent._urlagregar = "https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/data/Dispositivos";
+RDebugUtils.currentLine=5177368;
+ //BA.debugLineNum = 5177368;BA.debugLine="End Sub";
+if (true) break;
+
+            }
+        }
+    }
 }
 public static String  _setstatusbarcolor(int _clr) throws Exception{
 RDebugUtils.currentModule="agregar_activity";
@@ -412,104 +471,269 @@ if (Debug.shouldDelegate(mostCurrent.activityBA, "setstatusbarcolor", false))
 anywheresoftware.b4a.phone.Phone _p = null;
 anywheresoftware.b4j.object.JavaObject _jo = null;
 anywheresoftware.b4j.object.JavaObject _window = null;
-RDebugUtils.currentLine=2228224;
- //BA.debugLineNum = 2228224;BA.debugLine="Sub SetStatusBarColor(clr As Int)";
-RDebugUtils.currentLine=2228225;
- //BA.debugLineNum = 2228225;BA.debugLine="Dim p As Phone";
+RDebugUtils.currentLine=5505024;
+ //BA.debugLineNum = 5505024;BA.debugLine="Sub SetStatusBarColor(clr As Int)";
+RDebugUtils.currentLine=5505025;
+ //BA.debugLineNum = 5505025;BA.debugLine="Dim p As Phone";
 _p = new anywheresoftware.b4a.phone.Phone();
-RDebugUtils.currentLine=2228226;
- //BA.debugLineNum = 2228226;BA.debugLine="If p.SdkVersion >= 21 Then";
+RDebugUtils.currentLine=5505026;
+ //BA.debugLineNum = 5505026;BA.debugLine="If p.SdkVersion >= 21 Then";
 if (_p.getSdkVersion()>=21) { 
-RDebugUtils.currentLine=2228227;
- //BA.debugLineNum = 2228227;BA.debugLine="Dim jo As JavaObject";
+RDebugUtils.currentLine=5505027;
+ //BA.debugLineNum = 5505027;BA.debugLine="Dim jo As JavaObject";
 _jo = new anywheresoftware.b4j.object.JavaObject();
-RDebugUtils.currentLine=2228228;
- //BA.debugLineNum = 2228228;BA.debugLine="jo.InitializeContext";
+RDebugUtils.currentLine=5505028;
+ //BA.debugLineNum = 5505028;BA.debugLine="jo.InitializeContext";
 _jo.InitializeContext(processBA);
-RDebugUtils.currentLine=2228229;
- //BA.debugLineNum = 2228229;BA.debugLine="Dim window As JavaObject = jo.RunMethodJO(\"getWi";
+RDebugUtils.currentLine=5505029;
+ //BA.debugLineNum = 5505029;BA.debugLine="Dim window As JavaObject = jo.RunMethodJO(\"getWi";
 _window = new anywheresoftware.b4j.object.JavaObject();
 _window = _jo.RunMethodJO("getWindow",(Object[])(anywheresoftware.b4a.keywords.Common.Null));
-RDebugUtils.currentLine=2228230;
- //BA.debugLineNum = 2228230;BA.debugLine="window.RunMethod(\"addFlags\", Array (0x80000000))";
+RDebugUtils.currentLine=5505030;
+ //BA.debugLineNum = 5505030;BA.debugLine="window.RunMethod(\"addFlags\", Array (0x80000000))";
 _window.RunMethod("addFlags",new Object[]{(Object)(0x80000000)});
-RDebugUtils.currentLine=2228231;
- //BA.debugLineNum = 2228231;BA.debugLine="window.RunMethod(\"clearFlags\", Array (0x04000000";
+RDebugUtils.currentLine=5505031;
+ //BA.debugLineNum = 5505031;BA.debugLine="window.RunMethod(\"clearFlags\", Array (0x04000000";
 _window.RunMethod("clearFlags",new Object[]{(Object)(0x04000000)});
-RDebugUtils.currentLine=2228232;
- //BA.debugLineNum = 2228232;BA.debugLine="window.RunMethod(\"setStatusBarColor\", Array(clr)";
+RDebugUtils.currentLine=5505032;
+ //BA.debugLineNum = 5505032;BA.debugLine="window.RunMethod(\"setStatusBarColor\", Array(clr)";
 _window.RunMethod("setStatusBarColor",new Object[]{(Object)(_clr)});
  };
-RDebugUtils.currentLine=2228234;
- //BA.debugLineNum = 2228234;BA.debugLine="If p.SdkVersion >= 23 Then";
+RDebugUtils.currentLine=5505034;
+ //BA.debugLineNum = 5505034;BA.debugLine="If p.SdkVersion >= 23 Then";
 if (_p.getSdkVersion()>=23) { 
-RDebugUtils.currentLine=2228235;
- //BA.debugLineNum = 2228235;BA.debugLine="jo = Activity";
+RDebugUtils.currentLine=5505035;
+ //BA.debugLineNum = 5505035;BA.debugLine="jo = Activity";
 _jo = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(mostCurrent._activity.getObject()));
-RDebugUtils.currentLine=2228236;
- //BA.debugLineNum = 2228236;BA.debugLine="jo.RunMethod(\"setSystemUiVisibility\", Array(8192";
+RDebugUtils.currentLine=5505036;
+ //BA.debugLineNum = 5505036;BA.debugLine="jo.RunMethod(\"setSystemUiVisibility\", Array(8192";
 _jo.RunMethod("setSystemUiVisibility",new Object[]{(Object)(8192)});
  };
-RDebugUtils.currentLine=2228238;
- //BA.debugLineNum = 2228238;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5505038;
+ //BA.debugLineNum = 5505038;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
 RDebugUtils.currentModule="agregar_activity";
-RDebugUtils.currentLine=1966080;
- //BA.debugLineNum = 1966080;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
-RDebugUtils.currentLine=1966082;
- //BA.debugLineNum = 1966082;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5308416;
+ //BA.debugLineNum = 5308416;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=5308418;
+ //BA.debugLineNum = 5308418;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
 RDebugUtils.currentModule="agregar_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null));}
-RDebugUtils.currentLine=1900544;
- //BA.debugLineNum = 1900544;BA.debugLine="Sub Activity_Resume";
-RDebugUtils.currentLine=1900546;
- //BA.debugLineNum = 1900546;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5242880;
+ //BA.debugLineNum = 5242880;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=5242882;
+ //BA.debugLineNum = 5242882;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnatrasa_click() throws Exception{
 RDebugUtils.currentModule="agregar_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "btnatrasa_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnatrasa_click", null));}
-RDebugUtils.currentLine=2031616;
- //BA.debugLineNum = 2031616;BA.debugLine="Sub btnAtrasA_Click";
-RDebugUtils.currentLine=2031617;
- //BA.debugLineNum = 2031617;BA.debugLine="Activity.Finish";
+RDebugUtils.currentLine=5373952;
+ //BA.debugLineNum = 5373952;BA.debugLine="Sub btnAtrasA_Click";
+RDebugUtils.currentLine=5373953;
+ //BA.debugLineNum = 5373953;BA.debugLine="smsReceiver.StopListening";
+mostCurrent._smsreceiver.StopListening();
+RDebugUtils.currentLine=5373954;
+ //BA.debugLineNum = 5373954;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
-RDebugUtils.currentLine=2031618;
- //BA.debugLineNum = 2031618;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5373955;
+ //BA.debugLineNum = 5373955;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnconectar_click() throws Exception{
 RDebugUtils.currentModule="agregar_activity";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "btnconectar_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnconectar_click", null));}
-RDebugUtils.currentLine=2097152;
- //BA.debugLineNum = 2097152;BA.debugLine="Sub btnConectar_Click";
-RDebugUtils.currentLine=2097154;
- //BA.debugLineNum = 2097154;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5439488;
+ //BA.debugLineNum = 5439488;BA.debugLine="Sub btnConectar_Click";
+RDebugUtils.currentLine=5439489;
+ //BA.debugLineNum = 5439489;BA.debugLine="ProgressDialogShow(\"Conectando con el dispositivo";
+anywheresoftware.b4a.keywords.Common.ProgressDialogShow(mostCurrent.activityBA,BA.ObjectToCharSequence("Conectando con el dispositivo... Espere un momento"));
+RDebugUtils.currentLine=5439490;
+ //BA.debugLineNum = 5439490;BA.debugLine="nombre = etNombre.Text";
+mostCurrent._nombre = mostCurrent._etnombre.getText();
+RDebugUtils.currentLine=5439491;
+ //BA.debugLineNum = 5439491;BA.debugLine="numero = etNumero.Text";
+mostCurrent._numero = mostCurrent._etnumero.getText();
+RDebugUtils.currentLine=5439492;
+ //BA.debugLineNum = 5439492;BA.debugLine="descripcion = etDescrip.Text";
+mostCurrent._descripcion = mostCurrent._etdescrip.getText();
+RDebugUtils.currentLine=5439493;
+ //BA.debugLineNum = 5439493;BA.debugLine="checkbox = cbMensajes.Checked";
+_checkbox = mostCurrent._cbmensajes.getChecked();
+RDebugUtils.currentLine=5439494;
+ //BA.debugLineNum = 5439494;BA.debugLine="Log(\"nombre: \" & nombre & \" numero: \" & numero &";
+anywheresoftware.b4a.keywords.Common.LogImpl("15439494","nombre: "+mostCurrent._nombre+" numero: "+mostCurrent._numero+" descripcion: "+mostCurrent._descripcion+" enviar mensajes aqui: "+BA.ObjectToString(_checkbox),0);
+RDebugUtils.currentLine=5439495;
+ //BA.debugLineNum = 5439495;BA.debugLine="End Sub";
 return "";
 }
-public static String  _ettiempo_focuschanged(boolean _hasfocus) throws Exception{
+public static String  _jobdone(b4a.example.httpjob _job) throws Exception{
 RDebugUtils.currentModule="agregar_activity";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "ettiempo_focuschanged", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "ettiempo_focuschanged", new Object[] {_hasfocus}));}
-RDebugUtils.currentLine=2162688;
- //BA.debugLineNum = 2162688;BA.debugLine="Sub etTiempo_FocusChanged (HasFocus As Boolean)";
-RDebugUtils.currentLine=2162689;
- //BA.debugLineNum = 2162689;BA.debugLine="If HasFocus = True Then";
-if (_hasfocus==anywheresoftware.b4a.keywords.Common.True) { 
-RDebugUtils.currentLine=2162690;
- //BA.debugLineNum = 2162690;BA.debugLine="etTiempo.ShowDropDown";
-mostCurrent._ettiempo.ShowDropDown();
+if (Debug.shouldDelegate(mostCurrent.activityBA, "jobdone", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "jobdone", new Object[] {_job}));}
+RDebugUtils.currentLine=5636096;
+ //BA.debugLineNum = 5636096;BA.debugLine="Sub JobDone (Job As HttpJob)";
+RDebugUtils.currentLine=5636097;
+ //BA.debugLineNum = 5636097;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
+anywheresoftware.b4a.keywords.Common.LogImpl("15636097","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
+RDebugUtils.currentLine=5636098;
+ //BA.debugLineNum = 5636098;BA.debugLine="If Job.Success = True Then";
+if (_job._success /*boolean*/ ==anywheresoftware.b4a.keywords.Common.True) { 
+RDebugUtils.currentLine=5636099;
+ //BA.debugLineNum = 5636099;BA.debugLine="Select Job.JobName 'Nombre del proceso a traves";
+switch (BA.switchObjectToInt(_job._jobname /*String*/ ,"agregar")) {
+case 0: {
+RDebugUtils.currentLine=5636101;
+ //BA.debugLineNum = 5636101;BA.debugLine="resAgregar(Job.GetString) 'se envia la cadena";
+_resagregar(_job._getstring /*String*/ (null));
+ break; }
+}
+;
+ }else {
+RDebugUtils.currentLine=5636104;
+ //BA.debugLineNum = 5636104;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
+anywheresoftware.b4a.keywords.Common.LogImpl("15636104","Error: "+_job._errormessage /*String*/ ,0);
+RDebugUtils.currentLine=5636105;
+ //BA.debugLineNum = 5636105;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error: "+_job._errormessage /*String*/ ),anywheresoftware.b4a.keywords.Common.True);
  };
-RDebugUtils.currentLine=2162692;
- //BA.debugLineNum = 2162692;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5636107;
+ //BA.debugLineNum = 5636107;BA.debugLine="Job.Release";
+_job._release /*String*/ (null);
+RDebugUtils.currentLine=5636108;
+ //BA.debugLineNum = 5636108;BA.debugLine="End Sub";
 return "";
+}
+public static void  _resagregar(String _res) throws Exception{
+RDebugUtils.currentModule="agregar_activity";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "resagregar", false))
+	 {Debug.delegate(mostCurrent.activityBA, "resagregar", new Object[] {_res}); return;}
+ResumableSub_resAgregar rsub = new ResumableSub_resAgregar(null,_res);
+rsub.resume(processBA, null);
+}
+public static class ResumableSub_resAgregar extends BA.ResumableSub {
+public ResumableSub_resAgregar(b4a.example.agregar_activity parent,String _res) {
+this.parent = parent;
+this._res = _res;
+}
+b4a.example.agregar_activity parent;
+String _res;
+int _result = 0;
+
+@Override
+public void resume(BA ba, Object[] result) throws Exception{
+RDebugUtils.currentModule="agregar_activity";
+
+    while (true) {
+        switch (state) {
+            case -1:
+return;
+
+case 0:
+//C
+this.state = 1;
+RDebugUtils.currentLine=5701633;
+ //BA.debugLineNum = 5701633;BA.debugLine="ProgressDialogHide";
+anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
+RDebugUtils.currentLine=5701634;
+ //BA.debugLineNum = 5701634;BA.debugLine="Log(res)";
+anywheresoftware.b4a.keywords.Common.LogImpl("15701634",_res,0);
+RDebugUtils.currentLine=5701635;
+ //BA.debugLineNum = 5701635;BA.debugLine="Msgbox2Async(\"Dispositivo agregado correctamente\"";
+anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("Dispositivo agregado correctamente"),BA.ObjectToCharSequence("Listo!"),"Ok","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=5701636;
+ //BA.debugLineNum = 5701636;BA.debugLine="Wait For Msgbox_Result(Result As Int) 'Queda en e";
+anywheresoftware.b4a.keywords.Common.WaitFor("msgbox_result", processBA, new anywheresoftware.b4a.shell.DebugResumableSub.DelegatableResumableSub(this, "agregar_activity", "resagregar"), null);
+this.state = 5;
+return;
+case 5:
+//C
+this.state = 1;
+_result = (Integer) result[0];
+;
+RDebugUtils.currentLine=5701637;
+ //BA.debugLineNum = 5701637;BA.debugLine="If Result = DialogResponse.POSITIVE Then";
+if (true) break;
+
+case 1:
+//if
+this.state = 4;
+if (_result==anywheresoftware.b4a.keywords.Common.DialogResponse.POSITIVE) { 
+this.state = 3;
+}if (true) break;
+
+case 3:
+//C
+this.state = 4;
+RDebugUtils.currentLine=5701638;
+ //BA.debugLineNum = 5701638;BA.debugLine="Activity.Finish";
+parent.mostCurrent._activity.Finish();
+ if (true) break;
+
+case 4:
+//C
+this.state = -1;
+;
+RDebugUtils.currentLine=5701640;
+ //BA.debugLineNum = 5701640;BA.debugLine="End Sub";
+if (true) break;
+
+            }
+        }
+    }
+}
+public static boolean  _smsreceiver_messagereceived(String _from,String _body) throws Exception{
+RDebugUtils.currentModule="agregar_activity";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "smsreceiver_messagereceived", false))
+	 {return ((Boolean) Debug.delegate(mostCurrent.activityBA, "smsreceiver_messagereceived", new Object[] {_from,_body}));}
+String _codigo = "";
+String _datos = "";
+RDebugUtils.currentLine=5570560;
+ //BA.debugLineNum = 5570560;BA.debugLine="Sub smsReceiver_MessageReceived (From As String, B";
+RDebugUtils.currentLine=5570561;
+ //BA.debugLineNum = 5570561;BA.debugLine="If From == numero Then";
+if ((_from).equals(mostCurrent._numero)) { 
+RDebugUtils.currentLine=5570562;
+ //BA.debugLineNum = 5570562;BA.debugLine="ProgressDialogHide";
+anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
+RDebugUtils.currentLine=5570563;
+ //BA.debugLineNum = 5570563;BA.debugLine="Dim codigo As String = Body";
+_codigo = _body;
+RDebugUtils.currentLine=5570564;
+ //BA.debugLineNum = 5570564;BA.debugLine="smsReceiver.StopListening";
+mostCurrent._smsreceiver.StopListening();
+RDebugUtils.currentLine=5570565;
+ //BA.debugLineNum = 5570565;BA.debugLine="Agregar.Initialize(\"agregar\",Me)";
+mostCurrent._agregar._initialize /*String*/ (null,processBA,"agregar",agregar_activity.getObject());
+RDebugUtils.currentLine=5570566;
+ //BA.debugLineNum = 5570566;BA.debugLine="Dim datos As String";
+_datos = "";
+RDebugUtils.currentLine=5570568;
+ //BA.debugLineNum = 5570568;BA.debugLine="datos = \"{\"&Chr(34)&\"descripcion\"&Chr(34)&\":\"&Ch";
+_datos = "{"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"descripcion"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+mostCurrent._descripcion+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+","+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"id"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+_codigo+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+","+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"nombre"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+mostCurrent._nombre+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+","+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"numero"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+mostCurrent._numero+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+","+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"ownerId"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+mostCurrent._main._id /*String*/ +BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"}";
+RDebugUtils.currentLine=5570569;
+ //BA.debugLineNum = 5570569;BA.debugLine="Agregar.PostString(urlAgregar, datos)";
+mostCurrent._agregar._poststring /*String*/ (null,mostCurrent._urlagregar,_datos);
+RDebugUtils.currentLine=5570570;
+ //BA.debugLineNum = 5570570;BA.debugLine="Agregar.GetRequest.SetContentType(\"application/j";
+mostCurrent._agregar._getrequest /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ (null).SetContentType("application/json");
+RDebugUtils.currentLine=5570571;
+ //BA.debugLineNum = 5570571;BA.debugLine="ProgressDialogShow(\"Regitrando dispositivo\")";
+anywheresoftware.b4a.keywords.Common.ProgressDialogShow(mostCurrent.activityBA,BA.ObjectToCharSequence("Regitrando dispositivo"));
+ };
+RDebugUtils.currentLine=5570573;
+ //BA.debugLineNum = 5570573;BA.debugLine="Return True";
+if (true) return anywheresoftware.b4a.keywords.Common.True;
+RDebugUtils.currentLine=5570574;
+ //BA.debugLineNum = 5570574;BA.debugLine="End Sub";
+return false;
 }
 }

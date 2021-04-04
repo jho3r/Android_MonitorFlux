@@ -51,13 +51,20 @@ public boolean isSingleton() {
 		runMethod(false, method, args);
 	}
 public static RemoteObject __c = RemoteObject.declareNull("anywheresoftware.b4a.keywords.Common");
+public static RemoteObject _sql = RemoteObject.declareNull("anywheresoftware.b4a.sql.SQL");
+public static RemoteObject _rp = RemoteObject.declareNull("anywheresoftware.b4a.objects.RuntimePermissions");
+public static RemoteObject _usuarioadmin = RemoteObject.createImmutable("");
+public static RemoteObject _claveadmin = RemoteObject.createImmutable("");
+public static RemoteObject _idadmin = RemoteObject.createImmutable("");
 public static b4a.example.main _main = null;
 public static b4a.example.tutoriales_activity _tutoriales_activity = null;
 public static b4a.example.agregar_activity _agregar_activity = null;
 public static b4a.example.monitor_activity _monitor_activity = null;
 public static b4a.example.datos_activity _datos_activity = null;
+public static b4a.example.registrar_activity _registrar_activity = null;
 public static b4a.example.httputils2service _httputils2service = null;
+public static b4a.example.dbutils _dbutils = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Agregar_Activity",Debug.moduleToString(b4a.example.agregar_activity.class),"Datos_Activity",Debug.moduleToString(b4a.example.datos_activity.class),"HttpUtils2Service",Debug.moduleToString(b4a.example.httputils2service.class),"Main",Debug.moduleToString(b4a.example.main.class),"Monitor_Activity",Debug.moduleToString(b4a.example.monitor_activity.class),"Service",starter.mostCurrent._service,"Tutoriales_Activity",Debug.moduleToString(b4a.example.tutoriales_activity.class)};
+		return new Object[] {"Agregar_Activity",Debug.moduleToString(b4a.example.agregar_activity.class),"claveAdmin",starter._claveadmin,"Datos_Activity",Debug.moduleToString(b4a.example.datos_activity.class),"DBUtils",Debug.moduleToString(b4a.example.dbutils.class),"HttpUtils2Service",Debug.moduleToString(b4a.example.httputils2service.class),"idAdmin",starter._idadmin,"Main",Debug.moduleToString(b4a.example.main.class),"Monitor_Activity",Debug.moduleToString(b4a.example.monitor_activity.class),"Registrar_Activity",Debug.moduleToString(b4a.example.registrar_activity.class),"rp",starter._rp,"Service",starter.mostCurrent._service,"sql",starter._sql,"Tutoriales_Activity",Debug.moduleToString(b4a.example.tutoriales_activity.class),"usuarioAdmin",starter._usuarioadmin};
 }
 }

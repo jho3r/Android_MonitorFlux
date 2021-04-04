@@ -22,24 +22,24 @@ monitor_activity.mostCurrent._activity.runMethodAndSync(false,"LoadLayout",(Obje
  BA.debugLineNum = 31;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
 Debug.ShouldStop(1073741824);
 _setstatusbarcolor(monitor_activity.mostCurrent.__c.getField(false,"Colors").runMethod(true,"RGB",(Object)(BA.numberCast(int.class, 231)),(Object)(BA.numberCast(int.class, 231)),(Object)(BA.numberCast(int.class, 222))));
- BA.debugLineNum = 32;BA.debugLine="urlGet = \"https://api.backendless.com/85B70858-21";
+ BA.debugLineNum = 32;BA.debugLine="urlGet = \"https://api.backendless.com/4D75900B-E5";
 Debug.ShouldStop(-2147483648);
-monitor_activity.mostCurrent._urlget = BA.ObjectToString("https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Dispositivos");
- BA.debugLineNum = 33;BA.debugLine="urlHistorial = \"https://api.backendless.com/85B70";
+monitor_activity.mostCurrent._urlget = BA.ObjectToString("https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/data/Dispositivos?where=ownerId%20%3D%20");
+ BA.debugLineNum = 33;BA.debugLine="urlHistorial = Main.urlHistorial";
 Debug.ShouldStop(1);
-monitor_activity.mostCurrent._urlhistorial = BA.ObjectToString("https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial?pageSize=100");
+monitor_activity.mostCurrent._urlhistorial = monitor_activity.mostCurrent._main._urlhistorial /*RemoteObject*/ ;
  BA.debugLineNum = 34;BA.debugLine="historial.Initialize(\"historial\",Me)";
 Debug.ShouldStop(2);
 monitor_activity.mostCurrent._historial.runClassMethod (b4a.example.httpjob.class, "_initialize" /*RemoteObject*/ ,monitor_activity.processBA,(Object)(BA.ObjectToString("historial")),(Object)(monitor_activity.getObject()));
- BA.debugLineNum = 35;BA.debugLine="historial.Download(urlHistorial)";
+ BA.debugLineNum = 35;BA.debugLine="listAlterna.Initialize";
 Debug.ShouldStop(4);
-monitor_activity.mostCurrent._historial.runClassMethod (b4a.example.httpjob.class, "_download" /*RemoteObject*/ ,(Object)(monitor_activity.mostCurrent._urlhistorial));
- BA.debugLineNum = 36;BA.debugLine="listAlterna.Initialize";
-Debug.ShouldStop(8);
 monitor_activity.mostCurrent._listalterna.runVoidMethod ("Initialize");
- BA.debugLineNum = 37;BA.debugLine="disFallando.Initialize   'guarda el estado de los";
-Debug.ShouldStop(16);
+ BA.debugLineNum = 36;BA.debugLine="disFallando.Initialize   'guarda el estado de los";
+Debug.ShouldStop(8);
 monitor_activity.mostCurrent._disfallando.runVoidMethod ("Initialize");
+ BA.debugLineNum = 37;BA.debugLine="historial.Download(urlHistorial)";
+Debug.ShouldStop(16);
+monitor_activity.mostCurrent._historial.runClassMethod (b4a.example.httpjob.class, "_download" /*RemoteObject*/ ,(Object)(monitor_activity.mostCurrent._urlhistorial));
  BA.debugLineNum = 38;BA.debugLine="End Sub";
 Debug.ShouldStop(32);
 return RemoteObject.createImmutable("");
@@ -266,18 +266,18 @@ final int groupLen6 = group6.runMethod(true,"getSize").<Integer>get()
 for (; index6 < groupLen6;index6++){
 _colroot = RemoteObject.declareNull("anywheresoftware.b4a.AbsObjectWrapper").runMethod(false, "ConvertToWrapper", RemoteObject.createNew("anywheresoftware.b4a.objects.collections.Map"), group6.runMethod(false,"Get",index6));
 Debug.locals.put("colroot", _colroot);
- BA.debugLineNum = 92;BA.debugLine="If colroot.Get(\"dispositivo\") = Main.list.Get(a";
+ BA.debugLineNum = 92;BA.debugLine="If colroot.Get(\"id\") = Main.list.Get(a) Then";
 Debug.ShouldStop(134217728);
-if (RemoteObject.solveBoolean("=",_colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("dispositivo")))),monitor_activity.mostCurrent._main._list /*RemoteObject*/ .runMethod(false,"Get",(Object)(BA.numberCast(int.class, _a))))) { 
+if (RemoteObject.solveBoolean("=",_colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("id")))),monitor_activity.mostCurrent._main._list /*RemoteObject*/ .runMethod(false,"Get",(Object)(BA.numberCast(int.class, _a))))) { 
  BA.debugLineNum = 94;BA.debugLine="Dim fechaEntra As Long = colroot.Get(\"fecha\")";
 Debug.ShouldStop(536870912);
 _fechaentra = BA.numberCast(long.class, _colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("fecha")))));Debug.locals.put("fechaEntra", _fechaentra);Debug.locals.put("fechaEntra", _fechaentra);
  BA.debugLineNum = 95;BA.debugLine="If fechaEntra >= fecha Then";
 Debug.ShouldStop(1073741824);
 if (RemoteObject.solveBoolean("g",_fechaentra,_fecha)) { 
- BA.debugLineNum = 96;BA.debugLine="Dim estado As String = colroot.Get(\"estado\")";
+ BA.debugLineNum = 96;BA.debugLine="Dim estado As String = colroot.Get(\"encendida";
 Debug.ShouldStop(-2147483648);
-_estado = BA.ObjectToString(_colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("estado")))));Debug.locals.put("estado", _estado);Debug.locals.put("estado", _estado);
+_estado = BA.ObjectToString(_colroot.runMethod(false,"Get",(Object)((RemoteObject.createImmutable("encendida")))));Debug.locals.put("estado", _estado);Debug.locals.put("estado", _estado);
  BA.debugLineNum = 97;BA.debugLine="fecha = fechaEntra";
 Debug.ShouldStop(1);
 _fecha = _fechaentra;Debug.locals.put("fecha", _fecha);
@@ -302,9 +302,9 @@ _fecha = BA.numberCast(long.class, 0);Debug.locals.put("fecha", _fecha);
  BA.debugLineNum = 107;BA.debugLine="backendelessGet.Initialize(\"get\",Me)";
 Debug.ShouldStop(1024);
 monitor_activity._backendelessget.runClassMethod (b4a.example.httpjob.class, "_initialize" /*RemoteObject*/ ,monitor_activity.processBA,(Object)(BA.ObjectToString("get")),(Object)(monitor_activity.getObject()));
- BA.debugLineNum = 108;BA.debugLine="backendelessGet.Download(urlGet)   'Cuando comple";
+ BA.debugLineNum = 108;BA.debugLine="backendelessGet.Download(urlGet & \"'\" & Main.ID &";
 Debug.ShouldStop(2048);
-monitor_activity._backendelessget.runClassMethod (b4a.example.httpjob.class, "_download" /*RemoteObject*/ ,(Object)(monitor_activity.mostCurrent._urlget));
+monitor_activity._backendelessget.runClassMethod (b4a.example.httpjob.class, "_download" /*RemoteObject*/ ,(Object)(RemoteObject.concat(monitor_activity.mostCurrent._urlget,RemoteObject.createImmutable("'"),monitor_activity.mostCurrent._main._id /*RemoteObject*/ ,RemoteObject.createImmutable("'"))));
  BA.debugLineNum = 109;BA.debugLine="End Sub";
 Debug.ShouldStop(4096);
 return RemoteObject.createImmutable("");
@@ -321,7 +321,7 @@ public static RemoteObject  _globals() throws Exception{
 monitor_activity.mostCurrent._lvelectro = RemoteObject.createNew ("b4a.example3.customlistview");
  //BA.debugLineNum = 17;BA.debugLine="Private lbDispositivo As B4XView";
 monitor_activity.mostCurrent._lbdispositivo = RemoteObject.createNew ("anywheresoftware.b4a.objects.B4XViewWrapper");
- //BA.debugLineNum = 18;BA.debugLine="Dim urlGet As String";
+ //BA.debugLineNum = 18;BA.debugLine="Private urlGet As String";
 monitor_activity.mostCurrent._urlget = RemoteObject.createImmutable("");
  //BA.debugLineNum = 19;BA.debugLine="Dim i As Int";
 monitor_activity._i = RemoteObject.createImmutable(0);
@@ -329,7 +329,7 @@ monitor_activity._i = RemoteObject.createImmutable(0);
 monitor_activity.mostCurrent._listalterna = RemoteObject.createNew ("anywheresoftware.b4a.objects.collections.List");
  //BA.debugLineNum = 21;BA.debugLine="Dim historial As HttpJob";
 monitor_activity.mostCurrent._historial = RemoteObject.createNew ("b4a.example.httpjob");
- //BA.debugLineNum = 22;BA.debugLine="Dim urlHistorial As String";
+ //BA.debugLineNum = 22;BA.debugLine="Private urlHistorial As String";
 monitor_activity.mostCurrent._urlhistorial = RemoteObject.createImmutable("");
  //BA.debugLineNum = 23;BA.debugLine="Dim disFallando As List";
 monitor_activity.mostCurrent._disfallando = RemoteObject.createNew ("anywheresoftware.b4a.objects.collections.List");
@@ -345,7 +345,7 @@ Debug.locals.put("Job", _job);
 Debug.ShouldStop(1048576);
  BA.debugLineNum = 54;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
 Debug.ShouldStop(2097152);
-monitor_activity.mostCurrent.__c.runVoidMethod ("LogImpl","72686977",RemoteObject.concat(RemoteObject.createImmutable("JobName = "),_job.getField(true,"_jobname" /*RemoteObject*/ ),RemoteObject.createImmutable(", Success = "),_job.getField(true,"_success" /*RemoteObject*/ )),0);
+monitor_activity.mostCurrent.__c.runVoidMethod ("LogImpl","16160385",RemoteObject.concat(RemoteObject.createImmutable("JobName = "),_job.getField(true,"_jobname" /*RemoteObject*/ ),RemoteObject.createImmutable(", Success = "),_job.getField(true,"_success" /*RemoteObject*/ )),0);
  BA.debugLineNum = 55;BA.debugLine="If Job.Success = True Then";
 Debug.ShouldStop(4194304);
 if (RemoteObject.solveBoolean("=",_job.getField(true,"_success" /*RemoteObject*/ ),monitor_activity.mostCurrent.__c.getField(true,"True"))) { 
@@ -367,7 +367,7 @@ _fallando(_job.runClassMethod (b4a.example.httpjob.class, "_getstring" /*RemoteO
  }else {
  BA.debugLineNum = 63;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
 Debug.ShouldStop(1073741824);
-monitor_activity.mostCurrent.__c.runVoidMethod ("LogImpl","72686986",RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )),0);
+monitor_activity.mostCurrent.__c.runVoidMethod ("LogImpl","16160394",RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )),0);
  BA.debugLineNum = 64;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 Debug.ShouldStop(-2147483648);
 monitor_activity.mostCurrent.__c.runVoidMethod ("ToastMessageShow",(Object)(BA.ObjectToCharSequence(RemoteObject.concat(RemoteObject.createImmutable("Error: "),_job.getField(true,"_errormessage" /*RemoteObject*/ )))),(Object)(monitor_activity.mostCurrent.__c.getField(true,"True")));

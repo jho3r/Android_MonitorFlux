@@ -1,13 +1,20 @@
 ﻿Build1=Default,b4a.example
 File1=Agregar.bal
+File10=Principal.bal
+File11=Registrar.bal
+File12=Tutorial.bal
 File2=Artboard 1.png
-File3=Datos.bal
-File4=Intro.bal
-File5=Item.bal
-File6=Monitoreo.bal
-File7=Principal.bal
-File8=Tutorial.bal
+File3=Artboard 1mdpi.png
+File4=Datos.bal
+File5=Iniciar.bal
+File6=Intro.bal
+File7=Item.bal
+File8=login.db
+File9=Monitoreo.bal
 FileGroup1=Default Group
+FileGroup10=Default Group
+FileGroup11=Default Group
+FileGroup12=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
@@ -15,8 +22,12 @@ FileGroup5=Default Group
 FileGroup6=Default Group
 FileGroup7=Default Group
 FileGroup8=Default Group
+FileGroup9=Default Group
 Group=Default Group
 Library1=core
+Library10=runtimepermissions
+Library11=sql
+Library12=dbutils
 Library2=xui
 Library3=xcustomlistview
 Library4=ime
@@ -24,15 +35,17 @@ Library5=okhttputils2
 Library6=json
 Library7=phone
 Library8=javaobject
+Library9=keyvaluestore
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="29"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
 Module1=Agregar_Activity
 Module2=Datos_Activity
 Module3=Monitor_Activity
-Module4=Starter
-Module5=Tutoriales_Activity
-NumberOfFiles=8
-NumberOfLibraries=8
-NumberOfModules=5
+Module4=Registrar_Activity
+Module5=Starter
+Module6=Tutoriales_Activity
+NumberOfFiles=12
+NumberOfLibraries=12
+NumberOfModules=6
 Version=10.2
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -55,6 +68,9 @@ Sub Process_Globals
 	Private xui As XUI
 	Dim tmrIntro As Timer 'Timer para el intro de la aplicacion ahora se debe inicializar
 	Dim list As List
+	Dim inicio As Boolean
+	Dim ID As String
+	Dim urlHistorial As String
 End Sub
 
 Sub Globals
@@ -62,7 +78,6 @@ Sub Globals
 	Private lbFallas As Label
 	Private lbBombas As Label
 	Dim urlGet As String
-	Dim urlHistorial As String
 	Dim backendelessGet As HttpJob 'se debe inicializar
 	Dim i As Int
 	Dim disFallando As Int
@@ -74,21 +89,23 @@ Sub Activity_Create(FirstTime As Boolean)
 		Activity.LoadLayout("Intro")			'cargamos el layout del intro
 		tmrIntro.Initialize("tmrIntro",3000)	'inicializamos el timer y ahora lo habilitamos
 		tmrIntro.Enabled = True					'Se ejecuta en tmrIntro_Tick
+		inicio = False
 	Else
 		Activity.RemoveAllViews
 		Activity.LoadLayout("Principal")
 	End If
 	
 	SetStatusBarColor(Colors.RGB(231,231,222))
-	urlHistorial = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial?pageSize=100"
-	urlGet = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Dispositivos"
+	urlHistorial = "https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/data/Historial?pageSize=100&property=fecha&property=id&property=encendida&where=id%3D'000000'"
+	urlGet = "https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/data/Dispositivos?where=ownerId%20%3D%20"
 	backendelessGet.Initialize("get",Me)
 	list.Initialize
 End Sub
 
 Sub Activity_Resume
 	If tmrIntro.Enabled = False Then
-		backendelessGet.Download(urlGet)
+		intentoInicio
+		'backendelessGet.Download(urlGet)
 	End If
 	
 End Sub
@@ -98,10 +115,10 @@ Sub Activity_Pause (UserClosed As Boolean)
 End Sub
 
 Sub tmrIntro_Tick
-	Activity.RemoveAllViews
-	Activity.LoadLayout("Principal")		'cargamos la pantalla principal y deshabilitamos el timer
 	tmrIntro.Enabled = False
-	backendelessGet.Download(urlGet)   'Cuando complete el proceso ejecutara jobDone
+	intentoInicio
+	
+	
 End Sub
 
 Sub btnMonitoreo_Click
@@ -139,6 +156,7 @@ Sub JobDone (Job As HttpJob)
 			Case "get"
 				conteo(Job.GetString) 'se envia la cadena recibida para procesar
 			Case "historial"
+				Log(Job.GetString)
 				fallando(Job.GetString)
 		End Select
 	Else
@@ -150,17 +168,20 @@ End Sub
 
 Sub conteo(res As String)
 	i=0
+	Dim historialmas As String = ""
 	list.Clear
 	Dim parser As JSONParser 						'definimos objeto que permite procesar JSON
 	parser.Initialize(res)
 	Dim root As List = parser.NextArray
 	For Each colroot As Map In root				'map es similar a list solo que se hace con clave, dato y se añade con put
-		Dim nombre As String = colroot.Get("nombre")
+		Dim nombre As String = colroot.Get("id")
 		list.Add(nombre)
 		i = i + 1
+		historialmas = historialmas & "%20or%20id%3D'"&nombre&"'"
 	Next
 	lbBombas.Text = i & " Dispositivos"
 	historial.Initialize("historial",Me)
+	urlHistorial = urlHistorial & historialmas
 	historial.Download(urlHistorial)
 End Sub
 
@@ -173,12 +194,12 @@ Sub fallando(res As String)
 		Dim root As List = parser.NextArray
 		For Each colroot As Map In root				'map es similar a list solo que se hace con clave, dato y se añade con put
 			' solo me interesan los datos que esten relacionados con la electrobomba actual
-			If colroot.Get("dispositivo") = list.Get(a) Then
+			If colroot.Get("id") = list.Get(a) Then
 				Log(list.Get(a))
 				'guardo el valor de fecha para comparar y obtener la mas reciente
 				Dim fechaEntra As Long = colroot.Get("fecha")
 				If fechaEntra >= fecha Then
-					Dim estado As Boolean = colroot.Get("estado")
+					Dim estado As Boolean = colroot.Get("encendida")
 					fecha = fechaEntra
 				End If
 			End If
@@ -196,4 +217,18 @@ Sub fallando(res As String)
 	Else
 		lbFallas.Color = Colors.ARGB(128,0,136,145)
 	End If
+End Sub
+
+Sub intentoInicio
+	'If inicio de sesion no exitoso
+	If inicio == False Then
+		StartActivity(Registrar_Activity)
+	Else
+		'If inicio es exitoso
+		Activity.RemoveAllViews
+		Activity.LoadLayout("Principal")		'cargamos la pantalla principal y deshabilitamos el timer
+		backendelessGet.Download(urlGet & "'" & ID & "'")   'Cuando complete el proceso ejecutara jobDone
+	End If
+	
+	
 End Sub

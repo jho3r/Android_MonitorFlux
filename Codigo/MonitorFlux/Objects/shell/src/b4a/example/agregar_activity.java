@@ -58,15 +58,25 @@ public static RemoteObject __c = RemoteObject.declareNull("anywheresoftware.b4a.
 public static RemoteObject _ime = RemoteObject.declareNull("anywheresoftware.b4a.objects.IME");
 public static RemoteObject _etnombre = RemoteObject.declareNull("anywheresoftware.b4a.objects.EditTextWrapper");
 public static RemoteObject _etnumero = RemoteObject.declareNull("anywheresoftware.b4a.objects.EditTextWrapper");
-public static RemoteObject _ettiempo = RemoteObject.declareNull("anywheresoftware.b4a.objects.AutoCompleteEditTextWrapper");
-public static RemoteObject _horas = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.List");
+public static RemoteObject _smsreceiver = RemoteObject.declareNull("anywheresoftware.b4a.phone.PhoneEvents.SMSInterceptor");
+public static RemoteObject _rp = RemoteObject.declareNull("anywheresoftware.b4a.objects.RuntimePermissions");
+public static RemoteObject _nombre = RemoteObject.createImmutable("");
+public static RemoteObject _numero = RemoteObject.createImmutable("");
+public static RemoteObject _descripcion = RemoteObject.createImmutable("");
+public static RemoteObject _checkbox = RemoteObject.createImmutable(false);
+public static RemoteObject _etdescrip = RemoteObject.declareNull("anywheresoftware.b4a.objects.EditTextWrapper");
+public static RemoteObject _cbmensajes = RemoteObject.declareNull("anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper");
+public static RemoteObject _urlagregar = RemoteObject.createImmutable("");
+public static RemoteObject _agregar = RemoteObject.declareNull("b4a.example.httpjob");
 public static b4a.example.main _main = null;
 public static b4a.example.starter _starter = null;
 public static b4a.example.tutoriales_activity _tutoriales_activity = null;
 public static b4a.example.monitor_activity _monitor_activity = null;
 public static b4a.example.datos_activity _datos_activity = null;
+public static b4a.example.registrar_activity _registrar_activity = null;
 public static b4a.example.httputils2service _httputils2service = null;
+public static b4a.example.dbutils _dbutils = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",agregar_activity.mostCurrent._activity,"Datos_Activity",Debug.moduleToString(b4a.example.datos_activity.class),"etNombre",agregar_activity.mostCurrent._etnombre,"etNumero",agregar_activity.mostCurrent._etnumero,"etTiempo",agregar_activity.mostCurrent._ettiempo,"horas",agregar_activity.mostCurrent._horas,"HttpUtils2Service",Debug.moduleToString(b4a.example.httputils2service.class),"ime",agregar_activity.mostCurrent._ime,"Main",Debug.moduleToString(b4a.example.main.class),"Monitor_Activity",Debug.moduleToString(b4a.example.monitor_activity.class),"Starter",Debug.moduleToString(b4a.example.starter.class),"Tutoriales_Activity",Debug.moduleToString(b4a.example.tutoriales_activity.class)};
+		return new Object[] {"Activity",agregar_activity.mostCurrent._activity,"Agregar",agregar_activity.mostCurrent._agregar,"cbMensajes",agregar_activity.mostCurrent._cbmensajes,"checkbox",agregar_activity._checkbox,"Datos_Activity",Debug.moduleToString(b4a.example.datos_activity.class),"DBUtils",Debug.moduleToString(b4a.example.dbutils.class),"descripcion",agregar_activity.mostCurrent._descripcion,"etDescrip",agregar_activity.mostCurrent._etdescrip,"etNombre",agregar_activity.mostCurrent._etnombre,"etNumero",agregar_activity.mostCurrent._etnumero,"HttpUtils2Service",Debug.moduleToString(b4a.example.httputils2service.class),"ime",agregar_activity.mostCurrent._ime,"Main",Debug.moduleToString(b4a.example.main.class),"Monitor_Activity",Debug.moduleToString(b4a.example.monitor_activity.class),"nombre",agregar_activity.mostCurrent._nombre,"numero",agregar_activity.mostCurrent._numero,"Registrar_Activity",Debug.moduleToString(b4a.example.registrar_activity.class),"rp",agregar_activity.mostCurrent._rp,"smsReceiver",agregar_activity.mostCurrent._smsreceiver,"Starter",Debug.moduleToString(b4a.example.starter.class),"Tutoriales_Activity",Debug.moduleToString(b4a.example.tutoriales_activity.class),"urlAgregar",agregar_activity.mostCurrent._urlagregar};
 }
 }

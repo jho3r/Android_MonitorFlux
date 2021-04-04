@@ -21,13 +21,14 @@ Sub Globals
 	Dim backendelessGet As HttpJob 'se debe inicializar
 	Dim historial As HttpJob
 	Private lbNombre As Label
-	Dim urlGet As String
-	Dim urlHistorial As String
+	Private urlGet As String
+	Private urlHistorial As String
 	Private lbNumero As Label
 	Private lbDescrip As Label
 	Private lbEstado As Label
 	Private lbFlujo As Label
 	Private lbActualizado As Label
+	Private idActual As String
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -36,11 +37,11 @@ Sub Activity_Create(FirstTime As Boolean)
 	Activity.RemoveAllViews
 	Activity.LoadLayout("Datos")
 	SetStatusBarColor(Colors.RGB(231,231,222))
-	urlGet = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Dispositivos"
-	urlHistorial = "https://api.backendless.com/85B70858-2193-2A92-FF8E-BF8B113D4100/CC232E12-9D6D-40A6-A41A-23796B090767/data/Historial?pageSize=100"
+	urlGet = "https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/data/Dispositivos?where=ownerId%20%3D%20"
+	urlHistorial = Main.urlHistorial & "&property=flujo"
 	backendelessGet.Initialize("get",Me)
 	historial.Initialize("historial",Me)
-	backendelessGet.Download(urlGet)			'para cargar los datos generales de la electrobomba
+	backendelessGet.Download(urlGet & "'" & Main.ID & "'")			'para cargar los datos generales de la electrobomba
 End Sub
 
 Sub Activity_Resume
@@ -85,6 +86,7 @@ Sub cargarDatos (res As String)
 			Dim nombre As String = colroot.Get("nombre")
 			Dim descripcion As String = colroot.Get("descripcion")
 			Dim numero As String = colroot.Get("numero")
+			idActual = colroot.Get("id")
 		End If
 	Next
 	'asigno el texto a cada label
@@ -98,18 +100,20 @@ End Sub
 Sub cargarEstado (res As String)
 	Dim fecha As Long = 0
 	Dim parser As JSONParser 						'definimos objeto que permite procesar JSON
+	Log(res)
 	parser.Initialize(res)
 	'se define una lista a la cual se le pueden agregar objetos con add, obtener con get, etc
 	'se le agregan los datos parseados
 	Dim root As List = parser.NextArray
 	For Each colroot As Map In root				'map es similar a list solo que se hace con clave, dato y se añade con put
 		' solo me interesan los datos que esten relacionados con la electrobomba actual
-		If colroot.Get("dispositivo") = lbNombre.Text Then		
+		If colroot.Get("id") = idActual Then		
 			'guardo el valor de fecha para comparar y obtener la mas reciente
 			Dim fechaEntra As Long = colroot.Get("fecha")
 			If fechaEntra >= fecha Then
-				Dim estado As String = colroot.Get("estado")		'guardo los datos para la fecha mas reciente
+				Dim estado As String = colroot.Get("encendida")		'guardo los datos para la fecha mas reciente
 				Dim flujo As String = colroot.Get("flujo")
+				Log(colroot.Get("flujo"))
 				fecha = fechaEntra
 			End If
 		End If
