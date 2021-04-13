@@ -20,6 +20,7 @@ Sub Globals
 	'These variables can only be accessed from this module.
 	Dim backendelessGet As HttpJob 'se debe inicializar
 	Dim historial As HttpJob
+	Dim eliminar As HttpJob
 	Private lbNombre As Label
 	Private urlGet As String
 	Private urlHistorial As String
@@ -29,6 +30,9 @@ Sub Globals
 	Private lbFlujo As Label
 	Private lbActualizado As Label
 	Private idActual As String
+	Private objectId As String
+	Private panel As Panel
+	Private urlEliminar As String
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -41,6 +45,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	urlHistorial = Main.urlHistorial & "&property=flujo"
 	backendelessGet.Initialize("get",Me)
 	historial.Initialize("historial",Me)
+	urlEliminar = "https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/data/Dispositivos/"
 	backendelessGet.Download(urlGet & "'" & Main.ID & "'")			'para cargar los datos generales de la electrobomba
 End Sub
 
@@ -66,6 +71,14 @@ Sub JobDone (Job As HttpJob)
 				cargarDatos(Job.GetString) 'se envia la cadena recibida para procesar
 			Case "historial"
 				cargarEstado(Job.GetString)
+			Case "eliminar"
+				'Log(Job.GetString)
+				Msgbox2Async("Dispositivo eliminado correctamente","Listo!","Ok","","",Null,False)
+				Wait For Msgbox_Result(Result As Int) 'Queda en espera hasta que el usuario responda
+				If Result = DialogResponse.POSITIVE Then
+					Monitor_Activity.eliminado = True
+					Activity.Finish
+				End If
 		End Select
 	Else
 		Log("Error: " & Job.ErrorMessage)
@@ -87,6 +100,7 @@ Sub cargarDatos (res As String)
 			Dim descripcion As String = colroot.Get("descripcion")
 			Dim numero As String = colroot.Get("numero")
 			idActual = colroot.Get("id")
+			objectId = colroot.Get("objectId")
 		End If
 	Next
 	'asigno el texto a cada label
@@ -147,7 +161,7 @@ Sub diferenciaDeFechas(fecha As Long){
 		fechaActual = fechaActual - actualModificado*100
 		actualModificado = fecha/100
 		fecha = fecha - actualModificado*100
-		If fecha < fechaActual Then
+		If fecha <= fechaActual Then
 			actualModificado = fechaActual - fecha
 		Else
 			actualModificado = fechaActual + (60 - fecha)
@@ -220,4 +234,23 @@ Sub SetStatusBarColor(clr As Int)
 		jo = Activity
 		jo.RunMethod("setSystemUiVisibility", Array(8192)) 'SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 	End If
+End Sub
+
+Sub btnMas_Click
+	panel.Visible = Not(panel.Visible)
+	
+End Sub
+
+Sub lbHistorial_Click
+	Log("historial")
+End Sub
+
+Sub lbEliminar_Click
+	eliminar.Initialize("eliminar",Me)
+	Log("Eliminar")
+	eliminar.Delete(urlEliminar & objectId)
+End Sub
+
+Sub Activity_Click
+	panel.Visible = False
 End Sub

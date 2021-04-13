@@ -1,4 +1,4 @@
-﻿Build1=Default,b4a.example
+﻿Build1=Default,com.monitorflux
 File1=Agregar.bal
 File10=Principal.bal
 File11=Registrar.bal
@@ -9,7 +9,7 @@ File4=Datos.bal
 File5=Iniciar.bal
 File6=Intro.bal
 File7=Item.bal
-File8=login.db
+File8=monitor.db
 File9=Monitoreo.bal
 FileGroup1=Default Group
 FileGroup10=Default Group
@@ -55,6 +55,7 @@ Version=10.2
 	'SupportedOrientations possible values: unspecified, landscape or portrait.
 	#SupportedOrientations: portrait
 	#CanInstallToExternalStorage: False
+	#BridgeLogger: True
 #End Region
 
 #Region  Activity Attributes 
@@ -82,6 +83,8 @@ Sub Globals
 	Dim i As Int
 	Dim disFallando As Int
 	Dim historial As HttpJob
+	Private IniciarSesion As HttpJob
+	Private urlIniciar As String
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -100,10 +103,13 @@ Sub Activity_Create(FirstTime As Boolean)
 	urlGet = "https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/data/Dispositivos?where=ownerId%20%3D%20"
 	backendelessGet.Initialize("get",Me)
 	list.Initialize
+	IniciarSesion.Initialize("iniciar",Me)
+	urlIniciar = "https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/users/login"
 End Sub
 
 Sub Activity_Resume
 	If tmrIntro.Enabled = False Then
+		Log("Timer deshabilitado, intentando inicio")
 		intentoInicio
 		'backendelessGet.Download(urlGet)
 	End If
@@ -116,8 +122,15 @@ End Sub
 
 Sub tmrIntro_Tick
 	tmrIntro.Enabled = False
-	intentoInicio
-	
+	Log("Finalizando intro inicial intentando inicio")
+	If Starter.checkMantener Then
+		Dim datos As String
+		datos = "{"&Chr(34)&"login"&Chr(34)&":"&Chr(34)&Starter.usuario&Chr(34)&","&Chr(34)&"password"&Chr(34)&":"&Chr(34)&Starter.clave&Chr(34)&"}"
+		IniciarSesion.PostString(urlIniciar, datos)
+		IniciarSesion.GetRequest.SetContentType("application/json")
+	Else
+		intentoInicio
+	End If
 	
 End Sub
 
@@ -158,6 +171,8 @@ Sub JobDone (Job As HttpJob)
 			Case "historial"
 				Log(Job.GetString)
 				fallando(Job.GetString)
+			Case "iniciar"
+				resInicio(Job.GetString) 'se envia la cadena recibida para procesar
 		End Select
 	Else
 		Log("Error: " & Job.ErrorMessage)
@@ -195,7 +210,7 @@ Sub fallando(res As String)
 		For Each colroot As Map In root				'map es similar a list solo que se hace con clave, dato y se añade con put
 			' solo me interesan los datos que esten relacionados con la electrobomba actual
 			If colroot.Get("id") = list.Get(a) Then
-				Log(list.Get(a))
+				'Log(list.Get(a))
 				'guardo el valor de fecha para comparar y obtener la mas reciente
 				Dim fechaEntra As Long = colroot.Get("fecha")
 				If fechaEntra >= fecha Then
@@ -231,4 +246,19 @@ Sub intentoInicio
 	End If
 	
 	
+End Sub
+
+Sub btnOut_Click
+	Starter.actualizarCampos("mantener","0","id","1")
+	inicio = False
+	intentoInicio
+End Sub
+
+Sub resInicio(res As String)
+	inicio = True
+	Dim parser As JSONParser 						'definimos objeto que permite procesar JSON
+	parser.Initialize(res)
+	Dim root As Map = parser.NextObject
+	ID = root.Get("objectId")
+	intentoInicio
 End Sub

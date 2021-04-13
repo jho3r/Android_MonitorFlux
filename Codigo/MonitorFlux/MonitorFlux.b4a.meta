@@ -19,6 +19,6 @@ ModuleClosedNodes3=
 ModuleClosedNodes4=
 ModuleClosedNodes5=1
 ModuleClosedNodes6=
-NavigationStack=Monitor_Activity,cargarValores,78,0,Main,intentoInicio,179,0,Main,Activity_Create,49,0,Datos_Activity,Globals,23,6,Datos_Activity,cargarDatos,82,6,Datos_Activity,SetStatusBarColor,207,0,Datos_Activity,cargarEstado,106,6,Agregar_Activity,btnAtrasA_Click,68,2,Monitor_Activity,fallando,107,3,Datos_Activity,Activity_Create,34,6
+NavigationStack=Main,tmrIntro_Tick,79,0,Visual Designer,Datos.bal,-100,1,Agregar_Activity,resAgregar,137,0,Monitor_Activity,Activity_Resume,46,6,Datos_Activity,JobDone,72,6,Registrar_Activity,Activity_Resume,39,0,Visual Designer,Principal.bal,-100,5,Visual Designer,Monitoreo.bal,-100,1,Visual Designer,Item.bal,-100,1,Main,conteo,144,0
 SelectedBuild=0
 VisibleModules=5,6,1,3,2,4

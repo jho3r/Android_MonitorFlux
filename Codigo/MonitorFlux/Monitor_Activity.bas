@@ -14,6 +14,7 @@ Sub Process_Globals
 	'These variables can be accessed from all modules.
 	Dim backendelessGet As HttpJob 'se debe inicializar
 	Dim nombreD As String
+	Public eliminado As Boolean
 End Sub
 
 Sub Globals
@@ -40,11 +41,15 @@ Sub Activity_Create(FirstTime As Boolean)
 	historial.Initialize("historial",Me)
 	listAlterna.Initialize
 	disFallando.Initialize   'guarda el estado de los dispositivos
+	eliminado = False
 	historial.Download(urlHistorial)
 End Sub
 
 Sub Activity_Resume
-
+	If eliminado = True Then
+		Log("Eliminando actividad")
+		Activity.Finish
+	End If
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
@@ -81,7 +86,8 @@ Sub cargarValores (res As String)
 	Dim root As List = parser.NextArray
 	For Each colroot As Map In root				'map es similar a list solo que se hace con clave, dato y se añade con put
 		Dim nombre As String = colroot.Get("nombre")
-		addItems(nombre,i)
+		Dim id As String = colroot.Get("id")
+		addItems(nombre,i,id)
 		i = i + 1
 	Next
 	
@@ -115,14 +121,14 @@ Sub fallando(res As String)
 End Sub
 
 'https://www.bing.com/videos/search?q=list+view+b4a&docid=608046453639023701&mid=1876F562235070BDD5FF1876F562235070BDD5FF&view=detail&FORM=VIRE
-Sub addItems (texto As String, orden As Int)
+Sub addItems (texto As String, orden As Int, id As String)
 	Dim xui As XUI
 	Dim p As B4XView = xui.CreatePanel("")
 	p.SetLayoutAnimated(100,0,0,100%x,10%y)
 	p.LoadLayout("Item")
 	lbDispositivo.Text=(texto)
 	For a=0 To disFallando.Size-1
-		If texto = disFallando.Get(a) Then
+		If id = disFallando.Get(a) Then
 			lbDispositivo.Color = Colors.ARGB(255,240,84,84)
 		End If
 	Next

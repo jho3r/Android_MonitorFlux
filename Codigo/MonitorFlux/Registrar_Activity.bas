@@ -28,6 +28,9 @@ Sub Globals
 	Private etCorreoR As EditText
 	Private etPasswordR As EditText
 	Private urlRegistrar As String
+	Private correo As String
+	Private clave As String
+	Private cbMantener As CheckBox
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -57,8 +60,8 @@ Sub JobDone (Job As HttpJob)
 				resRegistrar(Job.GetString)
 		End Select
 	Else
+		Log("Error: " & Job.ErrorMessage)
 		handleError(Job.ErrorMessage)
-		'Log("Error: " & Job.ErrorMessage)
 		'ToastMessageShow("Error: " & Job.ErrorMessage, True)
 	End If
 	Job.Release
@@ -75,16 +78,16 @@ End Sub
 Sub btnIniciar_Click
 	If etCorreo.Text <> "" And etPassword.Text <> "" Then
 		If etCorreo.Text.Contains("@") Then
-			Dim correo As String = etCorreo.Text
-			Dim clave As String = etPassword.Text
+			correo  = etCorreo.Text
+			clave  = etPassword.Text
 			Dim datos As String
 			datos = "{"&Chr(34)&"login"&Chr(34)&":"&Chr(34)&correo&Chr(34)&","&Chr(34)&"password"&Chr(34)&":"&Chr(34)&clave&Chr(34)&"}"
 			IniciarSesion.PostString(urlIniciar, datos)
 			IniciarSesion.GetRequest.SetContentType("application/json")
 			ProgressDialogShow("Iniciando sesión")
 		Else If etCorreo.Text == "admin" And etPassword.Text == "admin" Then
-			Dim correo As String = Starter.usuarioAdmin
-			Dim clave As String = Starter.claveAdmin
+			correo = Starter.usuarioAdmin
+			clave = Starter.claveAdmin
 			Dim datos As String
 			datos = "{"&Chr(34)&"login"&Chr(34)&":"&Chr(34)&correo&Chr(34)&","&Chr(34)&"password"&Chr(34)&":"&Chr(34)&clave&Chr(34)&"}"
 			IniciarSesion.PostString(urlIniciar, datos)
@@ -106,6 +109,13 @@ Sub resInicio(res As String)
 	parser.Initialize(res)
 	Dim root As Map = parser.NextObject
 	Main.ID = root.Get("objectId")
+	
+	If cbMantener.Checked Then
+		Starter.actualizarCampos("usuario",correo,"id","1")
+		Starter.actualizarCampos("clave",clave,"id","1")
+		Starter.actualizarCampos("mantener","1","id","1")
+	End If
+	
 	Activity.Finish
 End Sub
 
