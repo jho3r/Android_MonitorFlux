@@ -398,7 +398,7 @@ public static String  _activity_resume() throws Exception{
  //BA.debugLineNum = 43;BA.debugLine="If eliminado = True Then";
 if (_eliminado==anywheresoftware.b4a.keywords.Common.True) { 
  //BA.debugLineNum = 44;BA.debugLine="Log(\"Eliminando actividad\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("22949122","Eliminando actividad",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("82949122","Eliminando actividad",0);
  //BA.debugLineNum = 45;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
  };
@@ -573,7 +573,7 @@ return "";
 public static String  _jobdone(com.monitorflux.httpjob _job) throws Exception{
  //BA.debugLineNum = 58;BA.debugLine="Sub JobDone (Job As HttpJob)";
  //BA.debugLineNum = 59;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
-anywheresoftware.b4a.keywords.Common.LogImpl("23145729","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("83145729","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
  //BA.debugLineNum = 60;BA.debugLine="If Job.Success = True Then";
 if (_job._success /*boolean*/ ==anywheresoftware.b4a.keywords.Common.True) { 
  //BA.debugLineNum = 61;BA.debugLine="Select Job.JobName 'Nombre del proceso a traves";
@@ -590,7 +590,7 @@ _fallando(_job._getstring /*String*/ ());
 ;
  }else {
  //BA.debugLineNum = 68;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("23145738","Error: "+_job._errormessage /*String*/ ,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("83145738","Error: "+_job._errormessage /*String*/ ,0);
  //BA.debugLineNum = 69;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error: "+_job._errormessage /*String*/ ),anywheresoftware.b4a.keywords.Common.True);
  };

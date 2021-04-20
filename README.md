@@ -21,7 +21,7 @@
 
 ## Interfaz gradica
 
-La interfaz gráfica es bastante simple y se implementan conceptos basicos de diseño para el color y las figuras.
+La interfaz gráfica es bastante simple y se implementan conceptos basicos de diseño para el color y las figuras......
 
 <p float="left">
   <img src="https://github.com/jho3r/Android_MonitorFlux/blob/master/Dise%C3%B1o/Mockups/Screenshot_2021-03-20-12-49-16-237_b4a.example.jpg" width="200"/>

@@ -324,7 +324,7 @@ case 23:
 //C
 this.state = 24;
  //BA.debugLineNum = 59;BA.debugLine="Log(LastException)";
-parent.__c.LogImpl("97798807",BA.ObjectToString(parent.__c.LastException(parent.getActivityBA())),0);
+parent.__c.LogImpl("98192023",BA.ObjectToString(parent.__c.LastException(parent.getActivityBA())),0);
  if (true) break;
 
 case 24:
@@ -503,7 +503,7 @@ case 8:
 //C
 this.state = 9;
  //BA.debugLineNum = 75;BA.debugLine="Log(\"Failed to serialize object: \" & Map.Get(ke";
-parent.__c.LogImpl("97864328","Failed to serialize object: "+BA.ObjectToString(_map.Get((Object)(_key))),0);
+parent.__c.LogImpl("98257544","Failed to serialize object: "+BA.ObjectToString(_map.Get((Object)(_key))),0);
  if (true) break;
 
 case 9:

@@ -33,6 +33,12 @@ Sub Globals
 	Private objectId As String
 	Private panel As Panel
 	Private urlEliminar As String
+	Dim rp As RuntimePermissions   'requiere libreria runtime permissions
+	Dim enviarSMS As PhoneSms
+	Private numero As String
+	Private smsReceiver As SmsInterceptor
+	Private Agregar As HttpJob
+	Private urlAgregar As String
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -46,6 +52,14 @@ Sub Activity_Create(FirstTime As Boolean)
 	backendelessGet.Initialize("get",Me)
 	historial.Initialize("historial",Me)
 	urlEliminar = "https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/data/Dispositivos/"
+	urlAgregar = "https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/data/Historial"
+	rp.CheckAndRequest(rp.PERMISSION_RECEIVE_SMS) 'INICIAMOS proceso de verificar permiso recibir SMS
+	Wait For Activity_PermissionResult(Permission As String, Result As Boolean) 'esperamos por repuesta de usuario
+	If Result Then
+		ToastMessageShow("Permiso para recibir mensaje en uso",True)
+	End If
+	
+	
 	backendelessGet.Download(urlGet & "'" & Main.ID & "'")			'para cargar los datos generales de la electrobomba
 End Sub
 
@@ -59,6 +73,7 @@ End Sub
 
 
 Sub btnAtrasE_Click
+	smsReceiver.StopListening
 	Activity.Finish
 End Sub
 
@@ -79,6 +94,8 @@ Sub JobDone (Job As HttpJob)
 					Monitor_Activity.eliminado = True
 					Activity.Finish
 				End If
+			Case "agregar"
+				resAgregar(Job.GetString)
 		End Select
 	Else
 		Log("Error: " & Job.ErrorMessage)
@@ -98,7 +115,7 @@ Sub cargarDatos (res As String)
 		If colroot.Get("nombre") = Monitor_Activity.nombreD Then
 			Dim nombre As String = colroot.Get("nombre")
 			Dim descripcion As String = colroot.Get("descripcion")
-			Dim numero As String = colroot.Get("numero")
+			numero = colroot.Get("numero")
 			idActual = colroot.Get("id")
 			objectId = colroot.Get("objectId")
 		End If
@@ -253,4 +270,47 @@ End Sub
 
 Sub Activity_Click
 	panel.Visible = False
+End Sub
+
+Sub btnActualizar_Click
+	Dim mensaje As String
+	mensaje = idActual
+	enviarSMS.Send2(numero,mensaje,False,False)
+	smsReceiver.Initialize("smsReceiver")
+	ProgressDialogShow("Conectando con el dispositivo... Espere un momento")
+	
+End Sub
+
+Sub smsReceiver_MessageReceived (From As String, Body As String) As Boolean
+	If From == numero Then
+		ProgressDialogHide
+		MsgboxAsync("Nuevo dato: " & Body & " Litros/Hora","Dato recibido")
+		Dim flujo As String = Body
+		Dim encendida As Boolean
+		encendida = False
+		If flujo > 3 Then
+			encendida = True
+		End If
+		smsReceiver.StopListening
+		DateTime.DateFormat = "yyyyMMddHHmm"
+		Dim fecha As Long = DateTime.Date(DateTime.Now)
+		
+		Agregar.Initialize("agregar",Me)
+		Dim datos As String
+		datos = "{"&Chr(34)&"encendida"&Chr(34)&":"&encendida&","&Chr(34)&"id"&Chr(34)&":"&Chr(34)&idActual&Chr(34)&","&Chr(34)&"flujo"&Chr(34)&":"&flujo&","&Chr(34)&"fecha"&Chr(34)&":"&Chr(34)&fecha&Chr(34)&"}"
+		Agregar.PostString(urlAgregar, datos)
+		Agregar.GetRequest.SetContentType("application/json")
+		ProgressDialogShow("Regitrando dispositivo")
+	End If
+	Return True
+End Sub
+
+Sub resAgregar (res As String)
+	ProgressDialogHide
+	Log(res)
+	Msgbox2Async("Dato adquirido correctamente","Listo!","Ok","","",Null,False)
+	Wait For Msgbox_Result(Result As Int) 'Queda en espera hasta que el usuario responda
+	If Result = DialogResponse.POSITIVE Then
+		historial.Download(urlHistorial)
+	End If
 End Sub
