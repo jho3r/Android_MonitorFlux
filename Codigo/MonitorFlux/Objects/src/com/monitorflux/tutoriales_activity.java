@@ -34,7 +34,7 @@ public class tutoriales_activity extends Activity implements B4AActivity{
 		super.onCreate(savedInstanceState);
         mostCurrent = this;
 		if (processBA == null) {
-			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "com.monitorflux", "com.monitorflux.tutoriales_activity");
+			processBA = new BA(this.getApplicationContext(), null, null, "com.monitorflux", "com.monitorflux.tutoriales_activity");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -335,15 +335,6 @@ public class tutoriales_activity extends Activity implements B4AActivity{
             
     }
 
-
-
-public static void initializeProcessGlobals() {
-             try {
-                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-}
 public anywheresoftware.b4a.keywords.Common __c = null;
 public anywheresoftware.b4a.objects.WebViewWrapper _wv1 = null;
 public com.monitorflux.main _main = null;
@@ -354,106 +345,87 @@ public com.monitorflux.datos_activity _datos_activity = null;
 public com.monitorflux.registrar_activity _registrar_activity = null;
 public com.monitorflux.httputils2service _httputils2service = null;
 public com.monitorflux.dbutils _dbutils = null;
-public static String  _activity_create(boolean _firsttime) throws Exception{
-RDebugUtils.currentModule="tutoriales_activity";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}));}
-RDebugUtils.currentLine=1703936;
- //BA.debugLineNum = 1703936;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
-RDebugUtils.currentLine=1703939;
- //BA.debugLineNum = 1703939;BA.debugLine="Activity.RemoveAllViews";
-mostCurrent._activity.RemoveAllViews();
-RDebugUtils.currentLine=1703940;
- //BA.debugLineNum = 1703940;BA.debugLine="Activity.LoadLayout(\"Tutorial\")";
-mostCurrent._activity.LoadLayout("Tutorial",mostCurrent.activityBA);
-RDebugUtils.currentLine=1703941;
- //BA.debugLineNum = 1703941;BA.debugLine="wv1.LoadUrl(\"https://www.youtube-nocookie.com/emb";
-mostCurrent._wv1.LoadUrl("https://www.youtube-nocookie.com/embed/2pOUQB_Cvpw");
-RDebugUtils.currentLine=1703942;
- //BA.debugLineNum = 1703942;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
-_setstatusbarcolor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (231),(int) (231),(int) (222)));
-RDebugUtils.currentLine=1703943;
- //BA.debugLineNum = 1703943;BA.debugLine="End Sub";
-return "";
+
+public static void initializeProcessGlobals() {
+             try {
+                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 }
-public static String  _setstatusbarcolor(int _clr) throws Exception{
-RDebugUtils.currentModule="tutoriales_activity";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "setstatusbarcolor", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "setstatusbarcolor", new Object[] {_clr}));}
-anywheresoftware.b4a.phone.Phone _p = null;
-anywheresoftware.b4j.object.JavaObject _jo = null;
-anywheresoftware.b4j.object.JavaObject _window = null;
-RDebugUtils.currentLine=1966080;
- //BA.debugLineNum = 1966080;BA.debugLine="Sub SetStatusBarColor(clr As Int)";
-RDebugUtils.currentLine=1966081;
- //BA.debugLineNum = 1966081;BA.debugLine="Dim p As Phone";
-_p = new anywheresoftware.b4a.phone.Phone();
-RDebugUtils.currentLine=1966082;
- //BA.debugLineNum = 1966082;BA.debugLine="If p.SdkVersion >= 21 Then";
-if (_p.getSdkVersion()>=21) { 
-RDebugUtils.currentLine=1966083;
- //BA.debugLineNum = 1966083;BA.debugLine="Dim jo As JavaObject";
-_jo = new anywheresoftware.b4j.object.JavaObject();
-RDebugUtils.currentLine=1966084;
- //BA.debugLineNum = 1966084;BA.debugLine="jo.InitializeContext";
-_jo.InitializeContext(processBA);
-RDebugUtils.currentLine=1966085;
- //BA.debugLineNum = 1966085;BA.debugLine="Dim window As JavaObject = jo.RunMethodJO(\"getWi";
-_window = new anywheresoftware.b4j.object.JavaObject();
-_window = _jo.RunMethodJO("getWindow",(Object[])(anywheresoftware.b4a.keywords.Common.Null));
-RDebugUtils.currentLine=1966086;
- //BA.debugLineNum = 1966086;BA.debugLine="window.RunMethod(\"addFlags\", Array (0x80000000))";
-_window.RunMethod("addFlags",new Object[]{(Object)(0x80000000)});
-RDebugUtils.currentLine=1966087;
- //BA.debugLineNum = 1966087;BA.debugLine="window.RunMethod(\"clearFlags\", Array (0x04000000";
-_window.RunMethod("clearFlags",new Object[]{(Object)(0x04000000)});
-RDebugUtils.currentLine=1966088;
- //BA.debugLineNum = 1966088;BA.debugLine="window.RunMethod(\"setStatusBarColor\", Array(clr)";
-_window.RunMethod("setStatusBarColor",new Object[]{(Object)(_clr)});
- };
-RDebugUtils.currentLine=1966090;
- //BA.debugLineNum = 1966090;BA.debugLine="If p.SdkVersion >= 23 Then";
-if (_p.getSdkVersion()>=23) { 
-RDebugUtils.currentLine=1966091;
- //BA.debugLineNum = 1966091;BA.debugLine="jo = Activity";
-_jo = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(mostCurrent._activity.getObject()));
-RDebugUtils.currentLine=1966092;
- //BA.debugLineNum = 1966092;BA.debugLine="jo.RunMethod(\"setSystemUiVisibility\", Array(8192";
-_jo.RunMethod("setSystemUiVisibility",new Object[]{(Object)(8192)});
- };
-RDebugUtils.currentLine=1966094;
- //BA.debugLineNum = 1966094;BA.debugLine="End Sub";
+public static String  _activity_create(boolean _firsttime) throws Exception{
+ //BA.debugLineNum = 18;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 21;BA.debugLine="Activity.RemoveAllViews";
+mostCurrent._activity.RemoveAllViews();
+ //BA.debugLineNum = 22;BA.debugLine="Activity.LoadLayout(\"Tutorial\")";
+mostCurrent._activity.LoadLayout("Tutorial",mostCurrent.activityBA);
+ //BA.debugLineNum = 23;BA.debugLine="wv1.LoadUrl(\"https://www.youtube-nocookie.com/emb";
+mostCurrent._wv1.LoadUrl("https://www.youtube-nocookie.com/embed/2pOUQB_Cvpw");
+ //BA.debugLineNum = 24;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
+_setstatusbarcolor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (231),(int) (231),(int) (222)));
+ //BA.debugLineNum = 25;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
-RDebugUtils.currentModule="tutoriales_activity";
-RDebugUtils.currentLine=1835008;
- //BA.debugLineNum = 1835008;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
-RDebugUtils.currentLine=1835010;
- //BA.debugLineNum = 1835010;BA.debugLine="End Sub";
+ //BA.debugLineNum = 31;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 33;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
-RDebugUtils.currentModule="tutoriales_activity";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null));}
-RDebugUtils.currentLine=1769472;
- //BA.debugLineNum = 1769472;BA.debugLine="Sub Activity_Resume";
-RDebugUtils.currentLine=1769474;
- //BA.debugLineNum = 1769474;BA.debugLine="End Sub";
+ //BA.debugLineNum = 27;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 29;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnatras_click() throws Exception{
-RDebugUtils.currentModule="tutoriales_activity";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btnatras_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnatras_click", null));}
-RDebugUtils.currentLine=1900544;
- //BA.debugLineNum = 1900544;BA.debugLine="Sub btnAtras_Click";
-RDebugUtils.currentLine=1900545;
- //BA.debugLineNum = 1900545;BA.debugLine="Activity.Finish";
+ //BA.debugLineNum = 35;BA.debugLine="Sub btnAtras_Click";
+ //BA.debugLineNum = 36;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
-RDebugUtils.currentLine=1900546;
- //BA.debugLineNum = 1900546;BA.debugLine="End Sub";
+ //BA.debugLineNum = 37;BA.debugLine="End Sub";
+return "";
+}
+public static String  _globals() throws Exception{
+ //BA.debugLineNum = 12;BA.debugLine="Sub Globals";
+ //BA.debugLineNum = 15;BA.debugLine="Private wv1 As WebView";
+mostCurrent._wv1 = new anywheresoftware.b4a.objects.WebViewWrapper();
+ //BA.debugLineNum = 16;BA.debugLine="End Sub";
+return "";
+}
+public static String  _process_globals() throws Exception{
+ //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
+ //BA.debugLineNum = 10;BA.debugLine="End Sub";
+return "";
+}
+public static String  _setstatusbarcolor(int _clr) throws Exception{
+anywheresoftware.b4a.phone.Phone _p = null;
+anywheresoftware.b4j.object.JavaObject _jo = null;
+anywheresoftware.b4j.object.JavaObject _window = null;
+ //BA.debugLineNum = 39;BA.debugLine="Sub SetStatusBarColor(clr As Int)";
+ //BA.debugLineNum = 40;BA.debugLine="Dim p As Phone";
+_p = new anywheresoftware.b4a.phone.Phone();
+ //BA.debugLineNum = 41;BA.debugLine="If p.SdkVersion >= 21 Then";
+if (_p.getSdkVersion()>=21) { 
+ //BA.debugLineNum = 42;BA.debugLine="Dim jo As JavaObject";
+_jo = new anywheresoftware.b4j.object.JavaObject();
+ //BA.debugLineNum = 43;BA.debugLine="jo.InitializeContext";
+_jo.InitializeContext(processBA);
+ //BA.debugLineNum = 44;BA.debugLine="Dim window As JavaObject = jo.RunMethodJO(\"getWi";
+_window = new anywheresoftware.b4j.object.JavaObject();
+_window = _jo.RunMethodJO("getWindow",(Object[])(anywheresoftware.b4a.keywords.Common.Null));
+ //BA.debugLineNum = 45;BA.debugLine="window.RunMethod(\"addFlags\", Array (0x80000000))";
+_window.RunMethod("addFlags",new Object[]{(Object)(0x80000000)});
+ //BA.debugLineNum = 46;BA.debugLine="window.RunMethod(\"clearFlags\", Array (0x04000000";
+_window.RunMethod("clearFlags",new Object[]{(Object)(0x04000000)});
+ //BA.debugLineNum = 47;BA.debugLine="window.RunMethod(\"setStatusBarColor\", Array(clr)";
+_window.RunMethod("setStatusBarColor",new Object[]{(Object)(_clr)});
+ };
+ //BA.debugLineNum = 49;BA.debugLine="If p.SdkVersion >= 23 Then";
+if (_p.getSdkVersion()>=23) { 
+ //BA.debugLineNum = 50;BA.debugLine="jo = Activity";
+_jo = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(mostCurrent._activity.getObject()));
+ //BA.debugLineNum = 51;BA.debugLine="jo.RunMethod(\"setSystemUiVisibility\", Array(8192";
+_jo.RunMethod("setSystemUiVisibility",new Object[]{(Object)(8192)});
+ };
+ //BA.debugLineNum = 53;BA.debugLine="End Sub";
 return "";
 }
 }

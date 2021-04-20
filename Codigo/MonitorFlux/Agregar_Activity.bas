@@ -34,6 +34,7 @@ Sub Globals
 	Private cbMensajes As CheckBox
 	Private urlAgregar As String
 	Private Agregar As HttpJob
+	Dim enviarSMS As PhoneSms
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -77,11 +78,12 @@ Sub btnAtrasA_Click
 End Sub
 
 Sub btnConectar_Click
-	ProgressDialogShow("Conectando con el dispositivo... Espere un momento")
 	nombre = etNombre.Text
 	numero = etNumero.Text
 	descripcion = etDescrip.Text
 	checkbox = cbMensajes.Checked
+	enviarSMS.Send2(numero,"000004",False,False)
+	ProgressDialogShow("Conectando con el dispositivo... Espere un momento")
 	Log("nombre: " & nombre & " numero: " & numero & " descripcion: " & descripcion & " enviar mensajes aqui: " & checkbox)
 End Sub
 

@@ -273,7 +273,9 @@ Sub Activity_Click
 End Sub
 
 Sub btnActualizar_Click
-	enviarSMS.Send2(numero,"actualizar",False,False)
+	Dim mensaje As String
+	mensaje = idActual
+	enviarSMS.Send2(numero,mensaje,False,False)
 	smsReceiver.Initialize("smsReceiver")
 	ProgressDialogShow("Conectando con el dispositivo... Espere un momento")
 	
@@ -282,6 +284,7 @@ End Sub
 Sub smsReceiver_MessageReceived (From As String, Body As String) As Boolean
 	If From == numero Then
 		ProgressDialogHide
+		MsgboxAsync("Nuevo dato: " & Body & " Litros/Hora","Dato recibido")
 		Dim flujo As String = Body
 		Dim encendida As Boolean
 		encendida = False
@@ -294,7 +297,7 @@ Sub smsReceiver_MessageReceived (From As String, Body As String) As Boolean
 		
 		Agregar.Initialize("agregar",Me)
 		Dim datos As String
-		datos = "{"&Chr(34)&"encendida"&Chr(34)&":"&Chr(34)&encendida&Chr(34)&","&Chr(34)&"id"&Chr(34)&":"&Chr(34)&idActual&Chr(34)&","&Chr(34)&"flujo"&Chr(34)&":"&Chr(34)&flujo&Chr(34)&","&Chr(34)&"fecha"&Chr(34)&":"&Chr(34)&fecha&Chr(34)&"}"
+		datos = "{"&Chr(34)&"encendida"&Chr(34)&":"&encendida&","&Chr(34)&"id"&Chr(34)&":"&Chr(34)&idActual&Chr(34)&","&Chr(34)&"flujo"&Chr(34)&":"&flujo&","&Chr(34)&"fecha"&Chr(34)&":"&Chr(34)&fecha&Chr(34)&"}"
 		Agregar.PostString(urlAgregar, datos)
 		Agregar.GetRequest.SetContentType("application/json")
 		ProgressDialogShow("Regitrando dispositivo")
