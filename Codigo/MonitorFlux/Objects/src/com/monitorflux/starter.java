@@ -14,7 +14,7 @@ public class starter extends  android.app.Service{
 			android.content.Intent in = new android.content.Intent(context, starter.class);
 			if (intent != null)
 				in.putExtra("b4a_internal_intent", intent);
-            ServiceHelper.StarterHelper.startServiceFromReceiver (context, in, true, BA.class);
+            ServiceHelper.StarterHelper.startServiceFromReceiver (context, in, true, anywheresoftware.b4a.ShellBA.class);
 		}
 
 	}
@@ -29,7 +29,7 @@ public class starter extends  android.app.Service{
         super.onCreate();
         mostCurrent = this;
         if (processBA == null) {
-		    processBA = new BA(this, null, null, "com.monitorflux", "com.monitorflux.starter");
+		    processBA = new anywheresoftware.b4a.ShellBA(this, null, null, "com.monitorflux", "com.monitorflux.starter");
             if (BA.isShellModeRuntimeCheck(processBA)) {
                 processBA.raiseEvent2(null, true, "SHELL", false);
 		    }
@@ -124,7 +124,8 @@ public class starter extends  android.app.Service{
 @Override
 	public android.os.IBinder onBind(android.content.Intent intent) {
 		return null;
-	}public anywheresoftware.b4a.keywords.Common __c = null;
+	}
+public anywheresoftware.b4a.keywords.Common __c = null;
 public static anywheresoftware.b4a.sql.SQL _sql = null;
 public static anywheresoftware.b4a.objects.RuntimePermissions _rp = null;
 public static String _usuarioadmin = "";
@@ -141,148 +142,193 @@ public com.monitorflux.registrar_activity _registrar_activity = null;
 public com.monitorflux.httputils2service _httputils2service = null;
 public com.monitorflux.dbutils _dbutils = null;
 public static String  _actualizarcampos(String _campoup,String _parametroup,String _campowhere,String _parametrowhere) throws Exception{
+RDebugUtils.currentModule="starter";
+if (Debug.shouldDelegate(processBA, "actualizarcampos", false))
+	 {return ((String) Debug.delegate(processBA, "actualizarcampos", new Object[] {_campoup,_parametroup,_campowhere,_parametrowhere}));}
 anywheresoftware.b4a.objects.collections.Map _mapactualizar = null;
- //BA.debugLineNum = 84;BA.debugLine="Sub actualizarCampos(campoUp As String,parametroUp";
- //BA.debugLineNum = 85;BA.debugLine="Dim mapActualizar As Map";
+RDebugUtils.currentLine=1507328;
+ //BA.debugLineNum = 1507328;BA.debugLine="Sub actualizarCampos(campoUp As String,parametroUp";
+RDebugUtils.currentLine=1507329;
+ //BA.debugLineNum = 1507329;BA.debugLine="Dim mapActualizar As Map";
 _mapactualizar = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 86;BA.debugLine="mapActualizar.Initialize";
+RDebugUtils.currentLine=1507330;
+ //BA.debugLineNum = 1507330;BA.debugLine="mapActualizar.Initialize";
 _mapactualizar.Initialize();
- //BA.debugLineNum = 87;BA.debugLine="mapActualizar.Put(campowhere,parametrowhere)";
+RDebugUtils.currentLine=1507331;
+ //BA.debugLineNum = 1507331;BA.debugLine="mapActualizar.Put(campowhere,parametrowhere)";
 _mapactualizar.Put((Object)(_campowhere),(Object)(_parametrowhere));
- //BA.debugLineNum = 88;BA.debugLine="DBUtils.UpdateRecord(sql,\"login\",campoUp,parametr";
+RDebugUtils.currentLine=1507332;
+ //BA.debugLineNum = 1507332;BA.debugLine="DBUtils.UpdateRecord(sql,\"login\",campoUp,parametr";
 mostCurrent._dbutils._updaterecord /*String*/ (processBA,_sql,"login",_campoup,(Object)(_parametroup),_mapactualizar);
- //BA.debugLineNum = 89;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1507333;
+ //BA.debugLineNum = 1507333;BA.debugLine="End Sub";
 return "";
 }
-public static boolean  _application_error(anywheresoftware.b4a.objects.B4AException _error,String _stacktrace) throws Exception{
- //BA.debugLineNum = 50;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
- //BA.debugLineNum = 51;BA.debugLine="Return True";
-if (true) return anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 52;BA.debugLine="End Sub";
-return false;
-}
 public static boolean  _checkmantener() throws Exception{
+RDebugUtils.currentModule="starter";
+if (Debug.shouldDelegate(processBA, "checkmantener", false))
+	 {return ((Boolean) Debug.delegate(processBA, "checkmantener", null));}
 anywheresoftware.b4a.objects.collections.Map _mapconsulta = null;
 int _i = 0;
- //BA.debugLineNum = 58;BA.debugLine="Sub checkMantener As Boolean";
- //BA.debugLineNum = 59;BA.debugLine="Dim mapConsulta As Map";
+RDebugUtils.currentLine=1441792;
+ //BA.debugLineNum = 1441792;BA.debugLine="Sub checkMantener As Boolean";
+RDebugUtils.currentLine=1441793;
+ //BA.debugLineNum = 1441793;BA.debugLine="Dim mapConsulta As Map";
 _mapconsulta = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 60;BA.debugLine="mapConsulta.Initialize";
+RDebugUtils.currentLine=1441794;
+ //BA.debugLineNum = 1441794;BA.debugLine="mapConsulta.Initialize";
 _mapconsulta.Initialize();
- //BA.debugLineNum = 61;BA.debugLine="mapConsulta = DBUtils.ExecuteMap(sql,\"SELECT * FR";
+RDebugUtils.currentLine=1441795;
+ //BA.debugLineNum = 1441795;BA.debugLine="mapConsulta = DBUtils.ExecuteMap(sql,\"SELECT * FR";
 _mapconsulta = mostCurrent._dbutils._executemap /*anywheresoftware.b4a.objects.collections.Map*/ (processBA,_sql,"SELECT * FROM login",(String[])(anywheresoftware.b4a.keywords.Common.Null));
- //BA.debugLineNum = 63;BA.debugLine="For i = 0 To mapConsulta.Size-1";
+RDebugUtils.currentLine=1441797;
+ //BA.debugLineNum = 1441797;BA.debugLine="For i = 0 To mapConsulta.Size-1";
 {
 final int step4 = 1;
 final int limit4 = (int) (_mapconsulta.getSize()-1);
 _i = (int) (0) ;
 for (;_i <= limit4 ;_i = _i + step4 ) {
- //BA.debugLineNum = 64;BA.debugLine="Select mapConsulta.GetKeyAt(i)";
+RDebugUtils.currentLine=1441798;
+ //BA.debugLineNum = 1441798;BA.debugLine="Select mapConsulta.GetKeyAt(i)";
 switch (BA.switchObjectToInt(_mapconsulta.GetKeyAt(_i),(Object)("usuario"),(Object)("clave"),(Object)("mantener"))) {
 case 0: {
- //BA.debugLineNum = 66;BA.debugLine="usuario = mapConsulta.GetValueAt(i)";
+RDebugUtils.currentLine=1441800;
+ //BA.debugLineNum = 1441800;BA.debugLine="usuario = mapConsulta.GetValueAt(i)";
 _usuario = BA.ObjectToString(_mapconsulta.GetValueAt(_i));
  break; }
 case 1: {
- //BA.debugLineNum = 68;BA.debugLine="clave = mapConsulta.GetValueAt(i)";
+RDebugUtils.currentLine=1441802;
+ //BA.debugLineNum = 1441802;BA.debugLine="clave = mapConsulta.GetValueAt(i)";
 _clave = BA.ObjectToString(_mapconsulta.GetValueAt(_i));
  break; }
 case 2: {
- //BA.debugLineNum = 70;BA.debugLine="mantener = mapConsulta.GetValueAt(i)";
+RDebugUtils.currentLine=1441804;
+ //BA.debugLineNum = 1441804;BA.debugLine="mantener = mapConsulta.GetValueAt(i)";
 _mantener = BA.ObjectToString(_mapconsulta.GetValueAt(_i));
  break; }
 }
 ;
- //BA.debugLineNum = 72;BA.debugLine="Log(mapConsulta.GetKeyAt(i)&\",\"&mapConsulta.GetV";
-anywheresoftware.b4a.keywords.Common.LogImpl("21441806",BA.ObjectToString(_mapconsulta.GetKeyAt(_i))+","+BA.ObjectToString(_mapconsulta.GetValueAt(_i)),0);
+RDebugUtils.currentLine=1441806;
+ //BA.debugLineNum = 1441806;BA.debugLine="Log(mapConsulta.GetKeyAt(i)&\",\"&mapConsulta.GetV";
+anywheresoftware.b4a.keywords.Common.LogImpl("11441806",BA.ObjectToString(_mapconsulta.GetKeyAt(_i))+","+BA.ObjectToString(_mapconsulta.GetValueAt(_i)),0);
  }
 };
- //BA.debugLineNum = 75;BA.debugLine="If mantener = \"1\" Then";
+RDebugUtils.currentLine=1441809;
+ //BA.debugLineNum = 1441809;BA.debugLine="If mantener = \"1\" Then";
 if ((_mantener).equals("1")) { 
- //BA.debugLineNum = 76;BA.debugLine="Log(\"Mantener igual a 1 intentando incio de sesi";
-anywheresoftware.b4a.keywords.Common.LogImpl("21441810","Mantener igual a 1 intentando incio de sesion",0);
- //BA.debugLineNum = 77;BA.debugLine="Return True";
+RDebugUtils.currentLine=1441810;
+ //BA.debugLineNum = 1441810;BA.debugLine="Log(\"Mantener igual a 1 intentando incio de sesi";
+anywheresoftware.b4a.keywords.Common.LogImpl("11441810","Mantener igual a 1 intentando incio de sesion",0);
+RDebugUtils.currentLine=1441811;
+ //BA.debugLineNum = 1441811;BA.debugLine="Return True";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
  }else {
- //BA.debugLineNum = 79;BA.debugLine="Log(\"No se tiene mantener = 1, pasando a ventana";
-anywheresoftware.b4a.keywords.Common.LogImpl("21441813","No se tiene mantener = 1, pasando a ventana de iniciar sesion",0);
- //BA.debugLineNum = 80;BA.debugLine="Return False";
+RDebugUtils.currentLine=1441813;
+ //BA.debugLineNum = 1441813;BA.debugLine="Log(\"No se tiene mantener = 1, pasando a ventana";
+anywheresoftware.b4a.keywords.Common.LogImpl("11441813","No se tiene mantener = 1, pasando a ventana de iniciar sesion",0);
+RDebugUtils.currentLine=1441814;
+ //BA.debugLineNum = 1441814;BA.debugLine="Return False";
 if (true) return anywheresoftware.b4a.keywords.Common.False;
  };
- //BA.debugLineNum = 82;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1441816;
+ //BA.debugLineNum = 1441816;BA.debugLine="End Sub";
 return false;
 }
-public static String  _process_globals() throws Exception{
- //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
- //BA.debugLineNum = 9;BA.debugLine="Public sql As SQL";
-_sql = new anywheresoftware.b4a.sql.SQL();
- //BA.debugLineNum = 10;BA.debugLine="Public rp As RuntimePermissions";
-_rp = new anywheresoftware.b4a.objects.RuntimePermissions();
- //BA.debugLineNum = 11;BA.debugLine="Public usuarioAdmin As String";
-_usuarioadmin = "";
- //BA.debugLineNum = 12;BA.debugLine="Public claveAdmin As String";
-_claveadmin = "";
- //BA.debugLineNum = 13;BA.debugLine="Public usuario As String";
-_usuario = "";
- //BA.debugLineNum = 14;BA.debugLine="Public clave As String";
-_clave = "";
- //BA.debugLineNum = 15;BA.debugLine="Public mantener As String";
-_mantener = "";
- //BA.debugLineNum = 18;BA.debugLine="End Sub";
-return "";
+public static boolean  _application_error(anywheresoftware.b4a.objects.B4AException _error,String _stacktrace) throws Exception{
+RDebugUtils.currentModule="starter";
+if (Debug.shouldDelegate(processBA, "application_error", false))
+	 {return ((Boolean) Debug.delegate(processBA, "application_error", new Object[] {_error,_stacktrace}));}
+RDebugUtils.currentLine=1310720;
+ //BA.debugLineNum = 1310720;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
+RDebugUtils.currentLine=1310721;
+ //BA.debugLineNum = 1310721;BA.debugLine="Return True";
+if (true) return anywheresoftware.b4a.keywords.Common.True;
+RDebugUtils.currentLine=1310722;
+ //BA.debugLineNum = 1310722;BA.debugLine="End Sub";
+return false;
 }
 public static String  _service_create() throws Exception{
- //BA.debugLineNum = 20;BA.debugLine="Sub Service_Create";
- //BA.debugLineNum = 24;BA.debugLine="End Sub";
+RDebugUtils.currentModule="starter";
+if (Debug.shouldDelegate(processBA, "service_create", false))
+	 {return ((String) Debug.delegate(processBA, "service_create", null));}
+RDebugUtils.currentLine=1114112;
+ //BA.debugLineNum = 1114112;BA.debugLine="Sub Service_Create";
+RDebugUtils.currentLine=1114116;
+ //BA.debugLineNum = 1114116;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_destroy() throws Exception{
- //BA.debugLineNum = 54;BA.debugLine="Sub Service_Destroy";
- //BA.debugLineNum = 56;BA.debugLine="End Sub";
+RDebugUtils.currentModule="starter";
+if (Debug.shouldDelegate(processBA, "service_destroy", false))
+	 {return ((String) Debug.delegate(processBA, "service_destroy", null));}
+RDebugUtils.currentLine=1376256;
+ //BA.debugLineNum = 1376256;BA.debugLine="Sub Service_Destroy";
+RDebugUtils.currentLine=1376258;
+ //BA.debugLineNum = 1376258;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_start(anywheresoftware.b4a.objects.IntentWrapper _startingintent) throws Exception{
+RDebugUtils.currentModule="starter";
+if (Debug.shouldDelegate(processBA, "service_start", false))
+	 {return ((String) Debug.delegate(processBA, "service_start", new Object[] {_startingintent}));}
 anywheresoftware.b4a.objects.collections.Map _mapconsulta = null;
 int _i = 0;
- //BA.debugLineNum = 26;BA.debugLine="Sub Service_Start (StartingIntent As Intent)";
- //BA.debugLineNum = 27;BA.debugLine="Service.StopAutomaticForeground 'Starter service";
+RDebugUtils.currentLine=1179648;
+ //BA.debugLineNum = 1179648;BA.debugLine="Sub Service_Start (StartingIntent As Intent)";
+RDebugUtils.currentLine=1179649;
+ //BA.debugLineNum = 1179649;BA.debugLine="Service.StopAutomaticForeground 'Starter service";
 mostCurrent._service.StopAutomaticForeground();
- //BA.debugLineNum = 28;BA.debugLine="DBUtils.CopyDBFromAssets(\"monitor.db\")";
+RDebugUtils.currentLine=1179650;
+ //BA.debugLineNum = 1179650;BA.debugLine="DBUtils.CopyDBFromAssets(\"monitor.db\")";
 mostCurrent._dbutils._copydbfromassets /*String*/ (processBA,"monitor.db");
- //BA.debugLineNum = 29;BA.debugLine="sql.Initialize(DBUtils.GetDBFolder,\"monitor.db\",F";
+RDebugUtils.currentLine=1179651;
+ //BA.debugLineNum = 1179651;BA.debugLine="sql.Initialize(DBUtils.GetDBFolder,\"monitor.db\",F";
 _sql.Initialize(mostCurrent._dbutils._getdbfolder /*String*/ (processBA),"monitor.db",anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 31;BA.debugLine="Dim mapConsulta As Map";
+RDebugUtils.currentLine=1179653;
+ //BA.debugLineNum = 1179653;BA.debugLine="Dim mapConsulta As Map";
 _mapconsulta = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 32;BA.debugLine="mapConsulta = DBUtils.ExecuteMap(sql,\"SELECT * FR";
+RDebugUtils.currentLine=1179654;
+ //BA.debugLineNum = 1179654;BA.debugLine="mapConsulta = DBUtils.ExecuteMap(sql,\"SELECT * FR";
 _mapconsulta = mostCurrent._dbutils._executemap /*anywheresoftware.b4a.objects.collections.Map*/ (processBA,_sql,"SELECT * FROM admin",(String[])(anywheresoftware.b4a.keywords.Common.Null));
- //BA.debugLineNum = 34;BA.debugLine="For i = 0 To mapConsulta.Size - 1";
+RDebugUtils.currentLine=1179656;
+ //BA.debugLineNum = 1179656;BA.debugLine="For i = 0 To mapConsulta.Size - 1";
 {
 final int step6 = 1;
 final int limit6 = (int) (_mapconsulta.getSize()-1);
 _i = (int) (0) ;
 for (;_i <= limit6 ;_i = _i + step6 ) {
- //BA.debugLineNum = 35;BA.debugLine="Select mapConsulta.GetKeyAt(i)";
+RDebugUtils.currentLine=1179657;
+ //BA.debugLineNum = 1179657;BA.debugLine="Select mapConsulta.GetKeyAt(i)";
 switch (BA.switchObjectToInt(_mapconsulta.GetKeyAt(_i),(Object)("usuario"),(Object)("clave"))) {
 case 0: {
- //BA.debugLineNum = 37;BA.debugLine="usuarioAdmin = mapConsulta.GetValueAt(i)";
+RDebugUtils.currentLine=1179659;
+ //BA.debugLineNum = 1179659;BA.debugLine="usuarioAdmin = mapConsulta.GetValueAt(i)";
 _usuarioadmin = BA.ObjectToString(_mapconsulta.GetValueAt(_i));
  break; }
 case 1: {
- //BA.debugLineNum = 39;BA.debugLine="claveAdmin = mapConsulta.GetValueAt(i)";
+RDebugUtils.currentLine=1179661;
+ //BA.debugLineNum = 1179661;BA.debugLine="claveAdmin = mapConsulta.GetValueAt(i)";
 _claveadmin = BA.ObjectToString(_mapconsulta.GetValueAt(_i));
  break; }
 }
 ;
- //BA.debugLineNum = 41;BA.debugLine="Log(mapConsulta.GetKeyAt(i)&\",\"&mapConsulta.GetV";
-anywheresoftware.b4a.keywords.Common.LogImpl("21179663",BA.ObjectToString(_mapconsulta.GetKeyAt(_i))+","+BA.ObjectToString(_mapconsulta.GetValueAt(_i)),0);
+RDebugUtils.currentLine=1179663;
+ //BA.debugLineNum = 1179663;BA.debugLine="Log(mapConsulta.GetKeyAt(i)&\",\"&mapConsulta.GetV";
+anywheresoftware.b4a.keywords.Common.LogImpl("11179663",BA.ObjectToString(_mapconsulta.GetKeyAt(_i))+","+BA.ObjectToString(_mapconsulta.GetValueAt(_i)),0);
  }
 };
- //BA.debugLineNum = 43;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1179665;
+ //BA.debugLineNum = 1179665;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_taskremoved() throws Exception{
- //BA.debugLineNum = 45;BA.debugLine="Sub Service_TaskRemoved";
- //BA.debugLineNum = 47;BA.debugLine="End Sub";
+RDebugUtils.currentModule="starter";
+if (Debug.shouldDelegate(processBA, "service_taskremoved", false))
+	 {return ((String) Debug.delegate(processBA, "service_taskremoved", null));}
+RDebugUtils.currentLine=1245184;
+ //BA.debugLineNum = 1245184;BA.debugLine="Sub Service_TaskRemoved";
+RDebugUtils.currentLine=1245186;
+ //BA.debugLineNum = 1245186;BA.debugLine="End Sub";
 return "";
 }
 }

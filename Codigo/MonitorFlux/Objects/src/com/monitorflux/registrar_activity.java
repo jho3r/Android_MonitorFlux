@@ -34,7 +34,7 @@ public class registrar_activity extends Activity implements B4AActivity{
 		super.onCreate(savedInstanceState);
         mostCurrent = this;
 		if (processBA == null) {
-			processBA = new BA(this.getApplicationContext(), null, null, "com.monitorflux", "com.monitorflux.registrar_activity");
+			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "com.monitorflux", "com.monitorflux.registrar_activity");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -335,6 +335,15 @@ public class registrar_activity extends Activity implements B4AActivity{
             
     }
 
+
+
+public static void initializeProcessGlobals() {
+             try {
+                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+}
 public anywheresoftware.b4a.keywords.Common __c = null;
 public com.monitorflux.httpjob _iniciarsesion = null;
 public com.monitorflux.httpjob _registrar = null;
@@ -357,344 +366,455 @@ public com.monitorflux.monitor_activity _monitor_activity = null;
 public com.monitorflux.datos_activity _datos_activity = null;
 public com.monitorflux.httputils2service _httputils2service = null;
 public com.monitorflux.dbutils _dbutils = null;
-
-public static void initializeProcessGlobals() {
-             try {
-                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-}
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 30;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 32;BA.debugLine="Activity.LoadLayout(\"Iniciar\")";
+RDebugUtils.currentModule="registrar_activity";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}));}
+RDebugUtils.currentLine=4653056;
+ //BA.debugLineNum = 4653056;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+RDebugUtils.currentLine=4653058;
+ //BA.debugLineNum = 4653058;BA.debugLine="Activity.LoadLayout(\"Iniciar\")";
 mostCurrent._activity.LoadLayout("Iniciar",mostCurrent.activityBA);
- //BA.debugLineNum = 33;BA.debugLine="IniciarSesion.Initialize(\"iniciar\",Me)";
-mostCurrent._iniciarsesion._initialize /*String*/ (processBA,"iniciar",registrar_activity.getObject());
- //BA.debugLineNum = 34;BA.debugLine="urlIniciar = \"https://api.backendless.com/4D75900";
+RDebugUtils.currentLine=4653059;
+ //BA.debugLineNum = 4653059;BA.debugLine="IniciarSesion.Initialize(\"iniciar\",Me)";
+mostCurrent._iniciarsesion._initialize /*String*/ (null,processBA,"iniciar",registrar_activity.getObject());
+RDebugUtils.currentLine=4653060;
+ //BA.debugLineNum = 4653060;BA.debugLine="urlIniciar = \"https://api.backendless.com/4D75900";
 mostCurrent._urliniciar = "https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/users/login";
- //BA.debugLineNum = 35;BA.debugLine="urlRegistrar = \"https://api.backendless.com/4D759";
+RDebugUtils.currentLine=4653061;
+ //BA.debugLineNum = 4653061;BA.debugLine="urlRegistrar = \"https://api.backendless.com/4D759";
 mostCurrent._urlregistrar = "https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/users/register";
- //BA.debugLineNum = 36;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
+RDebugUtils.currentLine=4653062;
+ //BA.debugLineNum = 4653062;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
 _setstatusbarcolor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (231),(int) (231),(int) (222)));
- //BA.debugLineNum = 37;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4653063;
+ //BA.debugLineNum = 4653063;BA.debugLine="End Sub";
+return "";
+}
+public static String  _setstatusbarcolor(int _clr) throws Exception{
+RDebugUtils.currentModule="registrar_activity";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "setstatusbarcolor", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "setstatusbarcolor", new Object[] {_clr}));}
+anywheresoftware.b4a.phone.Phone _p = null;
+anywheresoftware.b4j.object.JavaObject _jo = null;
+anywheresoftware.b4j.object.JavaObject _window = null;
+RDebugUtils.currentLine=5111808;
+ //BA.debugLineNum = 5111808;BA.debugLine="Sub SetStatusBarColor(clr As Int)";
+RDebugUtils.currentLine=5111809;
+ //BA.debugLineNum = 5111809;BA.debugLine="Dim p As Phone";
+_p = new anywheresoftware.b4a.phone.Phone();
+RDebugUtils.currentLine=5111810;
+ //BA.debugLineNum = 5111810;BA.debugLine="If p.SdkVersion >= 21 Then";
+if (_p.getSdkVersion()>=21) { 
+RDebugUtils.currentLine=5111811;
+ //BA.debugLineNum = 5111811;BA.debugLine="Dim jo As JavaObject";
+_jo = new anywheresoftware.b4j.object.JavaObject();
+RDebugUtils.currentLine=5111812;
+ //BA.debugLineNum = 5111812;BA.debugLine="jo.InitializeContext";
+_jo.InitializeContext(processBA);
+RDebugUtils.currentLine=5111813;
+ //BA.debugLineNum = 5111813;BA.debugLine="Dim window As JavaObject = jo.RunMethodJO(\"getWi";
+_window = new anywheresoftware.b4j.object.JavaObject();
+_window = _jo.RunMethodJO("getWindow",(Object[])(anywheresoftware.b4a.keywords.Common.Null));
+RDebugUtils.currentLine=5111814;
+ //BA.debugLineNum = 5111814;BA.debugLine="window.RunMethod(\"addFlags\", Array (0x80000000))";
+_window.RunMethod("addFlags",new Object[]{(Object)(0x80000000)});
+RDebugUtils.currentLine=5111815;
+ //BA.debugLineNum = 5111815;BA.debugLine="window.RunMethod(\"clearFlags\", Array (0x04000000";
+_window.RunMethod("clearFlags",new Object[]{(Object)(0x04000000)});
+RDebugUtils.currentLine=5111816;
+ //BA.debugLineNum = 5111816;BA.debugLine="window.RunMethod(\"setStatusBarColor\", Array(clr)";
+_window.RunMethod("setStatusBarColor",new Object[]{(Object)(_clr)});
+ };
+RDebugUtils.currentLine=5111818;
+ //BA.debugLineNum = 5111818;BA.debugLine="If p.SdkVersion >= 23 Then";
+if (_p.getSdkVersion()>=23) { 
+RDebugUtils.currentLine=5111819;
+ //BA.debugLineNum = 5111819;BA.debugLine="jo = Activity";
+_jo = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(mostCurrent._activity.getObject()));
+RDebugUtils.currentLine=5111820;
+ //BA.debugLineNum = 5111820;BA.debugLine="jo.RunMethod(\"setSystemUiVisibility\", Array(8192";
+_jo.RunMethod("setSystemUiVisibility",new Object[]{(Object)(8192)});
+ };
+RDebugUtils.currentLine=5111822;
+ //BA.debugLineNum = 5111822;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 43;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 45;BA.debugLine="End Sub";
+RDebugUtils.currentModule="registrar_activity";
+RDebugUtils.currentLine=4784128;
+ //BA.debugLineNum = 4784128;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=4784130;
+ //BA.debugLineNum = 4784130;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 39;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 41;BA.debugLine="End Sub";
+RDebugUtils.currentModule="registrar_activity";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null));}
+RDebugUtils.currentLine=4718592;
+ //BA.debugLineNum = 4718592;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=4718594;
+ //BA.debugLineNum = 4718594;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnatrasa_click() throws Exception{
- //BA.debugLineNum = 185;BA.debugLine="Sub btnAtrasA_Click";
- //BA.debugLineNum = 186;BA.debugLine="Activity.RemoveAllViews";
+RDebugUtils.currentModule="registrar_activity";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "btnatrasa_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnatrasa_click", null));}
+RDebugUtils.currentLine=5373952;
+ //BA.debugLineNum = 5373952;BA.debugLine="Sub btnAtrasA_Click";
+RDebugUtils.currentLine=5373953;
+ //BA.debugLineNum = 5373953;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
- //BA.debugLineNum = 187;BA.debugLine="Activity.LoadLayout(\"Iniciar\")";
+RDebugUtils.currentLine=5373954;
+ //BA.debugLineNum = 5373954;BA.debugLine="Activity.LoadLayout(\"Iniciar\")";
 mostCurrent._activity.LoadLayout("Iniciar",mostCurrent.activityBA);
- //BA.debugLineNum = 188;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5373955;
+ //BA.debugLineNum = 5373955;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btniniciar_click() throws Exception{
+RDebugUtils.currentModule="registrar_activity";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "btniniciar_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btniniciar_click", null));}
 String _datos = "";
- //BA.debugLineNum = 72;BA.debugLine="Sub btnIniciar_Click";
- //BA.debugLineNum = 73;BA.debugLine="If etCorreo.Text <> \"\" And etPassword.Text <> \"\"";
+RDebugUtils.currentLine=4980736;
+ //BA.debugLineNum = 4980736;BA.debugLine="Sub btnIniciar_Click";
+RDebugUtils.currentLine=4980737;
+ //BA.debugLineNum = 4980737;BA.debugLine="If etCorreo.Text <> \"\" And etPassword.Text <> \"\"";
 if ((mostCurrent._etcorreo.getText()).equals("") == false && (mostCurrent._etpassword.getText()).equals("") == false) { 
- //BA.debugLineNum = 74;BA.debugLine="If etCorreo.Text.Contains(\"@\") Then";
+RDebugUtils.currentLine=4980738;
+ //BA.debugLineNum = 4980738;BA.debugLine="If etCorreo.Text.Contains(\"@\") Then";
 if (mostCurrent._etcorreo.getText().contains("@")) { 
- //BA.debugLineNum = 75;BA.debugLine="correo  = etCorreo.Text";
+RDebugUtils.currentLine=4980739;
+ //BA.debugLineNum = 4980739;BA.debugLine="correo  = etCorreo.Text";
 mostCurrent._correo = mostCurrent._etcorreo.getText();
- //BA.debugLineNum = 76;BA.debugLine="clave  = etPassword.Text";
+RDebugUtils.currentLine=4980740;
+ //BA.debugLineNum = 4980740;BA.debugLine="clave  = etPassword.Text";
 mostCurrent._clave = mostCurrent._etpassword.getText();
- //BA.debugLineNum = 77;BA.debugLine="Dim datos As String";
+RDebugUtils.currentLine=4980741;
+ //BA.debugLineNum = 4980741;BA.debugLine="Dim datos As String";
 _datos = "";
- //BA.debugLineNum = 78;BA.debugLine="datos = \"{\"&Chr(34)&\"login\"&Chr(34)&\":\"&Chr(34)";
+RDebugUtils.currentLine=4980742;
+ //BA.debugLineNum = 4980742;BA.debugLine="datos = \"{\"&Chr(34)&\"login\"&Chr(34)&\":\"&Chr(34)";
 _datos = "{"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"login"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+mostCurrent._correo+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+","+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"password"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+mostCurrent._clave+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"}";
- //BA.debugLineNum = 79;BA.debugLine="IniciarSesion.PostString(urlIniciar, datos)";
-mostCurrent._iniciarsesion._poststring /*String*/ (mostCurrent._urliniciar,_datos);
- //BA.debugLineNum = 80;BA.debugLine="IniciarSesion.GetRequest.SetContentType(\"applic";
-mostCurrent._iniciarsesion._getrequest /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ ().SetContentType("application/json");
- //BA.debugLineNum = 81;BA.debugLine="ProgressDialogShow(\"Iniciando sesión\")";
+RDebugUtils.currentLine=4980743;
+ //BA.debugLineNum = 4980743;BA.debugLine="IniciarSesion.PostString(urlIniciar, datos)";
+mostCurrent._iniciarsesion._poststring /*String*/ (null,mostCurrent._urliniciar,_datos);
+RDebugUtils.currentLine=4980744;
+ //BA.debugLineNum = 4980744;BA.debugLine="IniciarSesion.GetRequest.SetContentType(\"applic";
+mostCurrent._iniciarsesion._getrequest /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ (null).SetContentType("application/json");
+RDebugUtils.currentLine=4980745;
+ //BA.debugLineNum = 4980745;BA.debugLine="ProgressDialogShow(\"Iniciando sesión\")";
 anywheresoftware.b4a.keywords.Common.ProgressDialogShow(mostCurrent.activityBA,BA.ObjectToCharSequence("Iniciando sesión"));
- }else if((mostCurrent._etcorreo.getText()).equals("admin") && (mostCurrent._etpassword.getText()).equals("admin")) { 
- //BA.debugLineNum = 83;BA.debugLine="correo = Starter.usuarioAdmin";
+ }else 
+{RDebugUtils.currentLine=4980746;
+ //BA.debugLineNum = 4980746;BA.debugLine="Else If etCorreo.Text == \"admin\" And etPassword.";
+if ((mostCurrent._etcorreo.getText()).equals("admin") && (mostCurrent._etpassword.getText()).equals("admin")) { 
+RDebugUtils.currentLine=4980747;
+ //BA.debugLineNum = 4980747;BA.debugLine="correo = Starter.usuarioAdmin";
 mostCurrent._correo = mostCurrent._starter._usuarioadmin /*String*/ ;
- //BA.debugLineNum = 84;BA.debugLine="clave = Starter.claveAdmin";
+RDebugUtils.currentLine=4980748;
+ //BA.debugLineNum = 4980748;BA.debugLine="clave = Starter.claveAdmin";
 mostCurrent._clave = mostCurrent._starter._claveadmin /*String*/ ;
- //BA.debugLineNum = 85;BA.debugLine="Dim datos As String";
+RDebugUtils.currentLine=4980749;
+ //BA.debugLineNum = 4980749;BA.debugLine="Dim datos As String";
 _datos = "";
- //BA.debugLineNum = 86;BA.debugLine="datos = \"{\"&Chr(34)&\"login\"&Chr(34)&\":\"&Chr(34)";
+RDebugUtils.currentLine=4980750;
+ //BA.debugLineNum = 4980750;BA.debugLine="datos = \"{\"&Chr(34)&\"login\"&Chr(34)&\":\"&Chr(34)";
 _datos = "{"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"login"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+mostCurrent._correo+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+","+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"password"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+mostCurrent._clave+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"}";
- //BA.debugLineNum = 87;BA.debugLine="IniciarSesion.PostString(urlIniciar, datos)";
-mostCurrent._iniciarsesion._poststring /*String*/ (mostCurrent._urliniciar,_datos);
- //BA.debugLineNum = 88;BA.debugLine="IniciarSesion.GetRequest.SetContentType(\"applic";
-mostCurrent._iniciarsesion._getrequest /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ ().SetContentType("application/json");
- //BA.debugLineNum = 89;BA.debugLine="ProgressDialogShow(\"Iniciando sesión\")";
+RDebugUtils.currentLine=4980751;
+ //BA.debugLineNum = 4980751;BA.debugLine="IniciarSesion.PostString(urlIniciar, datos)";
+mostCurrent._iniciarsesion._poststring /*String*/ (null,mostCurrent._urliniciar,_datos);
+RDebugUtils.currentLine=4980752;
+ //BA.debugLineNum = 4980752;BA.debugLine="IniciarSesion.GetRequest.SetContentType(\"applic";
+mostCurrent._iniciarsesion._getrequest /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ (null).SetContentType("application/json");
+RDebugUtils.currentLine=4980753;
+ //BA.debugLineNum = 4980753;BA.debugLine="ProgressDialogShow(\"Iniciando sesión\")";
 anywheresoftware.b4a.keywords.Common.ProgressDialogShow(mostCurrent.activityBA,BA.ObjectToCharSequence("Iniciando sesión"));
  }else {
- //BA.debugLineNum = 91;BA.debugLine="ToastMessageShow(\"Correo invalido\",True)";
+RDebugUtils.currentLine=4980755;
+ //BA.debugLineNum = 4980755;BA.debugLine="ToastMessageShow(\"Correo invalido\",True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Correo invalido"),anywheresoftware.b4a.keywords.Common.True);
- };
+ }}
+;
  }else {
- //BA.debugLineNum = 94;BA.debugLine="ToastMessageShow(\"Rellena todos los campos\",True";
+RDebugUtils.currentLine=4980758;
+ //BA.debugLineNum = 4980758;BA.debugLine="ToastMessageShow(\"Rellena todos los campos\",True";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Rellena todos los campos"),anywheresoftware.b4a.keywords.Common.True);
  };
- //BA.debugLineNum = 96;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4980760;
+ //BA.debugLineNum = 4980760;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnregistrar_click() throws Exception{
+RDebugUtils.currentModule="registrar_activity";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "btnregistrar_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnregistrar_click", null));}
 String _nombre = "";
 String _datos = "";
- //BA.debugLineNum = 132;BA.debugLine="Sub btnRegistrar_Click";
- //BA.debugLineNum = 133;BA.debugLine="If etNombre.Text == \"\" Or etCorreoR.Text ==\"\" Or";
+RDebugUtils.currentLine=5177344;
+ //BA.debugLineNum = 5177344;BA.debugLine="Sub btnRegistrar_Click";
+RDebugUtils.currentLine=5177345;
+ //BA.debugLineNum = 5177345;BA.debugLine="If etNombre.Text == \"\" Or etCorreoR.Text ==\"\" Or";
 if ((mostCurrent._etnombre.getText()).equals("") || (mostCurrent._etcorreor.getText()).equals("") || (mostCurrent._etpasswordr.getText()).equals("") || (mostCurrent._etconfirm.getText()).equals("")) { 
- //BA.debugLineNum = 134;BA.debugLine="ToastMessageShow(\"Error! ... Aegurate de llenar";
+RDebugUtils.currentLine=5177346;
+ //BA.debugLineNum = 5177346;BA.debugLine="ToastMessageShow(\"Error! ... Aegurate de llenar";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error! ... Aegurate de llenar todos los campos"),anywheresoftware.b4a.keywords.Common.True);
  }else {
- //BA.debugLineNum = 136;BA.debugLine="If etPasswordR.Text <> etConfirm.Text Then";
+RDebugUtils.currentLine=5177348;
+ //BA.debugLineNum = 5177348;BA.debugLine="If etPasswordR.Text <> etConfirm.Text Then";
 if ((mostCurrent._etpasswordr.getText()).equals(mostCurrent._etconfirm.getText()) == false) { 
- //BA.debugLineNum = 137;BA.debugLine="ToastMessageShow(\"Error! ... Las contraseñas no";
+RDebugUtils.currentLine=5177349;
+ //BA.debugLineNum = 5177349;BA.debugLine="ToastMessageShow(\"Error! ... Las contraseñas no";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error! ... Las contraseñas no coinciden"),anywheresoftware.b4a.keywords.Common.True);
  }else {
- //BA.debugLineNum = 139;BA.debugLine="Dim correo As String = etCorreoR.Text";
+RDebugUtils.currentLine=5177351;
+ //BA.debugLineNum = 5177351;BA.debugLine="Dim correo As String = etCorreoR.Text";
 mostCurrent._correo = mostCurrent._etcorreor.getText();
- //BA.debugLineNum = 140;BA.debugLine="Dim clave As String = etPasswordR.Text";
+RDebugUtils.currentLine=5177352;
+ //BA.debugLineNum = 5177352;BA.debugLine="Dim clave As String = etPasswordR.Text";
 mostCurrent._clave = mostCurrent._etpasswordr.getText();
- //BA.debugLineNum = 141;BA.debugLine="Dim Nombre As String = etNombre.Text";
+RDebugUtils.currentLine=5177353;
+ //BA.debugLineNum = 5177353;BA.debugLine="Dim Nombre As String = etNombre.Text";
 _nombre = mostCurrent._etnombre.getText();
- //BA.debugLineNum = 142;BA.debugLine="Dim datos As String";
+RDebugUtils.currentLine=5177354;
+ //BA.debugLineNum = 5177354;BA.debugLine="Dim datos As String";
 _datos = "";
- //BA.debugLineNum = 143;BA.debugLine="datos = \"{\"&Chr(34)&\"email\"&Chr(34)&\":\"&Chr(34)";
+RDebugUtils.currentLine=5177355;
+ //BA.debugLineNum = 5177355;BA.debugLine="datos = \"{\"&Chr(34)&\"email\"&Chr(34)&\":\"&Chr(34)";
 _datos = "{"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"email"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+mostCurrent._correo+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+","+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"password"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+mostCurrent._clave+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+","+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"name"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+_nombre+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"}";
- //BA.debugLineNum = 144;BA.debugLine="Registrar.PostString(urlRegistrar, datos)";
-mostCurrent._registrar._poststring /*String*/ (mostCurrent._urlregistrar,_datos);
- //BA.debugLineNum = 145;BA.debugLine="Registrar.GetRequest.SetContentType(\"applicatio";
-mostCurrent._registrar._getrequest /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ ().SetContentType("application/json");
- //BA.debugLineNum = 146;BA.debugLine="ProgressDialogShow(\"Registro en proceso\")";
+RDebugUtils.currentLine=5177356;
+ //BA.debugLineNum = 5177356;BA.debugLine="Registrar.PostString(urlRegistrar, datos)";
+mostCurrent._registrar._poststring /*String*/ (null,mostCurrent._urlregistrar,_datos);
+RDebugUtils.currentLine=5177357;
+ //BA.debugLineNum = 5177357;BA.debugLine="Registrar.GetRequest.SetContentType(\"applicatio";
+mostCurrent._registrar._getrequest /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ (null).SetContentType("application/json");
+RDebugUtils.currentLine=5177358;
+ //BA.debugLineNum = 5177358;BA.debugLine="ProgressDialogShow(\"Registro en proceso\")";
 anywheresoftware.b4a.keywords.Common.ProgressDialogShow(mostCurrent.activityBA,BA.ObjectToCharSequence("Registro en proceso"));
  };
  };
- //BA.debugLineNum = 149;BA.debugLine="End Sub";
-return "";
-}
-public static String  _globals() throws Exception{
- //BA.debugLineNum = 12;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 15;BA.debugLine="Dim IniciarSesion As HttpJob";
-mostCurrent._iniciarsesion = new com.monitorflux.httpjob();
- //BA.debugLineNum = 16;BA.debugLine="Dim Registrar As HttpJob";
-mostCurrent._registrar = new com.monitorflux.httpjob();
- //BA.debugLineNum = 17;BA.debugLine="Private etCorreo As EditText";
-mostCurrent._etcorreo = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 18;BA.debugLine="Private etPassword As EditText";
-mostCurrent._etpassword = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 19;BA.debugLine="Private urlIniciar As String";
-mostCurrent._urliniciar = "";
- //BA.debugLineNum = 20;BA.debugLine="Private etNombre As EditText";
-mostCurrent._etnombre = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 21;BA.debugLine="Private etConfirm As EditText";
-mostCurrent._etconfirm = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 22;BA.debugLine="Private etCorreoR As EditText";
-mostCurrent._etcorreor = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 23;BA.debugLine="Private etPasswordR As EditText";
-mostCurrent._etpasswordr = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 24;BA.debugLine="Private urlRegistrar As String";
-mostCurrent._urlregistrar = "";
- //BA.debugLineNum = 25;BA.debugLine="Private correo As String";
-mostCurrent._correo = "";
- //BA.debugLineNum = 26;BA.debugLine="Private clave As String";
-mostCurrent._clave = "";
- //BA.debugLineNum = 27;BA.debugLine="Private cbMantener As CheckBox";
-mostCurrent._cbmantener = new anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper();
- //BA.debugLineNum = 28;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5177361;
+ //BA.debugLineNum = 5177361;BA.debugLine="End Sub";
 return "";
 }
 public static String  _handleerror(String _res) throws Exception{
+RDebugUtils.currentModule="registrar_activity";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "handleerror", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "handleerror", new Object[] {_res}));}
 anywheresoftware.b4a.objects.collections.JSONParser _parser = null;
 anywheresoftware.b4a.objects.collections.Map _root = null;
 int _code = 0;
 String _mesage = "";
- //BA.debugLineNum = 164;BA.debugLine="Sub handleError(res As String)";
- //BA.debugLineNum = 165;BA.debugLine="ProgressDialogHide";
+RDebugUtils.currentLine=5308416;
+ //BA.debugLineNum = 5308416;BA.debugLine="Sub handleError(res As String)";
+RDebugUtils.currentLine=5308417;
+ //BA.debugLineNum = 5308417;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
- //BA.debugLineNum = 166;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
+RDebugUtils.currentLine=5308418;
+ //BA.debugLineNum = 5308418;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
 _parser = new anywheresoftware.b4a.objects.collections.JSONParser();
- //BA.debugLineNum = 167;BA.debugLine="parser.Initialize(res)";
+RDebugUtils.currentLine=5308419;
+ //BA.debugLineNum = 5308419;BA.debugLine="parser.Initialize(res)";
 _parser.Initialize(_res);
- //BA.debugLineNum = 168;BA.debugLine="Dim root As Map = parser.NextObject";
+RDebugUtils.currentLine=5308420;
+ //BA.debugLineNum = 5308420;BA.debugLine="Dim root As Map = parser.NextObject";
 _root = new anywheresoftware.b4a.objects.collections.Map();
 _root = _parser.NextObject();
- //BA.debugLineNum = 169;BA.debugLine="Dim code As Int = root.Get(\"code\")";
+RDebugUtils.currentLine=5308421;
+ //BA.debugLineNum = 5308421;BA.debugLine="Dim code As Int = root.Get(\"code\")";
 _code = (int)(BA.ObjectToNumber(_root.Get((Object)("code"))));
- //BA.debugLineNum = 170;BA.debugLine="Dim mesage As String";
+RDebugUtils.currentLine=5308422;
+ //BA.debugLineNum = 5308422;BA.debugLine="Dim mesage As String";
 _mesage = "";
- //BA.debugLineNum = 171;BA.debugLine="Select code";
+RDebugUtils.currentLine=5308423;
+ //BA.debugLineNum = 5308423;BA.debugLine="Select code";
 switch (_code) {
 case 3003: {
- //BA.debugLineNum = 173;BA.debugLine="mesage = \"El correo o la contraseña no son corr";
+RDebugUtils.currentLine=5308425;
+ //BA.debugLineNum = 5308425;BA.debugLine="mesage = \"El correo o la contraseña no son corr";
 _mesage = "El correo o la contraseña no son correctos";
  break; }
 case 3033: {
- //BA.debugLineNum = 175;BA.debugLine="mesage = \"El usuario ya esta registrado\"";
+RDebugUtils.currentLine=5308427;
+ //BA.debugLineNum = 5308427;BA.debugLine="mesage = \"El usuario ya esta registrado\"";
 _mesage = "El usuario ya esta registrado";
  break; }
 case 3087: {
- //BA.debugLineNum = 177;BA.debugLine="mesage = \"No puedes iniciar sesion, primero deb";
+RDebugUtils.currentLine=5308429;
+ //BA.debugLineNum = 5308429;BA.debugLine="mesage = \"No puedes iniciar sesion, primero deb";
 _mesage = "No puedes iniciar sesion, primero debes confirmar tu email";
  break; }
 default: {
- //BA.debugLineNum = 179;BA.debugLine="mesage = root.Get(\"message\")";
+RDebugUtils.currentLine=5308431;
+ //BA.debugLineNum = 5308431;BA.debugLine="mesage = root.Get(\"message\")";
 _mesage = BA.ObjectToString(_root.Get((Object)("message")));
  break; }
 }
 ;
- //BA.debugLineNum = 182;BA.debugLine="MsgboxAsync(mesage,\"Error\")";
+RDebugUtils.currentLine=5308434;
+ //BA.debugLineNum = 5308434;BA.debugLine="MsgboxAsync(mesage,\"Error\")";
 anywheresoftware.b4a.keywords.Common.MsgboxAsync(BA.ObjectToCharSequence(_mesage),BA.ObjectToCharSequence("Error"),processBA);
- //BA.debugLineNum = 183;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5308435;
+ //BA.debugLineNum = 5308435;BA.debugLine="End Sub";
 return "";
 }
 public static String  _jobdone(com.monitorflux.httpjob _job) throws Exception{
- //BA.debugLineNum = 47;BA.debugLine="Sub JobDone (Job As HttpJob)";
- //BA.debugLineNum = 48;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
-anywheresoftware.b4a.keywords.Common.LogImpl("24653057","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
- //BA.debugLineNum = 49;BA.debugLine="If Job.Success = True Then";
+RDebugUtils.currentModule="registrar_activity";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "jobdone", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "jobdone", new Object[] {_job}));}
+RDebugUtils.currentLine=4849664;
+ //BA.debugLineNum = 4849664;BA.debugLine="Sub JobDone (Job As HttpJob)";
+RDebugUtils.currentLine=4849665;
+ //BA.debugLineNum = 4849665;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
+anywheresoftware.b4a.keywords.Common.LogImpl("14849665","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
+RDebugUtils.currentLine=4849666;
+ //BA.debugLineNum = 4849666;BA.debugLine="If Job.Success = True Then";
 if (_job._success /*boolean*/ ==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 50;BA.debugLine="Select Job.JobName 'Nombre del proceso a traves";
+RDebugUtils.currentLine=4849667;
+ //BA.debugLineNum = 4849667;BA.debugLine="Select Job.JobName 'Nombre del proceso a traves";
 switch (BA.switchObjectToInt(_job._jobname /*String*/ ,"iniciar","registrar")) {
 case 0: {
- //BA.debugLineNum = 52;BA.debugLine="resInicio(Job.GetString) 'se envia la cadena r";
-_resinicio(_job._getstring /*String*/ ());
+RDebugUtils.currentLine=4849669;
+ //BA.debugLineNum = 4849669;BA.debugLine="resInicio(Job.GetString) 'se envia la cadena r";
+_resinicio(_job._getstring /*String*/ (null));
  break; }
 case 1: {
- //BA.debugLineNum = 54;BA.debugLine="resRegistrar(Job.GetString)";
-_resregistrar(_job._getstring /*String*/ ());
+RDebugUtils.currentLine=4849671;
+ //BA.debugLineNum = 4849671;BA.debugLine="resRegistrar(Job.GetString)";
+_resregistrar(_job._getstring /*String*/ (null));
  break; }
 }
 ;
  }else {
- //BA.debugLineNum = 57;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("24653066","Error: "+_job._errormessage /*String*/ ,0);
- //BA.debugLineNum = 58;BA.debugLine="handleError(Job.ErrorMessage)";
+RDebugUtils.currentLine=4849674;
+ //BA.debugLineNum = 4849674;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
+anywheresoftware.b4a.keywords.Common.LogImpl("14849674","Error: "+_job._errormessage /*String*/ ,0);
+RDebugUtils.currentLine=4849675;
+ //BA.debugLineNum = 4849675;BA.debugLine="handleError(Job.ErrorMessage)";
 _handleerror(_job._errormessage /*String*/ );
  };
- //BA.debugLineNum = 61;BA.debugLine="Job.Release";
-_job._release /*String*/ ();
- //BA.debugLineNum = 62;BA.debugLine="End Sub";
-return "";
-}
-public static String  _lbregistrar_click() throws Exception{
- //BA.debugLineNum = 65;BA.debugLine="Sub lbRegistrar_Click";
- //BA.debugLineNum = 66;BA.debugLine="Activity.RemoveAllViews";
-mostCurrent._activity.RemoveAllViews();
- //BA.debugLineNum = 67;BA.debugLine="Activity.LoadLayout(\"Registrar\")";
-mostCurrent._activity.LoadLayout("Registrar",mostCurrent.activityBA);
- //BA.debugLineNum = 68;BA.debugLine="Registrar.Initialize(\"registrar\",Me)";
-mostCurrent._registrar._initialize /*String*/ (processBA,"registrar",registrar_activity.getObject());
- //BA.debugLineNum = 69;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
-_setstatusbarcolor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (231),(int) (231),(int) (222)));
- //BA.debugLineNum = 70;BA.debugLine="End Sub";
-return "";
-}
-public static String  _process_globals() throws Exception{
- //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
- //BA.debugLineNum = 10;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4849678;
+ //BA.debugLineNum = 4849678;BA.debugLine="Job.Release";
+_job._release /*String*/ (null);
+RDebugUtils.currentLine=4849679;
+ //BA.debugLineNum = 4849679;BA.debugLine="End Sub";
 return "";
 }
 public static String  _resinicio(String _res) throws Exception{
+RDebugUtils.currentModule="registrar_activity";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "resinicio", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "resinicio", new Object[] {_res}));}
 anywheresoftware.b4a.objects.collections.JSONParser _parser = null;
 anywheresoftware.b4a.objects.collections.Map _root = null;
- //BA.debugLineNum = 99;BA.debugLine="Sub resInicio(res As String)";
- //BA.debugLineNum = 100;BA.debugLine="ProgressDialogHide";
+RDebugUtils.currentLine=5046272;
+ //BA.debugLineNum = 5046272;BA.debugLine="Sub resInicio(res As String)";
+RDebugUtils.currentLine=5046273;
+ //BA.debugLineNum = 5046273;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
- //BA.debugLineNum = 101;BA.debugLine="Main.inicio = True";
+RDebugUtils.currentLine=5046274;
+ //BA.debugLineNum = 5046274;BA.debugLine="Main.inicio = True";
 mostCurrent._main._inicio /*boolean*/  = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 102;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
+RDebugUtils.currentLine=5046275;
+ //BA.debugLineNum = 5046275;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
 _parser = new anywheresoftware.b4a.objects.collections.JSONParser();
- //BA.debugLineNum = 103;BA.debugLine="parser.Initialize(res)";
+RDebugUtils.currentLine=5046276;
+ //BA.debugLineNum = 5046276;BA.debugLine="parser.Initialize(res)";
 _parser.Initialize(_res);
- //BA.debugLineNum = 104;BA.debugLine="Dim root As Map = parser.NextObject";
+RDebugUtils.currentLine=5046277;
+ //BA.debugLineNum = 5046277;BA.debugLine="Dim root As Map = parser.NextObject";
 _root = new anywheresoftware.b4a.objects.collections.Map();
 _root = _parser.NextObject();
- //BA.debugLineNum = 105;BA.debugLine="Main.ID = root.Get(\"objectId\")";
+RDebugUtils.currentLine=5046278;
+ //BA.debugLineNum = 5046278;BA.debugLine="Main.ID = root.Get(\"objectId\")";
 mostCurrent._main._id /*String*/  = BA.ObjectToString(_root.Get((Object)("objectId")));
- //BA.debugLineNum = 107;BA.debugLine="If cbMantener.Checked Then";
+RDebugUtils.currentLine=5046280;
+ //BA.debugLineNum = 5046280;BA.debugLine="If cbMantener.Checked Then";
 if (mostCurrent._cbmantener.getChecked()) { 
- //BA.debugLineNum = 108;BA.debugLine="Starter.actualizarCampos(\"usuario\",correo,\"id\",\"";
+RDebugUtils.currentLine=5046281;
+ //BA.debugLineNum = 5046281;BA.debugLine="Starter.actualizarCampos(\"usuario\",correo,\"id\",\"";
 mostCurrent._starter._actualizarcampos /*String*/ ("usuario",mostCurrent._correo,"id","1");
- //BA.debugLineNum = 109;BA.debugLine="Starter.actualizarCampos(\"clave\",clave,\"id\",\"1\")";
+RDebugUtils.currentLine=5046282;
+ //BA.debugLineNum = 5046282;BA.debugLine="Starter.actualizarCampos(\"clave\",clave,\"id\",\"1\")";
 mostCurrent._starter._actualizarcampos /*String*/ ("clave",mostCurrent._clave,"id","1");
- //BA.debugLineNum = 110;BA.debugLine="Starter.actualizarCampos(\"mantener\",\"1\",\"id\",\"1\"";
+RDebugUtils.currentLine=5046283;
+ //BA.debugLineNum = 5046283;BA.debugLine="Starter.actualizarCampos(\"mantener\",\"1\",\"id\",\"1\"";
 mostCurrent._starter._actualizarcampos /*String*/ ("mantener","1","id","1");
  };
- //BA.debugLineNum = 113;BA.debugLine="Activity.Finish";
+RDebugUtils.currentLine=5046286;
+ //BA.debugLineNum = 5046286;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
- //BA.debugLineNum = 114;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5046287;
+ //BA.debugLineNum = 5046287;BA.debugLine="End Sub";
 return "";
 }
 public static String  _resregistrar(String _res) throws Exception{
+RDebugUtils.currentModule="registrar_activity";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "resregistrar", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "resregistrar", new Object[] {_res}));}
 anywheresoftware.b4a.objects.collections.JSONParser _parser = null;
 anywheresoftware.b4a.objects.collections.Map _root = null;
 String _nombre = "";
 String _titulo = "";
- //BA.debugLineNum = 151;BA.debugLine="Sub resRegistrar(res As String)";
- //BA.debugLineNum = 152;BA.debugLine="ProgressDialogHide";
+RDebugUtils.currentLine=5242880;
+ //BA.debugLineNum = 5242880;BA.debugLine="Sub resRegistrar(res As String)";
+RDebugUtils.currentLine=5242881;
+ //BA.debugLineNum = 5242881;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
- //BA.debugLineNum = 153;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
+RDebugUtils.currentLine=5242882;
+ //BA.debugLineNum = 5242882;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
 _parser = new anywheresoftware.b4a.objects.collections.JSONParser();
- //BA.debugLineNum = 154;BA.debugLine="parser.Initialize(res)";
+RDebugUtils.currentLine=5242883;
+ //BA.debugLineNum = 5242883;BA.debugLine="parser.Initialize(res)";
 _parser.Initialize(_res);
- //BA.debugLineNum = 155;BA.debugLine="Dim root As Map = parser.NextObject";
+RDebugUtils.currentLine=5242884;
+ //BA.debugLineNum = 5242884;BA.debugLine="Dim root As Map = parser.NextObject";
 _root = new anywheresoftware.b4a.objects.collections.Map();
 _root = _parser.NextObject();
- //BA.debugLineNum = 156;BA.debugLine="Dim nombre As String = root.Get(\"name\")";
+RDebugUtils.currentLine=5242885;
+ //BA.debugLineNum = 5242885;BA.debugLine="Dim nombre As String = root.Get(\"name\")";
 _nombre = BA.ObjectToString(_root.Get((Object)("name")));
- //BA.debugLineNum = 157;BA.debugLine="Dim titulo As String = \"Hola \" & nombre";
+RDebugUtils.currentLine=5242886;
+ //BA.debugLineNum = 5242886;BA.debugLine="Dim titulo As String = \"Hola \" & nombre";
 _titulo = "Hola "+_nombre;
- //BA.debugLineNum = 158;BA.debugLine="MsgboxAsync(\"Tu usuario ha sido registrado correc";
+RDebugUtils.currentLine=5242887;
+ //BA.debugLineNum = 5242887;BA.debugLine="MsgboxAsync(\"Tu usuario ha sido registrado correc";
 anywheresoftware.b4a.keywords.Common.MsgboxAsync(BA.ObjectToCharSequence("Tu usuario ha sido registrado correctamente, puedes activar tu cuenta desde el correo que ha sido enviado a tu email"),BA.ObjectToCharSequence(_titulo),processBA);
- //BA.debugLineNum = 159;BA.debugLine="Activity.RemoveAllViews";
+RDebugUtils.currentLine=5242888;
+ //BA.debugLineNum = 5242888;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
- //BA.debugLineNum = 160;BA.debugLine="Activity.LoadLayout(\"Iniciar\")";
+RDebugUtils.currentLine=5242889;
+ //BA.debugLineNum = 5242889;BA.debugLine="Activity.LoadLayout(\"Iniciar\")";
 mostCurrent._activity.LoadLayout("Iniciar",mostCurrent.activityBA);
- //BA.debugLineNum = 161;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
+RDebugUtils.currentLine=5242890;
+ //BA.debugLineNum = 5242890;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
 _setstatusbarcolor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (231),(int) (231),(int) (222)));
- //BA.debugLineNum = 162;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5242891;
+ //BA.debugLineNum = 5242891;BA.debugLine="End Sub";
 return "";
 }
-public static String  _setstatusbarcolor(int _clr) throws Exception{
-anywheresoftware.b4a.phone.Phone _p = null;
-anywheresoftware.b4j.object.JavaObject _jo = null;
-anywheresoftware.b4j.object.JavaObject _window = null;
- //BA.debugLineNum = 116;BA.debugLine="Sub SetStatusBarColor(clr As Int)";
- //BA.debugLineNum = 117;BA.debugLine="Dim p As Phone";
-_p = new anywheresoftware.b4a.phone.Phone();
- //BA.debugLineNum = 118;BA.debugLine="If p.SdkVersion >= 21 Then";
-if (_p.getSdkVersion()>=21) { 
- //BA.debugLineNum = 119;BA.debugLine="Dim jo As JavaObject";
-_jo = new anywheresoftware.b4j.object.JavaObject();
- //BA.debugLineNum = 120;BA.debugLine="jo.InitializeContext";
-_jo.InitializeContext(processBA);
- //BA.debugLineNum = 121;BA.debugLine="Dim window As JavaObject = jo.RunMethodJO(\"getWi";
-_window = new anywheresoftware.b4j.object.JavaObject();
-_window = _jo.RunMethodJO("getWindow",(Object[])(anywheresoftware.b4a.keywords.Common.Null));
- //BA.debugLineNum = 122;BA.debugLine="window.RunMethod(\"addFlags\", Array (0x80000000))";
-_window.RunMethod("addFlags",new Object[]{(Object)(0x80000000)});
- //BA.debugLineNum = 123;BA.debugLine="window.RunMethod(\"clearFlags\", Array (0x04000000";
-_window.RunMethod("clearFlags",new Object[]{(Object)(0x04000000)});
- //BA.debugLineNum = 124;BA.debugLine="window.RunMethod(\"setStatusBarColor\", Array(clr)";
-_window.RunMethod("setStatusBarColor",new Object[]{(Object)(_clr)});
- };
- //BA.debugLineNum = 126;BA.debugLine="If p.SdkVersion >= 23 Then";
-if (_p.getSdkVersion()>=23) { 
- //BA.debugLineNum = 127;BA.debugLine="jo = Activity";
-_jo = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(mostCurrent._activity.getObject()));
- //BA.debugLineNum = 128;BA.debugLine="jo.RunMethod(\"setSystemUiVisibility\", Array(8192";
-_jo.RunMethod("setSystemUiVisibility",new Object[]{(Object)(8192)});
- };
- //BA.debugLineNum = 130;BA.debugLine="End Sub";
+public static String  _lbregistrar_click() throws Exception{
+RDebugUtils.currentModule="registrar_activity";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "lbregistrar_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "lbregistrar_click", null));}
+RDebugUtils.currentLine=4915200;
+ //BA.debugLineNum = 4915200;BA.debugLine="Sub lbRegistrar_Click";
+RDebugUtils.currentLine=4915201;
+ //BA.debugLineNum = 4915201;BA.debugLine="Activity.RemoveAllViews";
+mostCurrent._activity.RemoveAllViews();
+RDebugUtils.currentLine=4915202;
+ //BA.debugLineNum = 4915202;BA.debugLine="Activity.LoadLayout(\"Registrar\")";
+mostCurrent._activity.LoadLayout("Registrar",mostCurrent.activityBA);
+RDebugUtils.currentLine=4915203;
+ //BA.debugLineNum = 4915203;BA.debugLine="Registrar.Initialize(\"registrar\",Me)";
+mostCurrent._registrar._initialize /*String*/ (null,processBA,"registrar",registrar_activity.getObject());
+RDebugUtils.currentLine=4915204;
+ //BA.debugLineNum = 4915204;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
+_setstatusbarcolor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (231),(int) (231),(int) (222)));
+RDebugUtils.currentLine=4915205;
+ //BA.debugLineNum = 4915205;BA.debugLine="End Sub";
 return "";
 }
 }
