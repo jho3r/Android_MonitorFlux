@@ -138,10 +138,13 @@ public com.monitorflux.agregar_activity _agregar_activity = null;
 public com.monitorflux.monitor_activity _monitor_activity = null;
 public com.monitorflux.datos_activity _datos_activity = null;
 public com.monitorflux.registrar_activity _registrar_activity = null;
+public com.monitorflux.grafica_activity _grafica_activity = null;
 public com.monitorflux.httputils2service _httputils2service = null;
 public com.monitorflux.dbutils _dbutils = null;
 public static String  _actualizarcampos(String _campoup,String _parametroup,String _campowhere,String _parametrowhere) throws Exception{
 anywheresoftware.b4a.objects.collections.Map _mapactualizar = null;
+anywheresoftware.b4a.objects.collections.Map _mapconsulta = null;
+int _i = 0;
  //BA.debugLineNum = 84;BA.debugLine="Sub actualizarCampos(campoUp As String,parametroUp";
  //BA.debugLineNum = 85;BA.debugLine="Dim mapActualizar As Map";
 _mapactualizar = new anywheresoftware.b4a.objects.collections.Map();
@@ -151,7 +154,39 @@ _mapactualizar.Initialize();
 _mapactualizar.Put((Object)(_campowhere),(Object)(_parametrowhere));
  //BA.debugLineNum = 88;BA.debugLine="DBUtils.UpdateRecord(sql,\"login\",campoUp,parametr";
 mostCurrent._dbutils._updaterecord /*String*/ (processBA,_sql,"login",_campoup,(Object)(_parametroup),_mapactualizar);
- //BA.debugLineNum = 89;BA.debugLine="End Sub";
+ //BA.debugLineNum = 90;BA.debugLine="Dim mapConsulta As Map";
+_mapconsulta = new anywheresoftware.b4a.objects.collections.Map();
+ //BA.debugLineNum = 91;BA.debugLine="mapConsulta.Initialize";
+_mapconsulta.Initialize();
+ //BA.debugLineNum = 92;BA.debugLine="mapConsulta = DBUtils.ExecuteMap(sql,\"SELECT * FR";
+_mapconsulta = mostCurrent._dbutils._executemap /*anywheresoftware.b4a.objects.collections.Map*/ (processBA,_sql,"SELECT * FROM login",(String[])(anywheresoftware.b4a.keywords.Common.Null));
+ //BA.debugLineNum = 94;BA.debugLine="For i = 0 To mapConsulta.Size-1";
+{
+final int step8 = 1;
+final int limit8 = (int) (_mapconsulta.getSize()-1);
+_i = (int) (0) ;
+for (;_i <= limit8 ;_i = _i + step8 ) {
+ //BA.debugLineNum = 95;BA.debugLine="Select mapConsulta.GetKeyAt(i)";
+switch (BA.switchObjectToInt(_mapconsulta.GetKeyAt(_i),(Object)("usuario"),(Object)("clave"),(Object)("mantener"))) {
+case 0: {
+ //BA.debugLineNum = 97;BA.debugLine="usuario = mapConsulta.GetValueAt(i)";
+_usuario = BA.ObjectToString(_mapconsulta.GetValueAt(_i));
+ break; }
+case 1: {
+ //BA.debugLineNum = 99;BA.debugLine="clave = mapConsulta.GetValueAt(i)";
+_clave = BA.ObjectToString(_mapconsulta.GetValueAt(_i));
+ break; }
+case 2: {
+ //BA.debugLineNum = 101;BA.debugLine="mantener = mapConsulta.GetValueAt(i)";
+_mantener = BA.ObjectToString(_mapconsulta.GetValueAt(_i));
+ break; }
+}
+;
+ //BA.debugLineNum = 103;BA.debugLine="Log(mapConsulta.GetKeyAt(i)&\",\"&mapConsulta.GetV";
+anywheresoftware.b4a.keywords.Common.LogImpl("61507347",BA.ObjectToString(_mapconsulta.GetKeyAt(_i))+","+BA.ObjectToString(_mapconsulta.GetValueAt(_i))+"de dato actualizado",0);
+ }
+};
+ //BA.debugLineNum = 105;BA.debugLine="End Sub";
 return "";
 }
 public static boolean  _application_error(anywheresoftware.b4a.objects.B4AException _error,String _stacktrace) throws Exception{
@@ -194,18 +229,18 @@ _mantener = BA.ObjectToString(_mapconsulta.GetValueAt(_i));
 }
 ;
  //BA.debugLineNum = 72;BA.debugLine="Log(mapConsulta.GetKeyAt(i)&\",\"&mapConsulta.GetV";
-anywheresoftware.b4a.keywords.Common.LogImpl("81441806",BA.ObjectToString(_mapconsulta.GetKeyAt(_i))+","+BA.ObjectToString(_mapconsulta.GetValueAt(_i)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("61441806",BA.ObjectToString(_mapconsulta.GetKeyAt(_i))+","+BA.ObjectToString(_mapconsulta.GetValueAt(_i)),0);
  }
 };
  //BA.debugLineNum = 75;BA.debugLine="If mantener = \"1\" Then";
 if ((_mantener).equals("1")) { 
  //BA.debugLineNum = 76;BA.debugLine="Log(\"Mantener igual a 1 intentando incio de sesi";
-anywheresoftware.b4a.keywords.Common.LogImpl("81441810","Mantener igual a 1 intentando incio de sesion",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("61441810","Mantener igual a 1 intentando incio de sesion",0);
  //BA.debugLineNum = 77;BA.debugLine="Return True";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
  }else {
  //BA.debugLineNum = 79;BA.debugLine="Log(\"No se tiene mantener = 1, pasando a ventana";
-anywheresoftware.b4a.keywords.Common.LogImpl("81441813","No se tiene mantener = 1, pasando a ventana de iniciar sesion",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("61441813","No se tiene mantener = 1, pasando a ventana de iniciar sesion",0);
  //BA.debugLineNum = 80;BA.debugLine="Return False";
 if (true) return anywheresoftware.b4a.keywords.Common.False;
  };
@@ -274,7 +309,7 @@ _claveadmin = BA.ObjectToString(_mapconsulta.GetValueAt(_i));
 }
 ;
  //BA.debugLineNum = 41;BA.debugLine="Log(mapConsulta.GetKeyAt(i)&\",\"&mapConsulta.GetV";
-anywheresoftware.b4a.keywords.Common.LogImpl("81179663",BA.ObjectToString(_mapconsulta.GetKeyAt(_i))+","+BA.ObjectToString(_mapconsulta.GetValueAt(_i)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("61179663",BA.ObjectToString(_mapconsulta.GetKeyAt(_i))+","+BA.ObjectToString(_mapconsulta.GetValueAt(_i)),0);
  }
 };
  //BA.debugLineNum = 43;BA.debugLine="End Sub";

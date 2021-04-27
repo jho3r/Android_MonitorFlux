@@ -343,6 +343,7 @@ public com.monitorflux.agregar_activity _agregar_activity = null;
 public com.monitorflux.monitor_activity _monitor_activity = null;
 public com.monitorflux.datos_activity _datos_activity = null;
 public com.monitorflux.registrar_activity _registrar_activity = null;
+public com.monitorflux.grafica_activity _grafica_activity = null;
 public com.monitorflux.httputils2service _httputils2service = null;
 public com.monitorflux.dbutils _dbutils = null;
 

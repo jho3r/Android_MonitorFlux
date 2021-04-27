@@ -336,6 +336,7 @@ public class datos_activity extends Activity implements B4AActivity{
     }
 
 public anywheresoftware.b4a.keywords.Common __c = null;
+public static String _idactual = "";
 public com.monitorflux.httpjob _backendelessget = null;
 public com.monitorflux.httpjob _historial = null;
 public com.monitorflux.httpjob _eliminar = null;
@@ -347,7 +348,6 @@ public anywheresoftware.b4a.objects.LabelWrapper _lbdescrip = null;
 public anywheresoftware.b4a.objects.LabelWrapper _lbestado = null;
 public anywheresoftware.b4a.objects.LabelWrapper _lbflujo = null;
 public anywheresoftware.b4a.objects.LabelWrapper _lbactualizado = null;
-public static String _idactual = "";
 public static String _objectid = "";
 public anywheresoftware.b4a.objects.PanelWrapper _panel = null;
 public static String _urleliminar = "";
@@ -363,6 +363,7 @@ public com.monitorflux.tutoriales_activity _tutoriales_activity = null;
 public com.monitorflux.agregar_activity _agregar_activity = null;
 public com.monitorflux.monitor_activity _monitor_activity = null;
 public com.monitorflux.registrar_activity _registrar_activity = null;
+public com.monitorflux.grafica_activity _grafica_activity = null;
 public com.monitorflux.httputils2service _httputils2service = null;
 public com.monitorflux.dbutils _dbutils = null;
 
@@ -374,10 +375,10 @@ public static void initializeProcessGlobals() {
             }
 }
 public static String  _activity_click() throws Exception{
- //BA.debugLineNum = 265;BA.debugLine="Sub Activity_Click";
- //BA.debugLineNum = 266;BA.debugLine="panel.Visible = False";
+ //BA.debugLineNum = 266;BA.debugLine="Sub Activity_Click";
+ //BA.debugLineNum = 267;BA.debugLine="panel.Visible = False";
 mostCurrent._panel.setVisible(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 267;BA.debugLine="End Sub";
+ //BA.debugLineNum = 268;BA.debugLine="End Sub";
 return "";
 }
 public static void  _activity_create(boolean _firsttime) throws Exception{
@@ -479,18 +480,18 @@ return "";
 }
 public static String  _btnactualizar_click() throws Exception{
 String _mensaje = "";
- //BA.debugLineNum = 269;BA.debugLine="Sub btnActualizar_Click";
- //BA.debugLineNum = 270;BA.debugLine="Dim mensaje As String";
+ //BA.debugLineNum = 270;BA.debugLine="Sub btnActualizar_Click";
+ //BA.debugLineNum = 271;BA.debugLine="Dim mensaje As String";
 _mensaje = "";
- //BA.debugLineNum = 271;BA.debugLine="mensaje = idActual";
-_mensaje = mostCurrent._idactual;
- //BA.debugLineNum = 272;BA.debugLine="enviarSMS.Send2(numero,mensaje,False,False)";
+ //BA.debugLineNum = 272;BA.debugLine="mensaje = idActual";
+_mensaje = _idactual;
+ //BA.debugLineNum = 273;BA.debugLine="enviarSMS.Send2(numero,mensaje,False,False)";
 mostCurrent._enviarsms.Send2(mostCurrent._numero,_mensaje,anywheresoftware.b4a.keywords.Common.False,anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 273;BA.debugLine="smsReceiver.Initialize(\"smsReceiver\")";
+ //BA.debugLineNum = 274;BA.debugLine="smsReceiver.Initialize(\"smsReceiver\")";
 mostCurrent._smsreceiver.Initialize("smsReceiver",processBA);
- //BA.debugLineNum = 274;BA.debugLine="ProgressDialogShow(\"Conectando con el dispositivo";
+ //BA.debugLineNum = 275;BA.debugLine="ProgressDialogShow(\"Conectando con el dispositivo";
 anywheresoftware.b4a.keywords.Common.ProgressDialogShow(mostCurrent.activityBA,BA.ObjectToCharSequence("Conectando con el dispositivo... Espere un momento"));
- //BA.debugLineNum = 276;BA.debugLine="End Sub";
+ //BA.debugLineNum = 277;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnatrase_click() throws Exception{
@@ -541,7 +542,7 @@ _descripcion = BA.ObjectToString(_colroot.Get((Object)("descripcion")));
  //BA.debugLineNum = 112;BA.debugLine="numero = colroot.Get(\"numero\")";
 mostCurrent._numero = BA.ObjectToString(_colroot.Get((Object)("numero")));
  //BA.debugLineNum = 113;BA.debugLine="idActual = colroot.Get(\"id\")";
-mostCurrent._idactual = BA.ObjectToString(_colroot.Get((Object)("id")));
+_idactual = BA.ObjectToString(_colroot.Get((Object)("id")));
  //BA.debugLineNum = 114;BA.debugLine="objectId = colroot.Get(\"objectId\")";
 mostCurrent._objectid = BA.ObjectToString(_colroot.Get((Object)("objectId")));
  };
@@ -572,7 +573,7 @@ _fecha = (long) (0);
  //BA.debugLineNum = 127;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
 _parser = new anywheresoftware.b4a.objects.collections.JSONParser();
  //BA.debugLineNum = 128;BA.debugLine="Log(res)";
-anywheresoftware.b4a.keywords.Common.LogImpl("84063235",_res,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("64063235",_res,0);
  //BA.debugLineNum = 129;BA.debugLine="parser.Initialize(res)";
 _parser.Initialize(_res);
  //BA.debugLineNum = 132;BA.debugLine="Dim root As List = parser.NextArray";
@@ -588,7 +589,7 @@ final int groupLen6 = group6.getSize()
 for (; index6 < groupLen6;index6++){
 _colroot = (anywheresoftware.b4a.objects.collections.Map) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.Map(), (anywheresoftware.b4a.objects.collections.Map.MyMap)(group6.Get(index6)));
  //BA.debugLineNum = 135;BA.debugLine="If colroot.Get(\"id\") = idActual Then";
-if ((_colroot.Get((Object)("id"))).equals((Object)(mostCurrent._idactual))) { 
+if ((_colroot.Get((Object)("id"))).equals((Object)(_idactual))) { 
  //BA.debugLineNum = 137;BA.debugLine="Dim fechaEntra As Long = colroot.Get(\"fecha\")";
 _fechaentra = BA.ObjectToLongNumber(_colroot.Get((Object)("fecha")));
  //BA.debugLineNum = 138;BA.debugLine="If fechaEntra >= fecha Then";
@@ -598,7 +599,7 @@ _estado = BA.ObjectToString(_colroot.Get((Object)("encendida")));
  //BA.debugLineNum = 140;BA.debugLine="Dim flujo As String = colroot.Get(\"flujo\")";
 _flujo = BA.ObjectToString(_colroot.Get((Object)("flujo")));
  //BA.debugLineNum = 141;BA.debugLine="Log(colroot.Get(\"flujo\"))";
-anywheresoftware.b4a.keywords.Common.LogImpl("84063248",BA.ObjectToString(_colroot.Get((Object)("flujo"))),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("64063248",BA.ObjectToString(_colroot.Get((Object)("flujo"))),0);
  //BA.debugLineNum = 142;BA.debugLine="fecha = fechaEntra";
 _fecha = _fechaentra;
  };
@@ -617,8 +618,8 @@ mostCurrent._lbestado.setText(BA.ObjectToCharSequence("Apagado"));
  //BA.debugLineNum = 152;BA.debugLine="lbEstado.Color = Colors.ARGB(128,240,84,84)";
 mostCurrent._lbestado.setColor(anywheresoftware.b4a.keywords.Common.Colors.ARGB((int) (128),(int) (240),(int) (84),(int) (84)));
  };
- //BA.debugLineNum = 156;BA.debugLine="lbFlujo.Text = flujo & \" Litros/Hora\"";
-mostCurrent._lbflujo.setText(BA.ObjectToCharSequence(_flujo+" Litros/Hora"));
+ //BA.debugLineNum = 156;BA.debugLine="lbFlujo.Text = flujo & \" Litros/Minuto\"";
+mostCurrent._lbflujo.setText(BA.ObjectToCharSequence(_flujo+" Litros/Minuto"));
  //BA.debugLineNum = 159;BA.debugLine="diferenciaDeFechas(fecha)";
 _diferenciadefechas(_fecha);
  //BA.debugLineNum = 160;BA.debugLine="End Sub";
@@ -670,9 +671,9 @@ _actualmodificado = (long) (_fecha/(double)10000);
  //BA.debugLineNum = 187;BA.debugLine="fecha = fecha - actualModificado*10000";
 _fecha = (long) (_fecha-_actualmodificado*10000);
  //BA.debugLineNum = 188;BA.debugLine="Log(fechaActual)";
-anywheresoftware.b4a.keywords.Common.LogImpl("84128794",BA.NumberToString(_fechaactual),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("64128794",BA.NumberToString(_fechaactual),0);
  //BA.debugLineNum = 189;BA.debugLine="Log(fecha)";
-anywheresoftware.b4a.keywords.Common.LogImpl("84128795",BA.NumberToString(_fecha),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("64128795",BA.NumberToString(_fecha),0);
  //BA.debugLineNum = 190;BA.debugLine="If fecha < fechaActual Then";
 if (_fecha<_fechaactual) { 
  //BA.debugLineNum = 191;BA.debugLine="actualModificado = fechaActual/100 - fecha/100";
@@ -758,8 +759,6 @@ mostCurrent._lbestado = new anywheresoftware.b4a.objects.LabelWrapper();
 mostCurrent._lbflujo = new anywheresoftware.b4a.objects.LabelWrapper();
  //BA.debugLineNum = 25;BA.debugLine="Private lbActualizado As Label";
 mostCurrent._lbactualizado = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 26;BA.debugLine="Private idActual As String";
-mostCurrent._idactual = "";
  //BA.debugLineNum = 27;BA.debugLine="Private objectId As String";
 mostCurrent._objectid = "";
  //BA.debugLineNum = 28;BA.debugLine="Private panel As Panel";
@@ -806,7 +805,7 @@ case 0:
 //C
 this.state = 1;
  //BA.debugLineNum = 76;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
-anywheresoftware.b4a.keywords.Common.LogImpl("83932161","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("63932161","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
  //BA.debugLineNum = 77;BA.debugLine="If Job.Success = True Then";
 if (true) break;
 
@@ -918,7 +917,7 @@ case 19:
 //C
 this.state = 20;
  //BA.debugLineNum = 95;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("83932180","Error: "+_job._errormessage /*String*/ ,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("63932180","Error: "+_job._errormessage /*String*/ ,0);
  //BA.debugLineNum = 96;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error: "+_job._errormessage /*String*/ ),anywheresoftware.b4a.keywords.Common.True);
  if (true) break;
@@ -939,25 +938,29 @@ if (true) break;
 public static void  _msgbox_result(int _result) throws Exception{
 }
 public static String  _lbeliminar_click() throws Exception{
- //BA.debugLineNum = 259;BA.debugLine="Sub lbEliminar_Click";
- //BA.debugLineNum = 260;BA.debugLine="eliminar.Initialize(\"eliminar\",Me)";
+ //BA.debugLineNum = 260;BA.debugLine="Sub lbEliminar_Click";
+ //BA.debugLineNum = 261;BA.debugLine="eliminar.Initialize(\"eliminar\",Me)";
 mostCurrent._eliminar._initialize /*String*/ (processBA,"eliminar",datos_activity.getObject());
- //BA.debugLineNum = 261;BA.debugLine="Log(\"Eliminar\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("84390914","Eliminar",0);
- //BA.debugLineNum = 262;BA.debugLine="eliminar.Delete(urlEliminar & objectId)";
+ //BA.debugLineNum = 262;BA.debugLine="Log(\"Eliminar\")";
+anywheresoftware.b4a.keywords.Common.LogImpl("64390914","Eliminar",0);
+ //BA.debugLineNum = 263;BA.debugLine="eliminar.Delete(urlEliminar & objectId)";
 mostCurrent._eliminar._delete /*String*/ (mostCurrent._urleliminar+mostCurrent._objectid);
- //BA.debugLineNum = 263;BA.debugLine="End Sub";
+ //BA.debugLineNum = 264;BA.debugLine="End Sub";
 return "";
 }
 public static String  _lbhistorial_click() throws Exception{
  //BA.debugLineNum = 255;BA.debugLine="Sub lbHistorial_Click";
  //BA.debugLineNum = 256;BA.debugLine="Log(\"historial\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("84325377","historial",0);
- //BA.debugLineNum = 257;BA.debugLine="End Sub";
+anywheresoftware.b4a.keywords.Common.LogImpl("64325377","historial",0);
+ //BA.debugLineNum = 257;BA.debugLine="StartActivity(Grafica_Activity)";
+anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)(mostCurrent._grafica_activity.getObject()));
+ //BA.debugLineNum = 258;BA.debugLine="End Sub";
 return "";
 }
 public static String  _process_globals() throws Exception{
  //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
+ //BA.debugLineNum = 9;BA.debugLine="Public idActual As String";
+_idactual = "";
  //BA.debugLineNum = 10;BA.debugLine="End Sub";
 return "";
 }
@@ -985,13 +988,13 @@ return;
 case 0:
 //C
 this.state = 1;
- //BA.debugLineNum = 303;BA.debugLine="ProgressDialogHide";
+ //BA.debugLineNum = 306;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
- //BA.debugLineNum = 304;BA.debugLine="Log(res)";
-anywheresoftware.b4a.keywords.Common.LogImpl("84653058",_res,0);
- //BA.debugLineNum = 305;BA.debugLine="Msgbox2Async(\"Dato adquirido correctamente\",\"List";
+ //BA.debugLineNum = 307;BA.debugLine="Log(res)";
+anywheresoftware.b4a.keywords.Common.LogImpl("64653058",_res,0);
+ //BA.debugLineNum = 308;BA.debugLine="Msgbox2Async(\"Dato adquirido correctamente\",\"List";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("Dato adquirido correctamente"),BA.ObjectToCharSequence("Listo!"),"Ok","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 306;BA.debugLine="Wait For Msgbox_Result(Result As Int) 'Queda en e";
+ //BA.debugLineNum = 309;BA.debugLine="Wait For Msgbox_Result(Result As Int) 'Queda en e";
 anywheresoftware.b4a.keywords.Common.WaitFor("msgbox_result", processBA, this, null);
 this.state = 5;
 return;
@@ -1000,7 +1003,7 @@ case 5:
 this.state = 1;
 _result = (Integer) result[0];
 ;
- //BA.debugLineNum = 307;BA.debugLine="If Result = DialogResponse.POSITIVE Then";
+ //BA.debugLineNum = 310;BA.debugLine="If Result = DialogResponse.POSITIVE Then";
 if (true) break;
 
 case 1:
@@ -1013,7 +1016,7 @@ this.state = 3;
 case 3:
 //C
 this.state = 4;
- //BA.debugLineNum = 308;BA.debugLine="historial.Download(urlHistorial)";
+ //BA.debugLineNum = 311;BA.debugLine="historial.Download(urlHistorial)";
 parent.mostCurrent._historial._download /*String*/ (parent.mostCurrent._urlhistorial);
  if (true) break;
 
@@ -1021,7 +1024,7 @@ case 4:
 //C
 this.state = -1;
 ;
- //BA.debugLineNum = 310;BA.debugLine="End Sub";
+ //BA.debugLineNum = 313;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -1066,46 +1069,46 @@ String _flujo = "";
 boolean _encendida = false;
 long _fecha = 0L;
 String _datos = "";
- //BA.debugLineNum = 278;BA.debugLine="Sub smsReceiver_MessageReceived (From As String, B";
- //BA.debugLineNum = 279;BA.debugLine="If From == numero Then";
+ //BA.debugLineNum = 279;BA.debugLine="Sub smsReceiver_MessageReceived (From As String, B";
+ //BA.debugLineNum = 280;BA.debugLine="If From == numero Then";
 if ((_from).equals(mostCurrent._numero)) { 
- //BA.debugLineNum = 280;BA.debugLine="ProgressDialogHide";
+ //BA.debugLineNum = 281;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
- //BA.debugLineNum = 281;BA.debugLine="MsgboxAsync(\"Nuevo dato: \" & Body & \" Litros/Hor";
-anywheresoftware.b4a.keywords.Common.MsgboxAsync(BA.ObjectToCharSequence("Nuevo dato: "+_body+" Litros/Hora"),BA.ObjectToCharSequence("Dato recibido"),processBA);
- //BA.debugLineNum = 282;BA.debugLine="Dim flujo As String = Body";
+ //BA.debugLineNum = 282;BA.debugLine="MsgboxAsync(\"Nuevo dato: \" & Body & \" Litros/Min";
+anywheresoftware.b4a.keywords.Common.MsgboxAsync(BA.ObjectToCharSequence("Nuevo dato: "+_body+" Litros/Minuto"),BA.ObjectToCharSequence("Dato recibido"),processBA);
+ //BA.debugLineNum = 283;BA.debugLine="Dim flujo As String = Body";
 _flujo = _body;
- //BA.debugLineNum = 283;BA.debugLine="Dim encendida As Boolean";
+ //BA.debugLineNum = 284;BA.debugLine="Dim encendida As Boolean";
 _encendida = false;
- //BA.debugLineNum = 284;BA.debugLine="encendida = False";
+ //BA.debugLineNum = 285;BA.debugLine="encendida = False";
 _encendida = anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 285;BA.debugLine="If flujo > 3 Then";
+ //BA.debugLineNum = 286;BA.debugLine="If flujo > 3 Then";
 if ((double)(Double.parseDouble(_flujo))>3) { 
- //BA.debugLineNum = 286;BA.debugLine="encendida = True";
+ //BA.debugLineNum = 287;BA.debugLine="encendida = True";
 _encendida = anywheresoftware.b4a.keywords.Common.True;
  };
- //BA.debugLineNum = 288;BA.debugLine="smsReceiver.StopListening";
+ //BA.debugLineNum = 289;BA.debugLine="smsReceiver.StopListening";
 mostCurrent._smsreceiver.StopListening();
- //BA.debugLineNum = 289;BA.debugLine="DateTime.DateFormat = \"yyyyMMddHHmm\"";
+ //BA.debugLineNum = 290;BA.debugLine="DateTime.DateFormat = \"yyyyMMddHHmm\"";
 anywheresoftware.b4a.keywords.Common.DateTime.setDateFormat("yyyyMMddHHmm");
- //BA.debugLineNum = 290;BA.debugLine="Dim fecha As Long = DateTime.Date(DateTime.Now)";
+ //BA.debugLineNum = 291;BA.debugLine="Dim fecha As Long = DateTime.Date(DateTime.Now)";
 _fecha = (long)(Double.parseDouble(anywheresoftware.b4a.keywords.Common.DateTime.Date(anywheresoftware.b4a.keywords.Common.DateTime.getNow())));
- //BA.debugLineNum = 292;BA.debugLine="Agregar.Initialize(\"agregar\",Me)";
+ //BA.debugLineNum = 295;BA.debugLine="Agregar.Initialize(\"agregar\",Me)";
 mostCurrent._agregar._initialize /*String*/ (processBA,"agregar",datos_activity.getObject());
- //BA.debugLineNum = 293;BA.debugLine="Dim datos As String";
+ //BA.debugLineNum = 296;BA.debugLine="Dim datos As String";
 _datos = "";
- //BA.debugLineNum = 294;BA.debugLine="datos = \"{\"&Chr(34)&\"encendida\"&Chr(34)&\":\"&ence";
-_datos = "{"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"encendida"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(_encendida)+","+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"id"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+mostCurrent._idactual+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+","+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"flujo"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+_flujo+","+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"fecha"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+BA.NumberToString(_fecha)+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"}";
- //BA.debugLineNum = 295;BA.debugLine="Agregar.PostString(urlAgregar, datos)";
+ //BA.debugLineNum = 297;BA.debugLine="datos = \"{\"&Chr(34)&\"encendida\"&Chr(34)&\":\"&ence";
+_datos = "{"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"encendida"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(_encendida)+","+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"id"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+_idactual+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+","+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"flujo"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+_flujo+","+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"fecha"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+":"+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+BA.NumberToString(_fecha)+BA.ObjectToString(anywheresoftware.b4a.keywords.Common.Chr((int) (34)))+"}";
+ //BA.debugLineNum = 298;BA.debugLine="Agregar.PostString(urlAgregar, datos)";
 mostCurrent._agregar._poststring /*String*/ (mostCurrent._urlagregar,_datos);
- //BA.debugLineNum = 296;BA.debugLine="Agregar.GetRequest.SetContentType(\"application/j";
+ //BA.debugLineNum = 299;BA.debugLine="Agregar.GetRequest.SetContentType(\"application/j";
 mostCurrent._agregar._getrequest /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ ().SetContentType("application/json");
- //BA.debugLineNum = 297;BA.debugLine="ProgressDialogShow(\"Regitrando dispositivo\")";
+ //BA.debugLineNum = 300;BA.debugLine="ProgressDialogShow(\"Regitrando dispositivo\")";
 anywheresoftware.b4a.keywords.Common.ProgressDialogShow(mostCurrent.activityBA,BA.ObjectToCharSequence("Regitrando dispositivo"));
  };
- //BA.debugLineNum = 299;BA.debugLine="Return True";
+ //BA.debugLineNum = 302;BA.debugLine="Return True";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 300;BA.debugLine="End Sub";
+ //BA.debugLineNum = 303;BA.debugLine="End Sub";
 return false;
 }
 }

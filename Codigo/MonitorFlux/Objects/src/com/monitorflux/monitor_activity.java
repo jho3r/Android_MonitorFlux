@@ -353,6 +353,7 @@ public com.monitorflux.tutoriales_activity _tutoriales_activity = null;
 public com.monitorflux.agregar_activity _agregar_activity = null;
 public com.monitorflux.datos_activity _datos_activity = null;
 public com.monitorflux.registrar_activity _registrar_activity = null;
+public com.monitorflux.grafica_activity _grafica_activity = null;
 public com.monitorflux.httputils2service _httputils2service = null;
 public com.monitorflux.dbutils _dbutils = null;
 
@@ -398,7 +399,7 @@ public static String  _activity_resume() throws Exception{
  //BA.debugLineNum = 43;BA.debugLine="If eliminado = True Then";
 if (_eliminado==anywheresoftware.b4a.keywords.Common.True) { 
  //BA.debugLineNum = 44;BA.debugLine="Log(\"Eliminando actividad\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("82949122","Eliminando actividad",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("62949122","Eliminando actividad",0);
  //BA.debugLineNum = 45;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
  };
@@ -573,7 +574,7 @@ return "";
 public static String  _jobdone(com.monitorflux.httpjob _job) throws Exception{
  //BA.debugLineNum = 58;BA.debugLine="Sub JobDone (Job As HttpJob)";
  //BA.debugLineNum = 59;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
-anywheresoftware.b4a.keywords.Common.LogImpl("83145729","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("63145729","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
  //BA.debugLineNum = 60;BA.debugLine="If Job.Success = True Then";
 if (_job._success /*boolean*/ ==anywheresoftware.b4a.keywords.Common.True) { 
  //BA.debugLineNum = 61;BA.debugLine="Select Job.JobName 'Nombre del proceso a traves";
@@ -590,7 +591,7 @@ _fallando(_job._getstring /*String*/ ());
 ;
  }else {
  //BA.debugLineNum = 68;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("83145738","Error: "+_job._errormessage /*String*/ ,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("63145738","Error: "+_job._errormessage /*String*/ ,0);
  //BA.debugLineNum = 69;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error: "+_job._errormessage /*String*/ ),anywheresoftware.b4a.keywords.Common.True);
  };

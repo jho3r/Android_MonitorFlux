@@ -71,6 +71,13 @@
 			android:label="MonitorFlux"
 			android:screenOrientation="portrait">
 		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".grafica_activity"
+			android:label="MonitorFlux"
+			android:screenOrientation="portrait">
+		</activity>
 		<service android:name=".httputils2service">
 		</service>
 		<receiver android:name=".httputils2service$httputils2service_BR">

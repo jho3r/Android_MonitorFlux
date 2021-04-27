@@ -357,6 +357,7 @@ public com.monitorflux.agregar_activity _agregar_activity = null;
 public com.monitorflux.monitor_activity _monitor_activity = null;
 public com.monitorflux.datos_activity _datos_activity = null;
 public com.monitorflux.registrar_activity _registrar_activity = null;
+public com.monitorflux.grafica_activity _grafica_activity = null;
 public com.monitorflux.httputils2service _httputils2service = null;
 public com.monitorflux.dbutils _dbutils = null;
 
@@ -368,6 +369,7 @@ vis = vis | (agregar_activity.mostCurrent != null);
 vis = vis | (monitor_activity.mostCurrent != null);
 vis = vis | (datos_activity.mostCurrent != null);
 vis = vis | (registrar_activity.mostCurrent != null);
+vis = vis | (grafica_activity.mostCurrent != null);
 return vis;}
 public static String  _activity_create(boolean _firsttime) throws Exception{
  //BA.debugLineNum = 40;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
@@ -414,7 +416,7 @@ public static String  _activity_resume() throws Exception{
  //BA.debugLineNum = 61;BA.debugLine="If tmrIntro.Enabled = False Then";
 if (_tmrintro.getEnabled()==anywheresoftware.b4a.keywords.Common.False) { 
  //BA.debugLineNum = 62;BA.debugLine="Log(\"Timer deshabilitado, intentando inicio\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("8196610","Timer deshabilitado, intentando inicio",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("6196610","Timer deshabilitado, intentando inicio",0);
  //BA.debugLineNum = 63;BA.debugLine="intentoInicio";
 _intentoinicio();
  };
@@ -439,11 +441,15 @@ public static String  _btnout_click() throws Exception{
  //BA.debugLineNum = 201;BA.debugLine="Sub btnOut_Click";
  //BA.debugLineNum = 202;BA.debugLine="Starter.actualizarCampos(\"mantener\",\"0\",\"id\",\"1\")";
 mostCurrent._starter._actualizarcampos /*String*/ ("mantener","0","id","1");
- //BA.debugLineNum = 203;BA.debugLine="inicio = False";
+ //BA.debugLineNum = 203;BA.debugLine="Starter.actualizarCampos(\"usuario\",\"elpepe\",\"id\",";
+mostCurrent._starter._actualizarcampos /*String*/ ("usuario","elpepe","id","1");
+ //BA.debugLineNum = 204;BA.debugLine="Starter.actualizarCampos(\"clave\",\"elteset\",\"id\",\"";
+mostCurrent._starter._actualizarcampos /*String*/ ("clave","elteset","id","1");
+ //BA.debugLineNum = 205;BA.debugLine="inicio = False";
 _inicio = anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 204;BA.debugLine="intentoInicio";
+ //BA.debugLineNum = 206;BA.debugLine="intentoInicio";
 _intentoinicio();
- //BA.debugLineNum = 205;BA.debugLine="End Sub";
+ //BA.debugLineNum = 207;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btntutorial_click() throws Exception{
@@ -557,7 +563,7 @@ if (_estado==anywheresoftware.b4a.keywords.Common.False) {
  //BA.debugLineNum = 173;BA.debugLine="disFallando = disFallando + 1";
 _disfallando = (int) (_disfallando+1);
  //BA.debugLineNum = 174;BA.debugLine="Log(disFallando)";
-anywheresoftware.b4a.keywords.Common.LogImpl("8786453",BA.NumberToString(_disfallando),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("6786453",BA.NumberToString(_disfallando),0);
  };
  //BA.debugLineNum = 176;BA.debugLine="fecha = 0";
 _fecha = (long) (0);
@@ -619,7 +625,7 @@ return "";
 public static String  _jobdone(com.monitorflux.httpjob _job) throws Exception{
  //BA.debugLineNum = 115;BA.debugLine="Sub JobDone (Job As HttpJob)";
  //BA.debugLineNum = 116;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
-anywheresoftware.b4a.keywords.Common.LogImpl("8655361","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("6655361","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
  //BA.debugLineNum = 117;BA.debugLine="If Job.Success = True Then";
 if (_job._success /*boolean*/ ==anywheresoftware.b4a.keywords.Common.True) { 
  //BA.debugLineNum = 118;BA.debugLine="Select Job.JobName 'Nombre del proceso a traves";
@@ -630,7 +636,7 @@ _conteo(_job._getstring /*String*/ ());
  break; }
 case 1: {
  //BA.debugLineNum = 122;BA.debugLine="Log(Job.GetString)";
-anywheresoftware.b4a.keywords.Common.LogImpl("8655367",_job._getstring /*String*/ (),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("6655367",_job._getstring /*String*/ (),0);
  //BA.debugLineNum = 123;BA.debugLine="fallando(Job.GetString)";
 _fallando(_job._getstring /*String*/ ());
  break; }
@@ -642,7 +648,7 @@ _resinicio(_job._getstring /*String*/ ());
 ;
  }else {
  //BA.debugLineNum = 128;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("8655373","Error: "+_job._errormessage /*String*/ ,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("6655373","Error: "+_job._errormessage /*String*/ ,0);
  //BA.debugLineNum = 129;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error: "+_job._errormessage /*String*/ ),anywheresoftware.b4a.keywords.Common.True);
  };
@@ -664,6 +670,7 @@ agregar_activity._process_globals();
 monitor_activity._process_globals();
 datos_activity._process_globals();
 registrar_activity._process_globals();
+grafica_activity._process_globals();
 httputils2service._process_globals();
 dbutils._process_globals();
 		
@@ -691,21 +698,21 @@ return "";
 public static String  _resinicio(String _res) throws Exception{
 anywheresoftware.b4a.objects.collections.JSONParser _parser = null;
 anywheresoftware.b4a.objects.collections.Map _root = null;
- //BA.debugLineNum = 207;BA.debugLine="Sub resInicio(res As String)";
- //BA.debugLineNum = 208;BA.debugLine="inicio = True";
+ //BA.debugLineNum = 209;BA.debugLine="Sub resInicio(res As String)";
+ //BA.debugLineNum = 210;BA.debugLine="inicio = True";
 _inicio = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 209;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
+ //BA.debugLineNum = 211;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
 _parser = new anywheresoftware.b4a.objects.collections.JSONParser();
- //BA.debugLineNum = 210;BA.debugLine="parser.Initialize(res)";
+ //BA.debugLineNum = 212;BA.debugLine="parser.Initialize(res)";
 _parser.Initialize(_res);
- //BA.debugLineNum = 211;BA.debugLine="Dim root As Map = parser.NextObject";
+ //BA.debugLineNum = 213;BA.debugLine="Dim root As Map = parser.NextObject";
 _root = new anywheresoftware.b4a.objects.collections.Map();
 _root = _parser.NextObject();
- //BA.debugLineNum = 212;BA.debugLine="ID = root.Get(\"objectId\")";
+ //BA.debugLineNum = 214;BA.debugLine="ID = root.Get(\"objectId\")";
 _id = BA.ObjectToString(_root.Get((Object)("objectId")));
- //BA.debugLineNum = 213;BA.debugLine="intentoInicio";
+ //BA.debugLineNum = 215;BA.debugLine="intentoInicio";
 _intentoinicio();
- //BA.debugLineNum = 214;BA.debugLine="End Sub";
+ //BA.debugLineNum = 216;BA.debugLine="End Sub";
 return "";
 }
 public static String  _setstatusbarcolor(int _clr) throws Exception{
@@ -747,7 +754,7 @@ String _datos = "";
  //BA.debugLineNum = 74;BA.debugLine="tmrIntro.Enabled = False";
 _tmrintro.setEnabled(anywheresoftware.b4a.keywords.Common.False);
  //BA.debugLineNum = 75;BA.debugLine="Log(\"Finalizando intro inicial intentando inicio\"";
-anywheresoftware.b4a.keywords.Common.LogImpl("8327682","Finalizando intro inicial intentando inicio",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("6327682","Finalizando intro inicial intentando inicio",0);
  //BA.debugLineNum = 76;BA.debugLine="If Starter.checkMantener Then";
 if (mostCurrent._starter._checkmantener /*boolean*/ ()) { 
  //BA.debugLineNum = 77;BA.debugLine="Dim datos As String";

@@ -92,4 +92,20 @@ Sub actualizarCampos(campoUp As String,parametroUp As String,campowhere As Strin
 	mapActualizar.Initialize
 	mapActualizar.Put(campowhere,parametrowhere)
 	DBUtils.UpdateRecord(sql,"login",campoUp,parametroUp,mapActualizar)
+	
+	Dim mapConsulta As Map
+	mapConsulta.Initialize
+	mapConsulta = DBUtils.ExecuteMap(sql,"SELECT * FROM login",Null)
+	'Datos de inicio de sesion para admin
+	For i = 0 To mapConsulta.Size-1
+		Select mapConsulta.GetKeyAt(i)
+			Case "usuario"
+				usuario = mapConsulta.GetValueAt(i)
+			Case "clave"
+				clave = mapConsulta.GetValueAt(i)
+			Case "mantener"
+				mantener = mapConsulta.GetValueAt(i)
+		End Select
+		Log(mapConsulta.GetKeyAt(i)&","&mapConsulta.GetValueAt(i) & "de dato actualizado")
+	Next
 End Sub

@@ -12,7 +12,7 @@ Version=10.2
 Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
-
+	Public idActual As String
 End Sub
 
 Sub Globals
@@ -29,7 +29,7 @@ Sub Globals
 	Private lbEstado As Label
 	Private lbFlujo As Label
 	Private lbActualizado As Label
-	Private idActual As String
+	
 	Private objectId As String
 	Private panel As Panel
 	Private urlEliminar As String
@@ -159,7 +159,7 @@ Sub cargarEstado (res As String)
 	End If
 	
 	'cantidad de flujo a modo de texto en el label
-	lbFlujo.Text = flujo & " Litros/Hora"
+	lbFlujo.Text = flujo & " Litros/Minuto"
 	
 	'rutina para obtener la diferencia de fechas y poner en texto hace cuanto que no se actualizan los datos
 	diferenciaDeFechas(fecha)
@@ -260,6 +260,7 @@ End Sub
 
 Sub lbHistorial_Click
 	Log("historial")
+	StartActivity(Grafica_Activity)
 End Sub
 
 Sub lbEliminar_Click
@@ -284,7 +285,7 @@ End Sub
 Sub smsReceiver_MessageReceived (From As String, Body As String) As Boolean
 	If From == numero Then
 		ProgressDialogHide
-		MsgboxAsync("Nuevo dato: " & Body & " Litros/Hora","Dato recibido")
+		MsgboxAsync("Nuevo dato: " & Body & " Litros/Minuto","Dato recibido")
 		Dim flujo As String = Body
 		Dim encendida As Boolean
 		encendida = False
@@ -294,6 +295,8 @@ Sub smsReceiver_MessageReceived (From As String, Body As String) As Boolean
 		smsReceiver.StopListening
 		DateTime.DateFormat = "yyyyMMddHHmm"
 		Dim fecha As Long = DateTime.Date(DateTime.Now)
+		'DateTime.DateFormat = "MM"
+		'Dim mes As Long = DateTime.Date(DateTime.Now)
 		
 		Agregar.Initialize("agregar",Me)
 		Dim datos As String

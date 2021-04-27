@@ -355,6 +355,7 @@ public com.monitorflux.tutoriales_activity _tutoriales_activity = null;
 public com.monitorflux.agregar_activity _agregar_activity = null;
 public com.monitorflux.monitor_activity _monitor_activity = null;
 public com.monitorflux.datos_activity _datos_activity = null;
+public com.monitorflux.grafica_activity _grafica_activity = null;
 public com.monitorflux.httputils2service _httputils2service = null;
 public com.monitorflux.dbutils _dbutils = null;
 
@@ -559,7 +560,7 @@ return "";
 public static String  _jobdone(com.monitorflux.httpjob _job) throws Exception{
  //BA.debugLineNum = 47;BA.debugLine="Sub JobDone (Job As HttpJob)";
  //BA.debugLineNum = 48;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
-anywheresoftware.b4a.keywords.Common.LogImpl("85046273","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("65046273","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
  //BA.debugLineNum = 49;BA.debugLine="If Job.Success = True Then";
 if (_job._success /*boolean*/ ==anywheresoftware.b4a.keywords.Common.True) { 
  //BA.debugLineNum = 50;BA.debugLine="Select Job.JobName 'Nombre del proceso a traves";
@@ -576,7 +577,7 @@ _resregistrar(_job._getstring /*String*/ ());
 ;
  }else {
  //BA.debugLineNum = 57;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("85046282","Error: "+_job._errormessage /*String*/ ,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("65046282","Error: "+_job._errormessage /*String*/ ,0);
  //BA.debugLineNum = 58;BA.debugLine="handleError(Job.ErrorMessage)";
 _handleerror(_job._errormessage /*String*/ );
  };

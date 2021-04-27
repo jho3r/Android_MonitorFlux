@@ -33,6 +33,7 @@ public com.monitorflux.agregar_activity _agregar_activity = null;
 public com.monitorflux.monitor_activity _monitor_activity = null;
 public com.monitorflux.datos_activity _datos_activity = null;
 public com.monitorflux.registrar_activity _registrar_activity = null;
+public com.monitorflux.grafica_activity _grafica_activity = null;
 public com.monitorflux.httputils2service _httputils2service = null;
 public com.monitorflux.dbutils _dbutils = null;
 public String  _class_globals() throws Exception{
@@ -324,7 +325,7 @@ case 23:
 //C
 this.state = 24;
  //BA.debugLineNum = 59;BA.debugLine="Log(LastException)";
-parent.__c.LogImpl("98192023",BA.ObjectToString(parent.__c.LastException(parent.getActivityBA())),0);
+parent.__c.LogImpl("98781847",BA.ObjectToString(parent.__c.LastException(parent.getActivityBA())),0);
  if (true) break;
 
 case 24:
@@ -503,7 +504,7 @@ case 8:
 //C
 this.state = 9;
  //BA.debugLineNum = 75;BA.debugLine="Log(\"Failed to serialize object: \" & Map.Get(ke";
-parent.__c.LogImpl("98257544","Failed to serialize object: "+BA.ObjectToString(_map.Get((Object)(_key))),0);
+parent.__c.LogImpl("98847368","Failed to serialize object: "+BA.ObjectToString(_map.Get((Object)(_key))),0);
  if (true) break;
 
 case 9:

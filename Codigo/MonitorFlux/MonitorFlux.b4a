@@ -1,20 +1,22 @@
 ﻿Build1=Default,com.monitorflux
 File1=Agregar.bal
-File10=Principal.bal
-File11=Registrar.bal
-File12=Tutorial.bal
+File10=Monitoreo.bal
+File11=Principal.bal
+File12=Registrar.bal
+File13=Tutorial.bal
 File2=Artboard 1.png
 File3=Artboard 1mdpi.png
 File4=Datos.bal
-File5=Iniciar.bal
-File6=Intro.bal
-File7=Item.bal
-File8=monitor.db
-File9=Monitoreo.bal
+File5=Graficas.bal
+File6=Iniciar.bal
+File7=Intro.bal
+File8=Item.bal
+File9=monitor.db
 FileGroup1=Default Group
 FileGroup10=Default Group
 FileGroup11=Default Group
 FileGroup12=Default Group
+FileGroup13=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
@@ -28,6 +30,7 @@ Library1=core
 Library10=runtimepermissions
 Library11=sql
 Library12=dbutils
+Library13=androidplot_0_6_2
 Library2=xui
 Library3=xcustomlistview
 Library4=ime
@@ -39,13 +42,14 @@ Library9=keyvaluestore
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="29"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
 Module1=Agregar_Activity
 Module2=Datos_Activity
-Module3=Monitor_Activity
-Module4=Registrar_Activity
-Module5=Starter
-Module6=Tutoriales_Activity
-NumberOfFiles=12
-NumberOfLibraries=12
-NumberOfModules=6
+Module3=Grafica_Activity
+Module4=Monitor_Activity
+Module5=Registrar_Activity
+Module6=Starter
+Module7=Tutoriales_Activity
+NumberOfFiles=13
+NumberOfLibraries=13
+NumberOfModules=7
 Version=10.2
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -250,6 +254,8 @@ End Sub
 
 Sub btnOut_Click
 	Starter.actualizarCampos("mantener","0","id","1")
+	Starter.actualizarCampos("usuario","elpepe","id","1")
+	Starter.actualizarCampos("clave","elteset","id","1")
 	inicio = False
 	intentoInicio
 End Sub

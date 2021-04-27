@@ -41,6 +41,7 @@ public com.monitorflux.agregar_activity _agregar_activity = null;
 public com.monitorflux.monitor_activity _monitor_activity = null;
 public com.monitorflux.datos_activity _datos_activity = null;
 public com.monitorflux.registrar_activity _registrar_activity = null;
+public com.monitorflux.grafica_activity _grafica_activity = null;
 public com.monitorflux.httputils2service _httputils2service = null;
 public com.monitorflux.dbutils _dbutils = null;
 public static class _multipartfiledata{
@@ -305,7 +306,7 @@ _length = 0;
  //BA.debugLineNum = 154;BA.debugLine="If Dir = File.DirAssets Then";
 if ((_dir).equals(__c.File.getDirAssets())) { 
  //BA.debugLineNum = 155;BA.debugLine="Log(\"Cannot send files from the assets folder.\")";
-__c.LogImpl("96946823","Cannot send files from the assets folder.",0);
+__c.LogImpl("97536647","Cannot send files from the assets folder.",0);
  //BA.debugLineNum = 156;BA.debugLine="Return";
 if (true) return "";
  };
