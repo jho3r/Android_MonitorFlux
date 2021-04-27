@@ -12,7 +12,6 @@ Version=10.2
 Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
-
 End Sub
 
 Sub Globals
@@ -26,8 +25,9 @@ Sub Activity_Create(FirstTime As Boolean)
 	'Activity.LoadLayout("Layout1")
 	Activity.RemoveAllViews
 	Activity.LoadLayout("Tutorial")
-	wv1.LoadUrl("https://www.youtube-nocookie.com/embed/2pOUQB_Cvpw")
+	wv1.LoadUrl("https://jho3r.github.io/Android_MonitorFlux/tutorialsno.html")
 	SetStatusBarColor(Colors.RGB(231,231,222))
+	
 End Sub
 
 Sub Activity_Resume

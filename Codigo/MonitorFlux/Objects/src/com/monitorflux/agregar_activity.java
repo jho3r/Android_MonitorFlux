@@ -484,7 +484,7 @@ mostCurrent._enviarsms.Send2(mostCurrent._numero,"000004",anywheresoftware.b4a.k
  //BA.debugLineNum = 80;BA.debugLine="ProgressDialogShow(\"Conectando con el dispositivo";
 anywheresoftware.b4a.keywords.Common.ProgressDialogShow(mostCurrent.activityBA,BA.ObjectToCharSequence("Conectando con el dispositivo... Espere un momento"));
  //BA.debugLineNum = 81;BA.debugLine="Log(\"nombre: \" & nombre & \" numero: \" & numero &";
-anywheresoftware.b4a.keywords.Common.LogImpl("62424839","nombre: "+mostCurrent._nombre+" numero: "+mostCurrent._numero+" descripcion: "+mostCurrent._descripcion+" enviar mensajes aqui: "+BA.ObjectToString(_checkbox),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("12424839","nombre: "+mostCurrent._nombre+" numero: "+mostCurrent._numero+" descripcion: "+mostCurrent._descripcion+" enviar mensajes aqui: "+BA.ObjectToString(_checkbox),0);
  //BA.debugLineNum = 82;BA.debugLine="End Sub";
 return "";
 }
@@ -524,7 +524,7 @@ return "";
 public static String  _jobdone(com.monitorflux.httpjob _job) throws Exception{
  //BA.debugLineNum = 123;BA.debugLine="Sub JobDone (Job As HttpJob)";
  //BA.debugLineNum = 124;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
-anywheresoftware.b4a.keywords.Common.LogImpl("62621441","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("12621441","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
  //BA.debugLineNum = 125;BA.debugLine="If Job.Success = True Then";
 if (_job._success /*boolean*/ ==anywheresoftware.b4a.keywords.Common.True) { 
  //BA.debugLineNum = 126;BA.debugLine="Select Job.JobName 'Nombre del proceso a traves";
@@ -537,7 +537,7 @@ _resagregar(_job._getstring /*String*/ ());
 ;
  }else {
  //BA.debugLineNum = 131;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("62621448","Error: "+_job._errormessage /*String*/ ,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("12621448","Error: "+_job._errormessage /*String*/ ,0);
  //BA.debugLineNum = 132;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error: "+_job._errormessage /*String*/ ),anywheresoftware.b4a.keywords.Common.True);
  };
@@ -578,7 +578,7 @@ this.state = 1;
  //BA.debugLineNum = 138;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
  //BA.debugLineNum = 139;BA.debugLine="Log(res)";
-anywheresoftware.b4a.keywords.Common.LogImpl("62686978",_res,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("12686978",_res,0);
  //BA.debugLineNum = 140;BA.debugLine="Msgbox2Async(\"Dispositivo agregado correctamente\"";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("Dispositivo agregado correctamente"),BA.ObjectToCharSequence("Listo!"),"Ok","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.False);
  //BA.debugLineNum = 141;BA.debugLine="Wait For Msgbox_Result(Result As Int) 'Queda en e";

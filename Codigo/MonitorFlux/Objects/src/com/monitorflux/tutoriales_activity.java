@@ -355,14 +355,14 @@ public static void initializeProcessGlobals() {
             }
 }
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 18;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 21;BA.debugLine="Activity.RemoveAllViews";
+ //BA.debugLineNum = 17;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 20;BA.debugLine="Activity.RemoveAllViews";
 mostCurrent._activity.RemoveAllViews();
- //BA.debugLineNum = 22;BA.debugLine="Activity.LoadLayout(\"Tutorial\")";
+ //BA.debugLineNum = 21;BA.debugLine="Activity.LoadLayout(\"Tutorial\")";
 mostCurrent._activity.LoadLayout("Tutorial",mostCurrent.activityBA);
- //BA.debugLineNum = 23;BA.debugLine="wv1.LoadUrl(\"https://www.youtube-nocookie.com/emb";
-mostCurrent._wv1.LoadUrl("https://www.youtube-nocookie.com/embed/2pOUQB_Cvpw");
- //BA.debugLineNum = 24;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
+ //BA.debugLineNum = 22;BA.debugLine="wv1.LoadUrl(\"https://jho3r.github.io/Android_Moni";
+mostCurrent._wv1.LoadUrl("https://jho3r.github.io/Android_MonitorFlux/tutorialsno.html");
+ //BA.debugLineNum = 23;BA.debugLine="SetStatusBarColor(Colors.RGB(231,231,222))";
 _setstatusbarcolor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (231),(int) (231),(int) (222)));
  //BA.debugLineNum = 25;BA.debugLine="End Sub";
 return "";
@@ -385,15 +385,15 @@ mostCurrent._activity.Finish();
 return "";
 }
 public static String  _globals() throws Exception{
- //BA.debugLineNum = 12;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 15;BA.debugLine="Private wv1 As WebView";
+ //BA.debugLineNum = 11;BA.debugLine="Sub Globals";
+ //BA.debugLineNum = 14;BA.debugLine="Private wv1 As WebView";
 mostCurrent._wv1 = new anywheresoftware.b4a.objects.WebViewWrapper();
- //BA.debugLineNum = 16;BA.debugLine="End Sub";
+ //BA.debugLineNum = 15;BA.debugLine="End Sub";
 return "";
 }
 public static String  _process_globals() throws Exception{
  //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
- //BA.debugLineNum = 10;BA.debugLine="End Sub";
+ //BA.debugLineNum = 9;BA.debugLine="End Sub";
 return "";
 }
 public static String  _setstatusbarcolor(int _clr) throws Exception{

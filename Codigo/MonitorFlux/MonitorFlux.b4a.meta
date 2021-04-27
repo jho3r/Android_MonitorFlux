@@ -22,6 +22,6 @@ ModuleClosedNodes4=
 ModuleClosedNodes5=
 ModuleClosedNodes6=
 ModuleClosedNodes7=
-NavigationStack=Starter,Service_Create,23,0,Main,SetStatusBarColor,112,0,Main,Activity_Create,57,0,Main,Activity_Resume,66,0,Main,intentoInicio,198,0,Starter,actualizarCampos,100,5,Main,tmrIntro_Tick,75,0,Main,btnOut_Click,203,6,Starter,checkMantener,63,0,Starter,Service_Start,28,0
+NavigationStack=Starter,actualizarCampos,100,5,Main,tmrIntro_Tick,75,0,Main,btnOut_Click,203,6,Starter,checkMantener,63,0,Starter,Service_Start,28,0,Tutoriales_Activity,Activity_Resume,31,0,Tutoriales_Activity,Process_Globals,7,0,Visual Designer,Tutorial.bal,-100,6,Tutoriales_Activity,Globals,12,4,Tutoriales_Activity,Activity_Create,21,6
 SelectedBuild=0
 VisibleModules=6,7,1,4,2,5,3

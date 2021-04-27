@@ -416,7 +416,7 @@ public static String  _activity_resume() throws Exception{
  //BA.debugLineNum = 61;BA.debugLine="If tmrIntro.Enabled = False Then";
 if (_tmrintro.getEnabled()==anywheresoftware.b4a.keywords.Common.False) { 
  //BA.debugLineNum = 62;BA.debugLine="Log(\"Timer deshabilitado, intentando inicio\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("6196610","Timer deshabilitado, intentando inicio",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("1196610","Timer deshabilitado, intentando inicio",0);
  //BA.debugLineNum = 63;BA.debugLine="intentoInicio";
 _intentoinicio();
  };
@@ -563,7 +563,7 @@ if (_estado==anywheresoftware.b4a.keywords.Common.False) {
  //BA.debugLineNum = 173;BA.debugLine="disFallando = disFallando + 1";
 _disfallando = (int) (_disfallando+1);
  //BA.debugLineNum = 174;BA.debugLine="Log(disFallando)";
-anywheresoftware.b4a.keywords.Common.LogImpl("6786453",BA.NumberToString(_disfallando),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("1786453",BA.NumberToString(_disfallando),0);
  };
  //BA.debugLineNum = 176;BA.debugLine="fecha = 0";
 _fecha = (long) (0);
@@ -625,7 +625,7 @@ return "";
 public static String  _jobdone(com.monitorflux.httpjob _job) throws Exception{
  //BA.debugLineNum = 115;BA.debugLine="Sub JobDone (Job As HttpJob)";
  //BA.debugLineNum = 116;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
-anywheresoftware.b4a.keywords.Common.LogImpl("6655361","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("1655361","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
  //BA.debugLineNum = 117;BA.debugLine="If Job.Success = True Then";
 if (_job._success /*boolean*/ ==anywheresoftware.b4a.keywords.Common.True) { 
  //BA.debugLineNum = 118;BA.debugLine="Select Job.JobName 'Nombre del proceso a traves";
@@ -636,7 +636,7 @@ _conteo(_job._getstring /*String*/ ());
  break; }
 case 1: {
  //BA.debugLineNum = 122;BA.debugLine="Log(Job.GetString)";
-anywheresoftware.b4a.keywords.Common.LogImpl("6655367",_job._getstring /*String*/ (),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("1655367",_job._getstring /*String*/ (),0);
  //BA.debugLineNum = 123;BA.debugLine="fallando(Job.GetString)";
 _fallando(_job._getstring /*String*/ ());
  break; }
@@ -648,7 +648,7 @@ _resinicio(_job._getstring /*String*/ ());
 ;
  }else {
  //BA.debugLineNum = 128;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("6655373","Error: "+_job._errormessage /*String*/ ,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("1655373","Error: "+_job._errormessage /*String*/ ,0);
  //BA.debugLineNum = 129;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error: "+_job._errormessage /*String*/ ),anywheresoftware.b4a.keywords.Common.True);
  };
@@ -754,7 +754,7 @@ String _datos = "";
  //BA.debugLineNum = 74;BA.debugLine="tmrIntro.Enabled = False";
 _tmrintro.setEnabled(anywheresoftware.b4a.keywords.Common.False);
  //BA.debugLineNum = 75;BA.debugLine="Log(\"Finalizando intro inicial intentando inicio\"";
-anywheresoftware.b4a.keywords.Common.LogImpl("6327682","Finalizando intro inicial intentando inicio",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("1327682","Finalizando intro inicial intentando inicio",0);
  //BA.debugLineNum = 76;BA.debugLine="If Starter.checkMantener Then";
 if (mostCurrent._starter._checkmantener /*boolean*/ ()) { 
  //BA.debugLineNum = 77;BA.debugLine="Dim datos As String";

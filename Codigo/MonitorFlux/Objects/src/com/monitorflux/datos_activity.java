@@ -573,7 +573,7 @@ _fecha = (long) (0);
  //BA.debugLineNum = 127;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
 _parser = new anywheresoftware.b4a.objects.collections.JSONParser();
  //BA.debugLineNum = 128;BA.debugLine="Log(res)";
-anywheresoftware.b4a.keywords.Common.LogImpl("64063235",_res,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("14063235",_res,0);
  //BA.debugLineNum = 129;BA.debugLine="parser.Initialize(res)";
 _parser.Initialize(_res);
  //BA.debugLineNum = 132;BA.debugLine="Dim root As List = parser.NextArray";
@@ -599,7 +599,7 @@ _estado = BA.ObjectToString(_colroot.Get((Object)("encendida")));
  //BA.debugLineNum = 140;BA.debugLine="Dim flujo As String = colroot.Get(\"flujo\")";
 _flujo = BA.ObjectToString(_colroot.Get((Object)("flujo")));
  //BA.debugLineNum = 141;BA.debugLine="Log(colroot.Get(\"flujo\"))";
-anywheresoftware.b4a.keywords.Common.LogImpl("64063248",BA.ObjectToString(_colroot.Get((Object)("flujo"))),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("14063248",BA.ObjectToString(_colroot.Get((Object)("flujo"))),0);
  //BA.debugLineNum = 142;BA.debugLine="fecha = fechaEntra";
 _fecha = _fechaentra;
  };
@@ -671,9 +671,9 @@ _actualmodificado = (long) (_fecha/(double)10000);
  //BA.debugLineNum = 187;BA.debugLine="fecha = fecha - actualModificado*10000";
 _fecha = (long) (_fecha-_actualmodificado*10000);
  //BA.debugLineNum = 188;BA.debugLine="Log(fechaActual)";
-anywheresoftware.b4a.keywords.Common.LogImpl("64128794",BA.NumberToString(_fechaactual),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("14128794",BA.NumberToString(_fechaactual),0);
  //BA.debugLineNum = 189;BA.debugLine="Log(fecha)";
-anywheresoftware.b4a.keywords.Common.LogImpl("64128795",BA.NumberToString(_fecha),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("14128795",BA.NumberToString(_fecha),0);
  //BA.debugLineNum = 190;BA.debugLine="If fecha < fechaActual Then";
 if (_fecha<_fechaactual) { 
  //BA.debugLineNum = 191;BA.debugLine="actualModificado = fechaActual/100 - fecha/100";
@@ -805,7 +805,7 @@ case 0:
 //C
 this.state = 1;
  //BA.debugLineNum = 76;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
-anywheresoftware.b4a.keywords.Common.LogImpl("63932161","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("13932161","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
  //BA.debugLineNum = 77;BA.debugLine="If Job.Success = True Then";
 if (true) break;
 
@@ -917,7 +917,7 @@ case 19:
 //C
 this.state = 20;
  //BA.debugLineNum = 95;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("63932180","Error: "+_job._errormessage /*String*/ ,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("13932180","Error: "+_job._errormessage /*String*/ ,0);
  //BA.debugLineNum = 96;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error: "+_job._errormessage /*String*/ ),anywheresoftware.b4a.keywords.Common.True);
  if (true) break;
@@ -942,7 +942,7 @@ public static String  _lbeliminar_click() throws Exception{
  //BA.debugLineNum = 261;BA.debugLine="eliminar.Initialize(\"eliminar\",Me)";
 mostCurrent._eliminar._initialize /*String*/ (processBA,"eliminar",datos_activity.getObject());
  //BA.debugLineNum = 262;BA.debugLine="Log(\"Eliminar\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("64390914","Eliminar",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("14390914","Eliminar",0);
  //BA.debugLineNum = 263;BA.debugLine="eliminar.Delete(urlEliminar & objectId)";
 mostCurrent._eliminar._delete /*String*/ (mostCurrent._urleliminar+mostCurrent._objectid);
  //BA.debugLineNum = 264;BA.debugLine="End Sub";
@@ -951,7 +951,7 @@ return "";
 public static String  _lbhistorial_click() throws Exception{
  //BA.debugLineNum = 255;BA.debugLine="Sub lbHistorial_Click";
  //BA.debugLineNum = 256;BA.debugLine="Log(\"historial\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("64325377","historial",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("14325377","historial",0);
  //BA.debugLineNum = 257;BA.debugLine="StartActivity(Grafica_Activity)";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)(mostCurrent._grafica_activity.getObject()));
  //BA.debugLineNum = 258;BA.debugLine="End Sub";
@@ -991,7 +991,7 @@ this.state = 1;
  //BA.debugLineNum = 306;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
  //BA.debugLineNum = 307;BA.debugLine="Log(res)";
-anywheresoftware.b4a.keywords.Common.LogImpl("64653058",_res,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("14653058",_res,0);
  //BA.debugLineNum = 308;BA.debugLine="Msgbox2Async(\"Dato adquirido correctamente\",\"List";
 anywheresoftware.b4a.keywords.Common.Msgbox2Async(BA.ObjectToCharSequence("Dato adquirido correctamente"),BA.ObjectToCharSequence("Listo!"),"Ok","","",(anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper(), (android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)),processBA,anywheresoftware.b4a.keywords.Common.False);
  //BA.debugLineNum = 309;BA.debugLine="Wait For Msgbox_Result(Result As Int) 'Queda en e";
