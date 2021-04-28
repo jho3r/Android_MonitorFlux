@@ -183,7 +183,7 @@ _mantener = BA.ObjectToString(_mapconsulta.GetValueAt(_i));
 }
 ;
  //BA.debugLineNum = 103;BA.debugLine="Log(mapConsulta.GetKeyAt(i)&\",\"&mapConsulta.GetV";
-anywheresoftware.b4a.keywords.Common.LogImpl("11507347",BA.ObjectToString(_mapconsulta.GetKeyAt(_i))+","+BA.ObjectToString(_mapconsulta.GetValueAt(_i))+"de dato actualizado",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("71507347",BA.ObjectToString(_mapconsulta.GetKeyAt(_i))+","+BA.ObjectToString(_mapconsulta.GetValueAt(_i))+"de dato actualizado",0);
  }
 };
  //BA.debugLineNum = 105;BA.debugLine="End Sub";
@@ -229,18 +229,18 @@ _mantener = BA.ObjectToString(_mapconsulta.GetValueAt(_i));
 }
 ;
  //BA.debugLineNum = 72;BA.debugLine="Log(mapConsulta.GetKeyAt(i)&\",\"&mapConsulta.GetV";
-anywheresoftware.b4a.keywords.Common.LogImpl("11441806",BA.ObjectToString(_mapconsulta.GetKeyAt(_i))+","+BA.ObjectToString(_mapconsulta.GetValueAt(_i)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("71441806",BA.ObjectToString(_mapconsulta.GetKeyAt(_i))+","+BA.ObjectToString(_mapconsulta.GetValueAt(_i)),0);
  }
 };
  //BA.debugLineNum = 75;BA.debugLine="If mantener = \"1\" Then";
 if ((_mantener).equals("1")) { 
  //BA.debugLineNum = 76;BA.debugLine="Log(\"Mantener igual a 1 intentando incio de sesi";
-anywheresoftware.b4a.keywords.Common.LogImpl("11441810","Mantener igual a 1 intentando incio de sesion",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("71441810","Mantener igual a 1 intentando incio de sesion",0);
  //BA.debugLineNum = 77;BA.debugLine="Return True";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
  }else {
  //BA.debugLineNum = 79;BA.debugLine="Log(\"No se tiene mantener = 1, pasando a ventana";
-anywheresoftware.b4a.keywords.Common.LogImpl("11441813","No se tiene mantener = 1, pasando a ventana de iniciar sesion",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("71441813","No se tiene mantener = 1, pasando a ventana de iniciar sesion",0);
  //BA.debugLineNum = 80;BA.debugLine="Return False";
 if (true) return anywheresoftware.b4a.keywords.Common.False;
  };
@@ -309,7 +309,7 @@ _claveadmin = BA.ObjectToString(_mapconsulta.GetValueAt(_i));
 }
 ;
  //BA.debugLineNum = 41;BA.debugLine="Log(mapConsulta.GetKeyAt(i)&\",\"&mapConsulta.GetV";
-anywheresoftware.b4a.keywords.Common.LogImpl("11179663",BA.ObjectToString(_mapconsulta.GetKeyAt(_i))+","+BA.ObjectToString(_mapconsulta.GetValueAt(_i)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("71179663",BA.ObjectToString(_mapconsulta.GetKeyAt(_i))+","+BA.ObjectToString(_mapconsulta.GetValueAt(_i)),0);
  }
 };
  //BA.debugLineNum = 43;BA.debugLine="End Sub";

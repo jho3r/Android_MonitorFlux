@@ -56,10 +56,14 @@ Sub Activity_Create(FirstTime As Boolean)
 	rp.CheckAndRequest(rp.PERMISSION_RECEIVE_SMS) 'INICIAMOS proceso de verificar permiso recibir SMS
 	Wait For Activity_PermissionResult(Permission As String, Result As Boolean) 'esperamos por repuesta de usuario
 	If Result Then
-		ToastMessageShow("Permiso para recibir mensaje en uso",True)
+		ToastMessageShow("Permiso para recibir mensaje en uso",False)
 	End If
-	
-	
+	rp.CheckAndRequest(rp.PERMISSION_SEND_SMS) 'INICIAMOS proceso de verificar permiso recibir SMS
+	Wait For Activity_PermissionResult(Permission As String, Result As Boolean) 'esperamos por repuesta de usuario
+	If Result Then
+		ToastMessageShow("Permiso para enviar mensaje en uso",False)
+	End If
+	smsReceiver.Initialize("smsReceiver")
 	backendelessGet.Download(urlGet & "'" & Main.ID & "'")			'para cargar los datos generales de la electrobomba
 End Sub
 
@@ -277,12 +281,13 @@ Sub btnActualizar_Click
 	Dim mensaje As String
 	mensaje = idActual
 	enviarSMS.Send2(numero,mensaje,False,False)
-	smsReceiver.Initialize("smsReceiver")
+	
 	ProgressDialogShow("Conectando con el dispositivo... Espere un momento")
 	
 End Sub
 
 Sub smsReceiver_MessageReceived (From As String, Body As String) As Boolean
+	'MsgboxAsync(Body,From)
 	If From == numero Then
 		ProgressDialogHide
 		MsgboxAsync("Nuevo dato: " & Body & " Litros/Minuto","Dato recibido")
@@ -295,12 +300,12 @@ Sub smsReceiver_MessageReceived (From As String, Body As String) As Boolean
 		smsReceiver.StopListening
 		DateTime.DateFormat = "yyyyMMddHHmm"
 		Dim fecha As Long = DateTime.Date(DateTime.Now)
-		'DateTime.DateFormat = "MM"
-		'Dim mes As Long = DateTime.Date(DateTime.Now)
+		DateTime.DateFormat = "MM"
+		Dim mes As Long = DateTime.Date(DateTime.Now)
 		
 		Agregar.Initialize("agregar",Me)
 		Dim datos As String
-		datos = "{"&Chr(34)&"encendida"&Chr(34)&":"&encendida&","&Chr(34)&"id"&Chr(34)&":"&Chr(34)&idActual&Chr(34)&","&Chr(34)&"flujo"&Chr(34)&":"&flujo&","&Chr(34)&"fecha"&Chr(34)&":"&Chr(34)&fecha&Chr(34)&"}"
+		datos = "{"&Chr(34)&"encendida"&Chr(34)&":"&encendida&","&Chr(34)&"id"&Chr(34)&":"&Chr(34)&idActual&Chr(34)&","&Chr(34)&"flujo"&Chr(34)&":"&flujo&","&Chr(34)&"fecha"&Chr(34)&":"&Chr(34)&fecha&Chr(34)&","&Chr(34)&"mes"&Chr(34)&":"&mes&"}"
 		Agregar.PostString(urlAgregar, datos)
 		Agregar.GetRequest.SetContentType("application/json")
 		ProgressDialogShow("Regitrando dispositivo")

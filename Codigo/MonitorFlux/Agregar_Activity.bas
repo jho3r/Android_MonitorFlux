@@ -59,6 +59,11 @@ Sub Activity_Create(FirstTime As Boolean)
 	If Result Then
 		ToastMessageShow("Permiso para recibir mensaje en uso",True)
 	End If
+	rp.CheckAndRequest(rp.PERMISSION_SEND_SMS) 'INICIAMOS proceso de verificar permiso recibir SMS
+	Wait For Activity_PermissionResult(Permission As String, Result As Boolean) 'esperamos por repuesta de usuario
+	If Result Then
+		ToastMessageShow("Permiso para enviar mensaje en uso",False)
+	End If
 	smsReceiver.Initialize("smsReceiver")
 	urlAgregar = "https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/data/Dispositivos"
 End Sub

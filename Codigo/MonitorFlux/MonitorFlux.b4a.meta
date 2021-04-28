@@ -22,6 +22,6 @@ ModuleClosedNodes4=
 ModuleClosedNodes5=
 ModuleClosedNodes6=
 ModuleClosedNodes7=
-NavigationStack=Starter,actualizarCampos,100,5,Main,tmrIntro_Tick,75,0,Main,btnOut_Click,203,6,Starter,checkMantener,63,0,Starter,Service_Start,28,0,Tutoriales_Activity,Activity_Resume,31,0,Tutoriales_Activity,Process_Globals,7,0,Visual Designer,Tutorial.bal,-100,6,Tutoriales_Activity,Globals,12,4,Tutoriales_Activity,Activity_Create,21,6
+NavigationStack=Grafica_Activity,analizarDatos,148,0,Datos_Activity,cargarDatos,110,0,Datos_Activity,btnMas_Click,252,0,Datos_Activity,Activity_Click,267,0,Monitor_Activity,addItems,120,0,Agregar_Activity,Activity_Create,59,0,Datos_Activity,resAgregar,312,0,Datos_Activity,btnActualizar_Click,277,0,Datos_Activity,Activity_Create,59,6,Datos_Activity,smsReceiver_MessageReceived,283,6
 SelectedBuild=0
 VisibleModules=6,7,1,4,2,5,3
