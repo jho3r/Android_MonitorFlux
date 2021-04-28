@@ -1,29 +1,19 @@
-# MonitorFlux
-#### Aplicacion para el monitoreo de dispositivos electricos conectados a un modulo GSM y un arduino.
-#### Esta inicialmente pensado para el monitoreo de electrobombas, pero la interfaz permite la inclusión de otra clase de dispositivos
+# **MonitorFlux**
+MonitorFlux es una aplicación movil desarrollada en Andorid para el monitoreo de dispositivos electricos conectados a un modulo GSM y un arduino.
+Esta inicialmente pensada para el monitoreo de electrobombas, pero la interfaz permite la inclusión de otra clase de dispositivos
 
-## Link al landing page --> [MonitorFlux](https://jho3r.github.io/Android_MonitorFlux/)
+### **[Link al landing page](https://jho3r.github.io/Android_MonitorFlux/)**
+### **Fase actual : MVP**
 
 ## El repositorio cuenta con:
 
-### 1. Codigo
-- [x] Codigo de la aplicacion (parcialmente desarrollado)
-- [x] Navegacion basica entre vistas
-- [x] Codigo de Arduino para el modulo fisico
-- [x] Inicio de sesion y registro de nuevos usuarios
-### 2. Diseño
-- [x] Logo
-- [x] Paleta de colores
-- [x] Interfaz
-- [x] Icono de la aplicación
-### 3. Pagina Web
-- [x] Landing page
-- [x] Pagina de tutoriales (parcialmente desarrollado)
-- [x] About
+### 1. Codigo de la aplicación en B4A
+### 2. Codigo en arduino para control del módulo
+### 3. Diseño (iconos, logos, thumbnails y paleta de colores)
+### 4. Pagina Web con tutoriales e información de contacto
+### 5. Documentación de la aplicación
 
-## Interfaz gradica
-
-La interfaz gráfica es bastante simple y se implementan conceptos basicos de diseño para el color y las figuras......
+## Interfaz gráfica
 
 <p float="left">
   <img src="https://github.com/jho3r/Android_MonitorFlux/blob/master/Dise%C3%B1o/Mockups/Screenshot_2021-03-20-12-49-16-237_b4a.example.jpg" width="200"/>
