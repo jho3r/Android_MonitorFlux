@@ -408,7 +408,7 @@ _fechaactual = (long)(Double.parseDouble(anywheresoftware.b4a.keywords.Common.Da
  //BA.debugLineNum = 148;BA.debugLine="fechaActual = fechaActual*100000000";
 _fechaactual = (long) (_fechaactual*100000000);
  //BA.debugLineNum = 149;BA.debugLine="Log(\"\" & fechaActual & arrMes.Length)";
-anywheresoftware.b4a.keywords.Common.LogImpl("76160392",""+BA.NumberToString(_fechaactual)+BA.NumberToString(_arrmes.length),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("56160392",""+BA.NumberToString(_fechaactual)+BA.NumberToString(_arrmes.length),0);
  //BA.debugLineNum = 151;BA.debugLine="Dim parser As JSONParser 						'definimos objeto";
 _parser = new anywheresoftware.b4a.objects.collections.JSONParser();
  //BA.debugLineNum = 152;BA.debugLine="parser.Initialize(res)";
@@ -611,14 +611,14 @@ return "";
 public static String  _jobdone(com.monitorflux.httpjob _job) throws Exception{
  //BA.debugLineNum = 126;BA.debugLine="Sub JobDone (Job As HttpJob)";
  //BA.debugLineNum = 127;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
-anywheresoftware.b4a.keywords.Common.LogImpl("76094849","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("56094849","JobName = "+_job._jobname /*String*/ +", Success = "+BA.ObjectToString(_job._success /*boolean*/ ),0);
  //BA.debugLineNum = 128;BA.debugLine="If Job.Success = True Then";
 if (_job._success /*boolean*/ ==anywheresoftware.b4a.keywords.Common.True) { 
  //BA.debugLineNum = 129;BA.debugLine="Select Job.JobName 'Nombre del proceso a traves";
 switch (BA.switchObjectToInt(_job._jobname /*String*/ ,"historial")) {
 case 0: {
  //BA.debugLineNum = 131;BA.debugLine="Log(Job.GetString)";
-anywheresoftware.b4a.keywords.Common.LogImpl("76094853",_job._getstring /*String*/ (),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("56094853",_job._getstring /*String*/ (),0);
  //BA.debugLineNum = 132;BA.debugLine="analizarDatos(Job.GetString)";
 _analizardatos(_job._getstring /*String*/ ());
  break; }
@@ -626,7 +626,7 @@ _analizardatos(_job._getstring /*String*/ ());
 ;
  }else {
  //BA.debugLineNum = 135;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("76094857","Error: "+_job._errormessage /*String*/ ,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("56094857","Error: "+_job._errormessage /*String*/ ,0);
  //BA.debugLineNum = 136;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error: "+_job._errormessage /*String*/ ),anywheresoftware.b4a.keywords.Common.True);
  };

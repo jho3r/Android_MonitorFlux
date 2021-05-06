@@ -22,6 +22,6 @@ ModuleClosedNodes4=
 ModuleClosedNodes5=
 ModuleClosedNodes6=
 ModuleClosedNodes7=
-NavigationStack=Grafica_Activity,analizarDatos,148,0,Datos_Activity,cargarDatos,110,0,Datos_Activity,btnMas_Click,252,0,Datos_Activity,Activity_Click,267,0,Monitor_Activity,addItems,120,0,Agregar_Activity,Activity_Create,59,0,Datos_Activity,resAgregar,312,0,Datos_Activity,btnActualizar_Click,277,0,Datos_Activity,Activity_Create,59,6,Datos_Activity,smsReceiver_MessageReceived,283,6
+NavigationStack=Main,Globals,32,6,Datos_Activity,smsReceiver_MessageReceived,283,0,Main,fallando,191,1,Main,conteo,144,0,Main,JobDone,133,6,Main,Activity_Create,41,0,Main,Activity_Resume,62,0,Main,mostrarMensaje,254,6,Main,leerMensajes,234,6,Datos_Activity,cargarDatos,117,0,Datos_Activity,cargarEstado,143,0
 SelectedBuild=0
 VisibleModules=6,7,1,4,2,5,3

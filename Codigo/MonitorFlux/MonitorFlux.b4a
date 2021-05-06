@@ -84,11 +84,13 @@ Sub Globals
 	Private lbBombas As Label
 	Dim urlGet As String
 	Dim backendelessGet As HttpJob 'se debe inicializar
+	Dim backendmensaje As HttpJob
 	Dim i As Int
 	Dim disFallando As Int
 	Dim historial As HttpJob
 	Private IniciarSesion As HttpJob
 	Private urlIniciar As String
+	Dim rp As RuntimePermissions
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -112,6 +114,11 @@ Sub Activity_Create(FirstTime As Boolean)
 End Sub
 
 Sub Activity_Resume
+	rp.CheckAndRequest(rp.PERMISSION_READ_SMS)
+	Wait For Activity_PermissionResult(Permission As String, Result As Boolean) 'esperamos por repuesta de usuario
+	If Result Then
+		ToastMessageShow("Permiso para leer mensajes en uso",True)
+	End If
 	If tmrIntro.Enabled = False Then
 		Log("Timer deshabilitado, intentando inicio")
 		intentoInicio
@@ -121,7 +128,7 @@ Sub Activity_Resume
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
-
+	Log("Main en pausa")
 End Sub
 
 Sub tmrIntro_Tick
@@ -177,6 +184,9 @@ Sub JobDone (Job As HttpJob)
 				fallando(Job.GetString)
 			Case "iniciar"
 				resInicio(Job.GetString) 'se envia la cadena recibida para procesar
+			Case "mensaje"
+				Log(Job.GetString)
+				mostrarMensaje(Job.GetString)
 		End Select
 	Else
 		Log("Error: " & Job.ErrorMessage)
@@ -236,6 +246,7 @@ Sub fallando(res As String)
 	Else
 		lbFallas.Color = Colors.ARGB(128,0,136,145)
 	End If
+	leerMensajes
 End Sub
 
 Sub intentoInicio
@@ -267,4 +278,33 @@ Sub resInicio(res As String)
 	Dim root As Map = parser.NextObject
 	ID = root.Get("objectId")
 	intentoInicio
+End Sub
+
+Sub leerMensajes
+	Dim SmsMessages1 As SmsMessages
+	Dim List1 As List
+	List1 = SmsMessages1.GetAllSince(DateTime.Add(DateTime.Now, 0, 0, -1))
+	For i = 0 To List1.Size - 1
+		Dim Sms As Sms
+		Sms = List1.Get(i)
+		Log(Sms)
+		If Sms.Body.Contains("ElectrobombaFallando") Then
+			For j=0 To list.Size - 1
+				If Sms.Body.Contains(list.Get(j)) Then
+					backendmensaje.Initialize("mensaje",Me)
+					backendmensaje.Download("https://api.backendless.com/4D75900B-E59C-1318-FF7D-6D0FBCB48400/A5201E9F-9465-4336-B56B-C606DDD986ED/data/Dispositivos?where=id%3D'"&list.Get(j)&"'&property=nombre")
+				End If
+			Next
+		End If
+	Next
+End Sub
+
+Sub mostrarMensaje(res As String)
+	Dim parser As JSONParser 						'definimos objeto que permite procesar JSON
+	parser.Initialize(res)
+	Dim root As List = parser.NextArray
+	For Each colroot As Map In root				'map es similar a list solo que se hace con clave, dato y se añade con put
+		Dim nombre As String = colroot.Get("nombre")
+	Next
+	MsgboxAsync("El dispositivo: " & nombre & " envio un mensaje de alerta, por favor actualice su estado","Alerta!")
 End Sub
